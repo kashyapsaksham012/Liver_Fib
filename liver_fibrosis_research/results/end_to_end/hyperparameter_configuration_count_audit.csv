@@ -1,0 +1,6 @@
+model,full_grid_size,search_type,n_iter,evaluated_configs
+logistic,6,grid,,6
+random_forest,36,randomized,20.0,20
+xgboost,108,randomized,20.0,20
+lightgbm,108,randomized,20.0,20
+mlp,18,grid,,18

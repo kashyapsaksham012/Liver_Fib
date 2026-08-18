@@ -1,0 +1,2 @@
+n_total,n_row_level_deviations,positive,negative,prevalence_pct,source_variable,unit,threshold,quality_gate_applied_first
+7153,0,666,6487,9.31,LUXSMED,kPa,8.2,LUAXSTAT==1 (verified in cohort construction)
