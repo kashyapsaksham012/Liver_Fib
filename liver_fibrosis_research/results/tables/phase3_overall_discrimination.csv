@@ -1,0 +1,6 @@
+model_name,test_n,threshold,roc_auc,roc_auc_95ci_low,roc_auc_95ci_high,pr_auc,pr_auc_95ci_low,pr_auc_95ci_high,sensitivity,specificity,ppv,npv,f1,tp,fp,tn,fn,ci_method
+logistic,2146,0.5173,0.8334,0.8021,0.861,0.3725,0.3126,0.448,0.75,0.7621,0.2447,0.9674,0.369,150,463,1483,50,"percentile bootstrap, n=2000 resamples, seed=42"
+random_forest,2146,0.4499,0.8343,0.8036,0.8611,0.3508,0.2915,0.4199,0.79,0.7359,0.2351,0.9715,0.3624,158,514,1432,42,"percentile bootstrap, n=2000 resamples, seed=42"
+xgboost,2146,0.4108,0.8429,0.8123,0.8693,0.3717,0.31,0.4412,0.845,0.6773,0.212,0.977,0.339,169,628,1318,31,"percentile bootstrap, n=2000 resamples, seed=42"
+lightgbm,2146,0.4988,0.8394,0.8088,0.867,0.3729,0.3115,0.4445,0.795,0.7492,0.2457,0.9726,0.3754,159,488,1458,41,"percentile bootstrap, n=2000 resamples, seed=42"
+mlp,2146,0.1065,0.8229,0.7903,0.8532,0.3652,0.3039,0.4401,0.815,0.6644,0.1998,0.9722,0.3209,163,653,1293,37,"percentile bootstrap, n=2000 resamples, seed=42"

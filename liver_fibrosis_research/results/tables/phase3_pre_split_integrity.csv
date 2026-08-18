@@ -1,0 +1,6 @@
+check,status,detail
+No duplicate SEQN,PASS,dups=0
+No duplicate full rows,PASS,dups=0
+"Duplicate predictor vectors (informational, not a failure -- expected with 10 low-cardinality/continuous vars)",PASS,n_duplicate_predictor_vectors=0 (retained; identical predictor vectors are not identity duplicates)
+No missing predictor values (complete-case),PASS,0 missing
+"Target has exactly two classes {0,1}",PASS,"classes=[np.int64(0), np.int64(1)]"

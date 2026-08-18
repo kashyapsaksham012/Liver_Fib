@@ -1,0 +1,17 @@
+category,group_label,n,n_positive,n_negative,prevalence_pct,prevalence_95ci_low_pct,prevalence_95ci_high_pct
+OVERALL,Primary cohort (all),7153,666,6487,9.31,8.66,10.01
+Sex,Male,3531,394,3137,11.16,10.16,12.24
+Sex,Female,3622,272,3350,7.51,6.7,8.41
+Race_Ethnicity_RIDRETH3,Mexican American,902,94,808,10.42,8.59,12.59
+Race_Ethnicity_RIDRETH3,Other Hispanic,754,69,685,9.15,7.29,11.42
+Race_Ethnicity_RIDRETH3,Non-Hispanic White,2484,237,2247,9.54,8.45,10.76
+Race_Ethnicity_RIDRETH3,Non-Hispanic Black,1787,177,1610,9.9,8.6,11.38
+Race_Ethnicity_RIDRETH3,Non-Hispanic Asian,866,52,814,6.0,4.61,7.79
+Race_Ethnicity_RIDRETH3,Other Race / Multi-Racial,360,37,323,10.28,7.55,13.85
+Age_Group_Final,18-39,2423,122,2301,5.04,4.23,5.98
+Age_Group_Final,40-59,2318,221,2097,9.53,8.4,10.8
+Age_Group_Final,60+,2412,323,2089,13.39,12.09,14.81
+BMI_Group_Final,Underweight,109,5,104,4.59,1.98,10.29
+BMI_Group_Final,Normal,1802,72,1730,4.0,3.18,5.0
+BMI_Group_Final,Overweight,2316,121,2195,5.22,4.39,6.21
+BMI_Group_Final,Obese,2926,468,2458,15.99,14.71,17.37

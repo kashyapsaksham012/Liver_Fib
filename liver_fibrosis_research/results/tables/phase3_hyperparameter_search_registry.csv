@@ -1,0 +1,85 @@
+model_name,search_type,n_evaluations_planned,params,mean_cv_roc_auc,std_cv_roc_auc,is_selected_best,tie_break_rule
+logistic,grid,6,"{""est__C"": 0.001}",0.8134,0.0151,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+logistic,grid,6,"{""est__C"": 0.01}",0.8157,0.0147,True,prefer simpler/more-regularized config among ties within 0.001 AUC
+logistic,grid,6,"{""est__C"": 0.1}",0.8155,0.0143,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+logistic,grid,6,"{""est__C"": 1}",0.8155,0.0142,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+logistic,grid,6,"{""est__C"": 10}",0.8155,0.0142,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+logistic,grid,6,"{""est__C"": 100}",0.8155,0.0142,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 10, ""est__max_depth"": null}",0.8193,0.018,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 5, ""est__max_depth"": 5}",0.8181,0.0182,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 10, ""est__max_depth"": 7}",0.8199,0.0171,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 100, ""est__min_samples_leaf"": 5, ""est__max_depth"": null}",0.8158,0.016,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 10, ""est__max_depth"": 5}",0.8181,0.0195,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 5, ""est__max_depth"": null}",0.8171,0.0162,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 100, ""est__min_samples_leaf"": 5, ""est__max_depth"": 7}",0.821,0.0159,True,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 100, ""est__min_samples_leaf"": 5, ""est__max_depth"": 5}",0.8175,0.0193,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 10, ""est__max_depth"": 3}",0.8077,0.0232,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 10, ""est__max_depth"": 5}",0.8191,0.0195,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 100, ""est__min_samples_leaf"": 1, ""est__max_depth"": 5}",0.8175,0.0184,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 10, ""est__max_depth"": null}",0.8196,0.0181,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 100, ""est__min_samples_leaf"": 1, ""est__max_depth"": 3}",0.8063,0.0227,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 5, ""est__max_depth"": 3}",0.8076,0.0228,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 1, ""est__max_depth"": null}",0.8127,0.0151,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 100, ""est__min_samples_leaf"": 10, ""est__max_depth"": 5}",0.8173,0.0188,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 1, ""est__max_depth"": 7}",0.8169,0.0138,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 5, ""est__max_depth"": 3}",0.8077,0.0232,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 500, ""est__min_samples_leaf"": 1, ""est__max_depth"": 5}",0.8184,0.0186,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+random_forest,randomized,20,"{""est__n_estimators"": 300, ""est__min_samples_leaf"": 1, ""est__max_depth"": 3}",0.8075,0.0225,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 300, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.8075,0.019,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.01}",0.809,0.0204,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 300, ""est__max_depth"": 2, ""est__learning_rate"": 0.01}",0.8126,0.0215,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.1}",0.8139,0.0149,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 500, ""est__max_depth"": 4, ""est__learning_rate"": 0.05}",0.7873,0.0166,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 300, ""est__max_depth"": 5, ""est__learning_rate"": 0.05}",0.7975,0.0164,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 300, ""est__max_depth"": 5, ""est__learning_rate"": 0.01}",0.8158,0.0145,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.05}",0.8212,0.0147,True,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 300, ""est__max_depth"": 4, ""est__learning_rate"": 0.1}",0.7848,0.0215,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.01}",0.8064,0.0188,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.1}",0.8178,0.0164,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 500, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.803,0.0214,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 2, ""est__learning_rate"": 0.01}",0.7976,0.0172,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 500, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.8004,0.0213,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 4, ""est__learning_rate"": 0.01}",0.8176,0.0173,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 500, ""est__max_depth"": 5, ""est__learning_rate"": 0.05}",0.7825,0.0202,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 100, ""est__max_depth"": 4, ""est__learning_rate"": 0.05}",0.8133,0.0143,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 300, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.8119,0.0228,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 500, ""est__max_depth"": 5, ""est__learning_rate"": 0.1}",0.777,0.0214,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+xgboost,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 500, ""est__max_depth"": 2, ""est__learning_rate"": 0.05}",0.8174,0.0235,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 300, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.8071,0.02,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.01}",0.813,0.0152,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 300, ""est__max_depth"": 2, ""est__learning_rate"": 0.01}",0.8118,0.0193,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.1}",0.812,0.0168,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 500, ""est__max_depth"": 4, ""est__learning_rate"": 0.05}",0.7898,0.0208,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 300, ""est__max_depth"": 5, ""est__learning_rate"": 0.05}",0.7923,0.0214,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 300, ""est__max_depth"": 5, ""est__learning_rate"": 0.01}",0.808,0.0196,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.05}",0.8157,0.0156,True,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 300, ""est__max_depth"": 4, ""est__learning_rate"": 0.1}",0.7832,0.0226,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.01}",0.813,0.0152,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 3, ""est__learning_rate"": 0.1}",0.812,0.0168,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 500, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.7995,0.0207,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 2, ""est__learning_rate"": 0.01}",0.8023,0.0197,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 500, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.7995,0.0207,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 100, ""est__max_depth"": 4, ""est__learning_rate"": 0.01}",0.8143,0.016,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 500, ""est__max_depth"": 5, ""est__learning_rate"": 0.05}",0.7823,0.0189,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 1.0, ""est__n_estimators"": 100, ""est__max_depth"": 4, ""est__learning_rate"": 0.05}",0.8147,0.0154,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 300, ""est__max_depth"": 2, ""est__learning_rate"": 0.1}",0.8071,0.02,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.9, ""est__n_estimators"": 500, ""est__max_depth"": 5, ""est__learning_rate"": 0.1}",0.761,0.0206,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+lightgbm,randomized,20,"{""est__subsample"": 0.7, ""est__n_estimators"": 500, ""est__max_depth"": 2, ""est__learning_rate"": 0.05}",0.8096,0.02,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.0001, ""est__hidden_layer_sizes"": [16], ""est__learning_rate_init"": 0.001}",0.6941,0.0537,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.0001, ""est__hidden_layer_sizes"": [16], ""est__learning_rate_init"": 0.01}",0.8008,0.0181,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.0001, ""est__hidden_layer_sizes"": [32], ""est__learning_rate_init"": 0.001}",0.7529,0.032,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.0001, ""est__hidden_layer_sizes"": [32], ""est__learning_rate_init"": 0.01}",0.8114,0.023,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.0001, ""est__hidden_layer_sizes"": [32, 16], ""est__learning_rate_init"": 0.001}",0.696,0.1548,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.0001, ""est__hidden_layer_sizes"": [32, 16], ""est__learning_rate_init"": 0.01}",0.811,0.0135,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.001, ""est__hidden_layer_sizes"": [16], ""est__learning_rate_init"": 0.001}",0.6942,0.0537,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.001, ""est__hidden_layer_sizes"": [16], ""est__learning_rate_init"": 0.01}",0.8014,0.0184,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.001, ""est__hidden_layer_sizes"": [32], ""est__learning_rate_init"": 0.001}",0.7529,0.032,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.001, ""est__hidden_layer_sizes"": [32], ""est__learning_rate_init"": 0.01}",0.8116,0.023,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.001, ""est__hidden_layer_sizes"": [32, 16], ""est__learning_rate_init"": 0.001}",0.696,0.1548,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.001, ""est__hidden_layer_sizes"": [32, 16], ""est__learning_rate_init"": 0.01}",0.815,0.0147,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.01, ""est__hidden_layer_sizes"": [16], ""est__learning_rate_init"": 0.001}",0.6999,0.0617,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.01, ""est__hidden_layer_sizes"": [16], ""est__learning_rate_init"": 0.01}",0.8003,0.0224,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.01, ""est__hidden_layer_sizes"": [32], ""est__learning_rate_init"": 0.001}",0.753,0.032,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.01, ""est__hidden_layer_sizes"": [32], ""est__learning_rate_init"": 0.01}",0.8033,0.0143,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.01, ""est__hidden_layer_sizes"": [32, 16], ""est__learning_rate_init"": 0.001}",0.696,0.1548,False,prefer simpler/more-regularized config among ties within 0.001 AUC
+mlp,grid,18,"{""est__alpha"": 0.01, ""est__hidden_layer_sizes"": [32, 16], ""est__learning_rate_init"": 0.01}",0.8184,0.02,True,prefer simpler/more-regularized config among ties within 0.001 AUC

@@ -1,0 +1,16 @@
+item,description,status,detail
+1,No outcome leakage (no outcome-only variable in predictor set),PASS,leaked=[]
+2,"No test-set contamination (no split has been performed; dataset is pre-split, split deferred to Phase 3)",PASS,"primary dataset generated, no split artifact present"
+3,No unverified variable in the primary predictor set,PASS,unverified=[]
+4,No post-outcome/quality-only predictors in the predictor set,PASS,leaked=[]
+5,Cohort definition reproducible (primary N matches frozen decision),PASS,N=7153
+6,Outcome definition reproducible (positive count matches frozen decision),PASS,positive=666
+7,Predictors reproducible (exact 10-column primary predictor set present),PASS,"columns=['SEQN', 'LUXSMED', 'RIDRETH1', 'RIDRETH3', 'WTMECPRP', 'WTINTPRP', 'WTSAFPRP', 'SDMVPSU', 'SDMVSTRA', 'RIDAGEYR', 'RIAGENDR', 'BMXBMI', 'LBXSATSI', 'LBXSASSI', 'LBXSAL', 'LBXSAPSI', 'LBXSTB', 'LBXPLTSI', 'LBDHDD', 'outcome_primary_8.2kPa', 'outcome_sensitivity_8.0kPa', 'outcome_secondary_advanced_9.7kPa', 'outcome_secondary_cirrhosis_13.6kPa', 'age_group_final', 'bmi_group_final']"
+8,"Missing-data strategy reproducible (zero predictor missingness, complete-case by construction)",PASS,missing_cells=0
+9,"Subgroup definitions reproducible (age_group_final/bmi_group_final columns present, no unexpected categories)",PASS,"age_groups=['18-39', '40-59', '60+']"
+10,Survey-weight strategy documented,PASS,file exists
+11,Statistical metrics pre-specified,PASS,file exists
+12,Sensitivity analyses pre-specified,PASS,file exists
+13,"Random-seed policy documented (fixed seed required, to be recorded at Phase 3 start)",PASS,policy present in model_development_protocol.md / freeze table
+14,Primary/secondary/exploratory analyses distinguished,PASS,file exists
+15,Secondary dataset strictly nested within primary dataset (SEQN subset),PASS,"secondary_N=3582, primary_N=7153"

@@ -1,0 +1,6 @@
+model_name,method,threshold,source
+logistic,Youden's J on out-of-fold training CV predictions,0.5173,"training partition only, test set not accessed"
+random_forest,Youden's J on out-of-fold training CV predictions,0.4499,"training partition only, test set not accessed"
+xgboost,Youden's J on out-of-fold training CV predictions,0.4108,"training partition only, test set not accessed"
+lightgbm,Youden's J on out-of-fold training CV predictions,0.4988,"training partition only, test set not accessed"
+mlp,Youden's J on out-of-fold training CV predictions,0.1065,"training partition only, test set not accessed"

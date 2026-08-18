@@ -1,0 +1,3 @@
+architecture,n,n_predictors,n_outcome_positive,prevalence_pct,min_race_ethnicity_subgroup_positive_n,epv_events_per_predictor,pct_asian_subgroup,clinical_realism
+"PRIMARY: Broad routine-lab architecture (10 predictors, no fasting labs)",7153,10,666,9.31,37,66.6,12.11,"High -- ALT/AST/albumin/ALP/bilirubin/platelets/HDL are routine, non-fasting labs obtainable at any clinical visit"
+"SECONDARY: Fasting-extended architecture (12 predictors, + glucose/triglycerides)",3582,12,319,8.91,16,26.6,12.79,"Moderate -- requires an 8-24h fasting morning-session visit, a materially more restrictive clinical workflow"

@@ -1,0 +1,27 @@
+intersection,group_1,group_2,n,n_positive,n_negative,feasibility_classification
+Sex x Race/Ethnicity,Male,Mexican American,452,48,404,exploratory candidate
+Sex x Race/Ethnicity,Male,Other Hispanic,363,39,324,exploratory candidate
+Sex x Race/Ethnicity,Male,Non-Hispanic White,1252,147,1105,primary-feasibility candidate
+Sex x Race/Ethnicity,Male,Non-Hispanic Black,856,98,758,exploratory candidate
+Sex x Race/Ethnicity,Male,Non-Hispanic Asian,417,34,383,exploratory candidate
+Sex x Race/Ethnicity,Male,Other Race / Multi-Racial,191,28,163,limited precision
+Sex x Race/Ethnicity,Female,Mexican American,450,46,404,exploratory candidate
+Sex x Race/Ethnicity,Female,Other Hispanic,391,30,361,exploratory candidate
+Sex x Race/Ethnicity,Female,Non-Hispanic White,1232,90,1142,exploratory candidate
+Sex x Race/Ethnicity,Female,Non-Hispanic Black,931,79,852,exploratory candidate
+Sex x Race/Ethnicity,Female,Non-Hispanic Asian,449,18,431,limited precision
+Sex x Race/Ethnicity,Female,Other Race / Multi-Racial,169,9,160,insufficient evidence
+Sex x Age,Male,18-39,1180,74,1106,exploratory candidate
+Sex x Age,Male,40-59,1106,122,984,primary-feasibility candidate
+Sex x Age,Male,60+,1245,198,1047,primary-feasibility candidate
+Sex x Age,Female,18-39,1243,48,1195,exploratory candidate
+Sex x Age,Female,40-59,1212,99,1113,exploratory candidate
+Sex x Age,Female,60+,1167,125,1042,primary-feasibility candidate
+Sex x BMI,Male,Underweight,44,5,39,insufficient evidence
+Sex x BMI,Male,Normal,861,53,808,exploratory candidate
+Sex x BMI,Male,Overweight,1295,82,1213,exploratory candidate
+Sex x BMI,Male,Obese,1331,254,1077,primary-feasibility candidate
+Sex x BMI,Female,Underweight,65,0,65,insufficient evidence
+Sex x BMI,Female,Normal,941,19,922,limited precision
+Sex x BMI,Female,Overweight,1021,39,982,exploratory candidate
+Sex x BMI,Female,Obese,1595,214,1381,primary-feasibility candidate

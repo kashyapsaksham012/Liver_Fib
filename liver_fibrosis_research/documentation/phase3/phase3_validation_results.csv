@@ -1,0 +1,21 @@
+test_id,description,status,detail
+TEST1,Primary analysis dataset matches Phase 2 cohort definition,PASS,"N=7153, expected=7153"
+TEST2,Primary predictor list exactly matches Phase 2,PASS,"matrix=['BMXBMI', 'LBDHDD', 'LBXPLTSI', 'LBXSAL', 'LBXSAPSI', 'LBXSASSI', 'LBXSATSI', 'LBXSTB', 'RIAGENDR', 'RIDAGEYR']"
+TEST3,Primary target definition exactly matches Phase 2,PASS,recreated == saved column
+TEST4,No forbidden variable enters the feature matrix,PASS,overlap=set()
+TEST5,No outcome leakage (LUXSMED/LUXCAPM not in model matrix),PASS,confirmed absent
+TEST6,Train/test sets are disjoint,PASS,overlap=0
+TEST7,Union of train+test equals modeling population,PASS,"union=7153, pop=7153"
+TEST8,No duplicate participant across train/test splits,PASS,5007+2146=7153 vs 7153
+TEST9,"Preprocessing fitted only inside training/CV partitions (structural: Pipeline+CV in phase3_05, test set not loaded there)",PASS,verified by code construction: phase3_05_train_and_tune.py never imports test_ids.csv
+TEST10,Test set never referenced during hyperparameter search (test_ids.csv not read in training script),PASS,grep confirms no test_ids reference in phase3_05_train_and_tune.py
+TEST11,Test set never used for feature selection (feature set fixed before any CV/training ran),PASS,feature registry (phase3_02) generated before split/training scripts run
+TEST12,Test set never used for threshold optimization (thresholds computed from OOF training CV before test set is loaded),PASS,verified: threshold code precedes test_ids.csv load in phase3_06 script order
+TEST13,Class-imbalance handling does not modify train/test population size,PASS,"train=5007, test=2146 (no rows added/removed)"
+TEST14,Random seeds recorded for all models,PASS,all seeds=[42]
+TEST15,Final feature list matches frozen registry,PASS,same as TEST2
+TEST16,Model predictions have exactly one row per test participant,PASS,"logistic: rows_ok=True, proba_valid=True, no_nan_inf=True; random_forest: rows_ok=True, proba_valid=True, no_nan_inf=True; xgboost: rows_ok=True, proba_valid=True, no_nan_inf=True; lightgbm: rows_ok=True, proba_valid=True, no_nan_inf=True; mlp: rows_ok=True, proba_valid=True, no_nan_inf=True"
+TEST17,"Predicted probabilities are valid numeric probabilities [0,1]",PASS,see TEST16 detail
+TEST18,No NaN/Inf in final model predictions,PASS,see TEST16 detail
+TEST19,All result tables regenerable from saved predictions (ROC-AUC recomputed from test_predictions_*.csv matches phase3_overall_discrimination.csv),PASS,recomputed == reported for all 5 models
+TEST20,Final test set checksum unchanged since lock,PASS,current_hash_prefix=b7fe6ff891051e7b

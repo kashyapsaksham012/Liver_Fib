@@ -1,0 +1,4 @@
+partition,n,outcome_prevalence_pct,pct_Male,pct_Female,pct_Mexican_American,pct_Other_Hispanic,pct_Non-Hispanic_White,pct_Non-Hispanic_Black,pct_Non-Hispanic_Asian,pct_Other_Race___Multi-Racial,median_age,median_bmi
+"Full cohort (N=7,153)",7153,9.31,49.36,50.64,12.61,10.54,34.73,24.98,12.11,5.03,50.0,28.5
+"Train (N=5,007)",5007,9.31,49.61,50.39,13.04,10.23,34.61,24.71,12.48,4.93,50.0,28.5
+"Test (N=2,146, LOCKED)",2146,9.32,48.79,51.21,11.6,11.28,35.0,25.63,11.23,5.27,50.0,28.4

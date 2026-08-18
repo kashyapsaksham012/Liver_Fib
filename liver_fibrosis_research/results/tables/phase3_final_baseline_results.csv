@@ -1,0 +1,6 @@
+model_name,model_version,cv_roc_auc,test_roc_auc,roc_auc_95ci_low,roc_auc_95ci_high,test_pr_auc,pr_auc_95ci_low,pr_auc_95ci_high,sensitivity,specificity,ppv,npv,f1,threshold,threshold_selection_method,class_imbalance_handling
+logistic,v1,0.8157,0.8334,0.8021,0.861,0.3725,0.3126,0.448,0.75,0.7621,0.2447,0.9674,0.369,0.5173,Youden's J on out-of-fold training CV predictions,class_weight=balanced
+random_forest,v1,0.821,0.8343,0.8036,0.8611,0.3508,0.2915,0.4199,0.79,0.7359,0.2351,0.9715,0.3624,0.4499,Youden's J on out-of-fold training CV predictions,class_weight=balanced
+xgboost,v1,0.8212,0.8429,0.8123,0.8693,0.3717,0.31,0.4412,0.845,0.6773,0.212,0.977,0.339,0.4108,Youden's J on out-of-fold training CV predictions,scale_pos_weight=9.745
+lightgbm,v1,0.8157,0.8394,0.8088,0.867,0.3729,0.3115,0.4445,0.795,0.7492,0.2457,0.9726,0.3754,0.4988,Youden's J on out-of-fold training CV predictions,scale_pos_weight=9.745
+mlp,v1,0.8184,0.8229,0.7903,0.8532,0.3652,0.3039,0.4401,0.815,0.6644,0.1998,0.9722,0.3209,0.1065,Youden's J on out-of-fold training CV predictions,"NONE (documented technical constraint, see class_imbalance_protocol_implementation.md)"

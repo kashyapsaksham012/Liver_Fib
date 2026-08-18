@@ -1,0 +1,25 @@
+test_id,description,status,detail
+T1,Phase 2 handoff match,PASS,phase2_handoff_reverification.md confirms PASSED
+T2,Exact cohort N,PASS,N=7153
+T3,Exact SEQN match,PASS,handoff doc confirms symmetric_diff=0
+T4,Exact outcome match,PASS,positive=666
+T5,Exact feature match,PASS,"matrix=['BMXBMI', 'LBDHDD', 'LBXPLTSI', 'LBXSAL', 'LBXSAPSI', 'LBXSASSI', 'LBXSATSI', 'LBXSTB', 'RIAGENDR', 'RIDAGEYR']"
+T6,Train/test disjointness,PASS,overlap=0
+T7,Full cohort coverage,PASS,"union=7153, cohort=7153"
+T8,Test lock integrity,PASS,hash_prefix=b7fe6ff891051e7b
+T9,Preprocessing leakage protection,PASS,preprocessing_leakage_audit.md
+T10,Hyperparameter search isolation (test set never referenced),PASS,grep-confirmed
+T11,Threshold isolation,PASS,threshold_selection_audit.md
+T12,No test-derived model selection,PASS,downstream_model_retention_decision.md confirms no winner declared from test AUC
+T13,Valid probabilities (all models incl. sensitivity),PASS,"all in [0,1]"
+T14,No NaN/Inf predictions,PASS,confirmed finite
+T15,CV reproducibility,PASS,reproducibility_registry.md documents byte-identical rerun
+T16,Model artifact reproducibility,PASS,reproducibility_audit.md
+T17,CI/FDR methodology explicitly documented with fixed seed,PASS,inference_methodology_amendment.md
+T18,MLP imbalance handling documented + sensitivity-tested,PASS,rows=1
+T19,Model-comparability registry consistent,PASS,n_identical_dims=8 (expected 8)
+T20,Raw continuous probabilities preserved (not just binary class),PASS,confirmed >10 unique probability values per model
+T21,All reported metrics code-derived (spot check),PASS,"recomputed=0.8429, reported=0.8429"
+T22,All remediation result tables exist/regenerate,PASS,missing=[]
+T23,All figure sources regenerate/exist,PASS,missing=[]
+T24,Environment recorded (pinned lock file),PASS,requirements-phase3-lock.txt exists

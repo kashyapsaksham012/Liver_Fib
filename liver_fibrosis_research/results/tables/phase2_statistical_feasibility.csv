@@ -1,0 +1,17 @@
+scope,n,n_positive,n_negative,prevalence_95ci_half_width_pct,epv_events_per_predictor_10_predictors,assessment
+OVERALL primary cohort,7153,666,6487,0.68,66.6,Adequate: EPV=66.6 >> conventional 10-events-per-predictor floor; overall 95% CI half-width ~1.1pp supports stable overall AUC/calibration estimation.
+Sex: Male,3531,394,3137,1.04,39.4,primary-feasibility candidate
+Sex: Female,3622,272,3350,0.86,27.2,primary-feasibility candidate
+Race/Ethnicity: Mexican American,902,94,808,2.0,9.4,exploratory candidate
+Race/Ethnicity: Other Hispanic,754,69,685,2.06,6.9,exploratory candidate
+Race/Ethnicity: Non-Hispanic White,2484,237,2247,1.16,23.7,primary-feasibility candidate
+Race/Ethnicity: Non-Hispanic Black,1787,177,1610,1.39,17.7,primary-feasibility candidate
+Race/Ethnicity: Non-Hispanic Asian,866,52,814,1.59,5.2,exploratory candidate
+Race/Ethnicity: Other Race / Multi-Racial,360,37,323,3.15,3.7,exploratory candidate
+Age: 18-39,2423,122,2301,0.88,12.2,primary-feasibility candidate
+Age: 40-59,2318,221,2097,1.2,22.1,primary-feasibility candidate
+Age: 60+,2412,323,2089,1.36,32.3,primary-feasibility candidate
+BMI: Underweight,109,5,104,4.16,0.5,insufficient evidence
+BMI: Normal,1802,72,1730,0.91,7.2,exploratory candidate
+BMI: Overweight,2316,121,2195,0.91,12.1,primary-feasibility candidate
+BMI: Obese,2926,468,2458,1.33,46.8,primary-feasibility candidate

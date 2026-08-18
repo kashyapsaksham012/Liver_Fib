@@ -1,0 +1,6 @@
+model,n_configurations_evaluated,search_type,cv_folds,scoring_metric,random_seed,preprocessing_inside_fold,test_information_used,best_cv_score
+logistic,6,grid,5,roc_auc (mean over CV folds),42,"Yes (sklearn Pipeline/ColumnTransformer, verified preprocessing_leakage_audit.md)",NO -- test_ids.csv is never imported in phase3_05_train_and_tune.py (grep-verified),0.8157
+random_forest,20,randomized,5,roc_auc (mean over CV folds),42,"Yes (sklearn Pipeline/ColumnTransformer, verified preprocessing_leakage_audit.md)",NO -- test_ids.csv is never imported in phase3_05_train_and_tune.py (grep-verified),0.821
+xgboost,20,randomized,5,roc_auc (mean over CV folds),42,"Yes (sklearn Pipeline/ColumnTransformer, verified preprocessing_leakage_audit.md)",NO -- test_ids.csv is never imported in phase3_05_train_and_tune.py (grep-verified),0.8212
+lightgbm,20,randomized,5,roc_auc (mean over CV folds),42,"Yes (sklearn Pipeline/ColumnTransformer, verified preprocessing_leakage_audit.md)",NO -- test_ids.csv is never imported in phase3_05_train_and_tune.py (grep-verified),0.8157
+mlp,18,grid,5,roc_auc (mean over CV folds),42,"Yes (sklearn Pipeline/ColumnTransformer, verified preprocessing_leakage_audit.md)",NO -- test_ids.csv is never imported in phase3_05_train_and_tune.py (grep-verified),0.8184

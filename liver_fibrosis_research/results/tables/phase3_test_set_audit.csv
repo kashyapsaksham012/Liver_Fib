@@ -1,0 +1,8 @@
+step,action,script,test_set_accessed,order_matches_required_sequence
+1,split,phase3_03_split_and_lock.py,False,True
+2,lock test,phase3_03_split_and_lock.py (test_set_lock.md written),"IDs only, no labels/features used",True
+3,development (missingness/imbalance docs),phase3_04_missingness_and_imbalance.py,False,True
+4,CV + hyperparameter tuning,phase3_05_train_and_tune.py,False,True
+5,threshold selection (Youden's J from OOF train predictions),phase3_06_threshold_and_test_eval.py (pre-test-load section),False,True
+6,model freeze (joblib artifacts saved),phase3_05_train_and_tune.py,False,True
+7,test evaluation (test set loaded for the first and only time),phase3_06_threshold_and_test_eval.py (post-threshold section),True,True

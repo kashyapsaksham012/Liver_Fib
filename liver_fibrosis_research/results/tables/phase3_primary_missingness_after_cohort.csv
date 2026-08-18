@@ -1,0 +1,2 @@
+n_entering_eligible_pool,n_excluded_missing_predictors,n_retained_complete_case,pct_excluded,strategy,subgroup_note,outcome_prevalence_retained_pct
+7768,615,7153,7.92,"COMPLETE-CASE (frozen primary strategy, missing_data_protocol.md)",See documentation/phase2/missing_data_protocol.md for the full demographic composition comparison (pool vs. complete-case vs. excluded) established in Phase 2 -- not recomputed here since the primary dataset construction is unchanged from Phase 2.,9.31
