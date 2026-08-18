@@ -1,0 +1,29 @@
+Quantity,Phase1,Phase2,Phase3,Consistent
+Source P_LUX N,10409,-,-,YES (re-verified live)
+Non-missing LUXSMED,9700,-,-,YES
+Quality-valid (LUAXSTAT==1),9023,-,-,YES
+Adults among non-missing,8318,-,-,YES
+Under-18 among non-missing,1382,-,-,YES
+Adults among quality-valid,7768,-,-,YES
+Broad routine-lab cohort (Cohort A),8880,-,-,YES
+Fasting-labs-only cohort,4376,-,-,YES
+Canonical fasting-extended (Cohort B),4336,-,-,YES
+Combined broad cohort (A+demo+BMI),8805,-,-,YES
+Primary analytical cohort N,-,7153,7153,"YES (SEQN-set identical, 0 diff)"
+Outcome positive,-,666,666,YES
+Outcome negative,-,6487,6487,YES
+Outcome prevalence,-,9.31%,9.31%,YES
+Primary threshold (kPa),-,8.2,8.2,YES
+Primary predictors (count),-,10,10,YES
+Secondary cohort (fasting-extended),-,3582,3582,YES
+Sensitivity cohort (relaxed eligibility),-,7639,n/a (not modeled in Ph3),YES (Ph2 value unchanged)
+Sensitivity cohort (all ages),-,8215,n/a (not modeled in Ph3),YES (Ph2 value unchanged)
+Train N,-,-,5007,YES (live: 5007)
+Test N,-,-,2146,"YES (live: 2146, hash-verified unchanged)"
+Proper-train N (conformal),-,e.g. 80%,4005,YES (Ph3-closure amendment #4)
+Conformal calibration N,-,e.g. 20%,1002,YES (amendment #4)
+CV ROC-AUC range,-,-,0.8157-0.8212,YES (live-reproduced)
+Test ROC-AUC range,-,-,0.8229-0.8429,YES (live-reproduced)
+Test PR-AUC range,-,-,0.3508-0.3729,YES (live-reproduced)
+Significant pairwise model diffs (post-FDR),-,-,0/10,YES (live-reproduced)
+Validation tests passing,24/24,n/a,44/44 (20+24),YES (all reran live this audit)

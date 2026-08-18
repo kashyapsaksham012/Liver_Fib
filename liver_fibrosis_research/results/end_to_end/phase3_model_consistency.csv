@@ -1,0 +1,12 @@
+comparability_dimension,identical_across_all_5_models,detail,logistic,random_forest,xgboost,lightgbm,mlp
+"Cohort (N=7,153)",True,identical for all models,,,,,
+Predictors (10 frozen),True,identical for all models,,,,,
+Target (LUXSMED>=8.2kPa),True,identical for all models,,,,,
+"Train/test split (seed=42, 70/30)",True,identical for all models,,,,,
+"CV folds (5-fold StratifiedKFold, seed=42)",True,identical for all models,,,,,
+"Evaluation population (locked test set, N=2,146)",True,identical for all models,,,,,
+Primary scoring/selection metric (mean CV ROC-AUC),True,identical for all models,,,,,
+Missing-data handling,True,identical: median-impute no-op (0 missingness by cohort construction),,,,,
+Preprocessing: scaling,False,,StandardScaler,None (tree-based),None (tree-based),None (tree-based),StandardScaler
+Class-imbalance handling,False,,class_weight=balanced,class_weight=balanced,scale_pos_weight=9.745,scale_pos_weight=9.745,"NONE (documented technical constraint, see class_imbalance_protocol_implementation.md)"
+Hyperparameter search space size,False,,6,20 (randomized of 36 possible),20 (randomized of 108 possible),20 (randomized of 108 possible),18

@@ -1,0 +1,7 @@
+check,status,detail
+train ∩ test = empty,PASS,overlap=0
+"union(train, test) = full modeling cohort",PASS,"union_size=7153, cohort_size=7153"
+Every participant appears exactly once,PASS,5007+2146=7153 vs 7153
+No participant-level duplication across partitions,PASS,same as check 1
+Target distribution documented per partition,PASS,"train_prevalence=9.31%, test_prevalence=9.32%"
+"Subgroup distributions documented (sex, race/ethnicity)",PASS,"train_pct_female=50.4, test_pct_female=51.2"

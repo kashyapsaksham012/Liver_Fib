@@ -1,0 +1,2 @@
+check,phase1_master_n,phase2_primary_n,seqn_match,outcome_source_verified,predictors_source_verified
+Phase1 master N -> Phase2 primary cohort,10409,7153,True,True,True
