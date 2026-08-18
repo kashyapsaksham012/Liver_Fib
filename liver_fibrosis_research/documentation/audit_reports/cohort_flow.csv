@@ -1,0 +1,7 @@
+step,n,excluded,reason
+P_LUX total participants,10409,0,Starting cohort
+Valid liver stiffness measurement,9700,709,Missing/invalid FibroScan
+Age ≥ 18 (adults only – candidate),8965,TBD,Pending Phase 2 outcome definition
+Demographic data available,10409,TBD,Required for fairness analysis
+BMI available,10213,TBD,Candidate predictor/subgroup
+Laboratory data available,PENDING,PENDING,Lab files not yet downloaded

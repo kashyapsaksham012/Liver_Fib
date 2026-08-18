@@ -1,0 +1,4 @@
+filename,size_kb,file_modified,md5,nhanes_cycle,component,purpose,rows,cols,has_seqn,seqn_unique,seqn_missing,seqn_duplicates,error
+P_BMX.xpt,2461.6,2026-08-18 11:18,62ff0ed76b35124059ddf97af4510310,2017-Mar2020 Pre-Pandemic,Exam – Body Measures,Height/weight/BMI,14300,22,True,14300,0,0,
+P_DEMO.xpt,3530.0,2026-08-18 11:18,850382076eca1bef83b681d721c8362d,2017-Mar2020 Pre-Pandemic,Demographics,Age/sex/race/weights,15560,29,True,15560,0,0,
+P_LUX.xpt,1080.0,2026-08-18 11:18,f13a60ec6b7dfb74ac70437f567ab9a0,2017-Mar2020 Pre-Pandemic,Exam – Liver Elastography,Liver stiffness / CAP / quality,10409,13,True,10409,0,0,

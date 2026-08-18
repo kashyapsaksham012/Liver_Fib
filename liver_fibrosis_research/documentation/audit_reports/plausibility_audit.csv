@@ -1,0 +1,3 @@
+variable,suspected_issue,observation_count,proposed_action,justification
+BMXBMI,BMI > 80 (extreme outlier),5,Investigate – do not auto-remove,Possible but unusual; confirm with height/weight
+RIDAGEYR,Age < 18,1444,Potentially exclude – adults only study,FibroScan reference values are adult-specific
