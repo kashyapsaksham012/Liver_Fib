@@ -27,26 +27,75 @@ exploratory candidate / primary-feasibility candidate — frozen thresholds also
 justified in Phase 2. There is no "collapsing threshold" left undefined — the decision was to not
 collapse at all.
 
-## Chronological proof (file-system timestamps, not calendar-date-only)
+## CORRECTION (superseding the original version of this section): mtime claim withdrawn
 
-Because every phase of this project happened within a single working session, calendar dates alone
-(all "2026-08-18") cannot distinguish ordering. Actual file modification timestamps do:
+The original version of this document cited filesystem `mtime` (last-modified timestamp) as
+"chronological proof." **That claim is withdrawn.** `mtime` records only when the filesystem
+last wrote the file — it proves nothing about content finalization, is trivially alterable by
+`touch`, `git checkout`, copying, or a re-save on open, and is not evidence a reviewer should
+accept as provenance. This correction was made after being challenged to produce real
+version-control evidence instead.
 
-| File | Timestamp |
-|---|---|
-| `documentation/phase2/fairness_subgroup_protocol.md` (bins frozen) | **14:21:08** |
-| `documentation/phase2/PHASE2_PROTOCOL_FREEZE.md` (Phase 2 closure) | 14:24:20 |
-| `PHASE2_ANALYTICAL_PROTOCOL_AND_FEASIBILITY_REPORT.md` (Phase 2 report) | 14:28:41 |
-| `src/phase3_common.py` (first Phase 3 code, defines the primary predictor/target constants) | 14:43:04 |
-| `src/phase3_05_train_and_tune.py` (first model actually trained) | 14:48:34 |
-| `PHASE3_MODEL_DEVELOPMENT_AND_BASELINE_RESULTS_REPORT.md` (test-set results first reported) | 17:01:17 |
+## Actual git provenance check (commands run, real output)
 
-**The subgroup bins were written to disk 22 minutes before the first Phase 3 code file even
-existed, and ~2 hours 40 minutes before any test-set outcome was visible.** This is direct,
-file-system-level evidence against hindsight bias, not an assertion.
+```
+$ git log --follow -p -- documentation/phase2/fairness_subgroup_protocol.md
+(no output)
+
+$ git log --oneline --all
+b390fbe Phase 1 closure: remediated pipeline, canonical cohorts, 24 validation tests passed
+53ce947 Phase 1: data assembly pipeline, audit reports, master dataset
+f7b84c3 add research info plan
+44a77a1 first commit
+
+$ git ls-files | grep fairness_subgroup_protocol
+(no output -- file was not tracked)
+```
+
+**Finding: no version-control history exists for this file at all.** It was never committed
+prior to this verification pass. The entire repository had only 4 commits, the most recent
+covering Phase 1 only — none of Phase 2 or Phase 3's work (including this file) had ever been
+committed. This is a real gap, not a documentation nuance.
+
+## Best available corroboration (weaker than a commit, stated with its actual limitations)
+
+No commit, chat log with independent timestamps, or dated external draft exists that predates
+this file. The only available corroborating record is this project's own conversation
+transcript: the subgroup-bin content was authored during a distinct, complete conversational
+turn (responding to a "PHASE 2" request) that concluded before a separate, later conversational
+turn (responding to a "PHASE 3" request) began and produced any model-training code. This is
+**weaker evidence than a version-control commit** — it carries no independent cryptographic
+timestamp authority, and the user reading this is the only party who can verify it (by
+reviewing their own copy of the conversation). It is **not** claimed to be equivalent to commit
+provenance, and it is not used here to assert the bins "cannot have been influenced by Phase 3
+results" with the same confidence a commit hash would provide.
+
+## Remediation taken (not merely noted)
+
+1. **The mtime claim is withdrawn**, per the correction above.
+2. **The file (and the entire uncommitted Phase 2/3 working tree) has been committed to git**,
+   closing the "no version control" gap going forward: commit `c9c6ee3ceeefad0957797bed75abedd827567595`,
+   author date `2026-08-18 17:57:33 +0530`. **This commit does NOT retroactively prove the
+   subgroup bins predate Phase 3 model training** — all of Phase 2 and Phase 3's work was
+   committed together, today, for the first time. It only means that from this commit forward,
+   any further change to this file will have real, independently verifiable commit-level
+   provenance (author, date, diff), and this exact class of problem cannot recur for future
+   phases.
+3. Per the instruction for when no strong corroboration exists: **the honest status of the
+   subgroup bins is that they cannot be proven, by version-control evidence, to predate Phase 3
+   model training.** The conversation-turn ordering above is offered as partial, weaker context,
+   not as proof. Readers (including a thesis committee) should treat the bin boundaries as
+   **effectively frozen as of this verification pass** (commit `c9c6ee3`) rather than as
+   provably pre-Phase-3.
 
 ## Conclusion
 
-No action required beyond this citation. `documentation/phase2/fairness_subgroup_protocol.md` is
-the authoritative, dated, pre-Phase-3-freeze source for all subgroup bin boundaries and the
-race/ethnicity non-collapsing decision — cite it directly in the Fairness-phase methods section.
+`documentation/phase2/fairness_subgroup_protocol.md` remains the authoritative source for the
+exact bin boundaries and the race/ethnicity non-collapsing decision — its CONTENT (Section
+above) is unaffected by this correction. What changed is only the strength of claim about WHEN
+it was decided: downgraded from "proven to predate Phase 3" to "not provably dated before Phase
+3 by any available strong evidence; now version-controlled from this point forward." Cite the
+file directly for the bin-boundary CONTENT in the Fairness-phase methods section; do not cite
+this document (or that section) as proof of timing — cite commit `c9c6ee3` and its date instead
+for any timing claim, and state that timing plainly as "frozen as of this verification pass,"
+not "pre-specified before Phase 3."
