@@ -1,63 +1,138 @@
-original_nhanes_name,human_readable_name,label,source_dataset,unit,dtype,role,n_obs,n_missing,pct_missing,valid_range_observed,retain_for_phase2,notes
-SEQN,ID key,Respondent Sequence Number,master (merged),–,Int64,id_key,10409,0,0.0,109264.00 – 124822.00,True,
-LUAXSTAT,LUAXSTAT,LUAXSTAT,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 4.00,False,
-LUARXNC,LUARXNC,LUARXNC,master (merged),–,float64,unknown,748,9661,92.81,1.00 – 3.00,False,
-LUARXND,LUARXND,LUARXND,master (merged),–,float64,unknown,252,10157,97.58,1.00 – 3.00,False,
-LUARXIN,LUARXIN,LUARXIN,master (merged),–,float64,unknown,386,10023,96.29,1.00 – 2.00,False,
-LUAPNME,LUAPNME,LUAPNME,master (merged),–,str,unknown,10409,0,0.0,–,False,
-LUANMVGP,LUANMVGP,LUANMVGP,master (merged),–,float64,unknown,9702,707,6.79,0.00 – 30.00,False,
-LUANMTGP,LUANMTGP,LUANMTGP,master (merged),–,float64,unknown,10409,0,0.0,0.00 – 30.00,False,
-LUXSMED,LSM median,Liver stiffness median (kPa),master (merged),kPa,float64,candidate_outcome,9700,709,6.81,1.60 – 75.00,True,
-LUXSIQR,LSM IQR,IQR of liver stiffness,master (merged),kPa,float64,quality,9706,703,6.75,0.00 – 67.30,True,
-LUXSIQRM,LUXSIQRM,LUXSIQRM,master (merged),–,float64,unknown,9691,718,6.9,0.00 – 1338.00,False,
-LUXCAPM,CAP,CAP median (dB/m),master (merged),dB/m,float64,candidate_outcome,9698,711,6.83,100.00 – 400.00,True,
-LUXCPIQR,LUXCPIQR,LUXCPIQR,master (merged),–,float64,unknown,9689,720,6.92,0.00 – 206.00,False,
-SDDSRVYR,SDDSRVYR,SDDSRVYR,master (merged),–,float64,unknown,10409,0,0.0,66.00 – 66.00,False,
-RIDSTATR,RIDSTATR,RIDSTATR,master (merged),–,float64,unknown,10409,0,0.0,2.00 – 2.00,False,
-RIAGENDR,Sex,"Gender (1=Male, 2=Female)",master (merged),categorical,float64,demographic,10409,0,0.0,1.00 – 2.00,True,
-RIDAGEYR,Age,Age at screening (years),master (merged),years,float64,demographic,10409,0,0.0,12.00 – 80.00,True,
-RIDAGEMN,RIDAGEMN,RIDAGEMN,master (merged),–,float64,unknown,0,10409,100.0,all NaN,False,
-RIDRETH1,Race/Eth,Race/Hispanic origin,master (merged),categorical,float64,demographic,10409,0,0.0,1.00 – 5.00,True,
-RIDRETH3,Race/Eth,Race/Hispanic origin w/ NH Asian,master (merged),categorical,float64,demographic,10409,0,0.0,1.00 – 7.00,True,
-RIDEXMON,RIDEXMON,RIDEXMON,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 2.00,False,
-DMDBORN4,DMDBORN4,DMDBORN4,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 99.00,False,
-DMDYRUSZ,DMDYRUSZ,DMDYRUSZ,master (merged),–,float64,unknown,2679,7730,74.26,1.00 – 99.00,False,
-DMDEDUC2,DMDEDUC2,DMDEDUC2,master (merged),–,float64,unknown,8544,1865,17.92,1.00 – 9.00,False,
-DMDMARTZ,DMDMARTZ,DMDMARTZ,master (merged),–,float64,unknown,8544,1865,17.92,1.00 – 99.00,False,
-RIDEXPRG,RIDEXPRG,RIDEXPRG,master (merged),–,float64,unknown,1750,8659,83.19,1.00 – 3.00,False,
-SIALANG,SIALANG,SIALANG,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 2.00,False,
-SIAPROXY,SIAPROXY,SIAPROXY,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 2.00,False,
-SIAINTRP,SIAINTRP,SIAINTRP,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 2.00,False,
-FIALANG,FIALANG,FIALANG,master (merged),–,float64,unknown,9769,640,6.15,1.00 – 2.00,False,
-FIAPROXY,FIAPROXY,FIAPROXY,master (merged),–,float64,unknown,9769,640,6.15,1.00 – 2.00,False,
-FIAINTRP,FIAINTRP,FIAINTRP,master (merged),–,float64,unknown,9769,640,6.15,1.00 – 2.00,False,
-MIALANG,MIALANG,MIALANG,master (merged),–,float64,unknown,9789,620,5.96,1.00 – 2.00,False,
-MIAPROXY,MIAPROXY,MIAPROXY,master (merged),–,float64,unknown,9789,620,5.96,1.00 – 2.00,False,
-MIAINTRP,MIAINTRP,MIAINTRP,master (merged),–,float64,unknown,9789,620,5.96,1.00 – 2.00,False,
-AIALANGA,AIALANGA,AIALANGA,master (merged),–,float64,unknown,8224,2185,20.99,1.00 – 3.00,False,
-WTINTPRP,Int weight,Interview sample weight,master (merged),–,float64,survey_weight,10409,0,0.0,1876.87 – 338363.60,True,
-WTMECPRP,MEC weight,MEC exam sample weight,master (merged),–,float64,survey_weight,10409,0,0.0,2005.69 – 367555.74,True,
-SDMVPSU,PSU,Masked variance pseudo-PSU,master (merged),–,float64,survey_design,10409,0,0.0,1.00 – 3.00,True,
-SDMVSTRA,Stratum,Masked variance pseudo-stratum,master (merged),–,float64,survey_design,10409,0,0.0,149.00 – 172.00,True,
-INDFMPIR,INDFMPIR,INDFMPIR,master (merged),–,float64,unknown,9002,1407,13.52,0.00 – 5.00,False,
-BMDSTATS,BMDSTATS,BMDSTATS,master (merged),–,float64,unknown,10409,0,0.0,1.00 – 4.00,False,
-BMXWT,Weight,Weight (kg),master (merged),kg,float64,candidate_predictor,10236,173,1.66,27.60 – 254.30,True,
-BMIWT,BMIWT,BMIWT,master (merged),–,float64,unknown,363,10046,96.51,1.00 – 4.00,False,
-BMXRECUM,BMXRECUM,BMXRECUM,master (merged),–,float64,unknown,0,10409,100.0,all NaN,False,
-BMIRECUM,BMIRECUM,BMIRECUM,master (merged),–,float64,unknown,0,10409,100.0,all NaN,False,
-BMXHEAD,BMXHEAD,BMXHEAD,master (merged),–,float64,unknown,0,10409,100.0,all NaN,False,
-BMIHEAD,BMIHEAD,BMIHEAD,master (merged),–,float64,unknown,0,10409,100.0,all NaN,False,
-BMXHT,Height,Standing height (cm),master (merged),cm,float64,candidate_predictor,10228,181,1.74,131.10 – 199.60,True,
-BMIHT,BMIHT,BMIHT,master (merged),–,float64,unknown,127,10282,98.78,1.00 – 3.00,False,
-BMXBMI,BMI,Body mass index (kg/m²),master (merged),kg/m²,float64,candidate_predictor,10213,196,1.88,13.20 – 92.30,True,
-BMDBMIC,BMDBMIC,BMDBMIC,master (merged),–,float64,unknown,1825,8584,82.47,1.00 – 4.00,False,
-BMXLEG,BMXLEG,BMXLEG,master (merged),–,float64,unknown,9806,603,5.79,25.00 – 55.00,False,
-BMILEG,BMILEG,BMILEG,master (merged),–,float64,unknown,433,9976,95.84,1.00 – 1.00,False,
-BMXARML,BMXARML,BMXARML,master (merged),–,float64,unknown,9947,462,4.44,27.50 – 49.90,False,
-BMIARML,BMIARML,BMIARML,master (merged),–,float64,unknown,292,10117,97.19,1.00 – 1.00,False,
-BMXARMC,BMXARMC,BMXARMC,master (merged),–,float64,unknown,9946,463,4.45,17.60 – 64.50,False,
-BMIARMC,BMIARMC,BMIARMC,master (merged),–,float64,unknown,293,10116,97.19,1.00 – 1.00,False,
-BMXWAIST,BMXWAIST,BMXWAIST,master (merged),–,float64,unknown,9844,565,5.43,53.50 – 187.50,False,
-BMIWAIST,BMIWAIST,BMIWAIST,master (merged),–,float64,unknown,391,10018,96.24,1.00 – 1.00,False,
-BMXHIP,BMXHIP,BMXHIP,master (merged),–,float64,unknown,9862,547,5.26,62.50 – 187.50,False,
-BMIHIP,BMIHIP,BMIHIP,master (merged),–,float64,unknown,376,10033,96.39,1.00 – 1.00,False,
+original_variable_name,readable_description,source_file,unit,type,role,n_obs,n_missing,missing_pct,observed_range,candidate_phase2_use,notes,quality_restriction,official_source_url,unresolved_questions
+SEQN,Respondent sequence number,P_DEMO.xpt (primary),-,Int64,id_key,10409,0,0.0,109264.00 - 124822.00,Retain,Unique participant identifier; merge key.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUAXSTAT,Elastography exam status,P_LUX.xpt,categorical(1-4),float64,quality,10409,0,0.0,1.00 - 4.00,Retain,"OFFICIAL NHANES DEFINITION (verified from live codebook 2026-08-18): 1=Complete [fasting >=3h, >=10 complete stiffness measures, IQRe/Med <30%], 2=Partial, 3=Ineligible, 4=Not done. LUAXSTAT==1 IS the NHANES-sanctioned quality-valid-exam definition; it is not a threshold this project invented.",Use LUAXSTAT==1 to define 'NHANES quality-valid exam'.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUARXNC,Reason exam partial,P_LUX.xpt,categorical,float64,quality,748,9661,92.81,1.00 - 3.00,Retain,"1=Fasting <3h, 2=Unable to obtain >=10 valid measures, 3=IQRe/Med >30%.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUARXND,Reason exam not done,P_LUX.xpt,categorical,float64,quality,252,10157,97.58,1.00 - 3.00,Retain,"1=Refusal, 2=Limited time, 3=Other.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUARXIN,Reason ineligible,P_LUX.xpt,categorical,float64,quality,386,10023,96.29,1.00 - 2.00,Retain,"1=Pregnant/could not test, 2=Other (e.g., implant/insulin pump).",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUAPNME,LUAPNME,merged (not in curated dictionary),-,str,auxiliary_unreviewed,10409,0,0.0,-,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LUANMVGP,"Number of complete stiffness measures, final probe",P_LUX.xpt,count,float64,quality,9700,709,6.81,1.00 - 30.00,Retain,Directly relevant to the '>=10 valid measures' component of LUAXSTAT==1; not previously ingested by the pipeline. 2 rows carried the sentinel artifact.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUANMTGP,"Number of stiffness measures attempted, final probe",P_LUX.xpt,count,float64,quality,9738,671,6.45,1.00 - 30.00,Retain,Not previously ingested by the pipeline. 671 rows carried the sentinel artifact (this column is mostly populated only when an exam was attempted).,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUXSMED,"Median liver stiffness (E), transient elastography",P_LUX.xpt,kPa,float64,candidate_outcome,9700,709,6.81,1.60 - 75.00,Retain,"Non-missing whenever an attempt produced a numeric median, regardless of exam completeness (LUAXSTAT). See LUAXSTAT for the official quality-valid flag; do not treat non-missing LUXSMED alone as a quality-valid measurement.",Use jointly with LUAXSTAT==1 for a quality-valid subset.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUXSIQR,Interquartile range of stiffness measures (IQRe),P_LUX.xpt,kPa,float64,quality,9679,730,7.01,0.10 - 67.30,Retain,27 rows in the raw file carried the unconverted SAS special-missing sentinel; corrected to NaN by this pipeline (see special_missing_code_audit.csv).,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUXSIQRM,Ratio of stiffness IQR to median E (IQRe/Med),P_LUX.xpt,%,float64,quality,9679,730,7.01,0.80 - 1338.00,Retain,This is the exact variable NHANES uses (<30%) as one of the three official components of LUAXSTAT==1 ('Complete'). 12 rows carried the sentinel artifact; corrected.,NHANES 'Complete' requires IQRe/Med < 30%.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUXCAPM,Median Controlled Attenuation Parameter (CAP),P_LUX.xpt,dB/m,float64,candidate_outcome,9698,711,6.83,100.00 - 400.00,Retain,Candidate steatosis outcome; same quality caveat as LUXSMED applies (pair with LUAXSTAT).,Use jointly with LUAXSTAT==1.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LUXCPIQR,Interquartile range of CAP measures,P_LUX.xpt,dB/m,float64,quality,9609,800,7.69,1.00 - 206.00,Retain,80 rows carried the sentinel artifact; corrected to NaN by this pipeline.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+SDDSRVYR,SDDSRVYR,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,66.00 - 66.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDSTATR,RIDSTATR,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,2.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+RIAGENDR,Gender,P_DEMO.xpt,"categorical(1=Male,2=Female)",float64,demographic,10409,0,0.0,1.00 - 2.00,Retain,No special missing codes documented.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDAGEYR,Age at screening (years),P_DEMO.xpt,years,float64,demographic,10409,0,0.0,12.00 - 80.00,Retain,"Topcoded at 80 (participants 80+ recorded as 80). Not affected by the sentinel bug within the P_LUX-anchored cohort (verified: 0 sentinel rows among N=10,409).",Topcoded at 80y.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDAGEMN,RIDAGEMN,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,0,10409,100.0,-,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDRETH1,Race/Hispanic origin (5 categories),P_DEMO.xpt,categorical,float64,demographic,10409,0,0.0,1.00 - 5.00,Retain,"1=Mexican American,2=Other Hispanic,3=NH White,4=NH Black,5=Other/Multi-racial. Non-Hispanic Asian participants are folded into category 5 and are NOT separately identifiable in this variable. See documentation/audit_reports/race_ethnicity_verification.md.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDRETH3,"Race/Hispanic origin (6 categories, incl. NH Asian)",P_DEMO.xpt,categorical,float64,demographic,10409,0,0.0,1.00 - 7.00,Retain,"1=Mexican American,2=Other Hispanic,3=NH White,4=NH Black,6=NH Asian,7=Other/Multi-racial. Preserves Non-Hispanic Asian (n=1,638 in full P_DEMO) as a distinct category. RECOMMENDED primary race/ethnicity variable for the Phase 2 fairness analysis (see race_ethnicity_verification.md for full justification) -- decision documented here, not silently made; both variables are retained.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDEXMON,RIDEXMON,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+DMDBORN4,DMDBORN4,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,1.00 - 99.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+DMDYRUSZ,DMDYRUSZ,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,2679,7730,74.26,1.00 - 99.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+DMDEDUC2,DMDEDUC2,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,8544,1865,17.92,1.00 - 9.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+DMDMARTZ,DMDMARTZ,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,8544,1865,17.92,1.00 - 99.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+RIDEXPRG,RIDEXPRG,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,1750,8659,83.19,1.00 - 3.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+SIALANG,SIALANG,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+SIAPROXY,SIAPROXY,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+SIAINTRP,SIAINTRP,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,10409,0,0.0,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+FIALANG,FIALANG,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9769,640,6.15,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+FIAPROXY,FIAPROXY,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9769,640,6.15,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+FIAINTRP,FIAINTRP,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9769,640,6.15,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+MIALANG,MIALANG,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9789,620,5.96,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+MIAPROXY,MIAPROXY,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9789,620,5.96,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+MIAINTRP,MIAINTRP,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9789,620,5.96,1.00 - 2.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+AIALANGA,AIALANGA,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,8224,2185,20.99,1.00 - 3.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+WTINTPRP,Full-sample 2-cycle interview weight,P_DEMO.xpt,weight,float64,survey_weight,10409,0,0.0,1876.87 - 338363.60,Retain,Use only for interview-only variables.,NOT yet applied to any analysis in Phase 1 (deferred).,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+WTMECPRP,Full-sample 2-cycle MEC exam weight,P_DEMO.xpt,weight,float64,survey_weight,10409,0,0.0,2005.69 - 367555.74,Retain,Applies to the pre-pandemic 2017-March 2020 combined MEC-examined sample. 0 for interview-only (non-MEC) respondents in the full P_DEMO file; not an issue for our P_LUX-anchored cohort (all rows have a valid MEC exam by construction).,NOT yet applied to any analysis in Phase 1 (deferred).,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+SDMVPSU,Masked variance pseudo-PSU,P_DEMO.xpt,-,float64,survey_design,10409,0,0.0,1.00 - 3.00,Retain,Values 1-3; used for Taylor-series variance estimation.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+SDMVSTRA,Masked variance pseudo-stratum,P_DEMO.xpt,-,float64,survey_design,10409,0,0.0,149.00 - 172.00,Retain,Values 149-172 (24 masked strata this cycle).,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+INDFMPIR,INDFMPIR,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,8916,1493,14.34,0.01 - 5.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMDSTATS,Body Measures component status code,P_BMX.xpt,categorical(1-4),float64,quality,10409,0,0.0,1.00 - 4.00,Retain,"1=Complete data for age group, 2=Partial (height/weight only), 3=Other partial, 4=No body measures data. The official BMX completeness flag; not previously used by this pipeline to qualify BMXBMI/BMXWT/BMXHT completeness.",Use to distinguish complete vs partial anthropometry.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXWT,Weight,P_BMX.xpt,kg,float64,candidate_predictor,10236,173,1.66,27.60 - 254.30,Retain,NHANES-documented observed range 3.2-254.3 kg.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIWT,Weight comment code,P_BMX.xpt,categorical,float64,quality,363,10046,96.51,1.00 - 4.00,Retain,"1=Could not obtain, 3=Clothing, 4=Medical appliance.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXRECUM,BMXRECUM,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,0,10409,100.0,-,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIRECUM,BMIRECUM,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,0,10409,100.0,-,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXHEAD,BMXHEAD,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,0,10409,100.0,-,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIHEAD,BMIHEAD,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,0,10409,100.0,-,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXHT,Standing height,P_BMX.xpt,cm,float64,candidate_predictor,10228,181,1.74,131.10 - 199.60,Retain,NHANES-documented observed range 78.3-199.6 cm; not collected for participants measured recumbent only.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIHT,Standing height comment code,P_BMX.xpt,categorical,float64,quality,127,10282,98.78,1.00 - 3.00,Retain,"1=Could not obtain, 3=Not straight.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXBMI,Body Mass Index,P_BMX.xpt,kg/m^2,float64,candidate_predictor,10213,196,1.88,13.20 - 92.30,Retain,"NHANES-documented observed range 11.9-92.3 (ages 2-150 target pop). NHANES does not define an implausibility cutoff itself ('unusual values ... typically extremely short, tall, over/underweight' -- qualitative note only); any numeric plausibility bound used here is an external convention, documented as such.",-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+BMDBMIC,BMDBMIC,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,1825,8584,82.47,1.00 - 4.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXLEG,BMXLEG,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9806,603,5.79,25.00 - 55.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMILEG,BMILEG,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,433,9976,95.84,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXARML,BMXARML,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9947,462,4.44,27.50 - 49.90,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIARML,BMIARML,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,292,10117,97.19,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXARMC,BMXARMC,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9946,463,4.45,17.60 - 64.50,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIARMC,BMIARMC,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,293,10116,97.19,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXWAIST,BMXWAIST,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9844,565,5.43,53.50 - 187.50,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIWAIST,BMIWAIST,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,391,10018,96.24,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMXHIP,BMXHIP,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,9862,547,5.26,62.50 - 187.50,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+BMIHIP,BMIHIP,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,376,10033,96.39,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSATSI,Alanine Aminotransferase (ALT),P_BIOPRO.xpt,U/L,float64,candidate_predictor,9473,936,8.99,2.00 - 682.00,Retain,LLOD=3 U/L. NHANES-observed range in this release: 2-682 U/L.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSATLC,LBDSATLC,merged (not in curated dictionary),-,float64,quality,2,10407,99.98,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSAL,"Albumin, refrigerated serum",P_BIOPRO.xpt,g/dL,float64,candidate_predictor,9477,932,8.95,2.10 - 5.40,Retain,LLOD=0.3 g/dL. NHANES-observed range: 2.1-5.4 g/dL.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSALSI,LBDSALSI,merged (not in curated dictionary),-,float64,candidate_predictor,9477,932,8.95,21.00 - 54.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSAPSI,Alkaline Phosphatase (ALP),P_BIOPRO.xpt,IU/L,float64,candidate_predictor,9474,935,8.98,16.00 - 638.00,Retain,LLOD=2 IU/L. NHANES-observed range: 16-638 IU/L.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSASSI,Aspartate Aminotransferase (AST),P_BIOPRO.xpt,U/L,float64,candidate_predictor,9435,974,9.36,6.00 - 489.00,Retain,LLOD=3 U/L. NHANES-observed range: 6-489 U/L.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSC3SI,LBXSC3SI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,14.00 - 38.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSBU,LBXSBU,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,2.00 - 79.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSBUSI,LBDSBUSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,0.71 - 28.20,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSCLSI,LBXSCLSI,merged (not in curated dictionary),-,float64,candidate_predictor,9476,933,8.96,84.00 - 117.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSCK,LBXSCK,merged (not in curated dictionary),-,float64,candidate_predictor,9469,940,9.03,11.00 - 16959.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSCR,LBXSCR,merged (not in curated dictionary),-,float64,candidate_predictor,9475,934,8.97,0.25 - 14.97,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSCRSI,LBDSCRSI,merged (not in curated dictionary),-,float64,candidate_predictor,9475,934,8.97,22.10 - 1323.35,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSGB,LBXSGB,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,1.30 - 6.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSGBSI,LBDSGBSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,13.00 - 60.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSGL,"Glucose, serum (non-fasting, full biochemistry sample)",P_BIOPRO.xpt,mg/dL,float64,candidate_predictor_broad,9473,936,8.99,39.00 - 626.00,Retain,"Available on the broad MEC biochemistry sample WITHOUT the fasting-subsample restriction that applies to LBXGLU (P_GLU). Not used by the prior pipeline; flagged here as a candidate broad-cohort alternative to fasting glucose for Phase 2 to consider -- decision deferred, not made here.",Non-fasting; distinct from LBXGLU.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSGLSI,LBDSGLSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,2.16 - 34.75,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSGTSI,LBXSGTSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,2.00 - 2394.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSGTLC,LBDSGTLC,merged (not in curated dictionary),-,float64,quality,1,10408,99.99,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSIR,LBXSIR,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,8.00 - 476.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSIRSI,LBDSIRSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,1.40 - 85.30,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSLDSI,LBXSLDSI,merged (not in curated dictionary),-,float64,candidate_predictor,9263,1146,11.01,49.00 - 779.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSOSSI,LBXSOSSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,246.00 - 314.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSPH,LBXSPH,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,1.60 - 9.60,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSPHSI,LBDSPHSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,0.52 - 3.10,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSKSI,LBXSKSI,merged (not in curated dictionary),-,float64,candidate_predictor,9466,943,9.06,2.60 - 7.10,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSNASI,LBXSNASI,merged (not in curated dictionary),-,float64,candidate_predictor,9476,933,8.96,121.00 - 151.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSTB,Total Bilirubin,P_BIOPRO.xpt,mg/dL,float64,candidate_predictor,9475,934,8.97,0.10 - 3.80,Retain,LLOD=0.1 mg/dL. NHANES-observed range: 0.1-3.8 mg/dL.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSTBSI,LBDSTBSI,merged (not in curated dictionary),-,float64,candidate_predictor,9474,935,8.98,1.71 - 64.98,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSTBLC,LBDSTBLC,merged (not in curated dictionary),-,float64,quality,1,10408,99.99,1.00 - 1.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSCA,LBXSCA,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,6.40 - 12.30,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSCASI,LBDSCASI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,1.60 - 3.08,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSCH,LBXSCH,merged (not in curated dictionary),-,float64,candidate_predictor,9475,934,8.97,72.00 - 438.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSCHSI,LBDSCHSI,merged (not in curated dictionary),-,float64,candidate_predictor,9475,934,8.97,1.86 - 11.33,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSTP,LBXSTP,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,4.40 - 10.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSTPSI,LBDSTPSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,44.00 - 100.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSTR,LBXSTR,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,25.00 - 2923.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSTRSI,LBDSTRSI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,0.28 - 33.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXSUA,LBXSUA,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,0.80 - 15.10,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDSUASI,LBDSUASI,merged (not in curated dictionary),-,float64,candidate_predictor,9473,936,8.99,47.60 - 898.10,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXWBCSI,LBXWBCSI,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,1.90 - 400.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXLYPCT,LBXLYPCT,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,3.10 - 89.70,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXMOPCT,LBXMOPCT,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,0.70 - 57.20,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXNEPCT,LBXNEPCT,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,8.40 - 92.80,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXEOPCT,LBXEOPCT,merged (not in curated dictionary),-,float64,candidate_predictor,9759,650,6.24,0.10 - 28.40,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXBAPCT,LBXBAPCT,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,0.10 - 4.80,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLYMNO,LBDLYMNO,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,0.20 - 358.80,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDMONO,LBDMONO,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,0.10 - 6.70,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDNENO,LBDNENO,merged (not in curated dictionary),-,float64,candidate_predictor,9783,626,6.01,0.40 - 35.20,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDEONO,LBDEONO,merged (not in curated dictionary),-,float64,candidate_predictor,9147,1262,12.12,0.10 - 3.80,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDBANO,LBDBANO,merged (not in curated dictionary),-,float64,candidate_predictor,4956,5453,52.39,0.10 - 0.50,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXRBCSI,LBXRBCSI,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,2.32 - 7.97,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXHGB,LBXHGB,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,5.40 - 19.90,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXHCT,LBXHCT,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,21.10 - 58.80,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXMCVSI,LBXMCVSI,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,35.40 - 114.60,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXMC,LBXMC,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,25.20 - 38.40,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXMCHSI,LBXMCHSI,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,12.40 - 39.80,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXRDW,LBXRDW,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,11.30 - 36.50,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXPLTSI,Platelet count,P_CBC.xpt,1000 cells/uL,float64,candidate_predictor,9788,621,5.97,8.00 - 818.00,Retain,NHANES-observed range: 8-1021 (10^9/L).,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_CBC.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXMPSI,LBXMPSI,merged (not in curated dictionary),-,float64,candidate_predictor,9788,621,5.97,5.40 - 13.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXNRBC,LBXNRBC,merged (not in curated dictionary),-,float64,candidate_predictor,6517,3892,37.39,0.10 - 3.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+WTSAFPRP,Fasting subsample weight (2-cycle),P_GLU.xpt / P_TRIGLY.xpt,weight,float64,survey_weight,4476,5933,57.0,4808.07 - 741259.19,Retain,"Confirmed correct variable name for the 2017-March 2020 pre-pandemic release (naming diverges from single-cycle WTSAF2YR convention used in 2011-2016 releases). Set to 0 for fasting-eligible participants who gave no specimen or did not meet the 8-24h fasting window -- 0 is a documented, meaningful code, not a data error.",NOT yet applied to any analysis in Phase 1 (deferred).,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_GLU.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXGLU,Fasting Glucose,P_GLU.xpt,mg/dL,float64,candidate_predictor_fasting,4744,5665,54.42,47.00 - 524.00,Retain,FASTING-SUBSAMPLE ONLY: morning-session MEC examinees who fasted 8-<24h. NHANES-observed range: 47-524 mg/dL.,Fasting subsample only; pair with WTSAFPRP.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_GLU.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDGLUSI,LBDGLUSI,merged (not in curated dictionary),-,float64,candidate_predictor,4744,5665,54.42,2.61 - 29.10,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+WTSAFPRP_P_TR,WTSAFPRP_P_TR,merged (not in curated dictionary),-,float64,auxiliary_unreviewed,4476,5933,57.0,4808.07 - 741259.19,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBXTR,Triglycerides,P_TRIGLY.xpt,mg/dL,float64,candidate_predictor_fasting,4650,5759,55.33,10.00 - 2684.00,Retain,FASTING-SUBSAMPLE ONLY (same morning-fasting subsample as LBXGLU). NHANES-observed range: 10-2684 mg/dL.,Fasting subsample only; pair with WTSAFPRP.,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_TRIGLY.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDTRSI,LBDTRSI,merged (not in curated dictionary),-,float64,candidate_predictor,4650,5759,55.33,0.11 - 30.30,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLDL,LBDLDL,merged (not in curated dictionary),-,float64,candidate_predictor,4617,5792,55.64,7.00 - 357.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLDLSI,LBDLDLSI,merged (not in curated dictionary),-,float64,candidate_predictor,4617,5792,55.64,0.18 - 9.23,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLDLM,LBDLDLM,merged (not in curated dictionary),-,float64,candidate_predictor,4617,5792,55.64,14.00 - 358.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLDMSI,LBDLDMSI,merged (not in curated dictionary),-,float64,candidate_predictor,4617,5792,55.64,0.36 - 9.26,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLDLN,LBDLDLN,merged (not in curated dictionary),-,float64,candidate_predictor,4642,5767,55.4,14.00 - 359.00,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDLDNSI,LBDLDNSI,merged (not in curated dictionary),-,float64,candidate_predictor,4642,5767,55.4,0.36 - 9.28,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDHDD,Direct HDL-Cholesterol,P_HDL.xpt,mg/dL,float64,candidate_predictor,9527,882,8.47,5.00 - 189.00,Retain,LLOD=3 mg/dL. NOT fasting-restricted (available on the broader MEC sample). NHANES-observed range: 5-189 mg/dL.,-,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_HDL.htm,Final inclusion criteria pending Phase 2 predictor feasibility
+LBDHDDSI,LBDHDDSI,merged (not in curated dictionary),-,float64,candidate_predictor,9527,882,8.47,0.13 - 4.89,Evaluate,,-,-,Final inclusion criteria pending Phase 2 predictor feasibility

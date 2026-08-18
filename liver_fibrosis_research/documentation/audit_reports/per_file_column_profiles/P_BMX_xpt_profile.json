@@ -1,6 +1,6 @@
 {
   "SEQN": {
-    "dtype": "float64",
+    "dtype": "Int64",
     "n_obs": 14300,
     "n_missing": 0,
     "pct_missing": 0.0,

@@ -1,0 +1,37 @@
+report_section,statistic_name,numerator,denominator,denominator_n,definition,cohort_name,source_script
+C,Master dataset row count,10409,P_LUX raw row count,10409,One row per P_LUX-examined participant,COHORT_0_SOURCE,05_merge_nhanes.py
+E/F,Non-missing LUXSMED,9700,COHORT_0_SOURCE,10409,"LUXSMED not null, any exam completeness",COHORT_1_NONMISSING_LUX,07_quality_and_plausibility_audit.py
+E/F,Quality-valid elastography (LUAXSTAT==1),9023,COHORT_1_NONMISSING_LUX,9700,Official NHANES 'Complete' exam status,COHORT_2_QUALITY_VALID,07_quality_and_plausibility_audit.py
+E,Adults among non-missing LUXSMED,8318,COHORT_1_NONMISSING_LUX,9700,RIDAGEYR>=18 within Cohort 1,COHORT_3A_ADULT_OF_NONMISSING,07_quality_and_plausibility_audit.py
+E,Adults among quality-valid,7768,COHORT_2_QUALITY_VALID,9023,RIDAGEYR>=18 within Cohort 2,COHORT_3B_ADULT_OF_QUALITY_VALID,07_quality_and_plausibility_audit.py
+N,Broad routine-lab cohort (Cohort A),8880,COHORT_1_NONMISSING_LUX,9700,7 broad labs all non-missing within Cohort 1,COHORT_A_BROAD_LAB,13_broad_vs_fasting_cohort.py
+N,Cohort A + complete demo/BMI,8805,COHORT_A_BROAD_LAB,8880,Cohort A AND RIAGENDR AND BMXBMI non-missing,COHORT_A_PLUS_DEMO_BMI,13_broad_vs_fasting_cohort.py
+N,Fasting labs available (only),4376,COHORT_1_NONMISSING_LUX,9700,"Glucose+triglycerides non-missing within Cohort 1, broad labs not required",COHORT_FASTING_LABS_ONLY,13_broad_vs_fasting_cohort.py
+N,"Cohort B (fasting-extended, canonical)",4336,COHORT_A_BROAD_LAB,8880,Cohort A AND fasting labs non-missing,COHORT_B_FASTING_EXTENDED,13_broad_vs_fasting_cohort.py
+F,Provisional cutpoint 7.0kPa positive count,1506,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 7.0 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 7.0kPa positive count,1295,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 7.0 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 7.5kPa positive count,1223,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 7.5 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 7.5kPa positive count,1033,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 7.5 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 8.0kPa positive count,1000,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 8.0 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 8.0kPa positive count,828,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 8.0 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 8.2kPa positive count,939,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 8.2 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 8.2kPa positive count,772,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 8.2 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 9.0kPa positive count,712,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 9.0 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 9.0kPa positive count,576,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 9.0 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 9.7kPa positive count,604,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 9.7 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 9.7kPa positive count,474,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 9.7 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 10.0kPa positive count,568,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 10.0 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 10.0kPa positive count,443,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 10.0 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 12.0kPa positive count,367,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 12.0 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 12.0kPa positive count,271,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 12.0 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+F,Provisional cutpoint 13.6kPa positive count,278,COHORT_1_NONMISSING_LUX,9700,LUXSMED >= 13.6 within COHORT_1_NONMISSING_LUX,COHORT_1_NONMISSING_LUX,19_cohort_reconciliation.py
+F,Provisional cutpoint 13.6kPa positive count,196,COHORT_2_QUALITY_VALID,9023,LUXSMED >= 13.6 within COHORT_2_QUALITY_VALID,COHORT_2_QUALITY_VALID,19_cohort_reconciliation.py
+I,LBXSATSI availability,9473,COHORT_0_SOURCE (full master),10409,"LBXSATSI non-missing within the full master cohort (NOT the raw P_BIOPRO.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXSASSI availability,9435,COHORT_0_SOURCE (full master),10409,"LBXSASSI non-missing within the full master cohort (NOT the raw P_BIOPRO.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXSAL availability,9477,COHORT_0_SOURCE (full master),10409,"LBXSAL non-missing within the full master cohort (NOT the raw P_BIOPRO.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXSAPSI availability,9474,COHORT_0_SOURCE (full master),10409,"LBXSAPSI non-missing within the full master cohort (NOT the raw P_BIOPRO.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXSTB availability,9475,COHORT_0_SOURCE (full master),10409,"LBXSTB non-missing within the full master cohort (NOT the raw P_BIOPRO.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXPLTSI availability,9788,COHORT_0_SOURCE (full master),10409,"LBXPLTSI non-missing within the full master cohort (NOT the raw P_CBC.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXGLU availability,4744,COHORT_0_SOURCE (full master),10409,"LBXGLU non-missing within the full master cohort (NOT the raw P_GLU.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBXTR availability,4650,COHORT_0_SOURCE (full master),10409,"LBXTR non-missing within the full master cohort (NOT the raw P_TRIGLY.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py
+I,LBDHDD availability,9527,COHORT_0_SOURCE (full master),10409,"LBDHDD non-missing within the full master cohort (NOT the raw P_HDL.xpt file's own row count -- see Section H fix, prior report conflated these)",COHORT_0_SOURCE,18_generate_phase1_report.py

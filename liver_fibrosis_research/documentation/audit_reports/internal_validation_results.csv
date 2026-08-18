@@ -1,0 +1,25 @@
+test_id,description,status,detail
+TEST1,All eight raw files exist,PASS,missing=[]
+TEST2,All eight raw files load without error,PASS,errors=[]
+TEST3,All eight raw files contain SEQN,PASS,missing_seqn=[]
+TEST4,No unexpected duplicate SEQN within any raw file,PASS,files_with_dups=[]
+TEST5,Master row count equals P_LUX row count,PASS,"master=10409, P_LUX=10409"
+TEST6,Master unique SEQN equals master row count,PASS,"unique=10409, rows=10409"
+TEST7,Every cohort_flow.csv row satisfies n_before - n_excluded = n_after,PASS,bad_rows=[]
+TEST8,Adult + under-18 + age-missing = non-missing-outcome denominator,PASS,8318+1382+0 vs 9700
+TEST9,observed + missing = total for every master-dataset variable,PASS,bad_cols=[]
+TEST10,Laboratory observed + missing = total for all 9 lab variables,PASS,bad=[]
+TEST11,Table 1 LUXSMED median matches direct recomputation from master dataset,PASS,"table1=5.0, recomputed=5.0"
+TEST12,"Final report generator reads all statistics from CSV audit outputs (procedural, verified by code review)",PASS,18_generate_phase1_report.py contains no manually-typed count; all values are read from CSV/parquet at generation time
+TEST13,No variable classified as both outcome_only and likely_eligible,PASS,overlap=set()
+TEST14,Fasting-subset labs have materially higher missingness than a broad (non-fasting) lab,PASS,"fasting_missing_rate=0.549, broad_missing_rate=0.085"
+TEST15,Every observed RIDRETH1/RIDRETH3 code has a known official label,PASS,"unknown_r1=set(), unknown_r3=set()"
+TEST16,Any negative lab values present are captured in laboratory_plausibility_audit.csv (none silently missed),PASS,neg_found=[]
+TEST17,All canonical cohort subset relationships hold (_cohorts.verify_cohort_relationships),PASS,no CohortRelationshipError raised
+TEST18,Fasting-cohort discrepancy (COHORT_FASTING_LABS_ONLY vs COHORT_B) fully reconciled,PASS,"discrepancy_rows=40, expected=40"
+TEST19,Broad-cohort discrepancy (COHORT_A vs COHORT_A_PLUS_DEMO_BMI) fully reconciled,PASS,"discrepancy_rows=75, expected=75"
+TEST20,Every cohort_flow.csv row references a canonical cohort_id from _cohorts.py,PASS,unknown_ids=set()
+TEST21,Every subgroup row satisfies positive + negative = n_with_outcome_available,PASS,bad_rows=0
+TEST22,No unverified auxiliary variable appears in the curated candidate-predictor pool (VAR_METADATA),PASS,leaked=set()
+TEST23,No unverified auxiliary variable is referenced by any canonical cohort definition (Issue 13),PASS,leaked=set()
+TEST24,phase1_reconciled_counts.csv 8.2kPa cutpoint count matches independent recomputation,PASS,"reported=939, recomputed=939"

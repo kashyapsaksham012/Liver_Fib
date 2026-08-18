@@ -1,0 +1,138 @@
+variable,official_description,official_unit,source_xpt_file,data_type,verified_against_official_documentation,documentation_source_url,coding_notes,quality_restriction,verification_date
+SEQN,Respondent sequence number,-,P_DEMO.xpt (primary),Int64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Unique participant identifier; merge key.,-,2026-08-18
+LUAXSTAT,Elastography exam status,categorical(1-4),P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,"OFFICIAL NHANES DEFINITION (verified from live codebook 2026-08-18): 1=Complete [fasting >=3h, >=10 complete stiffness measures, IQRe/Med <30%], 2=Partial, 3=Ineligible, 4=Not done. LUAXSTAT==1 IS the NHANES-sanctioned quality-valid-exam definition; it is not a threshold this project invented.",Use LUAXSTAT==1 to define 'NHANES quality-valid exam'.,2026-08-18
+LUARXNC,Reason exam partial,categorical,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,"1=Fasting <3h, 2=Unable to obtain >=10 valid measures, 3=IQRe/Med >30%.",-,2026-08-18
+LUARXND,Reason exam not done,categorical,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,"1=Refusal, 2=Limited time, 3=Other.",-,2026-08-18
+LUARXIN,Reason ineligible,categorical,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,"1=Pregnant/could not test, 2=Other (e.g., implant/insulin pump).",-,2026-08-18
+LUAPNME,LUAPNME,-,merged (not in curated dictionary),str,False,-,,-,2026-08-18
+LUANMVGP,"Number of complete stiffness measures, final probe",count,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Directly relevant to the '>=10 valid measures' component of LUAXSTAT==1; not previously ingested by the pipeline. 2 rows carried the sentinel artifact.,-,2026-08-18
+LUANMTGP,"Number of stiffness measures attempted, final probe",count,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Not previously ingested by the pipeline. 671 rows carried the sentinel artifact (this column is mostly populated only when an exam was attempted).,-,2026-08-18
+LUXSMED,"Median liver stiffness (E), transient elastography",kPa,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,"Non-missing whenever an attempt produced a numeric median, regardless of exam completeness (LUAXSTAT). See LUAXSTAT for the official quality-valid flag; do not treat non-missing LUXSMED alone as a quality-valid measurement.",Use jointly with LUAXSTAT==1 for a quality-valid subset.,2026-08-18
+LUXSIQR,Interquartile range of stiffness measures (IQRe),kPa,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,27 rows in the raw file carried the unconverted SAS special-missing sentinel; corrected to NaN by this pipeline (see special_missing_code_audit.csv).,-,2026-08-18
+LUXSIQRM,Ratio of stiffness IQR to median E (IQRe/Med),%,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,This is the exact variable NHANES uses (<30%) as one of the three official components of LUAXSTAT==1 ('Complete'). 12 rows carried the sentinel artifact; corrected.,NHANES 'Complete' requires IQRe/Med < 30%.,2026-08-18
+LUXCAPM,Median Controlled Attenuation Parameter (CAP),dB/m,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,Candidate steatosis outcome; same quality caveat as LUXSMED applies (pair with LUAXSTAT).,Use jointly with LUAXSTAT==1.,2026-08-18
+LUXCPIQR,Interquartile range of CAP measures,dB/m,P_LUX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_LUX.htm,80 rows carried the sentinel artifact; corrected to NaN by this pipeline.,-,2026-08-18
+SDDSRVYR,SDDSRVYR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+RIDSTATR,RIDSTATR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+RIAGENDR,Gender,"categorical(1=Male,2=Female)",P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,No special missing codes documented.,-,2026-08-18
+RIDAGEYR,Age at screening (years),years,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,"Topcoded at 80 (participants 80+ recorded as 80). Not affected by the sentinel bug within the P_LUX-anchored cohort (verified: 0 sentinel rows among N=10,409).",Topcoded at 80y.,2026-08-18
+RIDAGEMN,RIDAGEMN,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+RIDRETH1,Race/Hispanic origin (5 categories),categorical,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,"1=Mexican American,2=Other Hispanic,3=NH White,4=NH Black,5=Other/Multi-racial. Non-Hispanic Asian participants are folded into category 5 and are NOT separately identifiable in this variable. See documentation/audit_reports/race_ethnicity_verification.md.",-,2026-08-18
+RIDRETH3,"Race/Hispanic origin (6 categories, incl. NH Asian)",categorical,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,"1=Mexican American,2=Other Hispanic,3=NH White,4=NH Black,6=NH Asian,7=Other/Multi-racial. Preserves Non-Hispanic Asian (n=1,638 in full P_DEMO) as a distinct category. RECOMMENDED primary race/ethnicity variable for the Phase 2 fairness analysis (see race_ethnicity_verification.md for full justification) -- decision documented here, not silently made; both variables are retained.",-,2026-08-18
+RIDEXMON,RIDEXMON,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+DMDBORN4,DMDBORN4,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+DMDYRUSZ,DMDYRUSZ,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+DMDEDUC2,DMDEDUC2,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+DMDMARTZ,DMDMARTZ,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+RIDEXPRG,RIDEXPRG,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+SIALANG,SIALANG,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+SIAPROXY,SIAPROXY,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+SIAINTRP,SIAINTRP,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+FIALANG,FIALANG,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+FIAPROXY,FIAPROXY,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+FIAINTRP,FIAINTRP,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+MIALANG,MIALANG,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+MIAPROXY,MIAPROXY,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+MIAINTRP,MIAINTRP,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+AIALANGA,AIALANGA,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+WTINTPRP,Full-sample 2-cycle interview weight,weight,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Use only for interview-only variables.,NOT yet applied to any analysis in Phase 1 (deferred).,2026-08-18
+WTMECPRP,Full-sample 2-cycle MEC exam weight,weight,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Applies to the pre-pandemic 2017-March 2020 combined MEC-examined sample. 0 for interview-only (non-MEC) respondents in the full P_DEMO file; not an issue for our P_LUX-anchored cohort (all rows have a valid MEC exam by construction).,NOT yet applied to any analysis in Phase 1 (deferred).,2026-08-18
+SDMVPSU,Masked variance pseudo-PSU,-,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Values 1-3; used for Taylor-series variance estimation.,-,2026-08-18
+SDMVSTRA,Masked variance pseudo-stratum,-,P_DEMO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_DEMO.htm,Values 149-172 (24 masked strata this cycle).,-,2026-08-18
+INDFMPIR,INDFMPIR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMDSTATS,Body Measures component status code,categorical(1-4),P_BMX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,"1=Complete data for age group, 2=Partial (height/weight only), 3=Other partial, 4=No body measures data. The official BMX completeness flag; not previously used by this pipeline to qualify BMXBMI/BMXWT/BMXHT completeness.",Use to distinguish complete vs partial anthropometry.,2026-08-18
+BMXWT,Weight,kg,P_BMX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,NHANES-documented observed range 3.2-254.3 kg.,-,2026-08-18
+BMIWT,Weight comment code,categorical,P_BMX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,"1=Could not obtain, 3=Clothing, 4=Medical appliance.",-,2026-08-18
+BMXRECUM,BMXRECUM,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMIRECUM,BMIRECUM,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXHEAD,BMXHEAD,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMIHEAD,BMIHEAD,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXHT,Standing height,cm,P_BMX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,NHANES-documented observed range 78.3-199.6 cm; not collected for participants measured recumbent only.,-,2026-08-18
+BMIHT,Standing height comment code,categorical,P_BMX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,"1=Could not obtain, 3=Not straight.",-,2026-08-18
+BMXBMI,Body Mass Index,kg/m^2,P_BMX.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BMX.htm,"NHANES-documented observed range 11.9-92.3 (ages 2-150 target pop). NHANES does not define an implausibility cutoff itself ('unusual values ... typically extremely short, tall, over/underweight' -- qualitative note only); any numeric plausibility bound used here is an external convention, documented as such.",-,2026-08-18
+BMDBMIC,BMDBMIC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXLEG,BMXLEG,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMILEG,BMILEG,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXARML,BMXARML,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMIARML,BMIARML,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXARMC,BMXARMC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMIARMC,BMIARMC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXWAIST,BMXWAIST,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMIWAIST,BMIWAIST,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMXHIP,BMXHIP,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+BMIHIP,BMIHIP,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSATSI,Alanine Aminotransferase (ALT),U/L,P_BIOPRO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,LLOD=3 U/L. NHANES-observed range in this release: 2-682 U/L.,-,2026-08-18
+LBDSATLC,LBDSATLC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSAL,"Albumin, refrigerated serum",g/dL,P_BIOPRO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,LLOD=0.3 g/dL. NHANES-observed range: 2.1-5.4 g/dL.,-,2026-08-18
+LBDSALSI,LBDSALSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSAPSI,Alkaline Phosphatase (ALP),IU/L,P_BIOPRO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,LLOD=2 IU/L. NHANES-observed range: 16-638 IU/L.,-,2026-08-18
+LBXSASSI,Aspartate Aminotransferase (AST),U/L,P_BIOPRO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,LLOD=3 U/L. NHANES-observed range: 6-489 U/L.,-,2026-08-18
+LBXSC3SI,LBXSC3SI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSBU,LBXSBU,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSBUSI,LBDSBUSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSCLSI,LBXSCLSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSCK,LBXSCK,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSCR,LBXSCR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSCRSI,LBDSCRSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSGB,LBXSGB,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSGBSI,LBDSGBSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSGL,"Glucose, serum (non-fasting, full biochemistry sample)",mg/dL,P_BIOPRO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,"Available on the broad MEC biochemistry sample WITHOUT the fasting-subsample restriction that applies to LBXGLU (P_GLU). Not used by the prior pipeline; flagged here as a candidate broad-cohort alternative to fasting glucose for Phase 2 to consider -- decision deferred, not made here.",Non-fasting; distinct from LBXGLU.,2026-08-18
+LBDSGLSI,LBDSGLSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSGTSI,LBXSGTSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSGTLC,LBDSGTLC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSIR,LBXSIR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSIRSI,LBDSIRSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSLDSI,LBXSLDSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSOSSI,LBXSOSSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSPH,LBXSPH,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSPHSI,LBDSPHSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSKSI,LBXSKSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSNASI,LBXSNASI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSTB,Total Bilirubin,mg/dL,P_BIOPRO.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_BIOPRO.htm,LLOD=0.1 mg/dL. NHANES-observed range: 0.1-3.8 mg/dL.,-,2026-08-18
+LBDSTBSI,LBDSTBSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSTBLC,LBDSTBLC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSCA,LBXSCA,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSCASI,LBDSCASI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSCH,LBXSCH,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSCHSI,LBDSCHSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSTP,LBXSTP,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSTPSI,LBDSTPSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSTR,LBXSTR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSTRSI,LBDSTRSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXSUA,LBXSUA,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDSUASI,LBDSUASI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXWBCSI,LBXWBCSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXLYPCT,LBXLYPCT,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXMOPCT,LBXMOPCT,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXNEPCT,LBXNEPCT,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXEOPCT,LBXEOPCT,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXBAPCT,LBXBAPCT,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLYMNO,LBDLYMNO,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDMONO,LBDMONO,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDNENO,LBDNENO,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDEONO,LBDEONO,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDBANO,LBDBANO,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXRBCSI,LBXRBCSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXHGB,LBXHGB,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXHCT,LBXHCT,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXMCVSI,LBXMCVSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXMC,LBXMC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXMCHSI,LBXMCHSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXRDW,LBXRDW,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXPLTSI,Platelet count,1000 cells/uL,P_CBC.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_CBC.htm,NHANES-observed range: 8-1021 (10^9/L).,-,2026-08-18
+LBXMPSI,LBXMPSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXNRBC,LBXNRBC,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+WTSAFPRP,Fasting subsample weight (2-cycle),weight,P_GLU.xpt / P_TRIGLY.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_GLU.htm,"Confirmed correct variable name for the 2017-March 2020 pre-pandemic release (naming diverges from single-cycle WTSAF2YR convention used in 2011-2016 releases). Set to 0 for fasting-eligible participants who gave no specimen or did not meet the 8-24h fasting window -- 0 is a documented, meaningful code, not a data error.",NOT yet applied to any analysis in Phase 1 (deferred).,2026-08-18
+LBXGLU,Fasting Glucose,mg/dL,P_GLU.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_GLU.htm,FASTING-SUBSAMPLE ONLY: morning-session MEC examinees who fasted 8-<24h. NHANES-observed range: 47-524 mg/dL.,Fasting subsample only; pair with WTSAFPRP.,2026-08-18
+LBDGLUSI,LBDGLUSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+WTSAFPRP_P_TR,WTSAFPRP_P_TR,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBXTR,Triglycerides,mg/dL,P_TRIGLY.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_TRIGLY.htm,FASTING-SUBSAMPLE ONLY (same morning-fasting subsample as LBXGLU). NHANES-observed range: 10-2684 mg/dL.,Fasting subsample only; pair with WTSAFPRP.,2026-08-18
+LBDTRSI,LBDTRSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLDL,LBDLDL,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLDLSI,LBDLDLSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLDLM,LBDLDLM,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLDMSI,LBDLDMSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLDLN,LBDLDLN,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDLDNSI,LBDLDNSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18
+LBDHDD,Direct HDL-Cholesterol,mg/dL,P_HDL.xpt,float64,True,https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/P_HDL.htm,LLOD=3 mg/dL. NOT fasting-restricted (available on the broader MEC sample). NHANES-observed range: 5-189 mg/dL.,-,2026-08-18
+LBDHDDSI,LBDHDDSI,-,merged (not in curated dictionary),float64,False,-,,-,2026-08-18

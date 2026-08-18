@@ -1,6 +1,9 @@
-dataset,rows,unique_seqn,missing_seqn,duplicate_seqn
-P_LUX,10409,10409,0,0
-P_DEMO,15560,15560,0,0
-P_BMX,14300,14300,0,0
-MERGE: LUX+DEMO,10409,10409,0,0
-MERGE: LUX+DEMO+BMX,10409,10409,0,0
+dataset,rows_before,rows_after,matched_seqn,unmatched_seqn,row_multiplication,description
+P_LUX.xpt,10409,10409,10409,0,None,Baseline transient elastography population (root cohort denominator)
+P_DEMO.xpt,10409,10409,10409,0,No,Left merge on SEQN
+P_BMX.xpt,10409,10409,10409,0,No,Left merge on SEQN
+P_BIOPRO.xpt,10409,10409,10409,0,No,Left merge on SEQN
+P_CBC.xpt,10409,10409,10409,0,No,Left merge on SEQN
+P_GLU.xpt,10409,10409,5090,5319,No,Left merge on SEQN [FASTING SUBSAMPLE FILE]
+P_TRIGLY.xpt,10409,10409,5090,5319,No,Left merge on SEQN [FASTING SUBSAMPLE FILE]
+P_HDL.xpt,10409,10409,10409,0,No,Left merge on SEQN

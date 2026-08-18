@@ -1,65 +1,69 @@
-# P_BMX Audit Report
+# P_BMX Audit Report (Remediated)
 
-**Generated:** 2026-08-18 11:28:13
+**Generated:** 2026-08-18 13:27:20
 
 ## Shape
 
 - Rows: 14300
 - Columns: 22
 
-## All Columns
-
-```
-SEQN
-BMDSTATS
-BMXWT
-BMIWT
-BMXRECUM
-BMIRECUM
-BMXHEAD
-BMIHEAD
-BMXHT
-BMIHT
-BMXBMI
-BMDBMIC
-BMXLEG
-BMILEG
-BMXARML
-BMIARML
-BMXARMC
-BMIARMC
-BMXWAIST
-BMIWAIST
-BMXHIP
-BMIHIP
-```
-
 ## SEQN Check
 
 - Unique SEQN: 14300
 - Missing SEQN: 0
 
-## BMI (`BMXBMI`)
+## Component Completeness Status (`BMDSTATS`) - official NHANES flag, previously unused
 
-- Stats: N=13137 | min=11.900 | p25=20.400 | median=25.800 | p75=31.400 | max=92.300 | mean=26.657 | std=8.420
-- Missing: 1163 (8.1%)
+|   BMDSTATS |   count |
+|-----------:|--------:|
+|          1 |   13220 |
+|          3 |     463 |
+|          2 |     424 |
+|          4 |     193 |
 
-## Height (cm) (`BMXHT`)
+- 1=Complete data for age group, 2=Partial (height/weight only), 3=Other partial exam, 4=No body measures data.
 
-- Stats: N=13157 | min=78.300 | p25=151.100 | median=162.100 | p75=171.300 | max=199.600 | mean=156.490 | std=22.621
-- Missing: 1143 (8.0%)
+## Key Anthropometrics
 
-## Weight (kg) (`BMXWT`)
+### Body Mass Index (BMI) (`BMXBMI`)
 
-- Stats: N=14075 | min=3.200 | p25=42.300 | median=68.100 | p75=86.300 | max=254.300 | mean=65.426 | std=33.332
-- Missing: 225 (1.6%)
+- Stats: N=13137 | min=11.90 | p25=20.40 | median=25.80 | p75=31.40 | max=92.30 | mean=26.66
+- Missing: 1163 (8.13%)
 
-## Plausibility Notes
+### Weight (kg) (`BMXWT`)
 
-- BMI > 70: 11 records (flagged for review, NOT removed)
-- BMI < 10: 0 records (flagged for review, NOT removed)
+- Stats: N=14075 | min=3.20 | p25=42.30 | median=68.10 | p75=86.30 | max=254.30 | mean=65.43
+- Missing: 225 (1.57%)
 
-## Missingness Table
+### Height (cm) (`BMXHT`)
+
+- Stats: N=13157 | min=78.30 | p25=151.10 | median=162.10 | p75=171.30 | max=199.60 | mean=156.49
+- Missing: 1143 (7.99%)
+
+## Measurement Comment Codes (previously not audited)
+
+### BMIWT - Weight comment (1=Could not obtain, 3=Clothing, 4=Medical appliance)
+
+|   BMIWT |   count |
+|--------:|--------:|
+|     nan |   13712 |
+|       3 |     523 |
+|       4 |      42 |
+|       1 |      23 |
+
+### BMIHT - Height comment (1=Could not obtain, 3=Not straight)
+
+|   BMIHT |   count |
+|--------:|--------:|
+|     nan |   14129 |
+|       3 |     101 |
+|       1 |      70 |
+
+## NHANES's own guidance on implausible values (verified from live codebook)
+
+> "Unusual body measures values were noted during review. Typically, unusual values occurred when a subject was extremely short, tall, overweight, or underweight." NHANES does NOT define a numeric implausibility cutoff itself; any BMI/height/weight plausibility bound used elsewhere in this project is an externally-sourced clinical convention, documented as such.
+
+## Missingness Table (post sentinel-correction)
 
 | variable   |   n_obs |   n_missing |   pct_missing |
 |:-----------|--------:|------------:|--------------:|

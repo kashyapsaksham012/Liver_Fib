@@ -1,0 +1,9 @@
+step,n_before,n_excluded,n_after,pct_LUAXSTAT_eq_1,reason
+0. P_LUX Total Participants (source cohort denominator),10409,0,10409,86.68,Root cohort; every subsequent row is a subset of this population
+"1. Non-missing LUXSMED (NOTE: this is non-missingness, NOT the NHANES quality-valid flag -- see LUAXSTAT below)",10409,709,9700,93.02,"Missing/invalid FibroScan attempt (LUAXSTAT in {3,4}, or {2} with no numeric result)"
+"2. Adult Participants (Age >= 18), among Step 1",9700,1382,8318,93.39,"Adult-only eligibility is a CANDIDATE Phase 2 protocol restriction, applied here only for descriptive flow accounting, not as a locked-in exclusion of the master dataset"
+"3. Demographics Available (RIAGENDR non-missing), among Step 1",9700,0,9700,93.02,Fairness analysis requirement
+"4. BMI Available (BMXBMI non-missing), among Step 1",9700,95,9605,93.09,Predictor & subgroup requirement
+"5. Broad Routine-Lab Predictors Available (LBXSATSI, LBXSASSI, LBXSAL, LBXSAPSI, LBXSTB, LBXPLTSI, LBDHDD all non-missing), among Step 1",9700,820,8880,93.22,Broad-cohort candidate predictor set (Error 9: does NOT require fasting labs)
+"6. [BRANCH -- reported separately, NOT chained] Fasting-Subsample Labs Available (LBXGLU, LBXTR all non-missing), among Step 1",9700,5324,4376,94.9,"See 13_broad_vs_fasting_cohort.py for the full broad-vs-fasting comparison; this branch is reported for completeness, not used to define 'the' analytical cohort"
+"7. COMBINED Broad Candidate Cohort (Steps 3+4+5 jointly), among Step 1",9700,895,8805,93.3,"Illustrative combined candidate population; NOT the final Phase 2 analytical cohort (adult-only, quality-valid-only, and predictor-set decisions remain open)"

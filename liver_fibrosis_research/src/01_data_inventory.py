@@ -1,90 +1,115 @@
 """
-01_data_inventory.py  –  Phase 1 Step 1
-Inventory all raw NHANES files.
+01_data_inventory.py
+Phase 1 Remediation - Raw File Inventory + Release Consistency + Readability Verification.
 
-Outputs (relative to project root):
+Produces:
   documentation/audit_reports/raw_file_inventory.csv
   documentation/audit_reports/raw_file_inventory.md
 """
 
 import os, sys, csv, hashlib, datetime
 import pandas as pd
-from pathlib import Path
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import ROOT, RAW_DIR, AUDIT_DIR, REQUIRED_FILES, load_xpt, fail, NOW
 
-ROOT     = Path(__file__).resolve().parent.parent
-RAW_DIR  = ROOT / "data" / "raw" / "NHANES_2017_2020"
-AUDIT    = ROOT / "documentation" / "audit_reports"
-AUDIT.mkdir(parents=True, exist_ok=True)
-
-KNOWN = {
-    "P_LUX.xpt":  ("2017-Mar2020 Pre-Pandemic", "Exam – Liver Elastography",    "Liver stiffness / CAP / quality"),
-    "P_DEMO.xpt": ("2017-Mar2020 Pre-Pandemic", "Demographics",                  "Age/sex/race/weights"),
-    "P_BMX.xpt":  ("2017-Mar2020 Pre-Pandemic", "Exam – Body Measures",          "Height/weight/BMI"),
-}
-
-def md5(p):
+def get_md5(p):
     h = hashlib.md5()
-    with open(p,"rb") as f:
-        for chunk in iter(lambda: f.read(65536), b""): h.update(chunk)
+    with open(p, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
     return h.hexdigest()
 
-def inspect(p):
-    try:
-        df = pd.read_sas(p, format="xport", encoding="utf-8")
-        r,c = df.shape
-        hs  = "SEQN" in df.columns
-        if hs:
-            u = int(df["SEQN"].nunique())
-            m = int(df["SEQN"].isna().sum())
-            d = int(r - u)
-        else:
-            u=m=d="N/A"
-        return r,c,hs,u,m,d,None
-    except Exception as e:
-        return "ERR","ERR",False,"ERR","ERR","ERR",str(e)
+def main():
+    print("=== Step 1: Raw File Inventory, Readability & Release Consistency ===")
 
-records = []
-files   = sorted(RAW_DIR.glob("*.xpt")) + sorted(RAW_DIR.glob("*.XPT"))
-files   = list({p.name:p for p in files}.values())
+    missing_files = []
+    for f in REQUIRED_FILES:
+        p = RAW_DIR / f
+        if not p.exists():
+            p_upper = RAW_DIR / f.replace(".xpt", ".XPT")
+            if p_upper.exists():
+                os.rename(p_upper, p)
+            else:
+                missing_files.append(f)
+    if missing_files:
+        fail(f"The following required files are missing: {missing_files}. "
+             f"Place them in data/raw/NHANES_2017_2020/ before continuing.")
 
-if not files:
-    print("ERROR: No XPT files found. Aborting.")
-    sys.exit(1)
+    records = []
+    release_cycles = set()
+    for fname in REQUIRED_FILES:
+        path = RAW_DIR / fname
+        stat = path.stat()
+        mtime = datetime.datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d %H:%M:%S")
+        checksum = get_md5(path)
 
-for p in files:
-    fname  = p.name
-    stat   = p.stat()
-    kb     = stat.st_size/1024
-    mtime  = datetime.datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d %H:%M")
-    chk    = md5(p)
-    cyc,comp,purp = KNOWN.get(fname, ("UNKNOWN","UNKNOWN","UNKNOWN"))
-    r,c,hs,u,m,d,err = inspect(p)
-    records.append(dict(
-        filename=fname, size_kb=round(kb,1), file_modified=mtime,
-        md5=chk, nhanes_cycle=cyc, component=comp, purpose=purp,
-        rows=r, cols=c, has_seqn=hs,
-        seqn_unique=u, seqn_missing=m, seqn_duplicates=d, error=err
-    ))
-    print(f"{fname}: {r} rows × {c} cols | SEQN unique={u} | dups={d}")
+        # Verify readability: must parse as a genuine SAS XPORT transport file, not HTML/error page.
+        with open(path, "rb") as fh:
+            header = fh.read(80)
+        looks_like_xpt = header[:8] in (b"HEADER R", b"header r") or b"LIBRARY" in header.upper() or header[:1] != b"<"
+        looks_like_html = header.strip().lower().startswith(b"<!doctype") or header.strip().lower().startswith(b"<html")
 
-# CSV
-csv_out = AUDIT / "raw_file_inventory.csv"
-with open(csv_out,"w",newline="") as f:
-    w = csv.DictWriter(f, fieldnames=list(records[0].keys()))
-    w.writeheader(); w.writerows(records)
+        try:
+            df = load_xpt(fname)
+            rows, cols = df.shape
+            has_seqn = "SEQN" in df.columns
+            if has_seqn:
+                seqn_unique = int(df["SEQN"].nunique())
+                seqn_missing = int(df["SEQN"].isna().sum())
+                seqn_dups = int(rows - seqn_unique)
+            else:
+                seqn_unique = seqn_missing = seqn_dups = "N/A"
+            err = None
+            if "SDDSRVYR" in df.columns:
+                release_cycles.update(df["SDDSRVYR"].dropna().unique().tolist())
+        except Exception as e:
+            rows = cols = has_seqn = seqn_unique = seqn_missing = seqn_dups = "N/A"
+            err = str(e)
 
-# Markdown
-md_out = AUDIT / "raw_file_inventory.md"
-now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-with open(md_out,"w") as f:
-    f.write(f"# Raw File Inventory\n\n**Generated:** {now}\n\n")
-    f.write(f"**Files found:** {len(records)}\n\n---\n\n")
+        records.append({
+            "filename": fname, "extension": path.suffix.upper(),
+            "size_bytes": stat.st_size, "size_human": f"{stat.st_size/1e6:.2f} MB",
+            "file_modified": mtime, "md5_checksum": checksum,
+            "rows": rows, "columns": cols, "has_seqn": has_seqn,
+            "seqn_unique": seqn_unique, "seqn_missing": seqn_missing, "seqn_duplicates": seqn_dups,
+            "looks_like_valid_xpt": looks_like_xpt and not looks_like_html,
+            "load_error": err
+        })
+        print(f"  {fname}: {rows} rows x {cols} cols | Unique SEQN={seqn_unique} | dups={seqn_dups} | "
+              f"valid_xpt_header={looks_like_xpt and not looks_like_html}")
+
     for r in records:
-        f.write(f"## {r['filename']}\n\n| Field | Value |\n|---|---|\n")
-        for k,v in r.items():
-            if k!="filename": f.write(f"| {k} | {v} |\n")
-        f.write("\n")
+        if not r["looks_like_valid_xpt"] or r["load_error"]:
+            fail(f"File {r['filename']} failed readability/format verification "
+                 f"(valid_xpt_header={r['looks_like_valid_xpt']}, error={r['load_error']}).")
 
-print(f"\nSaved → {csv_out}")
-print(f"Saved → {md_out}")
-print("[STEP 1 COMPLETE]")
+    if len(release_cycles) > 1:
+        print(f"  NOTE: multiple SDDSRVYR release-cycle codes observed across files: {release_cycles}")
+    print(f"  Release cycle consistency: SDDSRVYR = {release_cycles} across all files with that field "
+          f"(single value expected for the 2017-March 2020 pre-pandemic combined release).")
+
+    csv_path = AUDIT_DIR / "raw_file_inventory.csv"
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(records[0].keys()))
+        writer.writeheader()
+        writer.writerows(records)
+
+    md_path = AUDIT_DIR / "raw_file_inventory.md"
+    with open(md_path, "w") as f:
+        f.write("# Raw File Inventory\n\n")
+        f.write(f"**Generated:** {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  \n")
+        f.write(f"**Source Directory:** `{RAW_DIR}`  \n")
+        f.write(f"**Files Found & Audited:** {len(records)}  \n")
+        f.write(f"**Release cycle (SDDSRVYR) consistency:** {sorted(release_cycles)} "
+                f"(single value = consistent release)\n\n")
+        f.write("| Filename | Size | Rows | Cols | SEQN Found | Unique SEQN | Valid XPT Header | Load Status |\n")
+        f.write("|---|---|---|---|---|---|---|---|\n")
+        for r in records:
+            status = "OK" if not r["load_error"] else f"ERROR: {r['load_error']}"
+            f.write(f"| {r['filename']} | {r['size_human']} | {r['rows']} | {r['columns']} | "
+                    f"{r['has_seqn']} | {r['seqn_unique']} | {r['looks_like_valid_xpt']} | {status} |\n")
+
+    print("[STEP 1 COMPLETE]")
+
+if __name__ == "__main__":
+    main()

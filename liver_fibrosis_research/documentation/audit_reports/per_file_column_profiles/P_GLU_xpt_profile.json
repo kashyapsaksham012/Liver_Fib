@@ -1,0 +1,54 @@
+{
+  "SEQN": {
+    "dtype": "Int64",
+    "n_obs": 5090,
+    "n_missing": 0,
+    "pct_missing": 0.0,
+    "min": 109264.0,
+    "max": 124822.0,
+    "mean": 117177.3265,
+    "median": 117265.5,
+    "std": 4487.3352,
+    "unique_values": 5090,
+    "sample_values": null
+  },
+  "WTSAFPRP": {
+    "dtype": "float64",
+    "n_obs": 4476,
+    "n_missing": 614,
+    "pct_missing": 12.06,
+    "min": 4808.0699,
+    "max": 741259.1887,
+    "mean": 61275.5467,
+    "median": 37383.9166,
+    "std": 69921.2047,
+    "unique_values": 4350,
+    "sample_values": null
+  },
+  "LBXGLU": {
+    "dtype": "float64",
+    "n_obs": 4744,
+    "n_missing": 346,
+    "pct_missing": 6.8,
+    "min": 47.0,
+    "max": 524.0,
+    "mean": 111.1821,
+    "median": 102.0,
+    "std": 36.3146,
+    "unique_values": 240,
+    "sample_values": null
+  },
+  "LBDGLUSI": {
+    "dtype": "float64",
+    "n_obs": 4744,
+    "n_missing": 346,
+    "pct_missing": 6.8,
+    "min": 2.61,
+    "max": 29.1,
+    "mean": 6.1717,
+    "median": 5.66,
+    "std": 2.0161,
+    "unique_values": 209,
+    "sample_values": null
+  }
+}

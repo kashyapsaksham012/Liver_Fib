@@ -1,0 +1,41 @@
+{
+  "SEQN": {
+    "dtype": "Int64",
+    "n_obs": 12198,
+    "n_missing": 0,
+    "pct_missing": 0.0,
+    "min": 109264.0,
+    "max": 124822.0,
+    "mean": 117082.9531,
+    "median": 117098.5,
+    "std": 4498.6749,
+    "unique_values": 12198,
+    "sample_values": null
+  },
+  "LBDHDD": {
+    "dtype": "float64",
+    "n_obs": 10828,
+    "n_missing": 1370,
+    "pct_missing": 11.23,
+    "min": 5.0,
+    "max": 189.0,
+    "mean": 53.4739,
+    "median": 51.0,
+    "std": 15.0377,
+    "unique_values": 123,
+    "sample_values": null
+  },
+  "LBDHDDSI": {
+    "dtype": "float64",
+    "n_obs": 10828,
+    "n_missing": 1370,
+    "pct_missing": 11.23,
+    "min": 0.13,
+    "max": 4.89,
+    "mean": 1.383,
+    "median": 1.32,
+    "std": 0.3888,
+    "unique_values": 123,
+    "sample_values": null
+  }
+}

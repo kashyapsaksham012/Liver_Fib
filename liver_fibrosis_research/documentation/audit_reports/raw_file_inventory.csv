@@ -1,4 +1,9 @@
-filename,size_kb,file_modified,md5,nhanes_cycle,component,purpose,rows,cols,has_seqn,seqn_unique,seqn_missing,seqn_duplicates,error
-P_BMX.xpt,2461.6,2026-08-18 11:18,62ff0ed76b35124059ddf97af4510310,2017-Mar2020 Pre-Pandemic,Exam – Body Measures,Height/weight/BMI,14300,22,True,14300,0,0,
-P_DEMO.xpt,3530.0,2026-08-18 11:18,850382076eca1bef83b681d721c8362d,2017-Mar2020 Pre-Pandemic,Demographics,Age/sex/race/weights,15560,29,True,15560,0,0,
-P_LUX.xpt,1080.0,2026-08-18 11:18,f13a60ec6b7dfb74ac70437f567ab9a0,2017-Mar2020 Pre-Pandemic,Exam – Liver Elastography,Liver stiffness / CAP / quality,10409,13,True,10409,0,0,
+filename,extension,size_bytes,size_human,file_modified,md5_checksum,rows,columns,has_seqn,seqn_unique,seqn_missing,seqn_duplicates,looks_like_valid_xpt,load_error
+P_LUX.xpt,.XPT,1105920,1.11 MB,2026-08-18 11:18:28,f13a60ec6b7dfb74ac70437f567ab9a0,10409,13,True,10409,0,0,True,
+P_DEMO.xpt,.XPT,3614720,3.61 MB,2026-08-18 11:18:28,850382076eca1bef83b681d721c8362d,15560,29,True,15560,0,0,True,
+P_BMX.xpt,.XPT,2520640,2.52 MB,2026-08-18 11:18:28,62ff0ed76b35124059ddf97af4510310,14300,22,True,14300,0,0,True,
+P_BIOPRO.xpt,.XPT,3420640,3.42 MB,2026-08-18 12:00:17,c8751a52982cafc58235438866d3dff6,10409,41,True,10409,0,0,True,
+P_CBC.xpt,.XPT,2427760,2.43 MB,2026-08-18 12:00:10,498bb01dcc4f8ed6f66260aa85e97657,13772,22,True,13772,0,0,True,
+P_GLU.xpt,.XPT,164160,0.16 MB,2026-08-18 12:00:09,b18d588f479a5d07053d480cb26a76a2,5090,4,True,5090,0,0,True,
+P_TRIGLY.xpt,.XPT,409360,0.41 MB,2026-08-18 12:00:10,e870c5f806d9bef8f8f7511ce2bde5c3,5090,10,True,5090,0,0,True,
+P_HDL.xpt,.XPT,294000,0.29 MB,2026-08-18 12:00:09,2ff256d85224ee3de8a87c4fb26aa8de,12198,3,True,12198,0,0,True,

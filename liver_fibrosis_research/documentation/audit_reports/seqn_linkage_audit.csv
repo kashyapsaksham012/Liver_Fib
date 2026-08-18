@@ -1,0 +1,9 @@
+dataset,n_rows,n_unique_seqn,n_missing_seqn,n_duplicate_seqn,matched_to_lux_cohort,lux_participants_missing_from_this_file,rows_in_this_file_outside_lux_cohort,pct_of_lux_cohort_matched
+P_LUX.xpt,10409,10409,0,0,10409,0,0,100.0
+P_DEMO.xpt,15560,15560,0,0,10409,0,5151,100.0
+P_BMX.xpt,14300,14300,0,0,10409,0,3891,100.0
+P_BIOPRO.xpt,10409,10409,0,0,10409,0,0,100.0
+P_CBC.xpt,13772,13772,0,0,10409,0,3363,100.0
+P_GLU.xpt,5090,5090,0,0,5090,5319,0,48.9
+P_TRIGLY.xpt,5090,5090,0,0,5090,5319,0,48.9
+P_HDL.xpt,12198,12198,0,0,10409,0,1789,100.0
