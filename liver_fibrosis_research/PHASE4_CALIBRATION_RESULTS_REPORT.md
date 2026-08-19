@@ -77,15 +77,28 @@ Result: VERIFIED, no contamination.
 
 ## 9. Primary Calibration Metrics
 
-`results/calibration/primary_metrics_by_model.csv` (OOF tier, raw probabilities):
+`results/calibration/primary_metrics_by_model.csv` (OOF tier, raw probabilities, point
+estimates) joined with `results/calibration/calibration_inference.csv` (95% bootstrap CIs,
+n=2,000, paired) — same file, same methodology for all 5 models, no MLP-specific computation.
+Cross-verified against `results/calibration/mlp_calibration_metric_audit.csv` this pass
+(**Item 1**): all five models now carry identical quantitative structure.
 
-| Model | Intercept | Slope | Brier |
-|---|---|---|---|
-| Logistic | −2.242509 | 1.060614 | 0.173932 |
-| Random Forest | −1.862450 | 1.198516 | 0.139695 |
-| XGBoost | −2.046007 | 1.039320 | 0.152265 |
-| LightGBM | −2.053483 | 1.062210 | 0.155387 |
-| MLP | −0.280858 | 0.829627 | 0.070972 |
+| Model | Intercept | Intercept 95% CI | Slope | Slope 95% CI | Brier | Brier 95% CI |
+|---|---|---|---|---|---|---|
+| Logistic | −2.242509 | [−2.355021, −2.138444] | 1.060614 | [0.952434, 1.183636] | 0.173932 | [0.169042, 0.178848] |
+| Random Forest | −1.862450 | [−1.969692, −1.761026] | 1.198516 | [1.093911, 1.309657] | 0.139695 | [0.135316, 0.144132] |
+| XGBoost | −2.046007 | [−2.159344, −1.940396] | 1.039320 | [0.948429, 1.137262] | 0.152265 | [0.147099, 0.157504] |
+| LightGBM | −2.053483 | [−2.164577, −1.946315] | 1.062210 | [0.965944, 1.164172] | 0.155387 | [0.150408, 0.160381] |
+| MLP | −0.280858 | [−0.465988, −0.084605] | 0.829627 | [0.754584, 0.914947] | 0.070972 | [0.065632, 0.076728] |
+
+**MLP intercept-CI-vs-zero determination (Item 1, §2C):** MLP's calibration-intercept 95% CI is
+[−0.465988, −0.084605] — both bounds are negative, so **the CI does not include 0**. This is
+stated as the exact estimate and CI, not translated into "MLP is well calibrated" or "perfectly
+calibrated" (no such acceptance threshold exists in the frozen protocol). MLP's intercept is
+substantially closer to 0 than the other 4 models' (whose CIs are also bounded well away from
+0, but at roughly 4–8× the magnitude), which is the basis for the report's "comparatively
+closer to calibration" language — a quantitative comparison between five statistically
+non-zero intercepts, not a claim that MLP is calibrated in an absolute sense.
 
 ## 10. Calibration Curves
 
@@ -141,13 +154,26 @@ inherited from Phase 3 Amendment #2 rather than a Phase-2 freeze. `bootstrap_n_v
 ## 17. Multiple-Comparison Handling
 
 Benjamini-Hochberg FDR, applied separately within each metric's family of 10 pairwise
-comparisons (intercept, slope, Brier — 3 independent families, not pooled with Phase 3's
-discrimination-comparison family or any future Fairness-phase family). Per the standing
+comparisons (intercept, slope, Brier — 3 independent families). Per the standing
 project language rule, non-significant results are reported as "no statistically significant
 pairwise superiority was demonstrated after FDR correction" — applies specifically to:
 XGBoost-vs-LightGBM (intercept, slope), Logistic-vs-XGBoost (slope), Logistic-vs-LightGBM
 (slope). All other pairwise comparisons across all 3 metrics were significant after FDR
 correction.
+
+**Calibration-phase statistical comparisons were treated as an independent hypothesis-testing
+family from the Phase 3 baseline-model comparisons, with separate multiple-comparison
+correction.** This is code-verified, not merely asserted in prose: Phase 3's single 10-pair
+ROC-AUC family is computed entirely within `src/phase3_07_plots_and_comparison.py` (its own
+p-value array, its own BH pass, written to `results/tables/phase3_model_comparison.csv`), while
+Calibration's three 10-pair families (intercept, slope, Brier) are computed entirely within
+`src/phase4_04_inference.py` (a fresh p-value array re-initialized per metric, written to
+`results/calibration/calibration_inference.csv`). No code path reads from, writes to, or
+combines both files' p-value arrays — full verification in
+`documentation/calibration/calibration_fdr_family_verification.md`. The bootstrap
+*methodology* (n=2,000, seed=42, paired, 95% percentile CIs, BH-FDR) is deliberately reused from
+Phase 3 (disclosed in the frozen protocol §12 as inheriting Amendment #2), but the *hypothesis
+families being jointly corrected* are structurally disjoint.
 
 ## 18. Recalibration
 

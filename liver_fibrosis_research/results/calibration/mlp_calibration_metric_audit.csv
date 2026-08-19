@@ -1,0 +1,13 @@
+tier,model,metric,point_estimate,ci_lower,ci_upper,ci_includes_zero,source_file,source_row_note
+OOF (development),mlp,calibration_intercept,-0.280858,-0.465988,-0.084605,No -- both bounds negative,results/calibration/calibration_inference.csv,"row_type=point_estimate_and_ci, model=mlp, metric=intercept"
+OOF (development),mlp,calibration_slope,0.829627,0.754584,0.914947,"n/a (slope CI referenced against 1, not 0; both bounds below 1)",results/calibration/calibration_inference.csv,"row_type=point_estimate_and_ci, model=mlp, metric=slope"
+OOF (development),mlp,brier_score,0.070972,0.065632,0.076728,n/a (Brier has no zero-reference interpretation),results/calibration/calibration_inference.csv,"row_type=point_estimate_and_ci, model=mlp, metric=brier"
+OOF (development),mlp,brier_score_point_only,0.070972,,,,results/calibration/primary_metrics_by_model.csv,"same value as calibration_inference.csv, cross-verified, exact match"
+"locked test set (confirmatory, one-time touch)",mlp,calibration_intercept_raw,-0.435428,,,"NOT COMPUTED -- no test-set CI exists for any model, by protocol design (see note)",results/calibration/test_set_calibration_final.csv,"model=mlp, variant=raw"
+"locked test set (confirmatory, one-time touch)",mlp,calibration_slope_raw,0.929347,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=raw"
+"locked test set (confirmatory, one-time touch)",mlp,brier_score_raw,0.071641,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=raw"
+"locked test set (confirmatory, one-time touch)",mlp,ece_raw,0.029026,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=raw"
+"locked test set (confirmatory, one-time touch)",mlp,calibration_intercept_recalibrated,-0.11893,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=recalibrated"
+"locked test set (confirmatory, one-time touch)",mlp,calibration_slope_recalibrated,1.121055,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=recalibrated"
+"locked test set (confirmatory, one-time touch)",mlp,brier_score_recalibrated,0.071485,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=recalibrated"
+"locked test set (confirmatory, one-time touch)",mlp,ece_recalibrated,0.026373,,,NOT COMPUTED,results/calibration/test_set_calibration_final.csv,"model=mlp, variant=recalibrated"
