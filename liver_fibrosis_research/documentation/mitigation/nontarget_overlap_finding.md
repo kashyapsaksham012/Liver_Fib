@@ -44,6 +44,25 @@ This directly explains two downstream observations:
    change (+5.27pp) exceeds the protocol's pre-specified ±5pp tolerance (§8) — a direct
    consequence of the same broad overlap, not an isolated anomaly.
 
+**Sharper consequence, confirmed via the Part 13 reproducibility rerun**: for the 4 models that
+target *both* dimensions (Random Forest, XGBoost, LightGBM, MLP), the reported "BMI-Obese,
+coverage_after" value is **not** purely the effect of the BMI-specific threshold. Because
+`phase7_04_final_test_touch.py` applies target dimensions in order (`bmi` then `age`), the
+294 participants who are both Obese and 60+ have their final prediction-set membership
+determined by the **age**-specific threshold, which then feeds into the "Obese" category's
+coverage average too (since those 294 people are counted in both tabulations). An isolated
+reproducibility check that evaluated each target combination independently (ignoring this
+overwrite order) initially produced BMI-Obese coverage values 1.8–4.5 percentage points
+different from the official ones for these 4 models — not because the pipeline is
+non-deterministic, but because that initial check's own methodology didn't replicate the exact
+tie-break. Once corrected to replicate the same sequential order, all 9 values reproduced exactly
+(max diff ~3×10⁻⁷, pure rounding noise). **This is disclosed as a genuine limitation of this
+mitigation's per-dimension reporting, not as a reproducibility failure of the underlying
+pipeline**: the 5/9-vs-4/9 primary-criterion tally in the final report should be read with the
+understanding that outcomes for participants in the overlap are attributable to whichever
+threshold was applied last (age), not cleanly separable into "the BMI intervention's effect" and
+"the age intervention's effect" for those 294 people specifically.
+
 ## Implementation detail disclosed: overlap tie-breaking
 
 For the 294 participants who are both BMI-Obese and Age-60+ simultaneously, in models where both
