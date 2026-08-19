@@ -206,6 +206,113 @@ frozen mitigation protocol (`MITIGATION_PROTOCOL_FREEZE.md`) is a **separate** c
 Commit B), not bundled into `de7ff5b` as might be assumed from a cursory read — an even stronger
 separation between justification and protocol than the minimum required.
 
+## BMI × Age Intersection: Mitigation Threshold Precedence and Interpretation
+
+**Added by a second, dedicated closure pass (2026-08-19), building directly on the section
+above.** This section does not delete or contradict the prior overlap-disaggregation result — it
+traces, for the first time, *which threshold rule was actually applied* to the 294-person
+intersection, using direct code inspection (not inference from variable names or the prior
+report's own prose) of `src/phase7_04_final_test_touch.py`. This is a closure clarification, not
+a new mitigation experiment: no test set was reopened, no prediction was regenerated, no
+threshold was recomputed. Full detail:
+`results/mitigation/threshold_precedence_audit.csv`,
+`results/mitigation/intersection_participant_level_audit.csv`,
+`src/phase7_06_threshold_precedence_audit.py`.
+
+**1. Why the issue matters:** the prior closure section reported model-dependent intersection
+patterns ("possible overlap-associated benefit" for Logistic/XGBoost, "additive" for Random
+Forest/LightGBM, "no clear effect" for MLP) without verifying *which single rule*, if any,
+actually governed the 294 intersection participants' mitigated outcomes. Without that,
+"overlap-associated" risks implying a combined or joint BMI+Age effect that may not exist in the
+implementation at all.
+
+**2. Four-way subgroup structure:** unchanged from the prior section — BMI-Obese only (N=589),
+Age-60+ only (N=447), Intersection (N=294), Neither (N=816).
+
+**3. Threshold assignment logic, confirmed by direct code inspection:**
+`src/phase7_04_final_test_touch.py`'s `TARGET_COMBINATIONS` is a plain Python **list**
+`[("bmi","Obese",...), ("age","60+",...)]`, iterated in a single `for` loop with a numpy
+array-index assignment (`after_in_set[mask] = sub_in_set`) — bmi processed first, age second,
+each subsequent assignment overwriting any prior one for the same participant. **No dictionary,
+no blended value, no combined/joint threshold computation exists anywhere in
+`src/phase7_02_mitigation_implementation.py` or `src/phase7_04_final_test_touch.py`** (verified:
+zero matches for "combined"/"joint"/"dual"/"both" in the implementation script). **This
+definitively rules out Interpretation A (true dual mitigation) for all 5 models** — no
+participant, in any model, is ever governed by a blend of both thresholds.
+
+**4. Model-specific precedence (verified per participant, not just per rule):**
+
+| Model | Is BMI a target? | Is Age a target? | Intersection outcome | Classification |
+|---|---|---|---|---|
+| Logistic | Yes | **No** | BMI threshold applied, uncontested (Age was never computed for this model) | Not a "priority" contest — BMI is the *only* rule that ever exists for Logistic |
+| Random Forest | Yes | Yes | Age threshold **overwrites** BMI threshold | Interpretation B — Age-priority |
+| XGBoost | Yes | Yes | Age threshold **overwrites** BMI threshold | Interpretation B — Age-priority |
+| LightGBM | Yes | Yes | Age threshold **overwrites** BMI threshold | Interpretation B — Age-priority |
+| MLP | Yes | Yes | Age threshold **overwrites** BMI threshold | Interpretation B — Age-priority |
+
+**Verifying the "4 of 5" claim precisely:** the claim is correct, but its framing needs
+precision. It is **not** that "4 of 5 models use age-priority logic while 1 uses BMI-priority
+logic" (which would imply Logistic runs a genuine, symmetric competing-rule contest that BMI
+happens to win). Logistic never runs a contest at all — Age is simply not a target dimension for
+Logistic (established back in the Phase 7 justification determination: Logistic's Age-60+
+sensitivity disparity never reached Phase 5 FDR significance, so it was never in the frozen
+target set to begin with). The correct statement: **4 of 5 models (Random Forest, XGBoost,
+LightGBM, MLP) show genuine, contested Age-overwrites-BMI precedence; the 5th (Logistic) applies
+BMI uncontested because it has no competing rule.** This is **Interpretation D (model-specific
+precedence)** — but the "model-specific" difference is fully explained by which dimensions are
+targets for each model (established at the justification stage, Part 3 of the original Phase 7
+task), not by any model-specific code branching in the threshold-assignment logic itself, which
+is identical across all 5 models.
+
+**5–6. Intersection baseline and mitigated coverage:** unchanged from the prior section (65–75%
+baseline, 75.9–84.4% after mitigation, worst of the four groups both before and after, for every
+model).
+
+**7–8. Reassessing the "overlap-associated benefit" labels:** given the code-level finding above,
+every model's intersection result — regardless of magnitude — reflects the effect of **exactly
+one** winning rule (BMI for Logistic; Age for the other 4) measured on a specific demographic
+sub-population, never a combination. This requires revising, not just restating, the prior
+labels:
+
+- **Logistic** (previously "possible overlap-associated benefit," +14.97pp): this is the
+  **BMI-Obese threshold's effect specifically within the sub-slice of Obese participants who are
+  also 60+**. It is not evidence of an overlap or joint effect — Age's rule was never applied.
+- **XGBoost** (previously "possible overlap-associated benefit," +15.65pp): this is the
+  **Age-60+ threshold's effect specifically within the sub-slice of 60+ participants who are
+  also Obese** — the largest such effect among the 4 Age-priority models, but mechanistically
+  the same single-rule phenomenon as Random Forest and LightGBM's smaller effects, not a
+  qualitatively different "overlap-specific" phenomenon.
+- **Random Forest and LightGBM** (previously "additive"): same single-rule (Age) mechanism as
+  XGBoost, just numerically smaller. "Additive" is not the correct mechanistic description either
+  — there is no addition occurring, only one rule's effect at a different magnitude.
+  Renamed here: **single-rule (Age) effect, moderate magnitude**.
+- **MLP** (previously "no clear overlap-specific effect"): also the Age-only mechanism,
+  consistent with the others; the label itself remains accurate under the corrected framing.
+
+**The revised, unified statement, supported directly by code evidence:** *no model in this Phase
+7 mitigation ever implements or evaluates a genuine combined BMI+Age dual-mitigation rule. Every
+intersection result, in all 5 models, reflects one single winning threshold rule (Age for 4
+models, BMI for Logistic) measured on a specific demographic sub-population. The magnitude
+differences between models are real and are reported as such, but they characterize how
+effectively that one rule performs on this particular sub-slice — they are not evidence of a
+combined, joint, or interactive BMI×Age mitigation effect for any model.*
+
+**9. Sample-size limitation (preserved, unchanged):** N=294 for the intersection; no confidence
+interval exists at this granularity in any frozen artifact (`ci_before`/`ci_after` fields in the
+underlying CSVs where computed are at the four-way-group level, not further decomposed by
+threshold source); magnitude differences between the 4 Age-priority models could partly reflect
+sampling variability rather than a stable, model-dependent difference in how well the Age
+threshold generalizes to the Obese sub-slice specifically.
+
+**10. Whether any additional experiment is required:** **No.** The existing frozen artifacts
+(`test_set_prediction_sets.csv`, `group_specific_thresholds.csv`, and the implementation source
+code itself) were sufficient to fully trace and explain the threshold-precedence mechanism
+without any new test-set touch, prediction regeneration, or protocol change. A genuinely combined
+BMI+Age dual-mitigation rule was never implemented and evaluating one would require a new,
+separately-frozen protocol (Part 13 Option B) — but that is a candidate for a *future* phase, not
+a gap requiring immediate remediation of this closed Phase 7 result. The single-rule precedence
+finding is a valid, evidence-complete answer to the question this closure task asked.
+
 ## 16. Trade-Off Analysis
 
 | Metric | Baseline | Mitigated | Difference | Interpretation |
