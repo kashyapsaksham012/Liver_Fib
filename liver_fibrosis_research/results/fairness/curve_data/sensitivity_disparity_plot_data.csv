@@ -1,0 +1,56 @@
+generated,model,dimension,category,reference_group,n,n_positive,n_negative,precision_tier,subgroup_sensitivity,reference_sensitivity,absolute_disparity_pp,ci_lower_pp,ci_upper_pp,raw_p_bootstrap,bh_fdr_adjusted_p,significant_after_fdr_0.05,meaningful_disparity_ge_10pp_and_ci_excludes_zero,label
+2026-08-19 12:37:50,logistic,bmi,Underweight,Normal,,1,27,insufficient evidence,0.0,0.409091,-40.9091,-62.5,-20.0,0.0,0.0,True,True,bmi: Underweight
+2026-08-19 12:37:50,logistic,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,,14,227,limited precision,0.571429,0.794118,-22.2689,-50.7744,5.8856,0.11,0.528333,False,False,race_ethnicity: Non-Hispanic Asian
+2026-08-19 12:37:50,logistic,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,,11,102,limited precision,0.636364,0.794118,-15.7754,-46.4392,14.5614,0.317,0.528333,False,False,race_ethnicity: Other Race / Multi-Racial
+2026-08-19 12:37:50,logistic,age,18-39,40-59,,33,707,exploratory candidate,0.666667,0.818182,-15.1515,-34.0848,3.9708,0.132,0.195,False,False,age: 18-39
+2026-08-19 12:37:50,logistic,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,,50,500,exploratory candidate,0.7,0.794118,-9.4118,-26.0319,6.7712,0.27,0.528333,False,False,race_ethnicity: Non-Hispanic Black
+2026-08-19 12:37:50,logistic,age,60+,40-59,,101,640,primary-feasibility candidate,0.732673,0.818182,-8.5509,-21.0158,4.2124,0.195,0.195,False,False,age: 60+
+2026-08-19 12:37:50,logistic,sex,Female,Male,,78,1021,exploratory candidate,0.730769,0.762295,-3.1526,-15.816,9.4981,0.625,0.625,False,False,sex: Female
+2026-08-19 12:37:50,logistic,race_ethnicity,Mexican American,Non-Hispanic White,,31,218,exploratory candidate,0.806452,0.794118,1.2334,-16.4815,17.4619,0.86,0.869,False,False,race_ethnicity: Mexican American
+2026-08-19 12:37:50,logistic,race_ethnicity,Other Hispanic,Non-Hispanic White,,26,216,limited precision,0.807692,0.794118,1.3575,-17.2199,19.7155,0.869,0.869,False,False,race_ethnicity: Other Hispanic
+2026-08-19 12:37:50,logistic,bmi,Overweight,Normal,,37,636,exploratory candidate,0.459459,0.409091,5.0369,-22.3049,30.7384,0.698,0.698,False,False,bmi: Overweight
+2026-08-19 12:37:50,logistic,bmi,Obese,Normal,,140,743,primary-feasibility candidate,0.885714,0.409091,47.6623,25.6847,69.5017,0.0,0.0,True,True,bmi: Obese
+2026-08-19 12:37:50,random_forest,bmi,Underweight,Normal,,1,27,insufficient evidence,0.0,0.590909,-59.0909,-80.0,-37.037,0.0,0.0,True,True,bmi: Underweight
+2026-08-19 12:37:50,random_forest,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,,14,227,limited precision,0.5,0.838235,-33.8235,-62.102,-3.1247,0.029,0.145,False,True,race_ethnicity: Non-Hispanic Asian
+2026-08-19 12:37:50,random_forest,age,18-39,40-59,,33,707,exploratory candidate,0.666667,0.893939,-22.7273,-40.8337,-5.3301,0.008,0.016,True,True,age: 18-39
+2026-08-19 12:37:50,random_forest,age,60+,40-59,,101,640,primary-feasibility candidate,0.762376,0.893939,-13.1563,-23.8882,-1.954,0.026,0.026,True,True,age: 60+
+2026-08-19 12:37:50,random_forest,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,,11,102,limited precision,0.727273,0.838235,-11.0963,-41.1332,16.2213,0.472,0.7725,False,False,race_ethnicity: Other Race / Multi-Racial
+2026-08-19 12:37:50,random_forest,bmi,Overweight,Normal,,37,636,exploratory candidate,0.486486,0.590909,-10.4423,-35.7143,16.6384,0.437,0.437,False,False,bmi: Overweight
+2026-08-19 12:37:50,random_forest,race_ethnicity,Other Hispanic,Non-Hispanic White,,26,216,limited precision,0.769231,0.838235,-6.9005,-26.615,11.3908,0.468,0.7725,False,False,race_ethnicity: Other Hispanic
+2026-08-19 12:37:50,random_forest,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,,50,500,exploratory candidate,0.8,0.838235,-3.8235,-18.1841,10.1473,0.618,0.7725,False,False,race_ethnicity: Non-Hispanic Black
+2026-08-19 12:37:50,random_forest,race_ethnicity,Mexican American,Non-Hispanic White,,31,218,exploratory candidate,0.83871,0.838235,0.0474,-16.0215,14.9515,0.991,0.991,False,False,race_ethnicity: Mexican American
+2026-08-19 12:37:50,random_forest,sex,Female,Male,,78,1021,exploratory candidate,0.820513,0.770492,5.0021,-5.9719,16.4917,0.391,0.391,False,False,sex: Female
+2026-08-19 12:37:50,random_forest,bmi,Obese,Normal,,140,743,primary-feasibility candidate,0.907143,0.590909,31.6234,10.2285,53.357,0.004,0.006,True,True,bmi: Obese
+2026-08-19 12:37:50,xgboost,bmi,Underweight,Normal,,1,27,insufficient evidence,0.0,0.636364,-63.6364,-83.3333,-41.6667,0.0,0.0,True,True,bmi: Underweight
+2026-08-19 12:37:50,xgboost,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,,14,227,limited precision,0.571429,0.897059,-32.563,-60.2942,-5.7911,0.015,0.075,False,True,race_ethnicity: Non-Hispanic Asian
+2026-08-19 12:37:50,xgboost,age,18-39,40-59,,33,707,exploratory candidate,0.787879,0.924242,-13.6364,-29.8246,1.2222,0.075,0.075,False,False,age: 18-39
+2026-08-19 12:37:50,xgboost,age,60+,40-59,,101,640,primary-feasibility candidate,0.811881,0.924242,-11.2361,-20.8628,-1.8252,0.016,0.032,True,True,age: 60+
+2026-08-19 12:37:50,xgboost,race_ethnicity,Mexican American,Non-Hispanic White,,31,218,exploratory candidate,0.83871,0.897059,-5.8349,-21.8594,7.8853,0.412,0.686667,False,False,race_ethnicity: Mexican American
+2026-08-19 12:37:50,xgboost,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,,50,500,exploratory candidate,0.84,0.897059,-5.7059,-17.6824,7.0064,0.372,0.686667,False,False,race_ethnicity: Non-Hispanic Black
+2026-08-19 12:37:50,xgboost,race_ethnicity,Other Hispanic,Non-Hispanic White,,26,216,limited precision,0.846154,0.897059,-5.0905,-20.713,10.1011,0.586,0.7325,False,False,race_ethnicity: Other Hispanic
+2026-08-19 12:37:50,xgboost,bmi,Overweight,Normal,,37,636,exploratory candidate,0.594595,0.636364,-4.1769,-31.2368,21.3781,0.752,0.752,False,False,bmi: Overweight
+2026-08-19 12:37:50,xgboost,sex,Female,Male,,78,1021,exploratory candidate,0.833333,0.852459,-1.9126,-12.8894,8.7811,0.732,0.732,False,False,sex: Female
+2026-08-19 12:37:50,xgboost,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,,11,102,limited precision,0.909091,0.897059,1.2032,-21.9708,15.9099,0.842,0.842,False,False,race_ethnicity: Other Race / Multi-Racial
+2026-08-19 12:37:50,xgboost,bmi,Obese,Normal,,140,743,primary-feasibility candidate,0.95,0.636364,31.3636,11.1043,53.5666,0.002,0.003,True,True,bmi: Obese
+2026-08-19 12:37:50,lightgbm,bmi,Underweight,Normal,,1,27,insufficient evidence,0.0,0.636364,-63.6364,-82.3657,-42.1053,0.0,0.0,True,True,bmi: Underweight
+2026-08-19 12:37:50,lightgbm,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,,14,227,limited precision,0.571429,0.823529,-25.2101,-54.0,1.5392,0.067,0.335,False,False,race_ethnicity: Non-Hispanic Asian
+2026-08-19 12:37:50,lightgbm,age,18-39,40-59,,33,707,exploratory candidate,0.727273,0.893939,-16.6667,-34.7677,0.16,0.053,0.053,False,False,age: 18-39
+2026-08-19 12:37:50,lightgbm,bmi,Overweight,Normal,,37,636,exploratory candidate,0.486486,0.636364,-14.9877,-39.2901,11.8829,0.287,0.287,False,False,bmi: Overweight
+2026-08-19 12:37:50,lightgbm,age,60+,40-59,,101,640,primary-feasibility candidate,0.752475,0.893939,-14.1464,-24.9452,-2.2097,0.017,0.034,True,True,age: 60+
+2026-08-19 12:37:50,lightgbm,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,,11,102,limited precision,0.727273,0.823529,-9.6257,-41.0352,18.3099,0.523,0.997,False,False,race_ethnicity: Other Race / Multi-Racial
+2026-08-19 12:37:50,lightgbm,race_ethnicity,Mexican American,Non-Hispanic White,,31,218,exploratory candidate,0.806452,0.823529,-1.7078,-18.0282,14.4686,0.846,0.997,False,False,race_ethnicity: Mexican American
+2026-08-19 12:37:50,lightgbm,race_ethnicity,Other Hispanic,Non-Hispanic White,,26,216,limited precision,0.807692,0.823529,-1.5837,-20.7813,15.5815,0.879,0.997,False,False,race_ethnicity: Other Hispanic
+2026-08-19 12:37:50,lightgbm,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,,50,500,exploratory candidate,0.82,0.823529,-0.3529,-14.9881,12.6436,0.997,0.997,False,False,race_ethnicity: Non-Hispanic Black
+2026-08-19 12:37:50,lightgbm,sex,Female,Male,,78,1021,exploratory candidate,0.794872,0.795082,-0.021,-11.4357,12.0202,0.999,0.999,False,False,sex: Female
+2026-08-19 12:37:50,lightgbm,bmi,Obese,Normal,,140,743,primary-feasibility candidate,0.907143,0.636364,27.0779,6.7666,48.5048,0.004,0.006,True,True,bmi: Obese
+2026-08-19 12:37:50,mlp,bmi,Underweight,Normal,,1,27,insufficient evidence,0.0,0.545455,-54.5455,-75.0,-33.3333,0.0,0.0,True,True,bmi: Underweight
+2026-08-19 12:37:50,mlp,age,60+,40-59,,101,640,primary-feasibility candidate,0.762376,0.909091,-14.6715,-25.5505,-4.0274,0.006,0.012,True,True,age: 60+
+2026-08-19 12:37:50,mlp,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,,14,227,limited precision,0.714286,0.852941,-13.8655,-43.7039,9.3711,0.288,0.72,False,False,race_ethnicity: Non-Hispanic Asian
+2026-08-19 12:37:50,mlp,age,18-39,40-59,,33,707,exploratory candidate,0.787879,0.909091,-12.1212,-27.9388,2.6979,0.128,0.128,False,False,age: 18-39
+2026-08-19 12:37:50,mlp,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,,50,500,exploratory candidate,0.74,0.852941,-11.2941,-26.2408,3.217,0.137,0.685,False,False,race_ethnicity: Non-Hispanic Black
+2026-08-19 12:37:50,mlp,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,,11,102,limited precision,0.818182,0.852941,-3.4759,-33.6833,18.5217,0.801,0.952,False,False,race_ethnicity: Other Race / Multi-Racial
+2026-08-19 12:37:50,mlp,sex,Female,Male,,78,1021,exploratory candidate,0.807692,0.819672,-1.198,-12.7693,10.3536,0.865,0.865,False,False,sex: Female
+2026-08-19 12:37:50,mlp,race_ethnicity,Other Hispanic,Non-Hispanic White,,26,216,limited precision,0.846154,0.852941,-0.6787,-18.2081,14.7645,0.952,0.952,False,False,race_ethnicity: Other Hispanic
+2026-08-19 12:37:50,mlp,bmi,Overweight,Normal,,37,636,exploratory candidate,0.540541,0.545455,-0.4914,-27.7812,26.667,0.951,0.951,False,False,bmi: Overweight
+2026-08-19 12:37:50,mlp,race_ethnicity,Mexican American,Non-Hispanic White,,31,218,exploratory candidate,0.870968,0.852941,1.8027,-13.3424,16.0234,0.76,0.952,False,False,race_ethnicity: Mexican American
+2026-08-19 12:37:50,mlp,bmi,Obese,Normal,,140,743,primary-feasibility candidate,0.935714,0.545455,39.026,18.6747,60.6754,0.0,0.0,True,True,bmi: Obese
