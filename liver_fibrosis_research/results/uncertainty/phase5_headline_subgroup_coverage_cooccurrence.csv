@@ -1,0 +1,11 @@
+model,dimension,category,n,empirical_coverage,ci_lower,ci_upper,ci_excludes_target,absolute_disparity_pp,sensitivity_disparity_meaningful,sensitivity_disparity_fdr_significant
+logistic,age,60+,741,0.848853,0.821267,0.87284,True,-8.5509,False,False
+logistic,bmi,Obese,883,0.82333,0.796789,0.847069,True,47.6623,True,True
+random_forest,age,60+,741,0.855601,0.828457,0.879076,True,-13.1563,True,True
+random_forest,bmi,Obese,883,0.801812,0.774236,0.826773,True,31.6234,True,True
+xgboost,age,60+,741,0.811066,0.781304,0.83762,True,-11.2361,True,True
+xgboost,bmi,Obese,883,0.767837,0.738865,0.794489,True,31.3636,True,True
+lightgbm,age,60+,741,0.847503,0.819831,0.871591,True,-14.1464,True,True
+lightgbm,bmi,Obese,883,0.791619,0.763596,0.817117,True,27.0779,True,True
+mlp,age,60+,741,0.838057,0.809799,0.862827,True,-14.6715,True,True
+mlp,bmi,Obese,883,0.808607,0.781344,0.833196,True,39.026,True,True
