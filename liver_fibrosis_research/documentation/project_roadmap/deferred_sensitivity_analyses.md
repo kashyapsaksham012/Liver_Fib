@@ -4,6 +4,15 @@
 counts, and rationale taken verbatim from the authoritative frozen source,
 `documentation/phase2/sensitivity_analysis_plan.md` (read live this pass, not from memory).
 
+**Updated:** 2026-08-19, per the "Targeted Sensitivity Analysis Before Phase 8" task (Part 16).
+Item 4 (multiple imputation) has now been **executed**, narrowly scoped to the Non-Hispanic Black
+complete-case-exclusion question — see `MULTIPLE_IMPUTATION_SENSITIVITY_RESULTS_REPORT.md` for the
+full result. Items 1–3 remain deferred; this update reaffirms their status explicitly so none is
+silently forgotten as a side effect of item 4's execution. Executing item 4 did not authorize,
+imply, or begin execution of items 1–3 — each remains a fully separate, independently-scoped piece
+of future work. Deferred due to scope/time considerations; not used to alter the primary analysis
+or conclusions.
+
 This document is the single, dedicated tracking record for the 4 Phase-2-frozen sensitivity
 analyses. It supersedes the prose-only tracking previously embedded in
 `PHASE5_FAIRNESS_RESULTS_REPORT.md` §21–22 and `PHASE6_UNCERTAINTY_RESULTS_REPORT.md` §19 (those
@@ -14,52 +23,62 @@ sections remain valid as historical record; this document is the authoritative, 
 | Field | Value |
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 1) |
-| Reason for deferral | Two candidate thresholds are both defensible; a low-cost robustness check on the primary threshold choice |
-| Current status | **NOT EXECUTED** |
+| Reason for deferral | Two candidate thresholds are both defensible; a low-cost robustness check on the primary threshold choice. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
+| Current status | **NOT EXECUTED** — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
 | Any execution occurred? | No — no model, prediction, or calibration artifact exists anywhere in the repository for an 8.0kPa outcome definition (verified: no such file found in this or prior audit passes) |
 | Authorized for a specific future phase? | Not yet formally scheduled |
 | Retraining required? | **Yes** — requires re-deriving the outcome column and refitting all 5 models |
 | Priority | Medium — a standard robustness check, no specific finding depends on it |
+| Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
+| Recommended future-work status | Candidate for a future dedicated sensitivity-analysis phase, not urgent |
 
 ## 2. Alternative elastography eligibility (CAND_2, N=7,639 vs. primary CAND_1, N=7,153)
 
 | Field | Value |
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 2) |
-| Reason for deferral | Phase 1 could not assume the two eligibility populations behave identically |
-| Current status | **NOT EXECUTED** |
+| Reason for deferral | Phase 1 could not assume the two eligibility populations behave identically. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
+| Current status | **NOT EXECUTED** — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
 | Any execution occurred? | No |
 | Authorized for a specific future phase? | Not yet formally scheduled |
 | Retraining required? | **Yes** — requires rebuilding the cohort and refitting all 5 models |
 | Priority | Medium |
+| Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
+| Recommended future-work status | Candidate for a future dedicated sensitivity-analysis phase, not urgent |
 
 ## 3. Broad-lab (primary) vs. fasting-extended (secondary) predictor architecture
 
 | Field | Value |
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 3) |
-| Reason for deferral | Already elevated to a full SECONDARY analysis (not merely a sensitivity check) per `statistical_analysis_plan.md`, given its importance to the metabolic-signal question |
-| Current status | **NOT EXECUTED** (as either a secondary analysis or a sensitivity check) |
+| Reason for deferral | Already elevated to a full SECONDARY analysis (not merely a sensitivity check) per `statistical_analysis_plan.md`, given its importance to the metabolic-signal question. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
+| Current status | **NOT EXECUTED** (as either a secondary analysis or a sensitivity check) — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
 | Any execution occurred? | No |
 | Authorized for a specific future phase? | Not yet formally scheduled |
 | Retraining required? | **Yes** — different predictor set (12 predictors, adds glucose/triglycerides), full refit |
 | Priority | Medium-High — already a SECONDARY analysis by Phase 2's own classification, not a lower-tier sensitivity check |
+| Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
+| Recommended future-work status | Higher priority than items 1/2 given its SECONDARY classification; recommended for the next dedicated analysis phase |
 
 ## 4. Complete-case (primary) vs. multiple-imputation missing-data strategy
 
 | Field | Value |
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 4) |
-| Reason for deferral | The concrete, documented differential-missingness finding for Non-Hispanic Black participants (41.3% of complete-case exclusions vs. 25.0% of retained, `missing_data_protocol.md`) — a targeted response to a real finding, not a generic robustness check |
-| Current status | **NOT EXECUTED** — confirmed exhaustively this pass: `find . -iname "*imput*"` across the entire repository returns zero results; no imputation model, imputed dataset, or imputation-derived prediction/calibration artifact exists anywhere; no git commit has ever added such a file; the only "impute" string matches in `src/phase6_*.py` are the unrelated, standard `SimpleImputer(strategy="median")` preprocessing no-op used throughout Phases 1–6 (0% missingness in the primary cohort, so this step is defensive, not a missing-data strategy) |
-| Authorized for a specific future phase? | Not yet formally scheduled |
-| Retraining required? | **Yes** — requires constructing an imputed dataset, an imputation model, and refitting all 5 models on it |
-| Priority | **High** — directly interpretively relevant to the race/ethnicity fairness findings (Phase 5) and to the Non-Hispanic Black subgroup coverage result (Phase 6), because it bears on whether the analysis population itself is representative of the source population for that group. **This is a sensitivity analysis, not a primary analysis, and remains so unless a later formal protocol explicitly changes its scientific status** — it has not been silently promoted. |
+| Reason originally deferred | The concrete, documented differential-missingness finding for Non-Hispanic Black participants (41.3% of complete-case exclusions vs. 25.0% of retained, `missing_data_protocol.md`) — a targeted response to a real finding, not a generic robustness check |
+| Current status | **EXECUTED 2026-08-19** — see `MULTIPLE_IMPUTATION_SENSITIVITY_RESULTS_REPORT.md`, `results/sensitivity/mi_black_subgroup_comparison.csv`, and Amendment #12 in `documentation/end_to_end/protocol_amendment_registry.md` |
+| Scope of execution | Narrowly targeted to the Non-Hispanic Black CV-OOF sensitivity/FNR question only, per the "Targeted Sensitivity Analysis Before Phase 8" task — NOT a full re-run of Phase 3 model comparison, Phase 4 calibration, Phase 5 fairness for every subgroup, Phase 6 uncertainty, or Phase 7 mitigation |
+| Result summary | m=5 imputations (`IterativeImputer(BayesianRidge(), sample_posterior=True)`), full pool N=7,768 vs. complete-case N=7,153; Black subgroup N grew from 1,787 (complete-case) to 2,041 (MI pool). Complete-case-vs-MI sensitivity difference was not significant after BH-FDR correction for any of the 5 models (all adjusted p=0.978); 4/5 models classified STABLE UNDER MI, 1/5 (MLP) classified INDETERMINATE (point estimate +4.2pp, but CI includes zero). No model showed a reversed or materially strengthened disparity. |
+| Authorized for a specific future phase? | Complete — no further scheduling needed for this narrow question |
+| Retraining required? | Already performed (CV-OOF refit only, frozen hyperparameters, never touching the locked test set) |
+| Priority | Resolved for the Non-Hispanic Black question. **This remains a sensitivity analysis, not a primary analysis** — it has not been silently promoted, and its result does not alter the frozen primary cohort, outcome, predictor set, or any Phase 3–7 conclusion. |
+| Uncertainty/conformal-coverage comparison under MI | **NOT AUTHORIZED** by the frozen `missing_data_protocol.md` (confirmed via full re-read: no Phase-6-era conformal-coverage language exists in that document) and explicitly not performed in this task — remains a genuinely open, separately-scoped future question if a later protocol amendment authorizes it |
 
 ## Governing rule (unchanged from Phase 2)
 
 Per `sensitivity_analysis_plan.md`'s own governing rule: these 4 (plus the already-elevated
 secondary architecture, item 3) are the complete, fixed set. Adding a new sensitivity analysis
-after seeing results requires a logged protocol amendment, not an ad hoc addition. None of the 4
-has been executed as of this document; none has been silently marked complete because related
-context was discussed in a report.
+after seeing results requires a logged protocol amendment, not an ad hoc addition. As of this
+2026-08-19 update, item 4 has been executed (narrowly, per its documented scope above); items 1–3
+remain not executed. None has been silently marked complete because related context was discussed
+in a report — this document is the explicit, current status record for all 4.
