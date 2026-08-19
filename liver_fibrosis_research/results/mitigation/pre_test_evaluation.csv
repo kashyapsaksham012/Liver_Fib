@@ -1,0 +1,10 @@
+model,dimension,category,same_data_threshold,same_data_n,same_data_coverage,same_data_note,split_half_fit_n,split_half_eval_n,split_half_threshold,split_half_coverage,split_half_ci_lower,split_half_ci_upper,split_half_ci_includes_90pct
+logistic,bmi,Obese,0.742807,407,0.904177,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",203,204,0.743969,0.916667,0.87061,0.947321,True
+random_forest,bmi,Obese,0.709641,407,0.904177,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",203,204,0.728119,0.916667,0.87061,0.947321,True
+xgboost,bmi,Obese,0.765248,407,0.904177,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",203,204,0.778858,0.921569,0.876405,0.951148,True
+lightgbm,bmi,Obese,0.75965,407,0.904177,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",203,204,0.770331,0.936275,0.894038,0.962384,True
+mlp,bmi,Obese,0.752921,407,0.904177,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",203,204,0.750115,0.897059,0.84776,0.93168,True
+random_forest,age,60+,0.642389,339,0.902655,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",169,170,0.662392,0.917647,0.866524,0.950312,True
+xgboost,age,60+,0.731914,339,0.902655,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",169,170,0.736927,0.917647,0.866524,0.950312,True
+lightgbm,age,60+,0.689715,339,0.902655,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",169,170,0.714523,0.923529,0.873573,0.954768,True
+mlp,age,60+,0.558676,339,0.902655,"circular by construction -- expected close to 90%, not real evidence, mirrors Phase 4's disclosed OOF check",169,170,0.569331,0.905882,0.852591,0.941236,True
