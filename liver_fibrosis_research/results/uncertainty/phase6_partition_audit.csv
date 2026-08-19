@@ -1,0 +1,4 @@
+partition,file,sha256,n,positives,negatives,overlap_with_proper_train,overlap_with_conformal_calibration,overlap_with_test,verification_status
+proper_train,data/processed/splits/proper_train_ids.csv,bc29dbe6402ffb82790801a97d6baf26732f6964bf77741a8f716e78dab01fef,4005,373,3632,n/a,0,0,PASS
+conformal_calibration,data/processed/splits/conformal_calibration_ids.csv,4d696cbcd0f2aecfd07dd7b223825df10c39bbfaf3f093a117e4c224b6c5b3c5,1002,93,909,0,n/a,0,PASS
+test,data/processed/splits/test_ids.csv,a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779,2146,200,1946,0,0,n/a,PASS
