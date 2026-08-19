@@ -1,0 +1,31 @@
+generated,population,dimension,category,is_reference_group,n,n_positive,n_negative,prevalence_pct,precision_tier
+2026-08-19 12:31:15,full_primary_cohort,sex,Female,False,3622,272,3350,7.5097,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,sex,Male,True,3531,394,3137,11.1583,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,race_ethnicity,Mexican American,False,902,94,808,10.4213,exploratory candidate
+2026-08-19 12:31:15,full_primary_cohort,race_ethnicity,Non-Hispanic Asian,False,866,52,814,6.0046,exploratory candidate
+2026-08-19 12:31:15,full_primary_cohort,race_ethnicity,Non-Hispanic Black,False,1787,177,1610,9.9049,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,race_ethnicity,Non-Hispanic White,True,2484,237,2247,9.5411,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,race_ethnicity,Other Hispanic,False,754,69,685,9.1512,exploratory candidate
+2026-08-19 12:31:15,full_primary_cohort,race_ethnicity,Other Race / Multi-Racial,False,360,37,323,10.2778,exploratory candidate
+2026-08-19 12:31:15,full_primary_cohort,age,18-39,False,2423,122,2301,5.0351,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,age,40-59,True,2318,221,2097,9.5341,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,age,60+,False,2412,323,2089,13.3914,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,bmi,Normal,True,1802,72,1730,3.9956,exploratory candidate
+2026-08-19 12:31:15,full_primary_cohort,bmi,Obese,False,2926,468,2458,15.9945,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,bmi,Overweight,False,2316,121,2195,5.2245,primary-feasibility candidate
+2026-08-19 12:31:15,full_primary_cohort,bmi,Underweight,False,109,5,104,4.5872,insufficient evidence
+2026-08-19 12:31:15,locked_test_set,sex,Female,False,1099,78,1021,7.0974,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,sex,Male,True,1047,122,925,11.6523,primary-feasibility candidate
+2026-08-19 12:31:15,locked_test_set,race_ethnicity,Mexican American,False,249,31,218,12.4498,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,race_ethnicity,Non-Hispanic Asian,False,241,14,227,5.8091,limited precision
+2026-08-19 12:31:15,locked_test_set,race_ethnicity,Non-Hispanic Black,False,550,50,500,9.0909,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,race_ethnicity,Non-Hispanic White,True,751,68,683,9.0546,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,race_ethnicity,Other Hispanic,False,242,26,216,10.7438,limited precision
+2026-08-19 12:31:15,locked_test_set,race_ethnicity,Other Race / Multi-Racial,False,113,11,102,9.7345,limited precision
+2026-08-19 12:31:15,locked_test_set,age,18-39,False,740,33,707,4.4595,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,age,40-59,True,665,66,599,9.9248,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,age,60+,False,741,101,640,13.6302,primary-feasibility candidate
+2026-08-19 12:31:15,locked_test_set,bmi,Normal,True,562,22,540,3.9146,limited precision
+2026-08-19 12:31:15,locked_test_set,bmi,Obese,False,883,140,743,15.855,primary-feasibility candidate
+2026-08-19 12:31:15,locked_test_set,bmi,Overweight,False,673,37,636,5.4978,exploratory candidate
+2026-08-19 12:31:15,locked_test_set,bmi,Underweight,False,28,1,27,3.5714,insufficient evidence
