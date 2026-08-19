@@ -1,0 +1,6 @@
+model,bmi_only_change_pp,age_only_change_pp,intersection_change_pp,neither_change_pp,pattern_classification
+logistic,3.056,0.0,14.966,0.0,"PATTERN A -- POSSIBLE OVERLAP-ASSOCIATED BENEFIT (descriptive only, not a causal claim)"
+random_forest,8.1494,1.1186,5.4422,0.0,PATTERN B -- CONSISTENT WITH SHARED/ADDITIVE EFFECT
+xgboost,7.9796,4.4743,15.6463,0.0,"PATTERN A -- POSSIBLE OVERLAP-ASSOCIATED BENEFIT (descriptive only, not a causal claim)"
+lightgbm,8.8285,0.6711,4.7619,0.0,PATTERN B -- CONSISTENT WITH SHARED/ADDITIVE EFFECT
+mlp,7.9796,1.7897,7.8231,0.0,PATTERN C -- NO CLEAR EVIDENCE OF AN OVERLAP-SPECIFIC EFFECT

@@ -151,7 +151,60 @@ rows show a coverage change — **all positive** (increases, not decreases). No 
 newly fell under 90% coverage — the literal pre-specified protection criterion held. But this was
 **not** because non-target subgroups were unaffected, as the protocol assumed — it was because
 every non-target category contains a substantial fraction of participants who are *also* in a
-target category along a different dimension. Full explanation: §16.
+target category along a different dimension. Full explanation: the new section immediately below.
+
+## BMI × Age Target Overlap and Four-Way Mitigation Disaggregation
+
+**Added by a dedicated closure pass (2026-08-19), after the original Phase 7 results below.**
+This section is additive — it clarifies the mechanism behind the 62%/13.7% overlap statement
+already reported in §16, §22 (original `nontarget_overlap_finding.md`), and elsewhere. No earlier
+finding in this report is rewritten, and no new test-set touch was performed to produce it — it
+is a re-partitioning of the already-frozen per-participant output from Commit D
+(`results/uncertainty/test_set_prediction_sets.csv` + `results/mitigation/
+group_specific_thresholds.csv`), computed by `src/phase7_05_bmi_age_overlap_analysis.py`.
+
+**A. Previously reported protection result (preserved, not reversed):** no non-target category
+newly fell under 90% coverage. This remains true and is not contradicted by anything below.
+
+**B. Newly clarified overlap structure:** the 62% "at-least-one-target-category" and 13.7%
+"both" figures decompose into four mutually exclusive groups: BMI-Obese only (N=589, 27.4%),
+Age-60+ only (N=447, 20.8%), Intersection (N=294, 13.7%), Neither (N=816, 38.0%) — reconciled
+exactly against the original totals (883 = 589+294; 741 = 447+294).
+
+**C. Four-way coverage pattern:** the intersection group has, by a wide margin, **the worst
+baseline coverage of all four groups for every model** (64.9%–75.1%, versus 82.7%–95.1% for the
+single-category groups) — a severity that was invisible in the original two-dimension-only
+reporting. After mitigation, the intersection group **remains the worst-covered of the four for
+every model** (75.9%–84.4%), despite sometimes receiving the largest absolute improvement.
+"Neither" shows exactly 0.00pp change for every model, confirming that group truly is unaffected.
+
+**D. Evidence for overlap-associated mitigation behavior:** mixed and model-dependent. Logistic
+(+15.0pp) and XGBoost (+15.6pp) show intersection improvement clearly exceeding either
+single-category component — classified **"possible overlap-associated benefit"** (descriptive,
+not a proven interaction). Random Forest and LightGBM show intersection improvement smaller than
+their largest single-category component — **"consistent with a shared/additive effect."** MLP's
+intersection change is close to its BMI-only change — **"no clear evidence of an overlap-specific
+effect."** No single pattern applies to all 5 models; this is reported as genuinely mixed, not
+forced into one conclusion.
+
+**E. Remaining uncertainty:** no confidence interval exists in any frozen artifact at this
+four-way granularity (explicitly recorded as "NOT AVAILABLE FROM EXISTING FROZEN ARTIFACT," not
+fabricated). The intersection group (N=294) is smaller than the single-category groups, so some
+of the model-to-model pattern variability may reflect sampling noise rather than a genuine
+model-dependent mechanism — this closure pass cannot distinguish the two without a new,
+properly-powered analysis. **This is not, and does not claim to be, a causal interaction test.**
+Full detail: `documentation/mitigation/phase7_bmi_age_overlap_interpretation.md` and
+`results/mitigation/bmi_age_overlap_four_way_analysis.csv`.
+
+**Provenance note (from the same closure pass):** commit `de7ff5b` (originally described as
+Commit A, justification determination) was independently re-inspected via `git show --stat`,
+`git show --name-only`, and `git diff de7ff5b^ de7ff5b`. It contains exactly 4 files: the
+justification determination CSV and MD, the pre-execution snapshot, and the justification
+script itself — zero mitigation implementation code, zero mitigation results, zero test-set
+evaluation artifacts. **Classification: PROTOCOL-ONLY — PASS.** One correction to the record: the
+frozen mitigation protocol (`MITIGATION_PROTOCOL_FREEZE.md`) is a **separate** commit (`81791db`,
+Commit B), not bundled into `de7ff5b` as might be assumed from a cursory read — an even stronger
+separation between justification and protocol than the minimum required.
 
 ## 16. Trade-Off Analysis
 
