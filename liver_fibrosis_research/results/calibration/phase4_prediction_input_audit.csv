@@ -1,0 +1,13 @@
+generated,model,tier,n_rows,n_unique_seqn,one_row_per_participant,n_missing_probability,n_inf_probability,probability_min,probability_max,probability_in_0_1,n_missing_target,target_values,target_binary_0_1,n_positive,n_negative,prevalence_pct
+2026-08-19 10:29:23,logistic,OOF (development),5007,5007,True,0,0,0.017040679338537,0.9996935227416064,True,0,"[0, 1]",True,466,4541,9.307
+2026-08-19 10:29:23,logistic,locked test (confirmatory),2146,2146,True,0,0,0.0208967413114341,0.9999999977235254,True,0,"[0, 1]",True,200,1946,9.3197
+2026-08-19 10:29:23,random_forest,OOF (development),5007,5007,True,0,0,0.0160505338766885,0.9257129067526076,True,0,"[0, 1]",True,466,4541,9.307
+2026-08-19 10:29:23,random_forest,locked test (confirmatory),2146,2146,True,0,0,0.0306906669568004,0.9471913339987468,True,0,"[0, 1]",True,200,1946,9.3197
+2026-08-19 10:29:23,xgboost,OOF (development),5007,5007,True,0,0,0.020149238,0.95271856,True,0,"[0, 1]",True,466,4541,9.307
+2026-08-19 10:29:23,xgboost,locked test (confirmatory),2146,2146,True,0,0,0.02563768,0.9484452,True,0,"[0, 1]",True,200,1946,9.3197
+2026-08-19 10:29:23,lightgbm,OOF (development),5007,5007,True,0,0,0.0120925286520717,0.9708731728150888,True,0,"[0, 1]",True,466,4541,9.307
+2026-08-19 10:29:23,lightgbm,locked test (confirmatory),2146,2146,True,0,0,0.0169591243547473,0.958698980360362,True,0,"[0, 1]",True,200,1946,9.3197
+2026-08-19 10:29:23,mlp,OOF (development),5007,5007,True,0,0,6.496025791188479e-05,0.9883350252009432,True,0,"[0, 1]",True,466,4541,9.307
+2026-08-19 10:29:23,mlp,locked test (confirmatory),2146,2146,True,0,0,0.0001622228044268,0.991722888047084,True,0,"[0, 1]",True,200,1946,9.3197
+2026-08-19 10:29:23,mlp_balanced,OOF (development),5007,5007,True,0,0,0.0007515841945304,0.9989187372165828,True,0,"[0, 1]",True,466,4541,9.307
+2026-08-19 10:29:23,mlp_balanced,locked test (confirmatory),2146,2146,True,0,0,0.0014539191937876,0.9999982184723258,True,0,"[0, 1]",True,200,1946,9.3197

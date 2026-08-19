@@ -1,0 +1,6 @@
+generated,model,data_source,platt_fit_intercept,platt_fit_slope,raw_calibration_intercept,raw_calibration_slope,recalibrated_calibration_intercept,recalibrated_calibration_slope,raw_brier,recalibrated_brier,brier_change
+2026-08-19 10:35:19,logistic,"CV out-of-fold predictions (train partition, N=5007)",-2.242509,1.060614,-2.242509,1.060614,0.00061,1.000363,0.173932,0.070624,-0.103308
+2026-08-19 10:35:19,random_forest,"CV out-of-fold predictions (train partition, N=5007)",-1.86245,1.198516,-1.86245,1.198516,0.002019,1.000682,0.139695,0.071811,-0.067884
+2026-08-19 10:35:19,xgboost,"CV out-of-fold predictions (train partition, N=5007)",-2.046007,1.03932,-2.046007,1.03932,0.001164,1.000403,0.152265,0.071162,-0.081103
+2026-08-19 10:35:19,lightgbm,"CV out-of-fold predictions (train partition, N=5007)",-2.053483,1.06221,-2.053483,1.06221,0.001462,1.000552,0.155387,0.071232,-0.084155
+2026-08-19 10:35:19,mlp,"CV out-of-fold predictions (train partition, N=5007)",-0.280858,0.829627,-0.280858,0.829627,0.000627,1.000411,0.070972,0.070562,-0.00041
