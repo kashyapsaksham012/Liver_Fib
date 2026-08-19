@@ -1,0 +1,21 @@
+model,membership_state,is_bmi_target_model,is_age_target_model,applicable_rule,applied_threshold,winner
+logistic,Neither BMI-Obese nor Age-60+,True,False,global (neither is a target),0.672744,global
+logistic,BMI-Obese only,True,False,BMI-specific (only applicable rule),0.742807,BMI
+logistic,Age-60+ only,True,False,global (Age not a target for this model),0.672744,global
+logistic,BMI-Obese AND Age-60+,True,False,"BMI-specific (Age never a target for this model, no contest)",0.742807,BMI (uncontested)
+random_forest,Neither BMI-Obese nor Age-60+,True,True,global (neither is a target),0.607211,global
+random_forest,BMI-Obese only,True,True,BMI-specific (only applicable rule),0.709641,BMI
+random_forest,Age-60+ only,True,True,Age-specific (only applicable rule),0.642389,Age
+random_forest,BMI-Obese AND Age-60+,True,True,"BMI computed first, then Age OVERWRITES it (sequential last-write-wins, TARGET_COMBINATIONS order)",0.642389,Age (overwrites BMI)
+xgboost,Neither BMI-Obese nor Age-60+,True,True,global (neither is a target),0.653193,global
+xgboost,BMI-Obese only,True,True,BMI-specific (only applicable rule),0.765248,BMI
+xgboost,Age-60+ only,True,True,Age-specific (only applicable rule),0.731914,Age
+xgboost,BMI-Obese AND Age-60+,True,True,"BMI computed first, then Age OVERWRITES it (sequential last-write-wins, TARGET_COMBINATIONS order)",0.731914,Age (overwrites BMI)
+lightgbm,Neither BMI-Obese nor Age-60+,True,True,global (neither is a target),0.656959,global
+lightgbm,BMI-Obese only,True,True,BMI-specific (only applicable rule),0.75965,BMI
+lightgbm,Age-60+ only,True,True,Age-specific (only applicable rule),0.689715,Age
+lightgbm,BMI-Obese AND Age-60+,True,True,"BMI computed first, then Age OVERWRITES it (sequential last-write-wins, TARGET_COMBINATIONS order)",0.689715,Age (overwrites BMI)
+mlp,Neither BMI-Obese nor Age-60+,True,True,global (neither is a target),0.377967,global
+mlp,BMI-Obese only,True,True,BMI-specific (only applicable rule),0.752921,BMI
+mlp,Age-60+ only,True,True,Age-specific (only applicable rule),0.558676,Age
+mlp,BMI-Obese AND Age-60+,True,True,"BMI computed first, then Age OVERWRITES it (sequential last-write-wins, TARGET_COMBINATIONS order)",0.558676,Age (overwrites BMI)
