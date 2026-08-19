@@ -217,18 +217,28 @@ unchanged from Phase 5. Assessed individually for Phase 6 relevance:
   retraining under a different outcome/cohort/predictor definition — out of scope for Phase 6
   (Part 29 explicitly forbids retraining beyond the conformal-valid refit); belong to a future,
   separate phase if pursued.
-- **Multiple-imputation**: also requires retraining, so it cannot be executed here either. But
-  its *interpretive* relevance to Phase 6 is real and is stated explicitly, not silently
-  dropped: the complete-case exclusion disparity (41.3% of exclusions vs. 25.0% of retained
-  participants were Non-Hispanic Black, Phase 2 `missing_data_protocol.md`) means the test-set
-  population itself may under-represent this group relative to the full source population. This
-  pass checked whether Non-Hispanic Black subgroup *coverage* shows a comparable breakdown to
+- **Multiple-imputation**: also requires retraining, so it cannot be executed here either. **No
+  multiple-imputation-based reanalysis was performed in Phase 6.** The Non-Hispanic Black
+  subgroup's coverage result reported immediately below was computed using the same standard
+  Phase 6 complete-case cohort, the same conformal-valid refit models, and the same conformal
+  calibration procedure used for every other subgroup in this report — it is drawn from the same
+  single test-set touch (`results/uncertainty/subgroup_coverage.csv`, all rows sharing the one
+  `2026-08-19 14:16:42` generation timestamp, confirmed live in the Phase 6 Closure-Clarification
+  pass) as the BMI/age results discussed elsewhere in this report. The reference to "multiple
+  imputation" below is *interpretive context only*, recalling the Phase 2 finding that motivates
+  why this particular subgroup's result matters: the complete-case exclusion disparity (41.3% of
+  exclusions vs. 25.0% of retained participants were Non-Hispanic Black, Phase 2
+  `missing_data_protocol.md`) means the test-set population itself may under-represent this group
+  relative to the full source population. This pass checked whether Non-Hispanic Black subgroup
+  *coverage* (from the standard, already-computed result) shows a comparable breakdown to
   BMI-Obese/Age-60+: it does **not** — coverage ranges 86.9%–88.7% across the 5 models, only
   1 of 5 (XGBoost) has a CI excluding 90%, a much milder deviation
   (`results/uncertainty/phase5_phase6_relationship.csv`). This is a distinct mechanism from the
-  selection-disparity question: within-sample coverage behavior (measured here) is not the same
-  as whether the sample itself is representative (the open multiple-imputation question) — both
-  are reported, kept separate, and neither is used to explain the other.
+  selection-disparity question: within-sample coverage behavior (measured here, using the
+  standard complete-case cohort) is not the same as whether the sample itself is representative
+  (the open, still-deferred, unexecuted multiple-imputation question — see
+  `documentation/project_roadmap/deferred_sensitivity_analyses.md`) — both are reported, kept
+  separate, and neither is used to explain the other.
 
 ## 20. Reproducibility
 
