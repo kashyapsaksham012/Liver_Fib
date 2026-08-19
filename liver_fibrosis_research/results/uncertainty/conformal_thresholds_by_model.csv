@@ -1,0 +1,6 @@
+protocol_hash,model,calibration_n,calibration_positives,calibration_negatives,target_coverage,score_definition,quantile_level_finite_sample_corrected,threshold,mean_score,median_score
+9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7,logistic,1002,93,909,0.9,"1 - P(y=true_class | x), standard split-conformal binary score",0.901198,0.672744,0.364914,0.34104
+9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7,random_forest,1002,93,909,0.9,"1 - P(y=true_class | x), standard split-conformal binary score",0.901198,0.607211,0.315318,0.274623
+9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7,xgboost,1002,93,909,0.9,"1 - P(y=true_class | x), standard split-conformal binary score",0.901198,0.653193,0.317108,0.257209
+9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7,lightgbm,1002,93,909,0.9,"1 - P(y=true_class | x), standard split-conformal binary score",0.901198,0.656959,0.321899,0.27907
+9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7,mlp,1002,93,909,0.9,"1 - P(y=true_class | x), standard split-conformal binary score",0.901198,0.377967,0.127766,0.037703
