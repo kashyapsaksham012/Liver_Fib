@@ -1,0 +1,76 @@
+model,dimension,category,n,empirical_coverage,ci_lower,ci_upper,raw_p_binomial_vs_90pct,bh_fdr_adjusted_p,significant_after_fdr_0.05
+logistic,sex,Male,1047,0.891117,0.8708,0.908575,0.327904,0.327904,False
+logistic,sex,Female,1099,0.924477,0.907334,0.938663,0.005662,0.011324,True
+logistic,race_ethnicity,Non-Hispanic White,751,0.901465,0.878062,0.920781,0.951504,0.951504,False
+logistic,race_ethnicity,Other Race / Multi-Racial,113,0.955752,0.900582,0.980954,0.057386,0.172157,False
+logistic,race_ethnicity,Mexican American,249,0.919679,0.8792,0.947405,0.342077,0.513116,False
+logistic,race_ethnicity,Non-Hispanic Asian,241,0.954357,0.920131,0.974325,0.003466,0.020798,True
+logistic,race_ethnicity,Non-Hispanic Black,550,0.887273,0.858111,0.911062,0.31942,0.513116,False
+logistic,race_ethnicity,Other Hispanic,242,0.896694,0.851948,0.929043,0.83033,0.951504,False
+logistic,age,40-59,665,0.918797,0.895552,0.937232,0.120357,0.120357,False
+logistic,age,18-39,740,0.958108,0.941152,0.970333,0.0,0.0,True
+logistic,age,60+,741,0.848853,0.821267,0.87284,1.2e-05,1.9e-05,True
+logistic,bmi,Overweight,673,0.968796,0.95277,0.979502,0.0,0.0,True
+logistic,bmi,Normal,562,0.967972,0.949943,0.979646,0.0,0.0,True
+logistic,bmi,Obese,883,0.82333,0.796789,0.847069,0.0,0.0,True
+logistic,bmi,Underweight,28,0.928571,0.773546,0.980188,1.0,1.0,False
+random_forest,sex,Male,1047,0.890162,0.869777,0.907695,0.279597,0.559195,False
+random_forest,sex,Female,1099,0.901729,0.882705,0.917954,0.880208,0.880208,False
+random_forest,race_ethnicity,Non-Hispanic White,751,0.900133,0.876611,0.919582,1.0,1.0,False
+random_forest,race_ethnicity,Other Race / Multi-Racial,113,0.876106,0.802736,0.924745,0.430546,0.806406,False
+random_forest,race_ethnicity,Mexican American,249,0.891566,0.846833,0.924401,0.672005,0.806406,False
+random_forest,race_ethnicity,Non-Hispanic Asian,241,0.941909,0.904866,0.965084,0.03093,0.185579,False
+random_forest,race_ethnicity,Non-Hispanic Black,550,0.878182,0.848193,0.902925,0.088245,0.264736,False
+random_forest,race_ethnicity,Other Hispanic,242,0.892562,0.847235,0.925621,0.668296,0.806406,False
+random_forest,age,40-59,665,0.893233,0.867462,0.914487,0.560517,0.560517,False
+random_forest,age,18-39,740,0.939189,0.919598,0.954244,0.000223,0.000335,True
+random_forest,age,60+,741,0.855601,0.828457,0.879076,0.000138,0.000335,True
+random_forest,bmi,Overweight,673,0.962853,0.945738,0.974714,0.0,0.0,True
+random_forest,bmi,Normal,562,0.964413,0.945673,0.976847,0.0,0.0,True
+random_forest,bmi,Obese,883,0.801812,0.774236,0.826773,0.0,0.0,True
+random_forest,bmi,Underweight,28,0.892857,0.728041,0.962882,0.755771,0.755771,False
+xgboost,sex,Male,1047,0.868195,0.846352,0.887346,0.000956,0.001911,True
+xgboost,sex,Female,1099,0.89354,0.873914,0.910423,0.481299,0.481299,False
+xgboost,race_ethnicity,Non-Hispanic White,751,0.878828,0.853541,0.900259,0.059047,0.088571,False
+xgboost,race_ethnicity,Other Race / Multi-Racial,113,0.867257,0.792487,0.917878,0.269352,0.323222,False
+xgboost,race_ethnicity,Mexican American,249,0.883534,0.83774,0.917674,0.397005,0.397005,False
+xgboost,race_ethnicity,Non-Hispanic Asian,241,0.941909,0.904866,0.965084,0.03093,0.082609,False
+xgboost,race_ethnicity,Non-Hispanic Black,550,0.869091,0.838323,0.894739,0.018823,0.082609,False
+xgboost,race_ethnicity,Other Hispanic,242,0.859504,0.810086,0.897687,0.041304,0.082609,False
+xgboost,age,40-59,665,0.890226,0.864187,0.911781,0.400493,0.400493,False
+xgboost,age,18-39,740,0.943243,0.92417,0.957739,3.7e-05,5.6e-05,True
+xgboost,age,60+,741,0.811066,0.781304,0.83762,0.0,0.0,True
+xgboost,bmi,Overweight,673,0.962853,0.945738,0.974714,0.0,0.0,True
+xgboost,bmi,Normal,562,0.960854,0.941442,0.974009,0.0,0.0,True
+xgboost,bmi,Obese,883,0.767837,0.738865,0.794489,0.0,0.0,True
+xgboost,bmi,Underweight,28,0.892857,0.728041,0.962882,0.755771,0.755771,False
+lightgbm,sex,Male,1047,0.890162,0.869777,0.907695,0.279597,0.559195,False
+lightgbm,sex,Female,1099,0.901729,0.882705,0.917954,0.880208,0.880208,False
+lightgbm,race_ethnicity,Non-Hispanic White,751,0.89747,0.873713,0.917182,0.807725,0.807725,False
+lightgbm,race_ethnicity,Other Race / Multi-Racial,113,0.893805,0.823514,0.938202,0.754695,0.807725,False
+lightgbm,race_ethnicity,Mexican American,249,0.883534,0.83774,0.917674,0.397005,0.79401,False
+lightgbm,race_ethnicity,Non-Hispanic Asian,241,0.946058,0.909911,0.968208,0.013398,0.080389,False
+lightgbm,race_ethnicity,Non-Hispanic Black,550,0.88,0.850173,0.904556,0.117976,0.353929,False
+lightgbm,race_ethnicity,Other Hispanic,242,0.892562,0.847235,0.925621,0.668296,0.807725,False
+lightgbm,age,40-59,665,0.900752,0.875674,0.921226,1.0,1.0,False
+lightgbm,age,18-39,740,0.940541,0.921119,0.955411,0.000108,0.000161,True
+lightgbm,age,60+,741,0.847503,0.819831,0.871591,7e-06,2.1e-05,True
+lightgbm,bmi,Overweight,673,0.971768,0.956328,0.981853,0.0,0.0,True
+lightgbm,bmi,Normal,562,0.969751,0.952094,0.98103,0.0,0.0,True
+lightgbm,bmi,Obese,883,0.791619,0.763596,0.817117,0.0,0.0,True
+lightgbm,bmi,Underweight,28,0.892857,0.728041,0.962882,0.755771,0.755771,False
+mlp,sex,Male,1047,0.862464,0.840273,0.882005,0.000107,0.000215,True
+mlp,sex,Female,1099,0.919927,0.90238,0.934549,0.026858,0.026858,True
+mlp,race_ethnicity,Non-Hispanic White,751,0.886818,0.862162,0.907536,0.223911,0.383305,False
+mlp,race_ethnicity,Other Race / Multi-Racial,113,0.911504,0.84473,0.951221,0.874919,0.874919,False
+mlp,race_ethnicity,Mexican American,249,0.875502,0.828705,0.910889,0.203984,0.383305,False
+mlp,race_ethnicity,Non-Hispanic Asian,241,0.937759,0.89986,0.961922,0.052603,0.31562,False
+mlp,race_ethnicity,Non-Hispanic Black,550,0.887273,0.858111,0.911062,0.31942,0.383305,False
+mlp,race_ethnicity,Other Hispanic,242,0.880165,0.833196,0.915254,0.284828,0.383305,False
+mlp,age,40-59,665,0.884211,0.857654,0.906353,0.174585,0.174585,False
+mlp,age,18-39,740,0.952703,0.934932,0.965798,0.0,0.0,True
+mlp,age,60+,741,0.838057,0.809799,0.862827,0.0,0.0,True
+mlp,bmi,Overweight,673,0.947994,0.928532,0.962371,8e-06,1.1e-05,True
+mlp,bmi,Normal,562,0.953737,0.933077,0.968236,4e-06,8e-06,True
+mlp,bmi,Obese,883,0.808607,0.781344,0.833196,0.0,0.0,True
+mlp,bmi,Underweight,28,0.928571,0.773546,0.980188,1.0,1.0,False
