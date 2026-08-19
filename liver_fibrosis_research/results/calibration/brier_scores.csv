@@ -1,0 +1,7 @@
+generated,model,status,data_source,n,brier_score
+2026-08-19 10:31:46,logistic,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",5007,0.173932
+2026-08-19 10:31:46,random_forest,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",5007,0.139695
+2026-08-19 10:31:46,xgboost,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",5007,0.152265
+2026-08-19 10:31:46,lightgbm,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",5007,0.155387
+2026-08-19 10:31:46,mlp,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",5007,0.070972
+2026-08-19 10:31:46,mlp_balanced,"SENSITIVITY (MLP_balanced, not primary)","CV out-of-fold predictions (train partition, N=5007)",5007,0.16063

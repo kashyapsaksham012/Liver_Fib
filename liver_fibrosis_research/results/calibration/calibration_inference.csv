@@ -1,0 +1,46 @@
+generated,model,metric,point_estimate,ci_lower,ci_upper,ci_level,bootstrap_n,bootstrap_n_valid_resamples,data_source,row_type,model_a,model_b,point_diff_a_minus_b,raw_p_two_sided_bootstrap,bh_fdr_adjusted_p,significant_after_fdr_0.05
+2026-08-19 10:33:08,logistic,intercept,-2.242509,-2.355021,-2.138444,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,logistic,slope,1.060614,0.952434,1.183636,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,logistic,brier,0.173932,0.169042,0.178848,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,random_forest,intercept,-1.86245,-1.969692,-1.761026,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,random_forest,slope,1.198516,1.093911,1.309657,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,random_forest,brier,0.139695,0.135316,0.144132,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,xgboost,intercept,-2.046007,-2.159344,-1.940396,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,xgboost,slope,1.03932,0.948429,1.137262,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,xgboost,brier,0.152265,0.147099,0.157504,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,lightgbm,intercept,-2.053483,-2.164577,-1.946315,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,lightgbm,slope,1.06221,0.965944,1.164172,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,lightgbm,brier,0.155387,0.150408,0.160381,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,mlp,intercept,-0.280858,-0.465988,-0.084605,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,mlp,slope,0.829627,0.754584,0.914947,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,mlp,brier,0.070972,0.065632,0.076728,0.95,2000.0,2000.0,"CV out-of-fold predictions (train partition, N=5007)",point_estimate_and_ci,,,,,,
+2026-08-19 10:33:08,,intercept,,-0.420515,-0.345725,,,,,pairwise_comparison,logistic,random_forest,-0.380059,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,-0.228135,-0.167467,,,,,pairwise_comparison,logistic,xgboost,-0.196502,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,-0.2214,-0.159903,,,,,pairwise_comparison,logistic,lightgbm,-0.189027,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,-2.159998,-1.788828,,,,,pairwise_comparison,logistic,mlp,-1.961652,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,0.163107,0.207787,,,,,pairwise_comparison,random_forest,xgboost,0.183557,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,0.168314,0.215967,,,,,pairwise_comparison,random_forest,lightgbm,0.191032,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,-1.751048,-1.433218,,,,,pairwise_comparison,random_forest,mlp,-1.581593,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,-0.004983,0.020202,,,,,pairwise_comparison,xgboost,lightgbm,0.007475,0.254,0.254,False
+2026-08-19 10:33:08,,intercept,,-1.952284,-1.600318,,,,,pairwise_comparison,xgboost,mlp,-1.76515,0.0,0.0,True
+2026-08-19 10:33:08,,intercept,,-1.956543,-1.60874,,,,,pairwise_comparison,lightgbm,mlp,-1.772625,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,-0.219237,-0.058427,,,,,pairwise_comparison,logistic,random_forest,-0.137902,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,-0.05287,0.097561,,,,,pairwise_comparison,logistic,xgboost,0.021295,0.571,0.634444,False
+2026-08-19 10:33:08,,slope,,-0.075675,0.078796,,,,,pairwise_comparison,logistic,lightgbm,-0.001596,0.977,0.977,False
+2026-08-19 10:33:08,,slope,,0.160623,0.302827,,,,,pairwise_comparison,logistic,mlp,0.230987,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,0.124344,0.196131,,,,,pairwise_comparison,random_forest,xgboost,0.159197,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,0.098752,0.175303,,,,,pairwise_comparison,random_forest,lightgbm,0.136306,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,0.305315,0.432426,,,,,pairwise_comparison,random_forest,mlp,0.368889,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,-0.0484,0.003982,,,,,pairwise_comparison,xgboost,lightgbm,-0.022891,0.092,0.115,False
+2026-08-19 10:33:08,,slope,,0.151655,0.26489,,,,,pairwise_comparison,xgboost,mlp,0.209692,0.0,0.0,True
+2026-08-19 10:33:08,,slope,,0.17007,0.29327,,,,,pairwise_comparison,lightgbm,mlp,0.232583,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.031743,0.036695,,,,,pairwise_comparison,logistic,random_forest,0.034237,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.019308,0.024055,,,,,pairwise_comparison,logistic,xgboost,0.021667,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.01604,0.020926,,,,,pairwise_comparison,logistic,lightgbm,0.018545,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.096767,0.109181,,,,,pairwise_comparison,logistic,mlp,0.102961,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,-0.014192,-0.011001,,,,,pairwise_comparison,random_forest,xgboost,-0.01257,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,-0.017364,-0.014068,,,,,pairwise_comparison,random_forest,lightgbm,-0.015692,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.063385,0.073941,,,,,pairwise_comparison,random_forest,mlp,0.068723,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,-0.004305,-0.001921,,,,,pairwise_comparison,xgboost,lightgbm,-0.003122,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.075128,0.087291,,,,,pairwise_comparison,xgboost,mlp,0.081293,0.0,0.0,True
+2026-08-19 10:33:08,,brier,,0.078346,0.090327,,,,,pairwise_comparison,lightgbm,mlp,0.084415,0.0,0.0,True

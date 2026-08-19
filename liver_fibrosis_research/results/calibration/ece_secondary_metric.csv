@@ -1,0 +1,7 @@
+generated,model,status,data_source,ece_secondary_metric,n_bins_requested,n_bins_achieved,binning_degenerate
+2026-08-19 10:32:22,logistic,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",0.293125,10,10,False
+2026-08-19 10:32:22,random_forest,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",0.232186,10,10,False
+2026-08-19 10:32:22,xgboost,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",0.244658,10,10,False
+2026-08-19 10:32:22,lightgbm,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",0.250726,10,10,False
+2026-08-19 10:32:22,mlp,PRIMARY,"CV out-of-fold predictions (train partition, N=5007)",0.013207,10,10,False
+2026-08-19 10:32:22,mlp_balanced,"SENSITIVITY (MLP_balanced, not primary)","CV out-of-fold predictions (train partition, N=5007)",0.250588,10,10,False

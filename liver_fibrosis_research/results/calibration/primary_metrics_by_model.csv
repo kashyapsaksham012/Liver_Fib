@@ -1,0 +1,6 @@
+generated,model,data_source,n,calibration_intercept,calibration_slope,brier_score,n_probabilities_clipped_for_logit
+2026-08-19 10:31:46,logistic,"CV out-of-fold predictions (train partition, N=5007)",5007,-2.242509,1.060614,0.173932,0
+2026-08-19 10:31:46,random_forest,"CV out-of-fold predictions (train partition, N=5007)",5007,-1.86245,1.198516,0.139695,0
+2026-08-19 10:31:46,xgboost,"CV out-of-fold predictions (train partition, N=5007)",5007,-2.046007,1.03932,0.152265,0
+2026-08-19 10:31:46,lightgbm,"CV out-of-fold predictions (train partition, N=5007)",5007,-2.053483,1.06221,0.155387,0
+2026-08-19 10:31:46,mlp,"CV out-of-fold predictions (train partition, N=5007)",5007,-0.280858,0.829627,0.070972,0
