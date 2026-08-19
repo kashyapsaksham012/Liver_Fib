@@ -1,0 +1,6 @@
+generated,model,n,target_coverage,empirical_coverage,ci_lower,ci_upper,ci_method,coverage_minus_target,mean_set_size,median_set_size,singleton_rate,ambiguous_rate_both_classes,empty_set_rate,threshold_used
+2026-08-19 14:16:42 ,logistic,2146,0.9,0.908201,0.895245,0.919699,"Wilson score interval, 95% (Amendment #10)",0.008201,1.431966,1.0,0.568034,0.431966,0.0,0.672744
+2026-08-19 14:16:42 ,random_forest,2146,0.9,0.896086,0.88246,0.908296,"Wilson score interval, 95% (Amendment #10)",-0.003914,1.231594,1.0,0.768406,0.231594,0.0,0.607211
+2026-08-19 14:16:42 ,xgboost,2146,0.9,0.881174,0.866798,0.894188,"Wilson score interval, 95% (Amendment #10)",-0.018826,1.270736,1.0,0.729264,0.270736,0.0,0.653193
+2026-08-19 14:16:42 ,lightgbm,2146,0.9,0.896086,0.88246,0.908296,"Wilson score interval, 95% (Amendment #10)",-0.003914,1.312209,1.0,0.687791,0.312209,0.0,0.656959
+2026-08-19 14:16:42 ,mlp,2146,0.9,0.891892,0.878047,0.904336,"Wilson score interval, 95% (Amendment #10)",-0.008108,0.968779,1.0,0.968779,0.0,0.031221,0.377967
