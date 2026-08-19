@@ -1,0 +1,6 @@
+model,hyperparameter_policy,hyperparameter_search_performed,holdout_used_in_tuning,holdout_used_in_threshold_selection,holdout_used_in_preprocessing_fit
+logistic,A: reuse Phase 3 frozen best_params unchanged,False,False,False,False
+random_forest,A: reuse Phase 3 frozen best_params unchanged,False,False,False,False
+xgboost,A: reuse Phase 3 frozen best_params unchanged,False,False,False,False
+lightgbm,A: reuse Phase 3 frozen best_params unchanged,False,False,False,False
+mlp,A: reuse Phase 3 frozen best_params unchanged,False,False,False,False
