@@ -1,0 +1,6 @@
+model,n_subgroup_comparisons,pearson_corr_abs_sensitivity_disparity_vs_abs_coverage_deviation
+logistic,11,0.462
+random_forest,11,0.2083
+xgboost,11,0.0385
+lightgbm,11,0.1825
+mlp,11,0.4178
