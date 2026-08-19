@@ -1,0 +1,6 @@
+generated,model,model_group,n_subgroups,mean_absolute_overprediction_gap,mean_relative_overprediction_ratio,pearson_corr_prevalence_vs_absolute_gap,pearson_corr_prevalence_vs_relative_ratio
+2026-08-19 12:34:55,logistic,class-weighted/oversampled,15,0.277481,4.4037,0.8675,-0.7562
+2026-08-19 12:34:55,random_forest,class-weighted/oversampled,15,0.2365,4.0115,0.9279,-0.9402
+2026-08-19 12:34:55,xgboost,class-weighted/oversampled,15,0.246091,4.0776,0.9404,-0.9417
+2026-08-19 12:34:55,lightgbm,class-weighted/oversampled,15,0.252127,4.1497,0.9312,-0.9499
+2026-08-19 12:34:55,mlp,MLP (no imbalance correction),15,0.021628,1.2518,0.412,-0.0926
