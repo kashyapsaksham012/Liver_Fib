@@ -1,0 +1,14 @@
+check,expected,found,match
+total_amendments_in_authoritative_registry,8,8,True
+authoritative_registry_file,documentation/end_to_end/protocol_amendment_registry.md,documentation/end_to_end/protocol_amendment_registry.md,True
+scientific_methodological_count_phase1_to_3,4,4,True
+governance_documentation_count_phase1_to_3,3,3,True
+new_phase4_scientific_methodological_count,1,1,True
+total_reconciled,8,4+3+1=8,True
+amendment_8_present_in_authoritative_registry,True,True,True
+amendment_8_present_in_secondary_reconciliation_csv,True,"False before this pass -- CSV was stale at 7 rows; corrected this pass to add row 8",True (after correction)
+competing_registries_found,0,0,True
+amendment_8_test_data_seen_before_decision,False,False (explicitly recorded: 'decision and fitting both used OOF data exclusively; the locked test set was not inspected before this choice was made'),True
+amendment_8_category,SCIENTIFIC/METHODOLOGICAL,SCIENTIFIC/METHODOLOGICAL,True
+amendment_8_rerun_required,False,False,True
+amendment_8_status,CLOSED,CLOSED,True
