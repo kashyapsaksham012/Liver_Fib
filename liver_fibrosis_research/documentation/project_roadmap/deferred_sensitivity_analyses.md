@@ -18,6 +18,22 @@ analyses. It supersedes the prose-only tracking previously embedded in
 `PHASE5_FAIRNESS_RESULTS_REPORT.md` §21–22 and `PHASE6_UNCERTAINTY_RESULTS_REPORT.md` §19 (those
 sections remain valid as historical record; this document is the authoritative, current status).
 
+**Reconciliation note (2026-08-19, MI Closure Reconciliation task):** an earlier project summary
+referred to a fifth item, "all-ages 12+." This section resolves that reference permanently. Per
+the frozen `documentation/phase2/sensitivity_analysis_plan.md` §"Explicitly NOT Selected as Formal
+Sensitivity Analyses," verbatim: *"All-ages (12-17y) cohort — already covered as a sensitivity
+cohort under item 2's broader 'cohort robustness' umbrella and separately listed as CAND_4 in
+`primary_cohort_decision.md`; not duplicated as a fifth item here."* `documentation/phase2/
+primary_cohort_decision.md` confirms CAND_4 (N=8,215, ages 12–150, no adult restriction) is listed
+under "SENSITIVITY COHORTS" as testing "robustness to the adult-only restriction" — a real,
+frozen, documented sensitivity cohort, but **never a separate fifth item in the formal
+sensitivity-analysis list**; Phase 2 deliberately grouped it with item 2 (cohort-eligibility
+robustness) rather than tracking it independently. This was not an omission, and the consolidation
+is documented in the frozen source itself (not merely asserted after the fact). Item 2's status
+below now explicitly notes this. **The count of formally tracked sensitivity analyses remains 4,
+matching the frozen protocol's own "complete, fixed set" governing rule** — "all-ages 12+" was
+never a 5th item to lose track of.
+
 ## 1. Alternative fibrosis threshold (8.0 kPa vs. primary 8.2 kPa)
 
 | Field | Value |
@@ -38,13 +54,14 @@ sections remain valid as historical record; this document is the authoritative, 
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 2) |
 | Reason for deferral | Phase 1 could not assume the two eligibility populations behave identically. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
+| Scope includes | CAND_2 (N=7,639, relaxed elastography-completeness rule) **and** CAND_4 (N=8,215, all-ages 12+, no adult restriction) — both are Phase-2-frozen "cohort robustness" sensitivity cohorts (`primary_cohort_decision.md`) that Phase 2 deliberately grouped under this single item rather than tracking separately; neither has been executed |
 | Current status | **NOT EXECUTED** — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
 | Any execution occurred? | No |
 | Authorized for a specific future phase? | Not yet formally scheduled |
-| Retraining required? | **Yes** — requires rebuilding the cohort and refitting all 5 models |
+| Retraining required? | **Yes** — requires rebuilding the cohort and refitting all 5 models (for either CAND_2 or CAND_4) |
 | Priority | Medium |
 | Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
-| Recommended future-work status | Candidate for a future dedicated sensitivity-analysis phase, not urgent |
+| Recommended future-work status | Candidate for a future dedicated sensitivity-analysis phase, not urgent; if executed, CAND_2 and CAND_4 should be treated as two distinct runs even though tracked under one roadmap item |
 
 ## 3. Broad-lab (primary) vs. fasting-extended (secondary) predictor architecture
 
@@ -73,6 +90,7 @@ sections remain valid as historical record; this document is the authoritative, 
 | Retraining required? | Already performed (CV-OOF refit only, frozen hyperparameters, never touching the locked test set) |
 | Priority | Resolved for the Non-Hispanic Black question. **This remains a sensitivity analysis, not a primary analysis** — it has not been silently promoted, and its result does not alter the frozen primary cohort, outcome, predictor set, or any Phase 3–7 conclusion. |
 | Uncertainty/conformal-coverage comparison under MI | **NOT AUTHORIZED** by the frozen `missing_data_protocol.md` (confirmed via full re-read: no Phase-6-era conformal-coverage language exists in that document) and explicitly not performed in this task — remains a genuinely open, separately-scoped future question if a later protocol amendment authorizes it |
+| Scope audit (2026-08-19, MI Closure Reconciliation task) | Independently verified: every file touched in Commits B (`4802602`), C (`f73ef91`), D (`adc9328`) is in-scope (MI construction/diagnostics, Black-subgroup comparison, MI test suite, MI report/handoff, this roadmap, the amendment registry) — no BMI/Age, calibration, or mitigation file was touched; `data/processed/splits/test_ids.csv` was not modified by any of the three commits and its hash is unchanged since Phase 3 (`c9c6ee3`). Full detail: `MI_CLOSURE_RECONCILIATION_REPORT.md`. |
 
 ## Governing rule (unchanged from Phase 2)
 
