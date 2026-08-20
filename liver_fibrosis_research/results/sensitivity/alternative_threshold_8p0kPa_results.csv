@@ -1,0 +1,6 @@
+model,outcome_threshold,test_n,test_n_positive,threshold,roc_auc,roc_auc_ci_lower,roc_auc_ci_upper,pr_auc,sensitivity,specificity,calibration_intercept,calibration_slope,brier_score,bootstrap_n_valid_auc,retrained,test_set_reaccessed_for_model_fitting
+logistic,8.0kPa,2146,218,0.517254,0.825345,0.794119,0.854134,0.392262,0.738532,0.76556,-2.143086,0.985078,0.174477,2000,False,False
+random_forest,8.0kPa,2146,218,0.449882,0.825008,0.798382,0.854404,0.373519,0.779817,0.739627,-1.845347,1.237099,0.146115,2000,False,False
+xgboost,8.0kPa,2146,218,0.410849,0.832628,0.801579,0.861793,0.395138,0.830275,0.680498,-2.028196,1.117485,0.155476,2000,False,False
+lightgbm,8.0kPa,2146,218,0.498775,0.828902,0.798484,0.857213,0.392052,0.779817,0.752593,-2.047246,1.14951,0.160166,2000,False,False
+mlp,8.0kPa,2146,218,0.106503,0.814458,0.78237,0.845078,0.389404,0.798165,0.667012,-0.371927,0.895805,0.075797,2000,False,False
