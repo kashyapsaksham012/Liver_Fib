@@ -41,8 +41,48 @@ def youden_j_threshold(y, p):
 
 primary = pd.read_parquet(PROC_DIR / "analysis_dataset_primary.parquet")
 outcome_map = primary.set_index("SEQN")["outcome_sensitivity_8.0kPa"]
+group_map = primary.set_index("SEQN")[["bmi_group_final", "age_group_final"]]
+
+def bmi_age_fairness_threshold(test_df, y_true, y_pred_class, rng):
+    rows = []
+    dims = [("bmi", "bmi_group_final", "Obese", "Normal"), ("age", "age_group_final", "60+", "40-59")]
+    for dim_name, col, target_cat, ref_cat in dims:
+        target_mask = (test_df[col] == target_cat).values
+        ref_mask = (test_df[col] == ref_cat).values
+        y_t, yhat_t = y_true[target_mask], y_pred_class[target_mask]
+        y_r, yhat_r = y_true[ref_mask], y_pred_class[ref_mask]
+        n_t_pos, n_r_pos = int((y_t == 1).sum()), int((y_r == 1).sum())
+        if n_t_pos == 0 or n_r_pos == 0:
+            rows.append({"dimension": dim_name, "target_category": target_cat, "reference_category": ref_cat,
+                          "target_n": int(target_mask.sum()), "target_n_positive": n_t_pos,
+                          "reference_n": int(ref_mask.sum()), "reference_n_positive": n_r_pos,
+                          "target_sensitivity": None, "reference_sensitivity": None,
+                          "absolute_disparity_pp": None, "ci_lower_pp": None, "ci_upper_pp": None})
+            continue
+        sens_t = (yhat_t[y_t == 1] == 1).mean()
+        sens_r = (yhat_r[y_r == 1] == 1).mean()
+        diffs = []
+        for _ in range(BOOTSTRAP_N):
+            idx_t = rng.integers(0, len(y_t), size=len(y_t))
+            idx_r = rng.integers(0, len(y_r), size=len(y_r))
+            yb_t, yhb_t = y_t[idx_t], yhat_t[idx_t]
+            yb_r, yhb_r = y_r[idx_r], yhat_r[idx_r]
+            if (yb_t == 1).sum() == 0 or (yb_r == 1).sum() == 0:
+                continue
+            diffs.append(100 * ((yhb_t[yb_t == 1] == 1).mean() - (yhb_r[yb_r == 1] == 1).mean()))
+        alpha = 1 - CI_LEVEL
+        lo, hi = np.percentile(diffs, [100 * alpha / 2, 100 * (1 - alpha / 2)]) if diffs else (None, None)
+        rows.append({"dimension": dim_name, "target_category": target_cat, "reference_category": ref_cat,
+                      "target_n": int(target_mask.sum()), "target_n_positive": n_t_pos,
+                      "reference_n": int(ref_mask.sum()), "reference_n_positive": n_r_pos,
+                      "target_sensitivity": round(sens_t, 6), "reference_sensitivity": round(sens_r, 6),
+                      "absolute_disparity_pp": round(100 * (sens_t - sens_r), 4),
+                      "ci_lower_pp": round(lo, 4) if lo is not None else None,
+                      "ci_upper_pp": round(hi, 4) if hi is not None else None})
+    return rows
 
 rows = []
+fair_rows = []
 rng = np.random.default_rng(BOOTSTRAP_SEED)
 for name in MODEL_NAMES:
     # Re-derive threshold via Youden's J on the already-frozen OOF (training) predictions,
@@ -54,6 +94,7 @@ for name in MODEL_NAMES:
     # Re-evaluate the already-frozen TEST predictions (never refit, never re-touched as a model)
     test = pd.read_csv(PRED_DIR / f"test_predictions_{name}.csv")
     test["y_80"] = test["SEQN"].map(outcome_map)
+    test = test.join(group_map, on="SEQN")
     y_test = test["y_80"].values
     p_test = test["predicted_probability"].values
     yhat_test = (p_test >= threshold).astype(int)
@@ -89,8 +130,15 @@ for name in MODEL_NAMES:
     })
     print(f"{name}: threshold={threshold:.4f}, test AUC={auc:.4f}, sens={sens:.4f}, calib intercept={intercept:.4f}, slope={slope:.4f}")
 
+    for row in bmi_age_fairness_threshold(test, y_test, yhat_test, rng):
+        row.update({"model": name, "outcome_threshold": "8.0kPa"})
+        fair_rows.append(row)
+
 out = pd.DataFrame(rows)
 out.to_csv(RESULTS_DIR / "alternative_threshold_8p0kPa_results.csv", index=False)
+fair_out = pd.DataFrame(fair_rows)
+fair_out.to_csv(RESULTS_DIR / "alternative_threshold_8p0kPa_bmi_age_fairness.csv", index=False)
 print(f"\nSaved results/sensitivity/alternative_threshold_8p0kPa_results.csv ({len(out)} rows)")
+print(f"Saved results/sensitivity/alternative_threshold_8p0kPa_bmi_age_fairness.csv ({len(fair_out)} rows)")
 print("No model was refit; only the outcome label and downstream metrics were recomputed from")
 print("already-frozen Phase 3 predicted probabilities.")
