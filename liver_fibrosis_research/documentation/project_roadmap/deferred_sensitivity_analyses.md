@@ -18,21 +18,39 @@ analyses. It supersedes the prose-only tracking previously embedded in
 `PHASE5_FAIRNESS_RESULTS_REPORT.md` §21–22 and `PHASE6_UNCERTAINTY_RESULTS_REPORT.md` §19 (those
 sections remain valid as historical record; this document is the authoritative, current status).
 
-**Reconciliation note (2026-08-19, MI Closure Reconciliation task):** an earlier project summary
-referred to a fifth item, "all-ages 12+." This section resolves that reference permanently. Per
-the frozen `documentation/phase2/sensitivity_analysis_plan.md` §"Explicitly NOT Selected as Formal
-Sensitivity Analyses," verbatim: *"All-ages (12-17y) cohort — already covered as a sensitivity
-cohort under item 2's broader 'cohort robustness' umbrella and separately listed as CAND_4 in
-`primary_cohort_decision.md`; not duplicated as a fifth item here."* `documentation/phase2/
-primary_cohort_decision.md` confirms CAND_4 (N=8,215, ages 12–150, no adult restriction) is listed
-under "SENSITIVITY COHORTS" as testing "robustness to the adult-only restriction" — a real,
-frozen, documented sensitivity cohort, but **never a separate fifth item in the formal
-sensitivity-analysis list**; Phase 2 deliberately grouped it with item 2 (cohort-eligibility
-robustness) rather than tracking it independently. This was not an omission, and the consolidation
-is documented in the frozen source itself (not merely asserted after the fact). Item 2's status
-below now explicitly notes this. **The count of formally tracked sensitivity analyses remains 4,
-matching the frozen protocol's own "complete, fixed set" governing rule** — "all-ages 12+" was
-never a 5th item to lose track of.
+**Reconciliation note (2026-08-19, MI Closure Reconciliation task) — SUPERSEDED, see below:** an
+earlier project summary referred to a fifth item, "all-ages 12+," and this note (preserved above
+in the original commit history, not deleted) concluded it was "deliberately grouped with item 2
+... not an omission." **That conclusion is superseded by the 2026-08-20 CAND_4 Classification
+Resolution audit below**, which found it was reached without cross-checking
+`statistical_analysis_plan.md`.
+
+**Update (2026-08-20, CAND_4 Classification Resolution task, Amendment #14):** items 1–3 below
+have since been **executed** as controlled sensitivity/robustness checks — see
+`DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md` for the full result (main findings partially
+robust: discrimination, calibration, and the BMI-Obese fairness disparity fully robust; the
+Age-60+ fairness disparity directionally robust but loses statistical significance in most
+sensitivity variants). Separately, a dedicated source-level audit re-examined the CAND_4
+("all-ages 12+," N=8,215) classification question and found the 2026-08-19 note above incomplete:
+it cited only `sensitivity_analysis_plan.md` and `primary_cohort_decision.md`, not
+`statistical_analysis_plan.md`, which **independently and explicitly tracks CAND_4 as its own
+EXPLORATORY-tier item, separate from CAND_2's SECONDARY-tier item** ("All-ages sensitivity
+cohort: CAND_4 (N=8,215, includes ages 12-17) — exploratory check of whether adolescent inclusion
+changes conclusions"). Cohort-mask evidence from `primary_cohort_decision.md` further shows CAND_2
+and CAND_4 are orthogonal, single-axis perturbations of CAND_1 (CAND_2 relaxes only the
+elastography-quality rule; CAND_4 relaxes only the age rule) — not the same "cohort robustness"
+question. **Both conflicting documents share one commit (`c9c6ee3`) and neither was ever edited
+afterward — no historical precedence is recoverable from version history.** Neither historical
+Phase 2 document has been modified; this correction is recorded as Amendment #14
+(`documentation/end_to_end/protocol_amendment_registry.md`) and in the dedicated
+`CAND4_CLASSIFICATION_RESOLUTION_REPORT.md`.
+
+**Final classification: CAND_4 is DISTINCT — EXPLORATORY — UNEXECUTED, tracked separately from
+CAND_2 as of this update (item 2b below).** It remains genuinely unexecuted — no cohort,
+model, prediction, or result artifact for CAND_4 exists anywhere in the repository (verified via
+repository-wide search this pass). Its EXPLORATORY tier (vs. CAND_2/item-3's SECONDARY tier) means
+any future CAND_4 result may inform discussion/future-work but may never be silently promoted to
+a primary or secondary conclusion (`statistical_analysis_plan.md`'s own Governing Rule).
 
 ## 1. Alternative fibrosis threshold (8.0 kPa vs. primary 8.2 kPa)
 
@@ -40,28 +58,43 @@ never a 5th item to lose track of.
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 1) |
 | Reason for deferral | Two candidate thresholds are both defensible; a low-cost robustness check on the primary threshold choice. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
-| Current status | **NOT EXECUTED** — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
-| Any execution occurred? | No — no model, prediction, or calibration artifact exists anywhere in the repository for an 8.0kPa outcome definition (verified: no such file found in this or prior audit passes) |
-| Authorized for a specific future phase? | Not yet formally scheduled |
-| Retraining required? | **Yes** — requires re-deriving the outcome column and refitting all 5 models |
-| Priority | Medium — a standard robustness check, no specific finding depends on it |
-| Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
-| Recommended future-work status | Candidate for a future dedicated sensitivity-analysis phase, not urgent |
+| Current status | **EXECUTED 2026-08-20** — see `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md` §10; required no retraining (reused frozen Phase 3 predictions against the already-existing `outcome_sensitivity_8.0kPa` column) |
+| Result summary | Test ROC-AUC 0.8145–0.8326 (vs. primary 0.8229–0.8429); calibration pattern and BMI-Obese fairness disparity both STABLE; Age-60+ disparity direction preserved but 2/4 previously-significant models (Random Forest, XGBoost) lose significance at this threshold |
+| Retraining required? | No — see above |
+| Affects current conclusions? | No material change; see `results/sensitivity/primary_vs_sensitivity_comparison.csv` |
 
 ## 2. Alternative elastography eligibility (CAND_2, N=7,639 vs. primary CAND_1, N=7,153)
 
+**As of 2026-08-20 (Amendment #14), CAND_4 is no longer tracked under this item — see item 2b
+below.** CAND_2 and CAND_4 are orthogonal, single-axis perturbations of CAND_1 (CAND_2 relaxes
+only the elastography-quality rule; CAND_4 relaxes only the age rule), and
+`statistical_analysis_plan.md` independently tracks them in two different evidentiary tiers
+(CAND_2 = SECONDARY, CAND_4 = EXPLORATORY). The prior grouping (below the line, preserved for
+historical record) is superseded.
+
 | Field | Value |
 |---|---|
-| Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 2) |
+| Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 2; `statistical_analysis_plan.md` SECONDARY item 3) |
 | Reason for deferral | Phase 1 could not assume the two eligibility populations behave identically. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
-| Scope includes | CAND_2 (N=7,639, relaxed elastography-completeness rule) **and** CAND_4 (N=8,215, all-ages 12+, no adult restriction) — both are Phase-2-frozen "cohort robustness" sensitivity cohorts (`primary_cohort_decision.md`) that Phase 2 deliberately grouped under this single item rather than tracking separately; neither has been executed |
-| Current status | **NOT EXECUTED** — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
-| Any execution occurred? | No |
-| Authorized for a specific future phase? | Not yet formally scheduled |
-| Retraining required? | **Yes** — requires rebuilding the cohort and refitting all 5 models (for either CAND_2 or CAND_4) |
-| Priority | Medium |
-| Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
-| Recommended future-work status | Candidate for a future dedicated sensitivity-analysis phase, not urgent; if executed, CAND_2 and CAND_4 should be treated as two distinct runs even though tracked under one roadmap item |
+| Scope | CAND_2 only (N=7,639, relaxed elastography-completeness rule), adult restriction unchanged from CAND_1 |
+| Current status | **EXECUTED 2026-08-20** — see `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md` §8 |
+| Result summary | Test ROC-AUC 0.8526–0.8572 (slightly higher than primary's 0.8229–0.8429); calibration pattern and BMI-Obese fairness disparity STABLE; Age-60+ disparity direction preserved, 3/4 previously-significant models lose significance |
+| Retraining required? | No — already performed (fresh 70/30 split, seed=42, frozen Phase 3 hyperparameters reused) |
+| Affects current conclusions? | No material change; see `results/sensitivity/primary_vs_sensitivity_comparison.csv` |
+
+## 2b. All-ages 12+ cohort (CAND_4, N=8,215) — DISTINCT item, separated from item 2 on 2026-08-20
+
+| Field | Value |
+|---|---|
+| Original phase | `statistical_analysis_plan.md` EXPLORATORY item 2 (not `sensitivity_analysis_plan.md`'s numbered list — see the reconciliation note above) |
+| Definition | LUAXSTAT==1 (quality-valid, identical to CAND_1's elastography rule) + broad labs + BMI/sex complete, **no adult restriction** (ages 12–150) |
+| Scientific question | "Exploratory check of whether adolescent inclusion changes conclusions" (`statistical_analysis_plan.md`, verbatim) — an age-eligibility robustness question, distinct from CAND_2's elastography-quality question |
+| Evidentiary tier | **EXPLORATORY** (lower tier than CAND_2's SECONDARY tier) — per `statistical_analysis_plan.md`'s Governing Rule, any future result may inform discussion/future-work but may never be silently promoted to a primary or secondary conclusion |
+| Current status | **NOT EXECUTED** — no cohort, model, prediction, or result artifact for CAND_4 exists anywhere in the repository (verified via repository-wide search, 2026-08-20) |
+| Classification | **DISTINCT — EXPLORATORY — UNEXECUTED** (Amendment #14, `CAND4_CLASSIFICATION_RESOLUTION_REPORT.md`) |
+| Retraining required? | Yes, if ever executed — requires constructing the cohort and refitting all 5 models |
+| Affects current conclusions? | No — unexecuted; the three completed sensitivity analyses (items 1–3 above) are independently verified unaffected by this classification question |
+| Recommended future-work status | Optional future work, EXPLORATORY tier — not required before manuscript preparation; the documentation classification question (this update) and the scientific-necessity question (whether to ever execute it) are kept separate, per this task's own governing principle |
 
 ## 3. Broad-lab (primary) vs. fasting-extended (secondary) predictor architecture
 
@@ -69,13 +102,10 @@ never a 5th item to lose track of.
 |---|---|
 | Original phase | Phase 2 (`sensitivity_analysis_plan.md` item 3) |
 | Reason for deferral | Already elevated to a full SECONDARY analysis (not merely a sensitivity check) per `statistical_analysis_plan.md`, given its importance to the metabolic-signal question. Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions. |
-| Current status | **NOT EXECUTED** (as either a secondary analysis or a sensitivity check) — reaffirmed 2026-08-19; the current targeted MI task did not touch this item |
-| Any execution occurred? | No |
-| Authorized for a specific future phase? | Not yet formally scheduled |
-| Retraining required? | **Yes** — different predictor set (12 predictors, adds glucose/triglycerides), full refit |
-| Priority | Medium-High — already a SECONDARY analysis by Phase 2's own classification, not a lower-tier sensitivity check |
-| Affects current conclusions? | No — out of scope of the current MI sensitivity task; primary conclusions stand unchanged |
-| Recommended future-work status | Higher priority than items 1/2 given its SECONDARY classification; recommended for the next dedicated analysis phase |
+| Current status | **EXECUTED 2026-08-20** — see `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md` §9 (CAND_3, already-built Phase 2 dataset, N=3,582, verified against archived count) |
+| Result summary | Test ROC-AUC 0.8280–0.8457; calibration pattern and BMI-Obese fairness disparity STABLE; Age-60+ disparity direction preserved, all 4 previously-significant models lose significance (smallest cohort, most attenuated) |
+| Retraining required? | No — already performed (fresh 70/30 split, seed=42, frozen Phase 3 hyperparameters reused, 12 predictors) |
+| Affects current conclusions? | No material change; see `results/sensitivity/primary_vs_sensitivity_comparison.csv` |
 
 ## 4. Complete-case (primary) vs. multiple-imputation missing-data strategy
 
@@ -96,7 +126,11 @@ never a 5th item to lose track of.
 
 Per `sensitivity_analysis_plan.md`'s own governing rule: these 4 (plus the already-elevated
 secondary architecture, item 3) are the complete, fixed set. Adding a new sensitivity analysis
-after seeing results requires a logged protocol amendment, not an ad hoc addition. As of this
-2026-08-19 update, item 4 has been executed (narrowly, per its documented scope above); items 1–3
-remain not executed. None has been silently marked complete because related context was discussed
-in a report — this document is the explicit, current status record for all 4.
+after seeing results requires a logged protocol amendment, not an ad hoc addition. **As of this
+2026-08-20 update: items 1, 2, and 3 have been executed (`DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_
+REPORT.md`); item 4 was executed narrowly on 2026-08-19 (Non-Hispanic Black scope only); item 2b
+(CAND_4, formally separated from item 2 on 2026-08-20, Amendment #14) remains DISTINCT —
+EXPLORATORY — UNEXECUTED.** All four originally-numbered items are now executed; CAND_4 is not,
+and was never, one of the four — its correct status is tracked in item 2b, not silently folded
+into item 2's now-complete status. None has been silently marked complete because related context
+was discussed in a report — this document is the explicit, current status record.
