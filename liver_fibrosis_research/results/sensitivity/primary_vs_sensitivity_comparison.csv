@@ -1,0 +1,61 @@
+finding,cohort,model,primary_value,sensitivity_value,difference,classification
+discrimination_auc,CAND_2_relaxed_elastography,logistic,0.8334,0.852637,0.0192,STABLE
+calibration_intercept,CAND_2_relaxed_elastography,logistic,-2.2602,-2.233083,0.0271,STABLE
+discrimination_auc,CAND_2_relaxed_elastography,random_forest,0.8343,0.853641,0.0193,STABLE
+calibration_intercept,CAND_2_relaxed_elastography,random_forest,-1.9679,-1.955549,0.0123,STABLE
+discrimination_auc,CAND_2_relaxed_elastography,xgboost,0.8429,0.85582,0.0129,STABLE
+calibration_intercept,CAND_2_relaxed_elastography,xgboost,-2.1629,-2.108882,0.054,STABLE
+discrimination_auc,CAND_2_relaxed_elastography,lightgbm,0.8394,0.856432,0.017,STABLE
+calibration_intercept,CAND_2_relaxed_elastography,lightgbm,-2.1846,-2.115929,0.0687,STABLE
+discrimination_auc,CAND_2_relaxed_elastography,mlp,0.8229,0.857246,0.0343,MOSTLY STABLE
+calibration_intercept,CAND_2_relaxed_elastography,mlp,-0.4354,0.025574,0.461,STABLE
+discrimination_auc,CAND_3_fasting_extended,logistic,0.8334,0.840398,0.007,STABLE
+calibration_intercept,CAND_3_fasting_extended,logistic,-2.2602,-2.329954,-0.0697,STABLE
+discrimination_auc,CAND_3_fasting_extended,random_forest,0.8343,0.84574,0.0114,STABLE
+calibration_intercept,CAND_3_fasting_extended,random_forest,-1.9679,-1.712939,0.2549,STABLE
+discrimination_auc,CAND_3_fasting_extended,xgboost,0.8429,0.834844,-0.0081,STABLE
+calibration_intercept,CAND_3_fasting_extended,xgboost,-2.1629,-1.952929,0.2099,STABLE
+discrimination_auc,CAND_3_fasting_extended,lightgbm,0.8394,0.83726,-0.0021,STABLE
+calibration_intercept,CAND_3_fasting_extended,lightgbm,-2.1846,-1.988661,0.196,STABLE
+discrimination_auc,CAND_3_fasting_extended,mlp,0.8229,0.828035,0.0051,STABLE
+calibration_intercept,CAND_3_fasting_extended,mlp,-0.4354,-0.114937,0.3205,STABLE
+discrimination_auc,CAND_1_threshold_8.0kPa,logistic,0.8334,0.825345,-0.0081,STABLE
+calibration_intercept,CAND_1_threshold_8.0kPa,logistic,-2.2602,-2.143086,0.1171,STABLE
+discrimination_auc,CAND_1_threshold_8.0kPa,random_forest,0.8343,0.825008,-0.0093,STABLE
+calibration_intercept,CAND_1_threshold_8.0kPa,random_forest,-1.9679,-1.845347,0.1225,STABLE
+discrimination_auc,CAND_1_threshold_8.0kPa,xgboost,0.8429,0.832628,-0.0103,STABLE
+calibration_intercept,CAND_1_threshold_8.0kPa,xgboost,-2.1629,-2.028196,0.1347,STABLE
+discrimination_auc,CAND_1_threshold_8.0kPa,lightgbm,0.8394,0.828902,-0.0105,STABLE
+calibration_intercept,CAND_1_threshold_8.0kPa,lightgbm,-2.1846,-2.047246,0.1374,STABLE
+discrimination_auc,CAND_1_threshold_8.0kPa,mlp,0.8229,0.814458,-0.0084,STABLE
+calibration_intercept,CAND_1_threshold_8.0kPa,mlp,-0.4354,-0.371927,0.0635,STABLE
+fairness_bmi_disparity,CAND_2_relaxed_elastography,logistic,47.6623,52.5999,4.9376,STABLE
+fairness_age_disparity,CAND_2_relaxed_elastography,logistic,-8.5509,-6.9664,1.5845,STABLE (non-significant in both)
+fairness_bmi_disparity,CAND_2_relaxed_elastography,random_forest,31.6234,30.1461,-1.4773,STABLE
+fairness_age_disparity,CAND_2_relaxed_elastography,random_forest,-13.1563,-5.6225,7.5338,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_2_relaxed_elastography,xgboost,31.3636,54.2759,22.9123,STABLE
+fairness_age_disparity,CAND_2_relaxed_elastography,xgboost,-11.2361,-13.251,-2.0149,STABLE
+fairness_bmi_disparity,CAND_2_relaxed_elastography,lightgbm,27.0779,33.9923,6.9144,STABLE
+fairness_age_disparity,CAND_2_relaxed_elastography,lightgbm,-14.1464,-1.3439,12.8025,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_2_relaxed_elastography,mlp,39.026,43.7903,4.7643,STABLE
+fairness_age_disparity,CAND_2_relaxed_elastography,mlp,-14.6715,-7.2332,7.4383,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_3_fasting_extended,logistic,47.6623,58.783,11.1207,STABLE
+fairness_age_disparity,CAND_3_fasting_extended,logistic,-8.5509,-16.3043,-7.7534,STABLE (non-significant in both)
+fairness_bmi_disparity,CAND_3_fasting_extended,random_forest,31.6234,38.6912,7.0678,STABLE
+fairness_age_disparity,CAND_3_fasting_extended,random_forest,-13.1563,-6.689,6.4673,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_3_fasting_extended,xgboost,31.3636,63.2606,31.897,STABLE
+fairness_age_disparity,CAND_3_fasting_extended,xgboost,-11.2361,-8.1104,3.1257,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_3_fasting_extended,lightgbm,27.0779,38.6912,11.6133,STABLE
+fairness_age_disparity,CAND_3_fasting_extended,lightgbm,-14.1464,-4.2642,9.8822,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_3_fasting_extended,mlp,39.026,37.6579,-1.3681,STABLE
+fairness_age_disparity,CAND_3_fasting_extended,mlp,-14.6715,-4.6823,9.9892,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_1_threshold_8.0kPa,logistic,47.6623,51.6296,3.9673,STABLE
+fairness_age_disparity,CAND_1_threshold_8.0kPa,logistic,-8.5509,-4.7935,3.7574,STABLE (non-significant in both)
+fairness_bmi_disparity,CAND_1_threshold_8.0kPa,random_forest,31.6234,39.4815,7.8581,STABLE
+fairness_age_disparity,CAND_1_threshold_8.0kPa,random_forest,-13.1563,-10.0714,3.0849,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_1_threshold_8.0kPa,xgboost,31.3636,39.7778,8.4142,STABLE
+fairness_age_disparity,CAND_1_threshold_8.0kPa,xgboost,-11.2361,-8.0571,3.179,PARTIALLY STABLE (attenuated significance)
+fairness_bmi_disparity,CAND_1_threshold_8.0kPa,lightgbm,27.0779,35.1111,8.0332,STABLE
+fairness_age_disparity,CAND_1_threshold_8.0kPa,lightgbm,-14.1464,-11.9582,2.1882,STABLE
+fairness_bmi_disparity,CAND_1_threshold_8.0kPa,mlp,39.026,45.1852,6.1592,STABLE
+fairness_age_disparity,CAND_1_threshold_8.0kPa,mlp,-14.6715,-12.3661,2.3054,STABLE

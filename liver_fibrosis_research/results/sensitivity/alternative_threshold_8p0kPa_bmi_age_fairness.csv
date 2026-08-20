@@ -1,0 +1,11 @@
+dimension,target_category,reference_category,target_n,target_n_positive,reference_n,reference_n_positive,target_sensitivity,reference_sensitivity,absolute_disparity_pp,ci_lower_pp,ci_upper_pp,model,outcome_threshold
+bmi,Obese,Normal,883,150,562,27,0.886667,0.37037,51.6296,32.3532,69.0338,logistic,8.0kPa
+age,60+,40-59,741,106,665,74,0.735849,0.783784,-4.7935,-17.3765,8.3214,logistic,8.0kPa
+bmi,Obese,Normal,883,150,562,27,0.913333,0.518519,39.4815,19.8707,59.6143,random_forest,8.0kPa
+age,60+,40-59,741,106,665,74,0.764151,0.864865,-10.0714,-20.2591,1.6204,random_forest,8.0kPa
+bmi,Obese,Normal,883,150,562,27,0.953333,0.555556,39.7778,21.1435,60.0643,xgboost,8.0kPa
+age,60+,40-59,741,106,665,74,0.811321,0.891892,-8.0571,-17.7101,1.877,xgboost,8.0kPa
+bmi,Obese,Normal,883,150,562,27,0.906667,0.555556,35.1111,15.739,54.1133,lightgbm,8.0kPa
+age,60+,40-59,741,106,665,74,0.745283,0.864865,-11.9582,-23.0128,-0.7384,lightgbm,8.0kPa
+bmi,Obese,Normal,883,150,562,27,0.933333,0.481481,45.1852,24.8216,65.6653,mlp,8.0kPa
+age,60+,40-59,741,106,665,74,0.754717,0.878378,-12.3661,-23.264,-2.0031,mlp,8.0kPa
