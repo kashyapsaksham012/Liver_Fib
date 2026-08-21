@@ -1,0 +1,2 @@
+BMI-Obese: N=883, positive=140, reliable=True
+Age-60+: N=741, positive=101, reliable=True
