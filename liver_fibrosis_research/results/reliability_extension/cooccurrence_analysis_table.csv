@@ -1,0 +1,56 @@
+model,dimension,category,reference_group,total_n,n_positive,n_negative,precision_tier,precision_limited,fairness_disparity_signed_pp,fairness_disparity_magnitude_pp,ci_lower_pp,ci_upper_pp,significant_after_fdr_0.05,coverage_n,empirical_coverage,coverage_deviation_signed_pp,coverage_deficit_magnitude_pp,ci_lower,ci_upper,coverage_significant_after_fdr
+logistic,sex,Female,Male,1099,78,1021,exploratory candidate,False,-3.1526,3.1526,-15.816,9.4981,False,1099,0.924477,2.4476999999999975,2.4476999999999975,0.907334,0.938663,True
+logistic,race_ethnicity,Mexican American,Non-Hispanic White,249,31,218,exploratory candidate,False,1.2334,1.2334,-16.4815,17.4619,False,249,0.919679,1.9679000000000002,1.9679000000000002,0.8792,0.947405,False
+logistic,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,241,14,227,limited precision,True,-22.2689,22.2689,-50.7744,5.8856,False,241,0.954357,5.435699999999997,5.435699999999997,0.920131,0.974325,True
+logistic,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,550,50,500,exploratory candidate,False,-9.4118,9.4118,-26.0319,6.7712,False,550,0.887273,-1.2727000000000004,1.2727000000000004,0.858111,0.911062,False
+logistic,race_ethnicity,Other Hispanic,Non-Hispanic White,242,26,216,limited precision,True,1.3575,1.3575,-17.2199,19.7155,False,242,0.896694,-0.330600000000004,0.330600000000004,0.851948,0.929043,False
+logistic,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,113,11,102,limited precision,True,-15.7754,15.7754,-46.4392,14.5614,False,113,0.955752,5.5752000000000095,5.5752000000000095,0.900582,0.980954,False
+logistic,age,18-39,40-59,740,33,707,exploratory candidate,False,-15.1515,15.1515,-34.0848,3.9708,False,740,0.958108,5.8108,5.8108,0.941152,0.970333,True
+logistic,age,60+,40-59,741,101,640,primary-feasibility candidate,False,-8.5509,8.5509,-21.0158,4.2124,False,741,0.848853,-5.114699999999999,5.114699999999999,0.821267,0.87284,True
+logistic,bmi,Obese,Normal,883,140,743,primary-feasibility candidate,False,47.6623,47.6623,25.6847,69.5017,True,883,0.82333,-7.667000000000002,7.667000000000002,0.796789,0.847069,True
+logistic,bmi,Overweight,Normal,673,37,636,exploratory candidate,False,5.0369,5.0369,-22.3049,30.7384,False,673,0.968796,6.879599999999996,6.879599999999996,0.95277,0.979502,True
+logistic,bmi,Underweight,Normal,28,1,27,insufficient evidence,True,-40.9091,40.9091,-62.5,-20.0,True,28,0.928571,2.8571000000000026,2.8571000000000026,0.773546,0.980188,False
+random_forest,sex,Female,Male,1099,78,1021,exploratory candidate,False,5.0021,5.0021,-5.9719,16.4917,False,1099,0.901729,0.1728999999999985,0.1728999999999985,0.882705,0.917954,False
+random_forest,race_ethnicity,Mexican American,Non-Hispanic White,249,31,218,exploratory candidate,False,0.0474,0.0474,-16.0215,14.9515,False,249,0.891566,-0.8434000000000026,0.8434000000000026,0.846833,0.924401,False
+random_forest,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,241,14,227,limited precision,True,-33.8235,33.8235,-62.102,-3.1247,False,241,0.941909,4.190899999999999,4.190899999999999,0.904866,0.965084,False
+random_forest,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,550,50,500,exploratory candidate,False,-3.8235,3.8235,-18.1841,10.1473,False,550,0.878182,-2.1817999999999955,2.1817999999999955,0.848193,0.902925,False
+random_forest,race_ethnicity,Other Hispanic,Non-Hispanic White,242,26,216,limited precision,True,-6.9005,6.9005,-26.615,11.3908,False,242,0.892562,-0.7438000000000073,0.7438000000000073,0.847235,0.925621,False
+random_forest,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,113,11,102,limited precision,True,-11.0963,11.0963,-41.1332,16.2213,False,113,0.876106,-2.389399999999995,2.389399999999995,0.802736,0.924745,False
+random_forest,age,18-39,40-59,740,33,707,exploratory candidate,False,-22.7273,22.7273,-40.8337,-5.3301,True,740,0.939189,3.918900000000008,3.918900000000008,0.919598,0.954244,True
+random_forest,age,60+,40-59,741,101,640,primary-feasibility candidate,False,-13.1563,13.1563,-23.8882,-1.954,True,741,0.855601,-4.439900000000009,4.439900000000009,0.828457,0.879076,True
+random_forest,bmi,Obese,Normal,883,140,743,primary-feasibility candidate,False,31.6234,31.6234,10.2285,53.357,True,883,0.801812,-9.81880000000001,9.81880000000001,0.774236,0.826773,True
+random_forest,bmi,Overweight,Normal,673,37,636,exploratory candidate,False,-10.4423,10.4423,-35.7143,16.6384,False,673,0.962853,6.285299999999992,6.285299999999992,0.945738,0.974714,True
+random_forest,bmi,Underweight,Normal,28,1,27,insufficient evidence,True,-59.0909,59.0909,-80.0,-37.037,True,28,0.892857,-0.7142999999999944,0.7142999999999944,0.728041,0.962882,False
+xgboost,sex,Female,Male,1099,78,1021,exploratory candidate,False,-1.9126,1.9126,-12.8894,8.7811,False,1099,0.89354,-0.6460000000000008,0.6460000000000008,0.873914,0.910423,False
+xgboost,race_ethnicity,Mexican American,Non-Hispanic White,249,31,218,exploratory candidate,False,-5.8349,5.8349,-21.8594,7.8853,False,249,0.883534,-1.6465999999999923,1.6465999999999923,0.83774,0.917674,False
+xgboost,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,241,14,227,limited precision,True,-32.563,32.563,-60.2942,-5.7911,False,241,0.941909,4.190899999999999,4.190899999999999,0.904866,0.965084,False
+xgboost,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,550,50,500,exploratory candidate,False,-5.7059,5.7059,-17.6824,7.0064,False,550,0.869091,-3.090900000000005,3.090900000000005,0.838323,0.894739,False
+xgboost,race_ethnicity,Other Hispanic,Non-Hispanic White,242,26,216,limited precision,True,-5.0905,5.0905,-20.713,10.1011,False,242,0.859504,-4.049599999999998,4.049599999999998,0.810086,0.897687,False
+xgboost,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,113,11,102,limited precision,True,1.2032,1.2032,-21.9708,15.9099,False,113,0.867257,-3.274300000000011,3.274300000000011,0.792487,0.917878,False
+xgboost,age,18-39,40-59,740,33,707,exploratory candidate,False,-13.6364,13.6364,-29.8246,1.2222,False,740,0.943243,4.324300000000008,4.324300000000008,0.92417,0.957739,True
+xgboost,age,60+,40-59,741,101,640,primary-feasibility candidate,False,-11.2361,11.2361,-20.8628,-1.8252,True,741,0.811066,-8.8934,8.8934,0.781304,0.83762,True
+xgboost,bmi,Obese,Normal,883,140,743,primary-feasibility candidate,False,31.3636,31.3636,11.1043,53.5666,True,883,0.767837,-13.216300000000004,13.216300000000004,0.738865,0.794489,True
+xgboost,bmi,Overweight,Normal,673,37,636,exploratory candidate,False,-4.1769,4.1769,-31.2368,21.3781,False,673,0.962853,6.285299999999992,6.285299999999992,0.945738,0.974714,True
+xgboost,bmi,Underweight,Normal,28,1,27,insufficient evidence,True,-63.6364,63.6364,-83.3333,-41.6667,True,28,0.892857,-0.7142999999999944,0.7142999999999944,0.728041,0.962882,False
+lightgbm,sex,Female,Male,1099,78,1021,exploratory candidate,False,-0.021,0.021,-11.4357,12.0202,False,1099,0.901729,0.1728999999999985,0.1728999999999985,0.882705,0.917954,False
+lightgbm,race_ethnicity,Mexican American,Non-Hispanic White,249,31,218,exploratory candidate,False,-1.7078,1.7078,-18.0282,14.4686,False,249,0.883534,-1.6465999999999923,1.6465999999999923,0.83774,0.917674,False
+lightgbm,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,241,14,227,limited precision,True,-25.2101,25.2101,-54.0,1.5392,False,241,0.946058,4.605800000000002,4.605800000000002,0.909911,0.968208,False
+lightgbm,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,550,50,500,exploratory candidate,False,-0.3529,0.3529,-14.9881,12.6436,False,550,0.88,-2.0,2.0,0.850173,0.904556,False
+lightgbm,race_ethnicity,Other Hispanic,Non-Hispanic White,242,26,216,limited precision,True,-1.5837,1.5837,-20.7813,15.5815,False,242,0.892562,-0.7438000000000073,0.7438000000000073,0.847235,0.925621,False
+lightgbm,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,113,11,102,limited precision,True,-9.6257,9.6257,-41.0352,18.3099,False,113,0.893805,-0.6195000000000022,0.6195000000000022,0.823514,0.938202,False
+lightgbm,age,18-39,40-59,740,33,707,exploratory candidate,False,-16.6667,16.6667,-34.7677,0.16,False,740,0.940541,4.054099999999991,4.054099999999991,0.921119,0.955411,True
+lightgbm,age,60+,40-59,741,101,640,primary-feasibility candidate,False,-14.1464,14.1464,-24.9452,-2.2097,True,741,0.847503,-5.249700000000004,5.249700000000004,0.819831,0.871591,True
+lightgbm,bmi,Obese,Normal,883,140,743,primary-feasibility candidate,False,27.0779,27.0779,6.7666,48.5048,True,883,0.791619,-10.838099999999997,10.838099999999997,0.763596,0.817117,True
+lightgbm,bmi,Overweight,Normal,673,37,636,exploratory candidate,False,-14.9877,14.9877,-39.2901,11.8829,False,673,0.971768,7.1768,7.1768,0.956328,0.981853,True
+lightgbm,bmi,Underweight,Normal,28,1,27,insufficient evidence,True,-63.6364,63.6364,-82.3657,-42.1053,True,28,0.892857,-0.7142999999999944,0.7142999999999944,0.728041,0.962882,False
+mlp,sex,Female,Male,1099,78,1021,exploratory candidate,False,-1.198,1.198,-12.7693,10.3536,False,1099,0.919927,1.9926999999999992,1.9926999999999992,0.90238,0.934549,True
+mlp,race_ethnicity,Mexican American,Non-Hispanic White,249,31,218,exploratory candidate,False,1.8027,1.8027,-13.3424,16.0234,False,249,0.875502,-2.449799999999996,2.449799999999996,0.828705,0.910889,False
+mlp,race_ethnicity,Non-Hispanic Asian,Non-Hispanic White,241,14,227,limited precision,True,-13.8655,13.8655,-43.7039,9.3711,False,241,0.937759,3.775900000000007,3.775900000000007,0.89986,0.961922,False
+mlp,race_ethnicity,Non-Hispanic Black,Non-Hispanic White,550,50,500,exploratory candidate,False,-11.2941,11.2941,-26.2408,3.217,False,550,0.887273,-1.2727000000000004,1.2727000000000004,0.858111,0.911062,False
+mlp,race_ethnicity,Other Hispanic,Non-Hispanic White,242,26,216,limited precision,True,-0.6787,0.6787,-18.2081,14.7645,False,242,0.880165,-1.9835000000000065,1.9835000000000065,0.833196,0.915254,False
+mlp,race_ethnicity,Other Race / Multi-Racial,Non-Hispanic White,113,11,102,limited precision,True,-3.4759,3.4759,-33.6833,18.5217,False,113,0.911504,1.1504000000000048,1.1504000000000048,0.84473,0.951221,False
+mlp,age,18-39,40-59,740,33,707,exploratory candidate,False,-12.1212,12.1212,-27.9388,2.6979,False,740,0.952703,5.270299999999992,5.270299999999992,0.934932,0.965798,True
+mlp,age,60+,40-59,741,101,640,primary-feasibility candidate,False,-14.6715,14.6715,-25.5505,-4.0274,True,741,0.838057,-6.194299999999998,6.194299999999998,0.809799,0.862827,True
+mlp,bmi,Obese,Normal,883,140,743,primary-feasibility candidate,False,39.026,39.026,18.6747,60.6754,True,883,0.808607,-9.139300000000006,9.139300000000006,0.781344,0.833196,True
+mlp,bmi,Overweight,Normal,673,37,636,exploratory candidate,False,-0.4914,0.4914,-27.7812,26.667,False,673,0.947994,4.799400000000006,4.799400000000006,0.928532,0.962371,True
+mlp,bmi,Underweight,Normal,28,1,27,insufficient evidence,True,-54.5455,54.5455,-75.0,-33.3333,True,28,0.928571,2.8571000000000026,2.8571000000000026,0.773546,0.980188,False

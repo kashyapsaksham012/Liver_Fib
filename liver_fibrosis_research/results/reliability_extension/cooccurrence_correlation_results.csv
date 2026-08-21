@@ -1,0 +1,3 @@
+analysis,n,spearman_rho,ci_lower_bootstrap,ci_upper_bootstrap,raw_p_spearman,cluster_permutation_p,permutation_n,permutation_seed
+primary_pooled_spearman,55,0.4075557546302283,0.12914197064484434,0.6419257148855988,0.0020124922777153983,0.1195,10000.0,42.0
+precision_filtered_sensitivity,35,0.7042589236938477,,,2.345275025582185e-06,,,
