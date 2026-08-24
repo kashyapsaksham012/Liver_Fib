@@ -1,0 +1,22 @@
+phase_or_analysis,status,dataset,code_exists,results_exist,included_in_paper,remaining_work
+Phase 1 - Data assembly,COMPLETE,NHANES 2017-Mar 2020 raw,Yes,Yes,Yes,None
+Phase 2 - Protocol freeze,COMPLETE,"CAND_1, N=7153",Yes,Yes,Yes,None
+Phase 3 - Baseline models,COMPLETE,Train/test split of CAND_1,Yes,Yes,Yes,None
+Phase 4 - Calibration/recalibration,COMPLETE,OOF + locked test,Yes,Yes,Yes,None
+Phase 5 - Fairness audit,COMPLETE,"Locked test, recalibrated",Yes,Yes,Yes,Report Age-60+ as 4/5 not 5/5 models
+Phase 6 - Conformal uncertainty,COMPLETE,Proper-train/conf-cal/test,Yes,Yes,Yes,None
+Phase 7 - Mondrian mitigation,COMPLETE WITH LIMITATION,Subgroup splits of Phase 6 architecture,Yes,Yes,Yes,XGBoost tolerance breach and BMI-Age overlap precedence are open limitations
+Phase 8 - NHB holdout generalization,COMPLETE,Train-excl-NHB / NHB holdout,Yes,Yes,Yes,None
+Threshold sensitivity (8.0 kPa),"COMPLETE, NARROW SCOPE","CAND_1, relabeled outcome",Yes,Yes,"Yes, with scope stated",Retraining/recalibration/conformal repetition deferred
+CAND_2 sensitivity (relaxed elastography),COMPLETE,N=7639,Yes,Yes,Yes,Conformal repetition deferred
+CAND_3 sensitivity (fasting-extended),COMPLETE,N=3582,Yes,Yes,Yes,Conformal repetition deferred
+Cross-sensitivity BMI/Age comparison,COMPLETE,All 3 above pooled,Yes,Yes,Yes,None
+NHB multiple imputation,"COMPLETE, NARROW SCOPE",MI pool N=7768,Yes,Yes,"Yes, with scope stated",Conformal-coverage-under-MI not authorized/performed
+CAND_4 (all-ages 12+) sensitivity,NOT EXECUTED,N=8215 (constructed only),Partial (definition only),No,No,Full execution if pursued
+Broader multiple imputation (non-NHB scope),"NOT EXECUTED, NOT FROZEN",-,No,No,No,Would require a new protocol freeze
+Intersectional (joint) Mondrian mitigation,NOT EXECUTED,294-person overlap population,No,No,No,Would require new mitigation-logic design
+XGBoost mitigation re-tuning,NOT EXECUTED,-,No,No,No,Would require new tuning pass
+External (non-NHANES) validation,NOT EXECUTED,Independent cohort (none identified),No,No,No,Requires an independent dataset - largest open limitation
+Temporal (cross-cycle) validation,NOT EXECUTED - infeasible with this data,-,N/A,N/A,Documented as a limitation,Not resolvable within this NHANES release
+Reliability extension (co-occurrence + DCA),COMPLETE,Frozen test-set predictions,Yes,Yes,Yes,None
+Literature novelty/duplication audit,COMPLETE (separate task),N/A,N/A,Yes (published artifact),Supporting material,None
