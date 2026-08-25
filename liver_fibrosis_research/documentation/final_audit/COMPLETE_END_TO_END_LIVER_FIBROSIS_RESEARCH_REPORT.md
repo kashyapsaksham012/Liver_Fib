@@ -6,6 +6,8 @@
 **[A]** experimental fact, repository-verified. **[B]** literature fact. **[C]** inference. **[D]** interpretation.  
 Status tags: `PLANNED` | `IMPLEMENTED BUT NOT EXECUTED` | `EXECUTED` | `EXECUTED AND VERIFIED` | `FROZEN` | `SUPERSEDED` | `ABANDONED` | `BLOCKED` | `UNRESOLVED`.
 
+> **CORRECTION (2026-08-25, independent verification pass):** this report was compiled at HEAD=`1be2523` with several remediation artifacts still untracked. Commit `142595d` has since committed all of them (verified via `git ls-files`). Accordingly, every "(uncommitted)" / "Untracked" annotation below is superseded: `joint_intersectional_mitigation.csv`, `pooled_fdr_corrected_results.csv`, `intersectional_coverage_ci.csv`, `interpretability_*.csv`, `FINAL_EXPERIMENTAL_EVIDENCE_LINEAGE.md`, `sens_07_fairness_postprocessing.py`, `sens_08_afcp_comparison.py`, and `ANALYSIS_MANIFEST_FINAL.csv` are all git-tracked as of `142595d`. See `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`. The D06/D07 verification-status dispute is left unresolved here, per append-only convention.
+
 ---
 
 ## 1. Executive Summary
@@ -51,8 +53,8 @@ Status tags: `PLANNED` | `IMPLEMENTED BUT NOT EXECUTED` | `EXECUTED` | `EXECUTED
 | Continuous BMI/Age Diagnostics (D02, D03) | `EXECUTED AND VERIFIED AND FROZEN` | `results/diagnostics/continuous_bmi_metrics.csv` | Diagnostic |
 | Group-Specific Thresholds (D05) | `EXECUTED AND VERIFIED AND FROZEN` | `results/diagnostics/group_specific_threshold_metrics.csv` | Diagnostic |
 | Subgroup Recalibration (D04) | `EXECUTED AND VERIFIED AND FROZEN` | `results/diagnostics/subgroup_recalibration_metrics.csv` | Diagnostic |
-| Genuine Joint Intersectional Mitigation | `EXECUTED AND VERIFIED` (uncommitted) | `results/mitigation/joint_intersectional_mitigation.csv` | Exploratory |
-| Pooled FDR Multiple-Testing Check | `EXECUTED AND VERIFIED` (uncommitted) | `results/tables/pooled_fdr_corrected_results.csv` | Secondary |
+| Genuine Joint Intersectional Mitigation | `EXECUTED AND VERIFIED AND COMMITTED (142595d)` | `results/mitigation/joint_intersectional_mitigation.csv` | Exploratory |
+| Pooled FDR Multiple-Testing Check | `EXECUTED AND VERIFIED AND COMMITTED (142595d)` | `results/tables/pooled_fdr_corrected_results.csv` | Secondary |
 | Socio-Conformal Lit Audit (D01) | `EXECUTED` (parallel session) | `SOCIO_CONFORMAL_AUDIT_AND_CROSS_SESSION_ADDENDUM.md` | Literature |
 | Equal Opportunity Post-Processing (D06) | `EXECUTED` (parallel session), `UNVERIFIED` | `results/diagnostics/stage1/fairness_postprocessing_results.csv` | Parallel / Suspected Defect |
 | AFCP Conformal Comparison (D07) | `EXECUTED` (parallel session), `BLOCKED` | `results/diagnostics/stage1/afcp_vs_mondrian_comparison.csv` | Rule Violation (KNN approx) |
@@ -505,8 +507,8 @@ Artifacts: 16 saved `.joblib` model files in `models/` (5 baseline, 5 conformal 
   - `f1b03ac`: Group-specific Youden thresholds (D05)
   - `f362a33`: Subgroup Platt recalibration & quantiles (D04)
   - `1be2523`: Contamination audit & final synthesis
-- **Untracked Local Files (Verified Remediations):** `FINAL_EXPERIMENTAL_EVIDENCE_LINEAGE.md`, `joint_intersectional_mitigation.csv`, `pooled_fdr_corrected_results.csv`, `intersectional_coverage_ci.csv`, `interpretability_*.csv`.
-- **Untracked Parallel Files (Segregated / Unverified):** `sens_07_fairness_postprocessing.py`, `sens_08_afcp_comparison.py`, `ANALYSIS_MANIFEST_FINAL.csv`.
+- **Tracked Local Files (committed in `142595d`; were untracked at compilation):** `FINAL_EXPERIMENTAL_EVIDENCE_LINEAGE.md`, `joint_intersectional_mitigation.csv`, `pooled_fdr_corrected_results.csv`, `intersectional_coverage_ci.csv`, `interpretability_*.csv`.
+- **Tracked Parallel Files (committed in `142595d`; segregated — verification status UNRESOLVED between summary documents):** `sens_07_fairness_postprocessing.py`, `sens_08_afcp_comparison.py`, `ANALYSIS_MANIFEST_FINAL.csv`.
 
 ---
 
