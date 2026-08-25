@@ -1,0 +1,11 @@
+generated,model,age_band,n,n_positive,n_positive_for_sensitivity,sensitivity,sensitivity_ci_lower,sensitivity_ci_upper,coverage,coverage_ci_lower,coverage_ci_upper,sparse_cell,note
+2026-08-25T11:02:25.765570+00:00,logistic,60-69,406,63,63,0.714286,0.592973,0.810968,0.847291,0.809059,0.879012,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,logistic,70-80,335,38,38,0.763158,0.607932,0.870063,0.850746,0.808621,0.884919,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,random_forest,60-69,406,63,63,0.761905,0.643643,0.850062,0.834975,0.795761,0.86791,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,random_forest,70-80,335,38,38,0.763158,0.607932,0.870063,0.880597,0.841488,0.911077,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,xgboost,60-69,406,63,63,0.825397,0.713786,0.899606,0.788177,0.745826,0.825127,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,xgboost,70-80,335,38,38,0.789474,0.636542,0.889252,0.838806,0.795625,0.874305,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,lightgbm,60-69,406,63,63,0.761905,0.643643,0.850062,0.82266,0.782533,0.856738,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,lightgbm,70-80,335,38,38,0.736842,0.579912,0.850284,0.877612,0.838174,0.908488,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,mlp,60-69,406,63,63,0.761905,0.643643,0.850062,0.82266,0.782533,0.856738,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
+2026-08-25T11:02:25.765570+00:00,mlp,70-80,335,38,38,0.763158,0.607932,0.870063,0.856716,0.815149,0.890196,False,"NHANES tops-codes RIDAGEYR at 80; '70-80' is the full upper range, not unbounded"
