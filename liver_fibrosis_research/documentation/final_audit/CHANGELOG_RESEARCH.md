@@ -4,6 +4,25 @@ Actual methodological changes only. AI-assisted conversations, external audit se
 literature searches are not recorded here as scientific evidence — only what they caused to be
 verified, documented, or (where applicable) changed in the repository itself.
 
+## 2026-08-25 — Independent verification pass + version-control metadata corrections
+- **Added**: `documentation/final_audit/INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md` — a
+  direct re-read of primary frozen artifacts (baseline results, calibration, fairness, conformal,
+  mitigation, holdout, sensitivity, MI, reliability-extension, diagnostics) cross-checking every
+  headline number cited in the end-to-end reports. All scientific numbers matched exactly.
+- **Corrected (metadata only)**: `COMPLETE_END_TO_END_LIVER_FIBROSIS_RESEARCH_REPORT.md` — the
+  "(uncommitted)"/"Untracked" annotations for `joint_intersectional_mitigation.csv`,
+  `pooled_fdr_corrected_results.csv`, `intersectional_coverage_ci.csv`, `interpretability_*.csv`,
+  `FINAL_EXPERIMENTAL_EVIDENCE_LINEAGE.md`, `sens_07/sens_08`, and `ANALYSIS_MANIFEST_FINAL.csv`
+  were stale: commit `142595d` has since committed all of them. A dated correction banner was
+  inserted and the four inline labels updated. No scientific claim was altered.
+- **Flagged, not reconciled**: the older summary's D06=UNVERIFIED / D07=BLOCKED status vs. the
+  later `stage1_decision_report.md` / `COMPLETE_END_TO_END_EXPERIMENTAL_REPORT.md` treating
+  D01–D08 as complete; disposition documented in the attestation §2.3.
+- **Noted**: `results/tables/final_research_status.csv` row for joint intersectional mitigation
+  ("NOT EXECUTED") is superseded by its 2026-08-24 execution (`ITEMS_1_5_REFINEMENT_ADDENDUM.md`
+  Item 4 + `FINAL_SCIENTIFIC_STATUS_RECONCILIATION.md`); left unedited per append-only convention.
+- **No core pipeline code was modified.** No model retrained or refit; no new test-set scoring.
+
 ## 2026-08-24 — Final audit documentation consolidation
 - **Added**: `documentation/final_audit/` — `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md`,
   `FINAL_CLAIM_AUDIT.md`, `FINAL_RESEARCH_ARCHITECTURE.md`, `FINAL_RESEARCH_STATUS.md`,
