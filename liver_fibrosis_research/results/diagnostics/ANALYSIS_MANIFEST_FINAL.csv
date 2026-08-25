@@ -1,0 +1,10 @@
+ID,Analysis,Scientific Question,Type,Fitting Data,Evaluation Data,Primary Outcome,Secondary Outcomes,Statistical Method,Multiple Testing,Decision Rule,Status
+D01,Literature Audit,Does arXiv:2605.05562 overlap with or threaten our novelty claims?,Lit Audit,N/A,N/A,N/A,N/A,Full text review & extraction,N/A,Document threats,PENDING
+D02,Continuous BMI,Are BMI subgroup gaps artifacts of categorical cutpoints or continuous?,Diagnostic,N/A,Test Set,Sensitivity,conformal coverage,B-spline regression,N/A,Continuous vs. categorical,PENDING
+D03,Continuous Age,Are Age subgroup gaps continuous or categorical artifacts?,Diagnostic,N/A,Test Set,Sensitivity,conformal coverage,B-spline regression,N/A,Continuous vs. categorical,PENDING
+D04,Subgroup Recalibration,Does subgroup-specific calibration reduce fairness and coverage gaps?,Supplementary,OOF Validation,Test Set,Sensitivity,conformal coverage,Subgroup Platt calibration + quantile re-eval,FDR (if family needed),Disparity reduction > 5 pp,PENDING
+D05,Group Thresholds,Are sensitivity disparities a thresholding artifact?,Supplementary,OOF Validation,Test Set,Sensitivity,specificity,Subgroup Youden's J thresholding,N/A,Disparity reduction > 5 pp,PENDING
+D06,Fairness Post-processing,What are the calibration trade-offs of Equal Opportunity post-processing?,Supplementary,OOF Validation,Test Set,Sensitivity,calibration,Equal Opportunity threshold shift,N/A,Trade-off mapping,PENDING
+D07,AFCP Conformal,How does AFCP compare to global and FDR-gated Mondrian conformal prediction?,Supplementary,Calibration Split,Test Set,conformal coverage,set-size efficiency,Zhou & Sesia (2024) NeurIPS algorithm,N/A,Coverage validity vs. set-size cost,PENDING
+D08,Final Novelty Re-check,Does literature support our final findings?,Lit Audit,N/A,N/A,N/A,N/A,Keyword/database search,N/A,Audit novelty,PENDING
+D09,Final Freeze Audit,Is the experimental package ready to freeze?,Audit,N/A,N/A,N/A,N/A,Completeness checklists,N/A,Green/Yellow/Red,PENDING

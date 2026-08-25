@@ -1,0 +1,11 @@
+model,stage,n,n_covered,coverage,ci_lower,ci_upper,ci_method
+logistic,baseline,294,204,0.693878,0.638976,0.743778,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+logistic,post_mitigation,294,248,0.843537,0.797611,0.880602,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+random_forest,baseline,294,221,0.751701,0.699283,0.797626,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+random_forest,post_mitigation,294,237,0.806122,0.757104,0.847245,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+xgboost,baseline,294,191,0.64966,0.593515,0.701945,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+xgboost,post_mitigation,294,237,0.806122,0.757104,0.847245,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+lightgbm,baseline,294,209,0.710884,0.656606,0.759722,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+lightgbm,post_mitigation,294,223,0.758503,0.706449,0.80389,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+mlp,baseline,294,217,0.738095,0.684998,0.785051,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"
+mlp,post_mitigation,294,240,0.816327,0.768082,0.856411,"Wilson score interval, 95% (same formula as phase6_04_final_test_touch.py wilson_ci(), reused for consistency)"

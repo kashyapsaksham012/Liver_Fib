@@ -1,0 +1,6 @@
+model,n_thresholds,n_thresholds_CI_crosses_zero_(cannot_distinguish_from_treat_none),n_thresholds_CI_crosses_treat_all,mean_ci_width_across_all_50_thresholds
+logistic,50,17,17,0.0746
+random_forest,50,21,17,0.078
+xgboost,50,21,16,0.0789
+lightgbm,50,19,17,0.0756
+mlp,50,26,19,0.0767
