@@ -1,0 +1,16 @@
+generated,model,method,subgroup,n,n_positive,calibration_intercept,calibration_slope,threshold_used,conformal_threshold,coverage,fitting_test_labels_used,n_oof_sg,n_oof_sg_pos,sg_platt_intercept,sg_platt_slope,global_platt_intercept,global_platt_slope,conformal_threshold_global,conformal_threshold_sg_mixed,subgroup_sensitivity,subgroup_coverage_after_sg_recal,subgroup_coverage_before_sg_recal,coverage_change_pp
+2026-08-25 12:24:49,logistic,global_platt,ALL,2146,200,-2.2425,1.0606,0.5173,0.4095,0.9007,NO,,,,,,,,,,,,
+2026-08-25 12:24:49,logistic,subgroup_platt,bmi_Obese,883,140,,,0.5173,,,NO,2043.0,328.0,-2.1838,1.0593,-2.2425,1.0606,0.4095,0.4119,0.1,0.8279,0.8267,0.11
+2026-08-25 12:24:49,logistic,subgroup_platt,age_60plus,741,101,,,0.5173,,,NO,1671.0,222.0,-2.1702,1.0124,-2.2425,1.0606,0.4095,0.4095,0.0693,0.8583,0.8583,0.0
+2026-08-25 12:24:49,random_forest,global_platt,ALL,2146,200,-1.8625,1.1985,0.4499,0.4397,0.8989,NO,,,,,,,,,,,,
+2026-08-25 12:24:49,random_forest,subgroup_platt,bmi_Obese,883,140,,,0.4499,,,NO,2043.0,328.0,-1.8217,1.129,-1.8625,1.1985,0.4397,0.4266,0.1071,0.8256,0.8267,-0.11
+2026-08-25 12:24:49,random_forest,subgroup_platt,age_60plus,741,101,,,0.4499,,,NO,1671.0,222.0,-1.7994,1.1662,-1.8625,1.1985,0.4397,0.4445,0.0891,0.8489,0.8489,0.0
+2026-08-25 12:24:49,xgboost,global_platt,ALL,2146,200,-2.046,1.0393,0.4108,0.4275,0.8933,NO,,,,,,,,,,,,
+2026-08-25 12:24:49,xgboost,subgroup_platt,bmi_Obese,883,140,,,0.4108,,,NO,2043.0,328.0,-2.0028,0.9872,-2.046,1.0393,0.4275,0.423,0.1714,0.8143,0.8143,0.0
+2026-08-25 12:24:49,xgboost,subgroup_platt,age_60plus,741,101,,,0.4108,,,NO,1671.0,222.0,-2.0274,1.0292,-2.046,1.0393,0.4275,0.4275,0.1188,0.8435,0.8435,0.0
+2026-08-25 12:24:49,lightgbm,global_platt,ALL,2146,200,-2.0535,1.0622,0.4988,0.3966,0.8905,NO,,,,,,,,,,,,
+2026-08-25 12:24:49,lightgbm,subgroup_platt,bmi_Obese,883,140,,,0.4988,,,NO,2043.0,328.0,-1.9872,1.0019,-2.0535,1.0622,0.3966,0.4003,0.0714,0.8165,0.8097,0.68
+2026-08-25 12:24:49,lightgbm,subgroup_platt,age_60plus,741,101,,,0.4988,,,NO,1671.0,222.0,-2.0305,1.0944,-2.0535,1.0622,0.3966,0.4073,0.0594,0.8408,0.8462,-0.54
+2026-08-25 12:24:49,mlp,global_platt,ALL,2146,200,-0.2809,0.8296,0.1065,0.3859,0.897,NO,,,,,,,,,,,,
+2026-08-25 12:24:49,mlp,subgroup_platt,bmi_Obese,883,140,,,0.1065,,,NO,2043.0,328.0,-0.2763,0.7942,-0.2809,0.8296,0.3859,0.3889,0.8786,0.8188,0.8188,0.0
+2026-08-25 12:24:49,mlp,subgroup_platt,age_60plus,741,101,,,0.1065,,,NO,1671.0,222.0,-0.2204,0.8208,-0.2809,0.8296,0.3859,0.4008,0.7426,0.8516,0.8489,0.27
