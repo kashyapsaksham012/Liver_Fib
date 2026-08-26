@@ -21,7 +21,7 @@
 - **Protocol Document:** `documentation/phase2/primary_outcome_definition.md`, `PHASE1_DATA_ASSEMBLY_REPORT.md`
 
 ### Claim 1.2: Candidate Cohorts CAND_2 (N=7,639) and CAND_3 (N=3,582)
-- **Claim:** Relaxing elastography quality rules yields CAND_2 (N=7,639, 9.49% prevalence); restricting to fasting-subsample laboratory variables yields CAND_3 (N=3,582, 9.13% prevalence).
+- **Claim:** Relaxing elastography quality rules yields CAND_2 (N=7,639, ~~9.49%~~ **CORRECTED: 10.52%** prevalence); restricting to fasting-subsample laboratory variables yields CAND_3 (N=3,582, ~~9.13%~~ **CORRECTED: 8.91%** prevalence). *[Correction sourced from `results/tables/phase2_candidate_cohort_comparison.csv` and `results/sensitivity/relaxed_elastography_cohort_summary.csv`, re-verified 26 Aug 2026 — see `documentation/final_audit/FINAL_NUMERICAL_AND_M4B_AUDIT.md` §1.1.]*
 - **Table / Figure:** `results/tables/sensitivity_cohort_comparisons.csv`
 - **Result File:** `data/processed/analysis_dataset_cand2.parquet`, `data/processed/analysis_dataset_cand3.parquet`
 - **Source Script:** `src/phase2_01_candidate_cohorts.py`, `src/sens_01_construct_cohorts.py`

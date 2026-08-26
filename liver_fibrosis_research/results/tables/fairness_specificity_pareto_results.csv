@@ -1,0 +1,11 @@
+model,target_subgroup,global_threshold,constrained_threshold,baseline_sensitivity,constrained_sensitivity,baseline_specificity,constrained_specificity,baseline_disparity,constrained_disparity,spec_loss_pp,false_positives_baseline,false_positives_constrained,false_negatives_baseline,false_negatives_constrained,fitting_test_labels_used
+logistic,BMI_Normal,0.1025,0.04,0.4091,0.6364,0.7621,0.7071,0.4766,0.2494,5.5,463,570,50,45,NO
+logistic,Age_60plus,0.1025,0.116,0.7327,0.6931,0.7621,0.7847,0.0855,0.1251,-2.26,463,419,50,54,NO
+random_forest,BMI_Normal,0.1088,0.042,0.5909,0.7727,0.7359,0.6773,0.3162,0.1344,5.86,514,628,42,38,NO
+random_forest,Age_60plus,0.1088,0.118,0.7624,0.7624,0.7359,0.7446,0.1316,0.1316,-0.87,514,497,42,42,NO
+xgboost,BMI_Normal,0.0816,0.036,0.6364,0.7727,0.6773,0.6223,0.3136,0.1773,5.5,628,735,31,28,NO
+xgboost,Age_60plus,0.0816,0.093,0.8119,0.7822,0.6773,0.6973,0.1124,0.1421,-2.0,628,589,31,34,NO
+lightgbm,BMI_Normal,0.1132,0.045,0.6364,0.7273,0.7492,0.6953,0.2708,0.1799,5.4,488,593,41,39,NO
+lightgbm,Age_60plus,0.1132,0.114,0.7525,0.7525,0.7492,0.7497,0.1415,0.1415,-0.05,488,487,41,41,NO
+mlp,BMI_Normal,0.1145,0.042,0.5455,0.7273,0.6644,0.5904,0.3903,0.2084,7.4,653,797,37,33,NO
+mlp,Age_60plus,0.1145,0.117,0.7624,0.7624,0.6644,0.6691,0.1467,0.1467,-0.46,653,644,37,37,NO

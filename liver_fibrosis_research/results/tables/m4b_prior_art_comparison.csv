@@ -1,0 +1,7 @@
+method_name,core_formulation,structural_similarities,critical_differences,relationship_and_classification
+M1: Global Split-Conformal Baseline,q_global = Quantile_{1-alpha}({s_i}),Computes nonconformity scores on calibration split,Uniform threshold; ignores intersectional disparities,Baseline comparison model
+M2: Sequential Mondrian,q(x) = q_{S(x)},Demographic subgroup conditional quantile fitting,Single-dimension grouping only; ignores interaction,Precedence baseline
+M3: Pure Joint Intersectional,q_joint = Quantile_{1-alpha}({s_i | i in c}),Exact intersectional cell targeting (N_c=138),High quantile variance; unstable in small cells,Unregularized precursor
+Hierarchical Empirical Bayes Conformal,q_c = w_c * q_c^{emp} + (1-w_c) * q_global,Precision-weighted shrinkage (w = N_c / (N_c + N_0)),Shrinks toward global marginal quantile q_global,Methodological inspiration
+Enveloped Mondrian (M4a),"q_env = max(q_BMI, q_Age)",Uses component subgroup maximum quantile,Constant prior weight; no joint sample updates,Base prior for M4b
+M4b: Precision-Weighted Shrinkage,"q_M4b = w * q_joint + (1-w) * max(q_BMI, q_Age)",Integrates joint sample size N_c and single-dimension prior,Shrinks toward single-dimension envelope instead of global,Domain-adapted empirical Bayes extension
