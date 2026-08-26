@@ -1,0 +1,6 @@
+generated,model,is_lightgbm,calibration_joint_cell_n,q_global_cal,q_obese_cal,q_age60_cal,q_joint_cal,q_envelope_cal,q_m4b_cal,quantile_gap_joint_vs_envelope,shrinkage_deficit,cal_joint_score_mean,cal_joint_score_std,cal_joint_score_p90,test_joint_score_mean,test_joint_score_p90,test_intersectional_coverage_m4b,meets_90_target,test_out_of_bounds_count,test_joint_mean_set_size,test_joint_singleton_rate,test_joint_doubleton_rate,test_joint_empty_rate,fitting_test_labels_used
+2026-08-26 00:28:09,logistic,False,138,0.4095,0.732,0.6093,0.7602,0.732,0.7484,0.0281,0.0118,0.302,0.2468,0.7458,0.2926,0.74,0.9082,True,27,1.262,0.7381,0.2619,0.0,NO
+2026-08-26 00:28:09,random_forest,False,138,0.4397,0.6771,0.5673,0.7893,0.6771,0.7421,0.1122,0.0471,0.3114,0.2396,0.7687,0.298,0.7392,0.9014,True,29,1.282,0.7177,0.2823,0.0,NO
+2026-08-26 00:28:09,xgboost,False,138,0.4275,0.6706,0.5726,0.717,0.6706,0.6975,0.0464,0.0195,0.3052,0.2296,0.6873,0.3032,0.6897,0.9116,True,26,1.265,0.7347,0.2653,0.0,NO
+2026-08-26 00:28:09,lightgbm,True,138,0.3966,0.6749,0.6248,0.7224,0.6749,0.7025,0.0475,0.02,0.3035,0.2349,0.7077,0.2963,0.7271,0.8707,False,38,1.194,0.8061,0.1939,0.0,NO
+2026-08-26 00:28:09,mlp,False,138,0.3859,0.7672,0.59,0.7873,0.7672,0.7789,0.0201,0.0084,0.2793,0.2613,0.7713,0.2857,0.7682,0.9048,True,28,1.293,0.7075,0.2925,0.0,NO

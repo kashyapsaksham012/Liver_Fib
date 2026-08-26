@@ -1,0 +1,6 @@
+generated,model,N0_selected,selection_method,shrinkage_weight_w,q_joint_cal,q_envelope_cal,q_m4b_cal,intersectional_coverage,intersectional_ci_lower,intersectional_ci_upper,marginal_coverage,marginal_drift_pp,meets_target_90,test_labels_used_for_n0_selection
+2026-08-26 09:44:36,logistic,0,5fold_CV_fallback_penalty,1.0,0.7602,0.732,0.7602,0.9082,0.8697,0.9361,0.938,3.73,True,NO
+2026-08-26 09:44:36,random_forest,0,5fold_CV_fallback_penalty,1.0,0.7893,0.6771,0.7893,0.9286,0.8933,0.9528,0.9399,4.1,True,NO
+2026-08-26 09:44:36,xgboost,0,5fold_CV_fallback_penalty,1.0,0.717,0.6706,0.717,0.915,0.8775,0.9417,0.938,4.47,True,NO
+2026-08-26 09:44:36,lightgbm,0,5fold_CV_fallback_penalty,1.0,0.7224,0.6749,0.7224,0.8946,0.8542,0.9247,0.9357,4.52,False,NO
+2026-08-26 09:44:36,mlp,0,5fold_CV_fallback_penalty,1.0,0.7873,0.7672,0.7873,0.9082,0.8697,0.9361,0.9404,4.33,True,NO

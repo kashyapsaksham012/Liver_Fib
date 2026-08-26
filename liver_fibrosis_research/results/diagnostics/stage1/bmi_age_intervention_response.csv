@@ -1,0 +1,6 @@
+model,bmi_baseline_disparity,bmi_post_disparity,bmi_fairness_response,bmi_pct_reduction,age_baseline_disparity,age_post_disparity,age_fairness_response,age_pct_reduction,response_diff_bmi_vs_age,fitting_test_labels_used
+logistic,0.4766,0.2494,0.4768,47.68,0.0855,0.1251,-0.4632,-46.32,94.0,NO
+random_forest,0.3162,0.1344,0.5749,57.49,0.1316,0.1316,0.0,0.0,57.49,NO
+xgboost,0.3136,0.1773,0.4348,43.48,0.1124,0.1421,-0.2644,-26.44,69.91,NO
+lightgbm,0.2708,0.1799,0.3357,33.57,0.1415,0.1415,0.0,0.0,33.57,NO
+mlp,0.3903,0.2084,0.4659,46.59,0.1467,0.1467,0.0,0.0,46.59,NO
