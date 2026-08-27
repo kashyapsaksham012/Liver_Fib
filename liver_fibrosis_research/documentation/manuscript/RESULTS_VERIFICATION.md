@@ -177,6 +177,18 @@ Reproducibility: 16 reweighted model artefacts all carry the exact frozen Phase-
 (`test_touch{1,2}_manifest.json`); 52/52 test suite. The isolated venv is not committed; pins in
 `requirements-phase3-lock.txt`.
 
+## Review pass — 2026-08-28 (two concrete errors found and fixed, both predating the audit)
+
+1. **Clopper–Pearson intervals were cited but never used.** Every `ci_method` field in
+   `results/**` reads "Wilson score interval". Corrected in §2.11, Appendix B, and 4 audit
+   registers. No number changed — only the method label.
+2. **The Obese ∩ 60+ intersection *test* cell has 61 fibrosis-positive participants, not 35.**
+   Verified two ways: `analysis_dataset_primary.parquet` ∩ `test_ids.csv`
+   (`(bmi=='Obese') & (age=='60+') & outcome` → 61), and the `ttm_04` touch output
+   (`n_positive = 61`). The "35" was wrong in CONF-03, `FINAL_LIMITATIONS_REGISTER` B3, and §5;
+   the *joint conformal-calibration* cell (N=138, 30 positive) was and is correct. Coverage
+   values (0.65–0.75) are computed over all 294 and are unchanged.
+
 ## Items still to close (for a co-author)
 
 1. Independently re-run `src/manuscript_01_table1.py` and check Table 1 against
