@@ -1,10 +1,18 @@
 # Discrimination and aggregate calibration are insufficient evidence of subgroup-safe reliability: a calibration–fairness–uncertainty audit of routine-data models for significant liver fibrosis
 
-**Draft v1 — 2026-08-27.** Grounded strictly in
+**Draft v2 — 2026-08-27.** Grounded strictly in
 `documentation/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv`,
 `AUTHORITATIVE_RESULTS.md`, `MANUSCRIPT_FRAMING_GUIDANCE.md`, `FINAL_LIMITATIONS_REGISTER.md`,
-`DO_NOT_CLAIM.md`, and `CONFLICT_ADJUDICATIONS.md`. Every numeric claim traces to a frozen result
+`DO_NOT_CLAIM.md`, and `CONFLICT_ADJUDICATIONS.md`; related-work positioning in
+`documentation/manuscript/LITERATURE_REVIEW.md`. Every numeric claim traces to a frozen result
 artifact (see Appendix A). This is a working draft for the authors, not a submission.
+
+**v2 changes:** literature-grounded Introduction with citation markers `[n]`; new §4.1 (relation
+to prior work); working reference list (§References); Tables 2 and 3 rendered from the frozen
+CSVs. **Still outstanding before submission:** Table 1 / Tables 4–5 and all figures; a formal
+PubMed + IEEE/ACM + arXiv systematic search with DOI/PMID verification; TRIPOD+AI checklist
+(Appendix B); target-journal choice and reformatting; a second reader checking every Results
+sentence against its registry `claim_id`.
 
 ---
 
@@ -61,26 +69,50 @@ is the foremost outstanding requirement.
 
 ## 1. Introduction
 
-Liver fibrosis is common and under-diagnosed, and non-invasive triage tools that use only routine
-primary-care variables are attractive for population screening. A large literature reports
-machine-learning models for this task, almost always benchmarked on the area under the receiver
-operating characteristic curve (AUROC) and, in better studies, on calibration curves or the Brier
-score.
+Significant liver fibrosis is common and under-diagnosed, and non-invasive triage tools that use
+only routine primary-care variables are attractive for population screening. The established
+serum indices (FIB-4, the NAFLD Fibrosis Score [NFS], APRI) are used in a widely adopted two-step
+pathway — a first-line blood score, then vibration-controlled transient elastography (VCTE) or the
+Enhanced Liver Fibrosis test for those above a rule-out cut-point — which reduces unnecessary
+specialist referral by roughly 80% [8]. A growing machine-learning literature aims to improve the
+first step, and several models have been built on the National Health and Nutrition Examination
+Survey (NHANES) with a VCTE reference standard, reaching areas under the receiver operating
+characteristic curve (AUROC) of approximately 0.82–0.87 and outperforming FIB-4/APRI/NFS
+[1,2]. These models are almost always benchmarked on AUROC and, in better studies, on calibration
+curves or the Brier score.
 
-Two problems with this evaluation paradigm motivate the present work. First, aggregate metrics
-average over the population and can hide subgroup-specific failure — a model can discriminate and
-calibrate well overall while systematically missing cases in a demographic subgroup. Second,
-point predictions (or even calibrated probabilities) do not convey case-level uncertainty;
-conformal prediction supplies prediction *sets* with a finite-sample coverage guarantee, but that
-guarantee is *marginal* — it holds on average over the population, not conditionally within
-subgroups.
+Two well-documented problems with this evaluation paradigm motivate the present work. First,
+**the serum indices themselves are known to be BMI-dependent**: FIB-4 sensitivity is roughly
+constant across body-mass categories, but NFS — which takes BMI and diabetes as positive
+predictors — has substantially lower sensitivity in lean patients (about 54% versus FIB-4's 82%
+at standard cut-points), and both indices lose accuracy at the BMI extremes [4,5,6,7]. Whether
+modern multi-feature ML inherits this behaviour, and how it interacts with other demographic
+axes, is not established. Second, **aggregate metrics average over the population and can hide
+subgroup-specific failure** — a model can discriminate and calibrate well overall while
+systematically missing cases in a demographic subgroup [12,13]; and **class-imbalance corrections,
+now near-universal in this literature, are known to miscalibrate probabilities** by shifting the
+implicit outcome prevalence, an effect corrected only by post-hoc recalibration [10,11]. Third,
+point predictions — even calibrated probabilities — do not convey case-level uncertainty.
+Conformal prediction supplies prediction *sets* with a distribution-free finite-sample coverage
+guarantee [15,16], but that guarantee is *marginal*: it holds on average over the population, and
+exact conditional (subgroup) coverage is provably unattainable without distributional assumptions
+[17]. Group-balanced variants exist [18,22], but forcing equal coverage can itself increase
+downstream decision disparity [21].
 
-We conducted a pre-registered audit that holds discrimination, calibration, subgroup fairness,
-and conformal reliability to the same standard, on one frozen cohort and outcome definition, with
-multiplicity control throughout. Our aim was not to produce a deployable model — we show the
-discrimination ceiling for this data type is modest — but to characterise, with a disciplined
-protocol, whether and how routine-data fibrosis models fail for identifiable subgroups, and
-whether that failure is fixable.
+Prior work has examined these dimensions **separately**. Sex-related bias has been reported in
+liver-disease classifiers on other datasets [12]; the class-imbalance calibration artifact has
+been shown, including on the same NHANES cohort and outcome we use [1,10,11]; and conformal
+prediction has been applied to liver-disease risk on non-NHANES cohorts, where no subgroup
+coverage failure was found [24]. We are not aware of a study that holds all of them —
+discrimination, aggregate calibration, a pre-specified multi-axis subgroup fairness audit,
+split-conformal *subgroup* coverage, and a structured mitigation battery — to the same standard,
+under one frozen protocol, on this task.
+
+We conducted such an audit on one pre-registered, hash-frozen NHANES cohort and outcome
+definition, with multiplicity control throughout. Our aim was not to produce a deployable model —
+the discrimination ceiling for this data type is modest and already well characterised — but to
+determine, with a disciplined protocol, whether and how routine-data fibrosis models fail for
+identifiable subgroups, and whether that failure is fixable within the model-development toolkit.
 
 ## 2. Methods
 
@@ -353,6 +385,30 @@ outcome threshold), **mechanism-linked** (a score-distribution difference with a
 body-mass gap; two distinct mechanisms for the body-mass and age gaps), and **resistant to every
 mitigation strategy we tested**.
 
+### 4.1 Relation to prior work
+
+Our individual results are, taken one at a time, consistent with an existing literature; the
+contribution is holding them together under one protocol. The **discrimination ceiling** (AUROC
+≈ 0.82–0.84) matches prior NHANES routine-data fibrosis models [1,2]. The **calibration finding**
+is a replication: class-imbalance correction is known to inflate minority-class probabilities and
+is remedied by post-hoc recalibration [10,11], and this has already been shown on the same NHANES
+cohort and outcome, corrected there by a Bayesian prevalence prior-shift rather than out-of-fold
+Platt scaling [1]; the numerical agreement between our out-of-fold intercept shift (−2.24 to
+−2.05) and the prior-mismatch term (log[0.093/0.907] ≈ −2.27) makes the mechanism explicit. The
+**body-mass detection gap** is directionally consistent with the long-known limitation of the
+NAFLD Fibrosis Score in lean patients [4,5]; our result shows the pattern survives in modern
+five-family ML where BMI is one of ten features and race/ethnicity is excluded from the model,
+and — unlike the serum-index literature — that it co-occurs with a conformal coverage failure in
+the same subgroup. That **marginal coverage does not imply subgroup coverage** is a theoretical
+result [17], and enforcing equal coverage can worsen downstream fairness [21]; what we add is the
+empirical demonstration on this clinical task, triangulated across cohort constructions, that no
+tested group-wise method achieves acceptable and generalisable subgroup validity. This last point
+contrasts with a recent conformal NAFLD-risk model on a non-NHANES cohort that reported coverage
+at or above nominal in every subgroup examined [24] — a difference in task, cohort, and outcome
+that itself argues against assuming subgroup validity transfers. The closest fairness-audit
+analog remains a sex-stratified analysis of liver-disease classifiers on a different dataset
+[12].
+
 ## 5. Limitations
 
 The following limitations are material and must be read with the results. The IDs in brackets
@@ -414,15 +470,102 @@ validation is the necessary next step before any consideration of use.
 
 ---
 
+## References
+
+*Working list — verify every DOI/PMID and complete a formal search before submission. Full
+positioning is in `documentation/manuscript/LITERATURE_REVIEW.md`.*
+
+1. Zhou et al. Integrative and interpretable machine learning framework for early non-invasive detection of clinically significant liver fibrosis. *Front Med* 2026. doi:10.3389/fmed.2026.1736295
+2. Machine learning-based disease risk stratification and prediction of MASLD using vibration-controlled transient elastography: results from NHANES 2021–2023. *BMC Gastroenterol* 2025. doi:10.1186/s12876-025-03850-x
+3. Fibro-Predict: a machine learning risk score for advanced liver fibrosis in the general population using Israeli electronic health records. *Sci Rep* 2025. doi:10.1038/s41598-025-17534-9
+4. Accuracy of Fibrosis-4 index and NAFLD Fibrosis Score in MAFLD according to body mass index: failure in the prediction of advanced fibrosis in lean and morbidly obese individuals. *Eur J Gastroenterol Hepatol* 2020. PMID:32976186
+5. Diagnostic performance of the Fibrosis-4 index and NAFLD Fibrosis Score in lean adults with NAFLD. 2023. PMID:37589973
+6. Graupera et al. Low accuracy of FIB-4 and NAFLD Fibrosis Scores for screening for liver fibrosis in the population. *Clin Gastroenterol Hepatol* 2021.
+7. Diabetes and obesity reduce FIB-4 accuracy in MASLD referral pathways. *JHEP Rep* 2026.
+8. Prospective evaluation of a primary-care referral pathway for non-alcoholic fatty liver disease. *J Hepatol* 2019. doi:10.1016/j.jhep.2019.03.033
+9. Collins et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* 2024. PMID:38626948
+10. van den Goorbergh, van Smeden, Timmerman, Van Calster. The harm of class imbalance corrections for risk prediction models: illustration and simulation using logistic regression. *JAMIA* 2022;29(9):1525–1534. doi:10.1093/jamia/ocac093
+11. Carriero et al. The harms of class imbalance corrections for machine-learning-based prediction models: a simulation study. *Stat Med* 2025. doi:10.1002/sim.10320
+12. Straw & Wu. Investigating for bias in healthcare algorithms: a sex-stratified analysis of supervised machine learning models in liver disease prediction. *BMJ Health Care Inform* 2022. PMC9039354
+13. Understanding algorithmic fairness for clinical prediction in terms of subgroup net benefit and health equity. arXiv:2412.07879, 2024.
+14. Critical appraisal of fairness metrics for artificial-intelligence-based clinical prediction models: a scoping review. *Lancet Digit Health* 2026.
+15. Vovk, Gammerman, Shafer. *Algorithmic Learning in a Random World*. Springer, 2005.
+16. Angelopoulos & Bates. A gentle introduction to conformal prediction and distribution-free uncertainty quantification. 2023.
+17. Barber, Candès, Ramdas, Tibshirani. The limits of distribution-free conditional predictive inference. *Inf Inference* 2021. arXiv:1903.04684
+18. Romano, Barber, Sabbatti, Candès. With malice toward none: assessing uncertainty via equalized coverage. *Harv Data Sci Rev* 2020.
+19. Angelopoulos, Bates, Fisch, Lei, Schuster. Conformal risk control. *ICLR* 2024.
+20. Conformal prediction in clinical artificial intelligence. *CHEST* 2025.
+21. Conformal prediction sets can cause disparate impact. *ICLR* 2025.
+22. Conformal classification with equalized coverage for adaptively selected groups. *NeurIPS* 2024.
+23. Zhou & Sesia. Adaptively fair conformal prediction. 2024.
+24. Conformal risk prediction for non-alcoholic fatty liver disease using gradient boosting with distribution-free coverages. arXiv:2606.09860, 2026.
+25. Jones et al. Selective classification can magnify disparities across groups. *ICLR* 2021.
+26. Schreuder & Chzhen. Classification with abstention but without disparities. *UAI* 2021.
+27. Madras, Pitassi, Zemel. Predict responsibly: improving fairness and accuracy by learning to defer. *NeurIPS* 2018.
+28. Conformal selective prediction with cost-aware deferral for safe clinical triage under distribution shift. *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w
+
+---
+
 ## Tables
 
-| # | Title | Source artifact(s) |
-|---|---|---|
-| **1** | Baseline characteristics of the primary cohort, overall and by fibrosis status and BMI band | `results/tables/phase1_table1.md`, `phase2_outcome_prevalence.csv` |
-| **2** | Discrimination and calibration by model family (test set), raw and recalibrated | `results/tables/phase3_final_baseline_results.csv`, `results/calibration/test_set_calibration_final.csv`, `phase3_model_comparison_fdr.csv` |
-| **3** | Conformal coverage — marginal and by subgroup — on CAND_1, and replication on 8.0 kPa / CAND_2 / CAND_3 | `results/uncertainty/{marginal_coverage_test_set,subgroup_coverage}.csv`, `results/sensitivity/conformal_replication_{marginal,subgroup}.csv`, `results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_conformal_results.csv` |
-| **4** | Mitigation strategies, objective, outcome vs the pre-specified gate, and disposition | `results/mitigation/*`, `results/fairness_bmi_investigation/phase3_corrected/*`, `phase4_corrected/*`, `phase7_mitigation_cleanup/*` |
-| **5** | Sensitivity/robustness summary: primary vs 8.0 kPa / CAND_2 / CAND_3 / targeted MI | `results/sensitivity/primary_vs_sensitivity_comparison.csv`, `sensitivity_discrimination_calibration_results.csv`, `mi_black_subgroup_comparison.csv` |
+**Table 1** — Baseline characteristics of the primary cohort (N = 7,153), overall and by fibrosis
+status and BMI band. *(To be rendered from `results/tables/phase1_table1.md`,
+`phase2_outcome_prevalence.csv`.)*
+
+**Table 2 — Discrimination and calibration by model family, locked test set (N = 2,146; 200
+positive).** Discrimination from `results/tables/phase3_final_baseline_results.csv`; calibration
+(raw → out-of-fold-Platt-recalibrated) from `results/calibration/test_set_calibration_final.csv`;
+pairwise comparison from `phase3_model_comparison_fdr.csv`.
+
+| Model | Test AUROC (95% CI) | Test PR-AUC (95% CI) | Calib. intercept (raw → recal.) | Calib. slope (raw → recal.) | Brier (raw → recal.) | ECE (raw → recal.) |
+|---|---|---|---|---|---|---|
+| Logistic regression | 0.833 (0.802–0.861) | 0.373 (0.313–0.448) | −2.26 → −0.15 | 1.00 → 0.94 | 0.175 → 0.071 | 0.297 → 0.017 |
+| Random forest | 0.834 (0.804–0.861) | 0.351 (0.292–0.420) | −1.97 → +0.02 | 1.28 → 1.07 | 0.146 → 0.071 | 0.245 → 0.011 |
+| XGBoost | 0.843 (0.812–0.869) | 0.372 (0.310–0.441) | −2.16 → +0.12 | 1.16 → 1.12 | 0.156 → 0.069 | 0.257 → 0.015 |
+| LightGBM | 0.839 (0.809–0.867) | 0.373 (0.312–0.445) | −2.18 → +0.14 | 1.20 → 1.13 | 0.160 → 0.070 | 0.264 → 0.014 |
+| MLP (unweighted) | 0.823 (0.790–0.853) | 0.365 (0.304–0.440) | −0.44 → −0.12 | 0.93 → 1.12 | 0.072 → 0.071 | 0.029 → 0.026 |
+
+*0/10 pairwise AUROC comparisons were significant after Benjamini–Hochberg correction. AUROC is
+unchanged by recalibration by construction. The four class-balanced models (logistic, random
+forest, XGBoost, LightGBM) show the large negative raw intercepts characteristic of the
+prevalence prior-shift; the unweighted MLP does not.*
+
+**Table 3 — Split-conformal coverage (α = 0.10; target 0.90), primary cohort, and replication.**
+`results/uncertainty/{marginal_coverage_test_set,subgroup_coverage}.csv`;
+`results/sensitivity/conformal_replication_subgroup.csv`;
+`results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_conformal_results.csv`.
+Empirical coverage; Wilson 95% intervals; one-sample binomial test vs 0.90, BH-corrected within
+each model × dimension family. **Bold** = interval excludes 0.90 and BH-significant.
+
+| | Logistic | Random forest | XGBoost | LightGBM | MLP |
+|---|---|---|---|---|---|
+| **Marginal (overall)** | 0.908 | 0.896 | 0.881 | 0.896 | 0.892 |
+| BMI — Normal | **0.968** | **0.964** | **0.961** | **0.970** | **0.954** |
+| BMI — Overweight | **0.969** | **0.963** | **0.963** | **0.972** | **0.948** |
+| **BMI — Obese** | **0.823** | **0.802** | **0.768** | **0.792** | **0.809** |
+| Age — 18–39 | **0.958** | **0.939** | **0.943** | **0.941** | **0.953** |
+| Age — 40–59 | 0.919 | 0.893 | 0.890 | 0.901 | 0.884 |
+| **Age — 60+** | **0.849** | **0.856** | **0.811** | **0.848** | **0.838** |
+| Obese ∩ 60+ (N = 294) | 0.720–0.752 across models (Clopper–Pearson; all exclude 0.90) | | | | |
+| **BMI-Obese, CAND_2** | **0.790** | **0.812** | **0.802** | **0.805** | **0.841** |
+| **BMI-Obese, CAND_3** | **0.799** | **0.813** | **0.817** | **0.838** | **0.838** |
+| **BMI-Obese, 8.0 kPa relabel** | 0.790–0.822 across models (all BH-significant) | | | | |
+| Age-60+, CAND_2 | **0.823** | **0.871** | **0.856** | **0.863** | **0.862** |
+| Age-60+, CAND_3 | **0.850** | 0.869 | 0.871 | 0.882 | **0.861** |
+
+*Marginal coverage holds; BMI-Obese under-coverage is BH-significant in 5/5 models on CAND_1 and
+on both replication cohorts; Age-60+ under-coverage is BH-significant 5/5 on CAND_1 and CAND_2,
+2/5 on the smaller CAND_3. Normal-weight, overweight, and 18–39-year-old participants over-cover
+throughout.*
+
+**Table 4** — Mitigation strategies, objective, outcome vs the pre-specified acceptance gate, and
+disposition. *(To be rendered from `results/mitigation/*`,
+`results/fairness_bmi_investigation/{phase3_corrected,phase4_corrected,phase7_mitigation_cleanup}/*`.)*
+
+**Table 5** — Sensitivity/robustness summary: primary vs 8.0 kPa relabel / CAND_2 / CAND_3 /
+targeted multiple imputation. *(To be rendered from
+`results/sensitivity/primary_vs_sensitivity_comparison.csv`,
+`sensitivity_discrimination_calibration_results.csv`, `mi_black_subgroup_comparison.csv`.)*
 
 ## Figures
 
@@ -462,11 +605,30 @@ deployment readiness; no causal mechanism; the age-60+ sensitivity disparity is 
 finding and not significant in 5/5 models; the obese-and-60+ overlap is 294 people (13.7% of the
 test set), not 62%.
 
-## Appendix B — Reporting-guideline mapping
+## Appendix B — Reporting-guideline mapping (TRIPOD+AI [9])
 
-Author to complete a TRIPOD+AI checklist. Key items are covered as follows: source of data and
-eligibility (§2.1); outcome and predictors, blinded/frozen before modelling (§2.2–2.3); sample
-size and missing-data handling (§2.1, §2.9); model development and internal validation
-(§2.4–2.5); performance measures including calibration and fairness (§2.5–2.6, §3.2–3.4);
-uncertainty quantification (§2.7, §3.5–3.6); model updating / transportability (§2.10, §3.9);
-and limitations (§5).
+A full TRIPOD+AI checklist is to be completed and submitted; the crosswalk below shows where each
+item group is addressed.
+
+| TRIPOD+AI item group | Where addressed |
+|---|---|
+| Title / abstract — model type, data, purpose | Title; structured abstract |
+| Background & objectives; rationale for AI use | §1 (with related-work grounding); §1 final paragraph |
+| Source of data, study design, setting | §2.1 (NHANES 2017–March 2020 combined release; cross-sectional) |
+| Participants — eligibility, inclusion/exclusion, cohort flow | §2.1 (10,409 → 9,700 → 9,023 → 7,768 → 7,153); Table 1 |
+| Outcome — definition, blinding, timing; **frozen before modelling** | §2.2 (`LUXSMED ≥ 8.2 kPa`; 8.2-kPa rationale; threshold fixed pre-training) |
+| Predictors — definition, timing (before outcome), **frozen before modelling**; race/ethnicity handling | §2.3 (ten routine variables; prediction-time = pre-elastography; race/ethnicity excluded from input by design, retained for stratification) |
+| Sample size / events per variable | §2.4 (466 training positives; 200 test positives); Limitation B1 |
+| Missing data | §2.1 (complete-case by construction), §2.9 (targeted multiple imputation); Limitations F1–F3, D4 |
+| Model development — algorithms, hyperparameter tuning, class imbalance | §2.4 (five families; 5-fold CV within training partition; class weights / `scale_pos_weight`; MLP unweighted) |
+| Internal validation — resampling, data partitioning, leakage control | §2.4 (single locked 70/30 split; 80/20 proper-train/calibration sub-split); §2.12 (contamination audit 8/8; 44/44 internal tests); Limitation J2 (no nested outer resampling) |
+| Calibration methods and assessment | §2.5, §3.3, Table 2 (calibration-in-the-large, ECE, Brier; out-of-fold Platt) |
+| Model performance — discrimination, with CIs, **including subgroups** | §2.11, §3.2, §3.4, §3.5–3.6, Tables 2–3 (bootstrap / Wilson / Clopper–Pearson CIs; BH-FDR) |
+| Fairness — approaches, rationale, subgroup results | §2.6, §3.4, §3.8 (pre-specified dimensions, disparity metric, within-family FDR); §4.1 |
+| Uncertainty quantification | §2.7, §3.5–3.6 (split conformal; marginal + subgroup + intersectional coverage) |
+| Model updating / transportability | §2.10, §3.9 (within-NHANES demographic holdout); §5 (no external or later-cycle validation — foremost limitation) |
+| Multiplicity | §2.11 (within-family BH-FDR; project-wide 182-test pooled correction) |
+| Fairness / equity impact on underserved populations | §2.6, §3.4, §4.1, §5 (D1, D4); DCA subgroup net benefit (§3.11, exploratory) |
+| Limitations | §5 (mandated minimum set, indexed to `FINAL_LIMITATIONS_REGISTER.md`) |
+| Data / code availability, reproducibility | §2.12; `documentation/final_audit/REPRODUCIBILITY.md` |
+| Funding / conflicts / ethics | *(author to complete; NHANES is public de-identified data — IRB/consent per NCHS)* |

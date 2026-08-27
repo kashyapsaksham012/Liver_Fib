@@ -1,6 +1,8 @@
 # documentation/manuscript/
 
-`MANUSCRIPT_DRAFT.md` — working draft (v1, 2026-08-27) of the primary manuscript.
+- `MANUSCRIPT_DRAFT.md` — working draft (**v2**, 2026-08-27) of the primary manuscript.
+- `LITERATURE_REVIEW.md` — systematic-search record, findings by theme, and the novelty
+  positioning (Already done / Related but different / Distinctive). Feeds the Introduction and §4.1.
 
 **Grounding.** Every numeric claim traces to a frozen result artifact via
 `results/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv` (Appendix A of the draft). The
@@ -17,9 +19,14 @@ framing, prohibited claims, and mandatory limitations follow:
 - `documentation/final_research_audit/AUTHORITATIVE_RESULTS.md` — the verified numbers and their
   recommended wording.
 
-**Status.** Draft for the authors. Before submission: build Tables 1–6 and Figures 1–6 from the
-cited artifacts; complete the TRIPOD+AI checklist (Appendix B); choose a target journal and
-reformat; and have a second reader check every Results sentence against its registry claim_id.
+**Status.** Draft v2 for the authors. Done in v2: literature-grounded Introduction (`[n]` markers),
+§4.1 relation-to-prior-work, working reference list, Tables 2–3 rendered from the frozen CSVs.
+Before submission: build Table 1 and Tables 4–5 and all figures from the cited artifacts; run a
+formal PubMed + IEEE/ACM + arXiv systematic search and verify every DOI/PMID in the reference
+list; complete the TRIPOD+AI checklist (Appendix B); choose a target journal (clinical
+informatics / ML-for-health / fairness-in-health — **not** a hepatology or general clinical
+journal, given no external validation and modest discrimination) and reformat; have a second
+reader check every Results sentence against its registry `claim_id`.
 
 **Not a deployable-model paper.** The framing is a methodological/reliability audit:
 discrimination plus aggregate calibration are insufficient evidence of subgroup-safe reliability.
