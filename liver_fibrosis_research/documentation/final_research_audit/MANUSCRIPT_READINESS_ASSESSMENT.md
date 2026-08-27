@@ -45,7 +45,7 @@ claims.
 - Discrimination: bootstrap CIs + BH-FDR (10 pairwise) + pooled 182-test FDR. STRONG.
 - Fairness: bootstrap CIs + within-family BH-FDR; BMI finding STRONG (5/5), Age finding LIMITED
   (4/5, specification-sensitive).
-- Conformal: Wilson / Clopper–Pearson CIs; marginal STRONG, subgroup STRONG (as a failure),
+- Conformal: Wilson-score CIs; marginal STRONG, subgroup STRONG (as a failure),
   intersectional LIMITED (small cell).
 - Mitigation: no candidate-vs-candidate inference (descriptive gates only) — LIMITED but
   appropriate for "no acceptable mitigation" conclusions.

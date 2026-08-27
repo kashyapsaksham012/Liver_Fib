@@ -159,10 +159,14 @@ that no tested mitigation is acceptable + generalisable.
 
 ### Related but different (cite, distinguish)
 
-- LiverRisk conformal — different cohort/outcome, and finds *no* subgroup coverage failure.
+- LiverRisk conformal (Zhang, arXiv:2606.09860, 2026) — different cohort/outcome; reports **only
+  marginal** distribution-free coverage and does **not** test subgroup coverage. Do not claim it
+  "found no subgroup failure" — it did not look.
 - Fibro-Predict — EHR, trajectory outcome, externally validated; shows the external-validation path.
 - AFCP / equalized-coverage / net-benefit-fairness — method papers, not applied to this task.
 - Conformal selective deferral for triage (Sci Rep 2026) — same method stack, different disease, and it *achieves* near-nominal subgroup validity.
+- Rafe & Das (arXiv:2605.05562, 2026) — the same marginal-vs-subgroup coverage gap in
+  survey-based social-attitude prediction; different domain, not clinical. Strengthens, does not scoop.
 
 ### Distinctive to this study (supported by the evidence)
 
@@ -173,11 +177,14 @@ that no tested mitigation is acceptable + generalisable.
 2. **The specific empirical result** that split-conformal *subgroup* coverage fails for BMI-obese
    (76.8–82.3%) and age-60+ (81.1–85.6%) while marginal coverage holds and normal-weight/younger
    participants over-cover — on NHANES routine-data fibrosis models — **triangulated across three
-   independently constructed cohorts and an alternative outcome threshold.** (LiverRisk reports the
-   opposite on a different cohort; no one has shown it on this task.)
-3. **The negative mitigation result**: seven threshold-/calibration-/conformal-based strategies,
-   each failing a pre-specified multi-metric acceptance gate for this specific reliability–fairness
-   failure. Negative, but not previously reported for this problem.
+   independently constructed cohorts and an alternative outcome threshold.** (No prior study has
+   tested subgroup conformal coverage on this task; LiverRisk reports only marginal coverage on a
+   different cohort.)
+3. **The negative mitigation result**: a structured battery of threshold-, calibration-,
+   conformal-, selective-deferral-, and training-time-reweighting-based strategies, none meeting a
+   pre-specified multi-metric acceptance gate for this specific reliability–fairness failure; the
+   training-time intervention reduced but did not close the body-mass gap, and only at a
+   gate-failing cost. Negative, but not previously reported for this problem.
 4. **The rigor and transparency itself** (frozen protocol, hash lineage, OOF-only calibration,
    contamination audits, project-wide FDR) — above the norm for NHANES-fibrosis ML.
 
@@ -186,8 +193,9 @@ that no tested mitigation is acceptable + generalisable.
 > A pre-registered, triangulated reliability audit showing that, on the standard NHANES
 > routine-data fibrosis task — where discrimination and (per prior work) prevalence-corrected
 > calibration are already adequate — split-conformal reliability still fails for identifiable
-> demographic subgroups (obese and older patients; normal-weight patients for detection) in a way
-> that resists a structured battery of mitigations.
+> demographic subgroups (obese and older patients; normal-weight patients for detection), and that
+> none of a structured battery of post-hoc and training-time mitigations resolves it within an
+> acceptable multi-metric gate.
 
 Do **not** claim: first fairness study in liver AI; first to study calibration or uncertainty in
 fibrosis prediction; a novel calibration finding; a novel conformal method; any external

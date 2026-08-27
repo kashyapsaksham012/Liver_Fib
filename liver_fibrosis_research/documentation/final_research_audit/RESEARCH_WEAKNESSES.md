@@ -79,7 +79,7 @@ protocol-frozen — but it remains a gap a reviewer may raise).
 
 ### W8. Intersectional and small-subgroup cells are underpowered
 
-The BMI-Obese ∩ Age-60+ cell (N=294, 35 positives) and the joint calibration cell (N=138, 30
+The BMI-Obese ∩ Age-60+ cell (N=294, 61 positives) and the joint calibration cell (N=138, 30
 positives) support only descriptive statements. Normal-BMI rests on 22 test positives;
 Underweight (1 positive) is uninterpretable.
 
