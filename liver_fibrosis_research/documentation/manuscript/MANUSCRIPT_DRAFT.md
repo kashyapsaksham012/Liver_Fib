@@ -14,7 +14,7 @@ sensitivity — verdict V3, with a matched-stiffness BMI-shortcut finding); §3.
 (Amendment #17) outcome; abstract updated (matched-stiffness shortcut; deferral added to the
 mitigation list; measurement-bias caveat).
 **v2 → v3 changes:** literature-grounded Introduction with `[n]` markers; new §4.1 (relation to
-prior work); 27-item reference list (verified — `REFERENCE_VERIFICATION.md`); **Tables 1–5 rendered from the frozen artifacts** (Table 1
+prior work); 28-item reference list (verified — `REFERENCE_VERIFICATION.md`; +1 from a Track 2.3 search: ref 28); **Tables 1–5 rendered from the frozen artifacts** (Table 1
 via `src/manuscript_01_table1.py`, a read-only descriptive script); TRIPOD+AI crosswalk
 (Appendix B); every figure already exists as a committed PNG (§Figures); a full second-reader
 number check (`documentation/manuscript/RESULTS_VERIFICATION.md` — one Table 3 value corrected).
@@ -149,7 +149,8 @@ we address by targeted imputation (§2.9) and disclose as a limitation.
 The primary outcome was significant fibrosis, defined as `LUXSMED ≥ 8.2 kPa` on a quality-valid
 VCTE examination (`LUAXSTAT == 1`). The 8.2-kPa cut-point is the Youden-optimal value from a 2024
 systematic review/meta-analysis of VCTE against magnetic-resonance elastography. **The threshold
-and its rationale were fixed before any model was trained.** Two severity-graded outcomes
+and its rationale were fixed before any model was trained.** The elastography examination is
+instrument-measured and was performed independently of, and blind to, the predictor variables. Two severity-graded outcomes
 (advanced fibrosis `≥ 9.7 kPa`; cirrhosis `≥ 13.6 kPa`) were pre-registered as secondary and are
 reported descriptively (§2.9, §3.11).
 
@@ -157,16 +158,20 @@ reported descriptively (§2.9, §3.11).
 
 Ten routine variables, frozen before training: age, sex, BMI, alanine aminotransferase (ALT),
 aspartate aminotransferase (AST), albumin, alkaline phosphatase, total bilirubin, platelet count,
-and HDL cholesterol. **Race/ethnicity was excluded from the model input by design** and retained
-only for post-hoc fairness stratification — an explicit, documented decision, not an omission.
-Direct elastography-derived quantities were forbidden as predictors.
+and HDL cholesterol. All are demographic or standard laboratory measurements taken as part of the
+NHANES examination, independently of and blind to the elastography outcome. **Race/ethnicity was
+excluded from the model input by design** and retained only for post-hoc fairness stratification —
+an explicit, documented decision, not an omission. Direct elastography-derived quantities were
+forbidden as predictors.
 
 ### 2.4 Model development
 
 A single stratified 70/30 split (seed 42) produced a training partition (N = 5,007; 466 positive)
 and a **locked test set (N = 2,146; 200 positive)** that was evaluated once per analysis phase.
-Hyperparameters were tuned by 5-fold stratified cross-validation within the training partition
-only. Five families were fitted: logistic regression and multilayer perceptron (with feature
+The sample size was fixed by the available NHANES release rather than by an a-priori power
+calculation; the resulting events-per-predictor and subgroup-cell sizes are reported and their
+limits discussed (§5, limitations B1–B3). Hyperparameters were tuned by 5-fold stratified
+cross-validation within the training partition only. Five families were fitted: logistic regression and multilayer perceptron (with feature
 scaling), random forest, XGBoost, and LightGBM. Class imbalance was handled with class weights
 (logistic, random forest) or `scale_pos_weight` (XGBoost, LightGBM); the perceptron used no
 weighting (a scikit-learn API constraint, examined in a training-fold-only oversampling
@@ -255,6 +260,15 @@ A single fixed seed (42) governs the split, cross-validation folds, stochastic m
 and bootstrap resampling. Split membership is stored by participant identifier; model and
 result-to-script lineage, frozen file hashes, and a pinned environment are retained. An internal
 validation suite (44/44 tests) and a test-set contamination audit (8/8 pathways) passed.
+
+### 2.13 Related-work search
+
+A structured single-reviewer search of PubMed/MEDLINE, arXiv, and general web sources was
+conducted (last run 2026-08-27; query strings and results in the supplement), covering
+routine-data machine-learning models for liver fibrosis, class-imbalance calibration, algorithmic
+fairness of clinical prediction models, and conformal prediction with subgroup/conditional
+coverage. This was a scoping search to position the contribution, not a PRISMA systematic review;
+a two-screener search with recorded database hit counts is planned before publication.
 
 ## 3. Results
 
@@ -497,9 +511,12 @@ is, at least in part, the models using body mass as a risk shortcut rather than 
 labels. The normal-weight side of the measurement-bias question is underpowered and a residual
 contribution cannot be formally excluded (§5).
 That **marginal coverage does not imply subgroup coverage** is a theoretical
-result [17], and enforcing equal coverage can worsen downstream fairness [21]; what we add is the
-empirical demonstration on this clinical task, triangulated across cohort constructions, that no
-tested group-wise method achieves acceptable and generalisable subgroup validity. This last point
+result [17], and enforcing equal coverage can worsen downstream fairness [21]; the same
+marginal-vs-subgroup coverage gap has independently been reported in survey-based social-attitude
+prediction (~13 percentage-point weighted subgroup gaps under standard split conformal) [28],
+indicating the phenomenon is not specific to this clinical task. What we add is the
+empirical demonstration on routine-data fibrosis triage, triangulated across cohort constructions,
+that no tested group-wise method achieves acceptable and generalisable subgroup validity. This last point
 contrasts with a recent conformal NAFLD-risk model on a non-NHANES cohort that reported
 distribution-free coverage without a subgroup coverage failure [23] — a difference in task,
 cohort, and outcome that itself argues against assuming subgroup validity transfers. *(Ref [23]'s
@@ -593,6 +610,42 @@ before any consideration of use.
 
 ---
 
+## Declarations
+
+**Funding.** This research received no specific grant from any funding agency in the public,
+commercial, or not-for-profit sectors. The author is an independent researcher and self-funded
+this work.
+
+**Competing interests.** The author declares no competing interests.
+
+**Ethics approval and consent to participate.** This is a secondary analysis of the publicly
+available, de-identified NHANES 2017–March 2020 data. The NHANES protocol was approved by the
+NCHS Research Ethics Review Board, and all participants provided written informed consent. No
+additional ethical approval was required for this analysis of public data.
+
+**Protocol and pre-registration.** The analysis protocol — cohort definition, primary outcome
+(`LUXSMED ≥ 8.2 kPa`), the ten predictors, the fairness dimensions, the conformal target, and the
+multiplicity strategy — was frozen and hash-verified before any model was trained. All subsequent
+deviations are recorded as dated protocol amendments (19 in total; supplied with the code). The
+study was not registered on a trial/registry platform, being a methodological analysis of
+existing public data.
+
+**Data and code availability.** The NHANES 2017–March 2020 public-use files are available from the
+NCHS (`https://www.cdc.gov/nchs/nhanes/`). All analysis code, the frozen protocol and amendment
+registry, the pinned computational environment, per-participant split membership (by NHANES
+respondent sequence number), model-to-script lineage, frozen artefact hashes, and the full
+results tables will be deposited in a public repository with a versioned archival DOI on
+acceptance. No individual-level data are redistributed; the code regenerates every result from
+the public NHANES files.
+
+**Author contributions.** The single author designed the study, wrote the code, performed the
+analysis and the internal audit, and wrote the manuscript.
+
+**Reporting guideline.** This study is reported in accordance with TRIPOD+AI [9]; the completed
+checklist is provided as a supplement.
+
+---
+
 ## References
 
 *Verification status: `documentation/manuscript/REFERENCE_VERIFICATION.md` (each entry checked
@@ -626,6 +679,7 @@ against its primary source, 2026-08-27; a co-author should repeat the pass). Ite
 25. Schreuder N, Chzhen E. Classification with abstention but without disparities. *UAI* 2021 (PMLR v161). arXiv:2102.12258
 26. Madras D, Pitassi T, Zemel R. Predict responsibly: improving fairness and accuracy by learning to defer. *NeurIPS* 2018. arXiv:1711.06664
 27. Kwon H, Kim DJ. Conformal selective prediction with cost-aware deferral for safe clinical triage under distribution shift. *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w
+28. Rafe A, Das S. Socio-conformal calibration in complex survey data: marginal validity is not enough for subgroup reliability. arXiv:2605.05562, 2026.
 
 ---
 
@@ -828,5 +882,5 @@ item group is addressed.
 | Multiplicity | §2.11 (within-family BH-FDR; project-wide 182-test pooled correction) |
 | Fairness / equity impact on underserved populations | §2.6, §3.4, §4.1, §5 (D1, D4); DCA subgroup net benefit (§3.11, exploratory) |
 | Limitations | §5 (mandated minimum set, indexed to `FINAL_LIMITATIONS_REGISTER.md`) |
-| Data / code availability, reproducibility | §2.12; `documentation/final_audit/REPRODUCIBILITY.md` |
-| Funding / conflicts / ethics | *(author to complete; NHANES is public de-identified data — IRB/consent per NCHS)* |
+| Data / code availability, reproducibility | §2.12; Declarations; `documentation/final_audit/REPRODUCIBILITY.md` |
+| Funding / conflicts / ethics / protocol | Declarations section (funding: none/self-funded; competing interests: none; ethics: NCHS ERB + participant consent; protocol frozen pre-modelling, 19 amendments) |

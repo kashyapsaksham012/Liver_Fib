@@ -72,7 +72,8 @@ paper. **Merge 22 and 23 into one reference**; renumber 24–28 → 23–27. Upd
 | 25 | "Jones et al. Selective classification can magnify disparities across groups. *ICLR* 2021" | **OK** | ICLR 2021. arXiv:2010.14134. Authors: Jones E, Sagawa S, Koh PW, Kumar A, Liang P. |
 | 26 | "Schreuder & Chzhen. Classification with abstention but without disparities. *UAI* 2021" | **OK** | UAI 2021, PMLR v161. arXiv:2102.12258. Nicolas Schreuder, Evgenii Chzhen. |
 | 27 | "Madras, Pitassi, Zemel. Predict responsibly: improving fairness and accuracy by learning to defer. *NeurIPS* 2018" | **OK (canonical)** | NeurIPS 2018. arXiv:1711.06664. David Madras, Toniann Pitassi, Richard Zemel. |
-| 28 | "Conformal selective prediction with cost-aware deferral… *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w" | **OK** | *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w. Authors: Kwon H, Kim DJ. Sepsis triage; split conformal + gender-stratified Mondrian + importance-weighted + cost-aware deferral. Matches our "application-level precedent" framing. |
+| 28 (was) | "Conformal selective prediction with cost-aware deferral… *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w" | **OK** → **renumbered 27** | *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w. Authors: Kwon H, Kim DJ. Sepsis triage; split conformal + gender-stratified Mondrian + importance-weighted + cost-aware deferral. Matches our "application-level precedent" framing. |
+| **new 28** | "Rafe A, Das S. Socio-conformal calibration in complex survey data… arXiv:2605.05562, 2026" | **OK (added Track 2.3)** | arXiv:2605.05562 (8 May 2026). Amir Rafe, Subasish Das. Pew American Trends Panel Wave 152, n=4,591, ordinal conformal; standard split conformal → nominal marginal but ~13 pp weighted subgroup gaps; Mondrian vs regularized-Mondrian; survey-weighted. Same phenomenon, non-clinical domain — strengthens §4.1, does not scoop. See `LITERATURE_SEARCH_RECORD.md`. |
 
 ---
 
@@ -84,7 +85,8 @@ paper. **Merge 22 and 23 into one reference**; renumber 24–28 → 23–27. Upd
 4. Apply the small FIXes: ref 2 title (MAFLD), ref 6 year (2022), ref 13 (cite *Epidemiology* 2026), ref 18 spelling (Sabatti), ref 20 year (2026).
 5. Paste identifiers for the FILL rows (5, 7, 9, 14, 19, 20, 21, 24) into the reference list.
 6. **F2 / ref 24 READ** — both are claims in §4.1 about what a cited paper found; verify against full text before submission.
-7. New reference-list count after the merge: **27**.
+7. New reference-list count: **27** after the 22+23 merge, **28** with the Track-2.3 addition
+   (ref 28, Rafe & Das).
 
 ## Not done (needs a human / a systematic search)
 
