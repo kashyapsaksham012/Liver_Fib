@@ -1,0 +1,108 @@
+{
+  "manifest_type": "Phase 5 MI conformal reliability selection/protocol manifest",
+  "created_utc": "2026-08-26T18:00:24.874592+00:00",
+  "lineage_status": "ESTABLISHED",
+  "lineage_gate": "PASS: committed MI artifacts and protocol are present and internally consistent",
+  "authorized_mi_protocol": {
+    "m": 5,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "imputer": "sklearn IterativeImputer(estimator=BayesianRidge(), max_iter=10, sample_posterior=True)",
+    "predictors": [
+      "RIDAGEYR",
+      "RIAGENDR",
+      "BMXBMI",
+      "LBXSATSI",
+      "LBXSASSI",
+      "LBXSAL",
+      "LBXSAPSI",
+      "LBXSTB",
+      "LBXPLTSI",
+      "LBDHDD"
+    ],
+    "outcome_used_as_imputation_predictor": false,
+    "cohort_n": 7768,
+    "complete_case_n": 7153,
+    "excluded_n": 615,
+    "model_refit": "frozen Phase 3 five families and best_params reused unchanged; no tuning",
+    "pooling": "no inferential pooling; report each imputation separately and descriptive between-imputation synthesis only"
+  },
+  "authorized_conformal_protocol": {
+    "method": "standard split conformal binary classification",
+    "target_coverage": 0.9,
+    "score": "1-P(y=true_class|x)",
+    "calibration": "fixed conformal_calibration_ids; finite-sample corrected order statistic",
+    "subgroups": "frozen Phase 5 sex, race_ethnicity, age, BMI bins",
+    "intersectional": "exact pre-specified 26 cells from phase2_intersectional_feasibility.csv",
+    "ci": "Wilson 95% for coverage proportions",
+    "locked_test_expected_sha256": "a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779",
+    "test_access_before_manifest": false,
+    "official_test_evaluations_planned": 1
+  },
+  "pre_test_selection_decisions": {
+    "models": [
+      "logistic",
+      "random_forest",
+      "xgboost",
+      "lightgbm",
+      "mlp"
+    ],
+    "thresholds": "recalibrate conformal threshold separately within each authorized MI dataset/model using fixed calibration partition; no model selection based on test",
+    "comparison": "complete-case values read from frozen Phase 6 outputs; MI test results are reported per dataset",
+    "final_conclusion_phrase": "MI CONFORMAL RELIABILITY IS CONSISTENT WITH COMPLETE-CASE RESULTS"
+  },
+  "lineage_checks": {
+    "pool_n": 7768,
+    "complete_case_n": 7153,
+    "excluded_n": 615,
+    "mi_registry_rows": 5,
+    "mi_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "mi_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "sample_posterior_all": true,
+    "registry_hashes_match": true,
+    "distinct_mi_hashes": true,
+    "outcome_excluded_from_imputation": true,
+    "predictor_set_match": true
+  },
+  "artifact_sha256": {
+    "src/mi_01_construct_and_diagnostics.py": "70f5143b7eca6580fc9ec5bb18fec9ec75804a37b5a954a44a40902bec71cd03",
+    "src/mi_02_black_subgroup_comparison.py": "25c08fa123d36a7586affbf3c061acb1b75b0c82ab404c672315896999274441",
+    "src/mi_03_black_subgroup_inference.py": "f987b308bd8a0c1cd12ab2f7b9efe5909b09ff7e0341991f8aea09b5e2fd452f",
+    "results/sensitivity/multiple_imputation_registry.csv": "8d57c1b5b6417df5a3361d919bac8316fd4f19a189db08ecda5a6317fda3fe30",
+    "results/sensitivity/multiple_imputation_diagnostics.csv": "0262de06c672a79bc745cc589c7cc11d071bac7b57a30e6bd974e7ac8e56157a",
+    "documentation/sensitivity/mi_protocol_extraction_and_gaps.md": "67416f8e39dadcd26f83c180bd288a4a4db73897035d52d97f384c3fdcc4bfe5",
+    "documentation/sensitivity/multiple_imputation_pre_execution_snapshot.md": "070bcdbd9376e296995ca993f088577e665dffc72d74a26a69a52146fab1918b",
+    "documentation/end_to_end/protocol_amendment_registry.md": "29a3e3299bd2af36aaea264f332555cd413c995cedda42a1a6b64211d8e67cae",
+    "documentation/phase2/missing_data_protocol.md": "8bdd17a9a18c18f8a1202c53f6aa33115e860fcda0e7c289824beee600ac8b49",
+    "documentation/phase2/sensitivity_analysis_plan.md": "0110c749578212022305ba1abcbb279c3256d35f269ad2e0ddff08709984606b",
+    "documentation/phase2/uncertainty_protocol.md": "9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7",
+    "results/uncertainty/conformal_thresholds_by_model.csv": "23909e42f7ed2f514528694e54ee6a253850e6d4517b2aeaec5d8104efbbbdd2",
+    "results/uncertainty/conformal_model_refit_registry.csv": "956b90ae5779f6328caed17aaa1cb4447982dcf4d534ed7712d4dbdefc8cf9c3",
+    "results/tables/model_lineage.csv": "32a8a8960e9ed37fb689ec30c0f90cc42f2ea1e8b664156d4474a5c1ac2fd02f",
+    "data/processed/analysis_dataset_primary.parquet": "1c1f16a44e3abf91c9d1d72d255e2dcf5be19a73f6bfe450dd52cb2812023938",
+    "data/processed/splits/proper_train_ids.csv": "bc29dbe6402ffb82790801a97d6baf26732f6964bf77741a8f716e78dab01fef",
+    "data/processed/splits/conformal_calibration_ids.csv": "4d696cbcd0f2aecfd07dd7b223825df10c39bbfaf3f093a117e4c224b6c5b3c5",
+    "results/sensitivity/mi_imputed_dataset_0.csv": "74509ff3648f74d5a21ffd234c5426c45b5ec0fe34e066d0d64f339567d67a9e",
+    "results/sensitivity/mi_imputed_dataset_1.csv": "14d3c44c21fd7b3405e12ef06de0341d19488534027e36f481ba72c1d4402508",
+    "results/sensitivity/mi_imputed_dataset_2.csv": "841efe8d164a9292f7e64142ca0af80cad4dabde9115b0c475d568bb02d86e86",
+    "results/sensitivity/mi_imputed_dataset_3.csv": "5a4289204910ddc5e1eb110415e931140ef4badd988a08a23087cf9e9294feb8",
+    "results/sensitivity/mi_imputed_dataset_4.csv": "361533d2013dba4f60b3306f9f528c19b4e62fdbb7f3576f1e584d1d149e0b81"
+  }
+}

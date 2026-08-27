@@ -1,0 +1,64 @@
+{
+  "namespace": "results/fairness_bmi_investigation/phase7_mitigation_cleanup",
+  "created_utc": "2026-08-27T03:59:07.991693+00:00",
+  "seed": 20260827,
+  "model": "xgboost",
+  "candidates": [
+    "original_frozen",
+    "bmi_thresholding",
+    "bmi_platt_calibration",
+    "bmi_age_thresholding",
+    "combined_bmi_platt_thresholding"
+  ],
+  "authorized_framework_source": "src/run_phase3_corrected_bmi_mitigation.py",
+  "authorized_framework_source_sha256": "22da40fdb3952a05b5f7f1dda59ba344a46a8622d8247c92a0eafa3d9b4d926e",
+  "development_split": "validation_predictions_xgboost.csv sorted by SEQN; even index fit, odd index evaluation",
+  "conformal_development_split": "conformal_calibration_ids.csv sorted by SEQN; even index fit, odd index evaluation",
+  "selection_gate": {
+    "overall_sensitivity": ">= original - 5 percentage points",
+    "overall_specificity": ">= original - 5 percentage points",
+    "brier": "<= original + 0.01",
+    "absolute_age60_minus_age40_sensitivity_gap": "<= original + 5 percentage points",
+    "conformal_marginal_drift": "within +/-5 percentage points",
+    "tie_break": "smallest absolute BMI Obese-minus-Normal sensitivity gap, then highest specificity"
+  },
+  "chosen_candidate_or_status": "NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED",
+  "parameters": {
+    "global_threshold": 0.4108,
+    "bmi_thresholds": {
+      "Normal": 0.28614485,
+      "Obese": 0.5884219
+    },
+    "combined_thresholds": {
+      "Normal": 0.051960189482622245,
+      "Obese": 0.16024635850838548
+    },
+    "bmi_age_thresholds": {
+      "('18-39', 'Normal')": null,
+      "('18-39', 'Obese')": 0.5496369,
+      "('40-59', 'Normal')": null,
+      "('40-59', 'Obese')": 0.7023769,
+      "('60+', 'Normal')": 0.42411345,
+      "('60+', 'Obese')": 0.6532284
+    },
+    "platt_global_threshold": 0.13286092213274858,
+    "bmi_platt_coefficients": {
+      "Normal": {
+        "intercept": -1.6863064164757258,
+        "slope": 1.3319145945501523
+      },
+      "Obese": {
+        "intercept": -2.0169885427362897,
+        "slope": 1.0088039667246027
+      }
+    }
+  },
+  "test_access": "NOT YET ACCESSED DURING DEVELOPMENT; this manifest freezes selection before test loading",
+  "test_order": [
+    "OOF development evaluation",
+    "calibration development evaluation",
+    "selection manifest written",
+    "single locked-test confirmation",
+    "lineage hashes and reports written"
+  ]
+}

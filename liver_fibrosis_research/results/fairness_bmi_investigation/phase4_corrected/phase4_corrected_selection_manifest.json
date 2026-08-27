@@ -1,0 +1,982 @@
+{
+  "age_groups": [
+    "18-39",
+    "40-59",
+    "60+"
+  ],
+  "bmi_groups": [
+    "Underweight",
+    "Normal",
+    "Overweight",
+    "Obese"
+  ],
+  "candidates": [
+    "global_platt",
+    "subgroup_platt_bmi_age"
+  ],
+  "chosen": {
+    "lightgbm": "subgroup_platt_bmi_age",
+    "logistic": "global_platt",
+    "mlp": "global_platt",
+    "random_forest": "subgroup_platt_bmi_age",
+    "xgboost": "subgroup_platt_bmi_age"
+  },
+  "cohort": {
+    "n": 7153,
+    "name": "primary",
+    "positive_n": 666
+  },
+  "conformal_framework": "Both candidates fit and apply their maps on the even/odd conformal-development split, then use the same finite-sample-corrected split-conformal score and target.",
+  "development_split": "OOF rows sorted by SEQN; even index fit, odd index evaluation",
+  "ece_protocol": {
+    "binning": "equal_frequency_risk_deciles",
+    "bins": 10,
+    "protocol_path": "documentation/calibration/CALIBRATION_PROTOCOL_FREEZE.md",
+    "protocol_sha256": "3c843ad02cd91736a597ad3256a6c6309ffac2819a882c72f77b9220c64fca1d",
+    "validation_artifact": "ece_validation.csv"
+  },
+  "fallback_rule": "BMI cell first, then age cell, then global Platt; every fallback is recorded",
+  "frozen_thresholds": {
+    "lightgbm": 0.4988,
+    "logistic": 0.5173,
+    "mlp": 0.1065,
+    "random_forest": 0.4499,
+    "xgboost": 0.4108
+  },
+  "historical_outputs_preserved": true,
+  "minimum_cell_requirements": {
+    "n": 20,
+    "negative_n": 10,
+    "positive_n": 10
+  },
+  "models": [
+    "logistic",
+    "random_forest",
+    "xgboost",
+    "lightgbm",
+    "mlp"
+  ],
+  "outcome": "outcome_primary_8.2kPa",
+  "parameter_records": {
+    "conformal": {
+      "lightgbm": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.2273921527900864,
+          "n": 501,
+          "negative_n": 461,
+          "positive_n": 40,
+          "slope": 1.0546136976856597,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 11,
+          "negative_n": 10,
+          "positive_n": 1,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 127,
+          "negative_n": 124,
+          "positive_n": 3,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 165,
+          "negative_n": 160,
+          "positive_n": 5,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0625824949518634,
+          "n": 198,
+          "negative_n": 167,
+          "positive_n": 31,
+          "slope": 0.929536672702573,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "global_platt",
+          "n": 152,
+          "negative_n": 143,
+          "positive_n": 9,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.373490373100761,
+          "n": 178,
+          "negative_n": 166,
+          "positive_n": 12,
+          "slope": 1.0687917746453564,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.551638188873847,
+          "n": 171,
+          "negative_n": 152,
+          "positive_n": 19,
+          "slope": 1.5333830162388231,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "logistic": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.4297052811863766,
+          "n": 501,
+          "negative_n": 461,
+          "positive_n": 40,
+          "slope": 1.063739382525787,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 11,
+          "negative_n": 10,
+          "positive_n": 1,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 127,
+          "negative_n": 124,
+          "positive_n": 3,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 165,
+          "negative_n": 160,
+          "positive_n": 5,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.2782367448520247,
+          "n": 198,
+          "negative_n": 167,
+          "positive_n": 31,
+          "slope": 1.0086764478808894,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "global_platt",
+          "n": 152,
+          "negative_n": 143,
+          "positive_n": 9,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.4944169514671732,
+          "n": 178,
+          "negative_n": 166,
+          "positive_n": 12,
+          "slope": 1.0317023778779528,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.5983436221137204,
+          "n": 171,
+          "negative_n": 152,
+          "positive_n": 19,
+          "slope": 1.2382751193944515,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "mlp": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -0.15135503392689922,
+          "n": 501,
+          "negative_n": 461,
+          "positive_n": 40,
+          "slope": 0.9059530105592764,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 11,
+          "negative_n": 10,
+          "positive_n": 1,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 127,
+          "negative_n": 124,
+          "positive_n": 3,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 165,
+          "negative_n": 160,
+          "positive_n": 5,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -0.2952076490523066,
+          "n": 198,
+          "negative_n": 167,
+          "positive_n": 31,
+          "slope": 0.7390657969709628,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "global_platt",
+          "n": 152,
+          "negative_n": 143,
+          "positive_n": 9,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -0.2632264589094569,
+          "n": 178,
+          "negative_n": 166,
+          "positive_n": 12,
+          "slope": 0.9028320899484426,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": 0.07674616773706242,
+          "n": 171,
+          "negative_n": 152,
+          "positive_n": 19,
+          "slope": 1.1029979163360875,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "random_forest": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.01989676063976,
+          "n": 501,
+          "negative_n": 461,
+          "positive_n": 40,
+          "slope": 1.0405415741328734,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 11,
+          "negative_n": 10,
+          "positive_n": 1,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 127,
+          "negative_n": 124,
+          "positive_n": 3,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 165,
+          "negative_n": 160,
+          "positive_n": 5,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.7951446867164575,
+          "n": 198,
+          "negative_n": 167,
+          "positive_n": 31,
+          "slope": 0.818008339229611,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "global_platt",
+          "n": 152,
+          "negative_n": 143,
+          "positive_n": 9,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.227715998668899,
+          "n": 178,
+          "negative_n": 166,
+          "positive_n": 12,
+          "slope": 1.1213893939991897,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0712602566005054,
+          "n": 171,
+          "negative_n": 152,
+          "positive_n": 19,
+          "slope": 1.2735025563529303,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "xgboost": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.2079049587742077,
+          "n": 501,
+          "negative_n": 461,
+          "positive_n": 40,
+          "slope": 0.9776274127628645,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 11,
+          "negative_n": 10,
+          "positive_n": 1,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 127,
+          "negative_n": 124,
+          "positive_n": 3,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 165,
+          "negative_n": 160,
+          "positive_n": 5,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0327006158619643,
+          "n": 198,
+          "negative_n": 167,
+          "positive_n": 31,
+          "slope": 0.8562959714475787,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "global_platt",
+          "n": 152,
+          "negative_n": 143,
+          "positive_n": 9,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.382111533040548,
+          "n": 178,
+          "negative_n": 166,
+          "positive_n": 12,
+          "slope": 0.9713222770081901,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.5685150857547354,
+          "n": 171,
+          "negative_n": 152,
+          "positive_n": 19,
+          "slope": 1.4494954203923165,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ]
+    },
+    "lightgbm": {
+      "map_records": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.0236790933047395,
+          "n": 2504,
+          "negative_n": 2268,
+          "positive_n": 236,
+          "slope": 1.028757308038935,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 32,
+          "negative_n": 32,
+          "positive_n": 0,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.8307076762558248,
+          "n": 627,
+          "negative_n": 600,
+          "positive_n": 27,
+          "slope": 1.203350065864398,
+          "status": "ESTIMABLE",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.178414779303891,
+          "n": 829,
+          "negative_n": 786,
+          "positive_n": 43,
+          "slope": 0.8739775498656469,
+          "status": "ESTIMABLE",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.9925490898542733,
+          "n": 1016,
+          "negative_n": 850,
+          "positive_n": 166,
+          "slope": 1.0102545695740113,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -1.9404493444959667,
+          "n": 849,
+          "negative_n": 798,
+          "positive_n": 51,
+          "slope": 0.957953084520706,
+          "status": "ESTIMABLE",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.086646994816462,
+          "n": 810,
+          "negative_n": 735,
+          "positive_n": 75,
+          "slope": 0.9989364926354865,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0628975581299493,
+          "n": 845,
+          "negative_n": 735,
+          "positive_n": 110,
+          "slope": 1.1627433897070045,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "oof_eval_n": 2503,
+      "oof_fit_n": 2504,
+      "selection_gate": {
+        "absolute_age60_age40_gap_increase_max_pp": 5,
+        "brier_increase_max": 0.01,
+        "ece_improves": true,
+        "sensitivity_specificity_decrease_max_pp": 5
+      }
+    },
+    "logistic": {
+      "map_records": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.2302960803909184,
+          "n": 2504,
+          "negative_n": 2268,
+          "positive_n": 236,
+          "slope": 1.0249601823409775,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 32,
+          "negative_n": 32,
+          "positive_n": 0,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.9187540509609253,
+          "n": 627,
+          "negative_n": 600,
+          "positive_n": 27,
+          "slope": 1.1969859661633067,
+          "status": "ESTIMABLE",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.530608100300556,
+          "n": 829,
+          "negative_n": 786,
+          "positive_n": 43,
+          "slope": 0.7984765161606704,
+          "status": "ESTIMABLE",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.1610621212110335,
+          "n": 1016,
+          "negative_n": 850,
+          "positive_n": 166,
+          "slope": 1.0164352613032257,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.180781614067344,
+          "n": 849,
+          "negative_n": 798,
+          "positive_n": 51,
+          "slope": 0.94401370792398,
+          "status": "ESTIMABLE",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.28123048496551,
+          "n": 810,
+          "negative_n": 735,
+          "positive_n": 75,
+          "slope": 1.0201352196831828,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.272476764141661,
+          "n": 845,
+          "negative_n": 735,
+          "positive_n": 110,
+          "slope": 1.1257757066018557,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "oof_eval_n": 2503,
+      "oof_fit_n": 2504,
+      "selection_gate": {
+        "absolute_age60_age40_gap_increase_max_pp": 5,
+        "brier_increase_max": 0.01,
+        "ece_improves": true,
+        "sensitivity_specificity_decrease_max_pp": 5
+      }
+    },
+    "mlp": {
+      "map_records": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -0.35002783835577944,
+          "n": 2504,
+          "negative_n": 2268,
+          "positive_n": 236,
+          "slope": 0.7938439438257074,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 32,
+          "negative_n": 32,
+          "positive_n": 0,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": 0.10677427551067876,
+          "n": 627,
+          "negative_n": 600,
+          "positive_n": 27,
+          "slope": 0.8914146714793584,
+          "status": "ESTIMABLE",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -0.9713649733788584,
+          "n": 829,
+          "negative_n": 786,
+          "positive_n": 43,
+          "slope": 0.6370983995604863,
+          "status": "ESTIMABLE",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -0.3049306137378939,
+          "n": 1016,
+          "negative_n": 850,
+          "positive_n": 166,
+          "slope": 0.7868902938939404,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -0.3987808634464436,
+          "n": 849,
+          "negative_n": 798,
+          "positive_n": 51,
+          "slope": 0.7525548316833225,
+          "status": "ESTIMABLE",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -0.5201316831799075,
+          "n": 810,
+          "negative_n": 735,
+          "positive_n": 75,
+          "slope": 0.752550079635586,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -0.15756024483724934,
+          "n": 845,
+          "negative_n": 735,
+          "positive_n": 110,
+          "slope": 0.8794095529708909,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "oof_eval_n": 2503,
+      "oof_fit_n": 2504,
+      "selection_gate": {
+        "absolute_age60_age40_gap_increase_max_pp": 5,
+        "brier_increase_max": 0.01,
+        "ece_improves": true,
+        "sensitivity_specificity_decrease_max_pp": 5
+      }
+    },
+    "random_forest": {
+      "map_records": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -1.8323875442594506,
+          "n": 2504,
+          "negative_n": 2268,
+          "positive_n": 236,
+          "slope": 1.171471042315664,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 32,
+          "negative_n": 32,
+          "positive_n": 0,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.4868523957169582,
+          "n": 627,
+          "negative_n": 600,
+          "positive_n": 27,
+          "slope": 1.5248302995857057,
+          "status": "ESTIMABLE",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.9484198339151646,
+          "n": 829,
+          "negative_n": 786,
+          "positive_n": 43,
+          "slope": 1.0361625873978497,
+          "status": "ESTIMABLE",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.8150185666285987,
+          "n": 1016,
+          "negative_n": 850,
+          "positive_n": 166,
+          "slope": 1.1251891413619266,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -1.7041756709095062,
+          "n": 849,
+          "negative_n": 798,
+          "positive_n": 51,
+          "slope": 1.189099416227678,
+          "status": "ESTIMABLE",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -1.9400207617566105,
+          "n": 810,
+          "negative_n": 735,
+          "positive_n": 75,
+          "slope": 1.1038589541328574,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -1.8218725407942775,
+          "n": 845,
+          "negative_n": 735,
+          "positive_n": 110,
+          "slope": 1.26027209388009,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "oof_eval_n": 2503,
+      "oof_fit_n": 2504,
+      "selection_gate": {
+        "absolute_age60_age40_gap_increase_max_pp": 5,
+        "brier_increase_max": 0.01,
+        "ece_improves": true,
+        "sensitivity_specificity_decrease_max_pp": 5
+      }
+    },
+    "xgboost": {
+      "map_records": [
+        {
+          "dimension": "GLOBAL",
+          "fallback": "NONE",
+          "intercept": -2.016328246901555,
+          "n": 2504,
+          "negative_n": 2268,
+          "positive_n": 236,
+          "slope": 1.0209151610717058,
+          "status": "ESTIMABLE",
+          "value": "ALL"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "global_platt",
+          "n": 32,
+          "negative_n": 32,
+          "positive_n": 0,
+          "status": "UNSTABLE_SMALL_CELL",
+          "value": "Underweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -1.6863064164757258,
+          "n": 627,
+          "negative_n": 600,
+          "positive_n": 27,
+          "slope": 1.3319145945501523,
+          "status": "ESTIMABLE",
+          "value": "Normal"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.129305490180585,
+          "n": 829,
+          "negative_n": 786,
+          "positive_n": 43,
+          "slope": 0.8587548056105914,
+          "status": "ESTIMABLE",
+          "value": "Overweight"
+        },
+        {
+          "dimension": "bmi_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0169885427362897,
+          "n": 1016,
+          "negative_n": 850,
+          "positive_n": 166,
+          "slope": 1.0088039667246027,
+          "status": "ESTIMABLE",
+          "value": "Obese"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -1.8691174633342513,
+          "n": 849,
+          "negative_n": 798,
+          "positive_n": 51,
+          "slope": 1.0136908357519583,
+          "status": "ESTIMABLE",
+          "value": "18-39"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0659060787339336,
+          "n": 810,
+          "negative_n": 735,
+          "positive_n": 75,
+          "slope": 0.9539427800859172,
+          "status": "ESTIMABLE",
+          "value": "40-59"
+        },
+        {
+          "dimension": "age_group_final",
+          "fallback": "NONE",
+          "intercept": -2.0850459883092185,
+          "n": 845,
+          "negative_n": 735,
+          "positive_n": 110,
+          "slope": 1.1353704658261403,
+          "status": "ESTIMABLE",
+          "value": "60+"
+        }
+      ],
+      "oof_eval_n": 2503,
+      "oof_fit_n": 2504,
+      "selection_gate": {
+        "absolute_age60_age40_gap_increase_max_pp": 5,
+        "brier_increase_max": 0.01,
+        "ece_improves": true,
+        "sensitivity_specificity_decrease_max_pp": 5
+      }
+    }
+  },
+  "parameter_records_sha256": "a4d8490044c2b2f155ae8bcd1a5e900f009ce7b2ea07ae3d00df91653ef40822",
+  "predictors": [
+    "RIDAGEYR",
+    "RIAGENDR",
+    "BMXBMI",
+    "LBXSATSI",
+    "LBXSASSI",
+    "LBXSAL",
+    "LBXSAPSI",
+    "LBXSTB",
+    "LBXPLTSI",
+    "LBDHDD"
+  ],
+  "run": "corrected_phase4_subgroup_calibration",
+  "seed": 20260826,
+  "selection_rule": "Select subgroup Platt only if ECE improves, Brier <= global +0.01, overall sensitivity and specificity are within 5 pp, and the absolute Age-60-vs-Age-40 sensitivity gap is within 5 pp; otherwise global Platt.",
+  "status": "SELECTION_FROZEN_BEFORE_TEST_ACCESS",
+  "test_access": "No test IDs, metadata, predictions, or outcomes loaded before this manifest was written."
+}

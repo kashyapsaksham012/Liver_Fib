@@ -1,0 +1,177 @@
+{
+  "analysis": "Phase 6 FULL 8.0-kPa ROBUSTNESS PIPELINE",
+  "generated_utc": "2026-08-26T18:56:34.835060+00:00",
+  "repository_root": "/Users/sakshamkashyap/Desktop/Research /liver_fibrosis_research",
+  "namespace": "results/fairness_bmi_investigation/phase6_8kpa_robustness",
+  "status_before_test_touch": "FROZEN",
+  "outcome_definition": "valid VCTE (LUAXSTAT==1) AND LUXSMED>=8.0 kPa",
+  "primary_outcome_definition": "valid VCTE (LUAXSTAT==1) AND LUXSMED>=8.2 kPa",
+  "predictors": [
+    "RIDAGEYR",
+    "RIAGENDR",
+    "BMXBMI",
+    "LBXSATSI",
+    "LBXSASSI",
+    "LBXSAL",
+    "LBXSAPSI",
+    "LBXSTB",
+    "LBXPLTSI",
+    "LBDHDD"
+  ],
+  "models": [
+    "logistic",
+    "random_forest",
+    "xgboost",
+    "lightgbm",
+    "mlp"
+  ],
+  "random_seed": 42,
+  "cv": "5-fold StratifiedKFold(shuffle=True, random_state=42)",
+  "development_protocol": "proper_train only for OOF, final fit; conformal_calibration only for split-conformal q",
+  "calibration_protocol": "approved OOF Platt transform: logistic regression of y on logit(raw probability)",
+  "conformal_protocol": "binary split-conformal score 1-P(true class), finite-sample corrected 90% quantile",
+  "threshold_protocol": "Youden J from development OOF predictions; no test-driven selection",
+  "test_protocol": "locked test set read exactly once after this manifest and all selections are frozen",
+  "test_access_sequence": [
+    "NOT ACCESSED BEFORE MANIFEST",
+    "ACCESS AUTHORIZED NOW",
+    "ONE LOCKED TEST TOUCH COMPLETE"
+  ],
+  "preexisting_artifacts": {
+    "primary_8p2_results": "results/tables/phase3_overall_discrimination.csv",
+    "primary_8p2_calibration": "results/calibration/test_set_calibration_final.csv",
+    "primary_8p2_fairness": "results/fairness/subgroup_discrimination_metrics.csv",
+    "primary_8p2_conformal": "results/uncertainty/subgroup_coverage.csv"
+  },
+  "source_hashes": {
+    "data/processed/analysis_dataset_primary.parquet": "1c1f16a44e3abf91c9d1d72d255e2dcf5be19a73f6bfe450dd52cb2812023938",
+    "data/interim/nhanes_master_phase1.parquet": "150f7ff896e5ae963f95dfa53b23ffc4ade3cff1c6e2d1306c9e23ead99653b1",
+    "data/processed/splits/proper_train_ids.csv": "bc29dbe6402ffb82790801a97d6baf26732f6964bf77741a8f716e78dab01fef",
+    "data/processed/splits/conformal_calibration_ids.csv": "4d696cbcd0f2aecfd07dd7b223825df10c39bbfaf3f093a117e4c224b6c5b3c5",
+    "src/phase3_common.py": "3b5e278933b73c4ef27dab1c24b791e325e4c0b5fbfa22b1831c55c7a62178f7",
+    "src/phase3_05_train_and_tune.py": "2eccb17b02c27fa2c4e3e7481b786d52b7fb676e0b177e9f60fc5122e9754768",
+    "src/phase5_common.py": "d72236d5bfa1ecb1bd1dcc20d6df25215ece267fe3d787ca4ec694b9f0c1924e",
+    "documentation/phase2/uncertainty_protocol.md": "9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7",
+    "documentation/phase2/evaluation_metrics_protocol.md": "d8396ac10f3222023ac3e7164f39046b2e99f31fb487be1634db23f6e1d214ad",
+    "documentation/phase3/test_set_lock.md": "68cbf32b50dab02fcc38fe158e3662a7daacd0a02f7e93c9c58d68df416b2ebb"
+  },
+  "missing_lineage_links": {
+    "frozen_8p2_protocol_commit": "NOT FOUND IN REPOSITORY",
+    "frozen_8p2_model_artifact_manifest": "NOT FOUND IN REPOSITORY"
+  },
+  "runtime": {
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "working_directory_required": "/Users/sakshamkashyap/Desktop/Research /liver_fibrosis_research",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.18.0",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "git_head": "4ad991ac9c29a064a4ef66a5c131ca38708c1463"
+  },
+  "selection_frozen_utc": "2026-08-26T18:56:41.263105+00:00",
+  "selection_manifest_statement": "All model configurations, OOF thresholds, OOF Platt parameters, and conformal thresholds frozen before test access.",
+  "development_partitions": {
+    "proper_train_ids_sha256": "bc29dbe6402ffb82790801a97d6baf26732f6964bf77741a8f716e78dab01fef",
+    "conformal_calibration_ids_sha256": "4d696cbcd0f2aecfd07dd7b223825df10c39bbfaf3f093a117e4c224b6c5b3c5",
+    "proper_train_n": 4005,
+    "conformal_calibration_n": 1002
+  },
+  "frozen_selections": {
+    "logistic": {
+      "best_params": {
+        "est__C": 0.01
+      },
+      "oof_threshold": 0.5321354000674892,
+      "platt_intercept": -2.165192623043671,
+      "platt_slope": 1.0510069555526433,
+      "conformal_threshold": 0.6683019325789672
+    },
+    "random_forest": {
+      "best_params": {
+        "est__n_estimators": 100,
+        "est__min_samples_leaf": 5,
+        "est__max_depth": 7
+      },
+      "oof_threshold": 0.35901050955097624,
+      "platt_intercept": -1.793170427150174,
+      "platt_slope": 1.1222023041709421,
+      "conformal_threshold": 0.6215569905887417
+    },
+    "xgboost": {
+      "best_params": {
+        "est__subsample": 0.7,
+        "est__n_estimators": 100,
+        "est__max_depth": 3,
+        "est__learning_rate": 0.05
+      },
+      "oof_threshold": 0.4342503249645233,
+      "platt_intercept": -1.9620256423950195,
+      "platt_slope": 0.9771400690078735,
+      "conformal_threshold": 0.6710087060928345
+    },
+    "lightgbm": {
+      "best_params": {
+        "est__subsample": 0.7,
+        "est__n_estimators": 100,
+        "est__max_depth": 3,
+        "est__learning_rate": 0.05
+      },
+      "oof_threshold": 0.46584146081103717,
+      "platt_intercept": -1.9890544886497197,
+      "platt_slope": 1.0040283089273412,
+      "conformal_threshold": 0.6601085061849704
+    },
+    "mlp": {
+      "best_params": {
+        "est__alpha": 0.01,
+        "est__hidden_layer_sizes": [
+          32,
+          16
+        ],
+        "est__learning_rate_init": 0.01
+      },
+      "oof_threshold": 0.10507239675854635,
+      "platt_intercept": -0.4317491557270224,
+      "platt_slope": 0.764444217956804,
+      "conformal_threshold": 0.46641403927322045
+    }
+  },
+  "status": "COMPLETE",
+  "test_accessed_utc": "2026-08-26T18:56:53.670028+00:00",
+  "locked_test_ids_sha256": "a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779",
+  "locked_test_n": 2146,
+  "locked_test_positive_n_8.0": 218,
+  "locked_test_prevalence_pct_8.0": 10.15843429636533,
+  "output_hashes": {
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_baseline_test_metrics.csv": "4d4f27250182c7fa78a7668b3d890932bc6469cabb6d757f8e626468fd8c76bf",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_calibration_development.csv": "c669c2c2d2a4eb2fd7d69eeea015b423d224495f3519ed5e670428959d7c4dd5",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_calibration_test_metrics.csv": "8a532c9fe52318b167f4c01054bac89f2a0df2b18133e438874e1a7f889054ad",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_cohort_label_audit.csv": "d246b9edeacb962e3ddbdabe9257f3bb4b51deced6313da0c86c659b577c19c6",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_conformal_calibration.csv": "a107c5c81e13fde5a7d5f36bccfe14727dde7656106a4c355fdcd27547f68e38",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_conformal_metrics.csv": "20018870a8508324d681b5d8e31f7bcc84e54453f43cf7c3c4083ae9241fe5ca",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_consolidated_comparison.csv": "530ec2009d29ee2e9bc66993ad33688048aebed08a429111b02c9344cdb79cfd",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_fairness_metrics.csv": "9874818b259b8fd29b1c1cbf6ad7c960ceadd79af4214e8b5284d2b5e65ad45c",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_oof_predictions.csv": "07a7e0fd793a37a1ec2672075ff2ec4c9f831808f27e799cff326cfc59f2c854"
+  },
+  "figure_hashes": {
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_figures/phase6_8kpa_auc_comparison.png": "aaf0840e06bb189b1c259eef4fa8f6bebc3814331ee33a6d98d3d3586ed49f46",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_figures/phase6_8kpa_bmi_age_sensitivity.png": "8571333dcd232ea665aa53f81314c221f0d7427c0b71c3162d0aebefea039dd5",
+    "results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_figures/phase6_8kpa_conformal_coverage.png": "1215a94f3873d17ce8d4a78f450d2dcac815767d4ef433ff6a19ee4a224a51d7"
+  },
+  "runtime_seconds": 18.839,
+  "authoritative_8p2_hashes": {
+    "results/calibration/test_set_calibration_final.csv": "165df2eea4ba26068787cfc0a15fe7782de576c9d495ca28b6222e4d685ad0ce",
+    "results/fairness/subgroup_calibration_metrics.csv": "eadfb3270e886a77a3f46981e7856b87572c788c3247a9ab6ad339023ee98f2a",
+    "results/fairness/subgroup_discrimination_metrics.csv": "e16b44ea6f9e2a9ac5339e61a1869a68847f328c03e36633fd1b0d00ca58d1a5",
+    "results/tables/phase3_overall_discrimination.csv": "382ca1b3cfbc03bc720897cb000d58eba3737a4208b54c6d2ecb52db237a4d6e",
+    "results/uncertainty/marginal_coverage_test_set.csv": "59f778a8465b4b356cf3fb88ba7284a8766fffc486f5746a12e4290d6b7c289c",
+    "results/uncertainty/subgroup_coverage.csv": "0d2a837d8a82c59f8b652c2deeb0b7072dc546ac5020345d1b227d36653129ad"
+  },
+  "documentation_hashes": {
+    "documentation/fairness_bmi_investigation/PHASE6_8KPA_ROBUSTNESS_REPORT.md": "78e38eea70c3a1f4844e55f826cb378fc1c75609adea8d5fca2ddb3739f5fc01",
+    "documentation/fairness_bmi_investigation/PHASE6_8KPA_DECISION_LOG.md": "38018610cf8592546a13b5fa4f4935c4e74f614ef19769b92ed30153995bb5a0"
+  }
+}

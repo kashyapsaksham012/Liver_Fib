@@ -1,0 +1,18 @@
+{
+  "seed": 20260826,
+  "development_split": "OOF sorted SEQN even fit / odd evaluation",
+  "candidates": [
+    "global_platt",
+    "subgroup_platt_bmi_age"
+  ],
+  "selection_rule": "subgroup selected only if ECE improves, Brier within +0.01, overall sensitivity/specificity within 5pp, and Age60-vs40 gap within +5pp",
+  "chosen": {
+    "logistic": "global_platt",
+    "random_forest": "global_platt",
+    "xgboost": "global_platt",
+    "lightgbm": "subgroup_platt_bmi_age",
+    "mlp": "global_platt"
+  },
+  "calibration_cells": "BMI/age cells require >=20 rows and >=10 positives and negatives; otherwise global fallback",
+  "test_access": "manifest written before test files loaded"
+}
