@@ -1,0 +1,11 @@
+cohort,model,calibration_n,calibration_positives,quantile_k,quantile_level,threshold
+CAND_2,logistic,1070,113,964,0.900935,0.631971
+CAND_2,random_forest,1070,113,964,0.900935,0.61887
+CAND_2,xgboost,1070,113,964,0.900935,0.664658
+CAND_2,lightgbm,1070,113,964,0.900935,0.648788
+CAND_2,mlp,1070,113,964,0.900935,0.499025
+CAND_3,logistic,502,45,453,0.90239,0.643787
+CAND_3,random_forest,502,45,453,0.90239,0.588584
+CAND_3,xgboost,502,45,453,0.90239,0.64916
+CAND_3,lightgbm,502,45,453,0.90239,0.644847
+CAND_3,mlp,502,45,453,0.90239,0.40534
