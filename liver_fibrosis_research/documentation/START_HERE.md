@@ -67,8 +67,10 @@ document in tier 2–4 explicitly records the reconciliation.
 3. `documentation/final_research_audit/FINAL_SCIENTIFIC_FINDINGS.md` +
    `MANUSCRIPT_READINESS_ASSESSMENT.md` + `MANUSCRIPT_FRAMING_GUIDANCE.md` + `DO_NOT_CLAIM.md`.
 4. `documentation/final_research_audit/CONFLICT_ADJUDICATIONS.md` (C1–C4, resolved 2026-08-27).
-5. `documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md` for phase-level narrative.
-6. Individual phase reports / investigation reports as needed for method detail.
+5. `documentation/manuscript/MANUSCRIPT_DRAFT.md` — the working draft, with every claim traced to
+   a registry `claim_id`.
+6. `documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md` for phase-level narrative.
+7. Individual phase reports / investigation reports as needed for method detail.
 
 ## 3. Superseded and removed
 
