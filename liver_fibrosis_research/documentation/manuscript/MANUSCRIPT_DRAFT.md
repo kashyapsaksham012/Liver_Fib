@@ -61,14 +61,14 @@ cohorts and a within-NHANES demographic holdout.
 **Results.** The five families reached statistically indistinguishable discrimination (test AUROC
 0.823–0.843; 0/10 pairwise comparisons significant after BH correction). Four of five models
 over-predicted risk severely in raw output (out-of-fold calibration intercepts −2.24 to −1.86); a
-single out-of-fold Platt step restored aggregate calibration (test expected calibration error
-0.25–0.30 → 0.01–0.03) without changing discrimination. Beneath this aggregate adequacy,
+single out-of-fold Platt step restored aggregate calibration (test expected calibration error 0.24–0.30 → 0.01–0.03) without changing discrimination. Beneath this aggregate adequacy,
 sensitivity for significant fibrosis was 27–48 percentage points lower in normal-weight than in
-obese participants in all five models (all q ≤ 0.006), a finding we independently reproduced, that
-was present in both model fits, and that tracked a BMI risk shortcut — at matched liver stiffness
-the models assigned obese participants a 0.19–0.33 higher predicted probability (p < 0.001) —
-although a residual contribution of BMI-dependent measurement of the reference standard could not
-be excluded.
+obese participants in all five models (all q ≤ 0.006), a finding we independently reproduced and
+that was present in both model fits. At matched liver stiffness the models assigned obese
+participants a 0.19–0.33 higher predicted probability (p < 0.001) — a reliance on body mass beyond
+the measured stiffness that is the proximate cause of the lean-patient miss — while a residual
+contribution of BMI-dependent measurement of the reference standard could not be formally
+excluded.
 Split-conformal prediction met its 90%
 marginal coverage target overall (88–91%) but under-covered obese (77–82%) and, less robustly,
 older (81–86%) participants — and their intersection (65–75%) — in every model, while
@@ -80,8 +80,8 @@ or a pre-registered training-time subgroup-reweighting intervention — produced
 multi-metric fix. Group-wise conformal recalibration restored subgroup coverage only by
 over-covering the well-served subgroups; selective deferral did not help because the
 under-coverage is carried by confidently-scored singleton predictions; and the training-time
-reweighting halved the body-mass sensitivity gap and removed the underlying body-mass shortcut but
-at a discrimination and specificity cost that failed the pre-specified gate. Withholding an entire
+reweighting halved the body-mass sensitivity gap and removed the models' differential reliance on
+body mass but at a discrimination and specificity cost that failed the pre-specified gate. Withholding an entire
 demographic subgroup from training degraded discrimination and calibration on that subgroup.
 
 **Conclusions.** In a large US survey population, routine-data models for significant liver
@@ -110,7 +110,8 @@ specialist referral by roughly 80% [8]. A growing machine-learning literature ai
 first step, and several models have been built on the National Health and Nutrition Examination
 Survey (NHANES) with a VCTE reference standard, reaching areas under the receiver operating
 characteristic curve (AUROC) of approximately 0.82–0.87 and outperforming FIB-4/APRI/NFS
-[1,2]. These models are almost always benchmarked on AUROC and, in better studies, on calibration
+[1,2]; a parallel line uses electronic-health-record trajectories with external validation [3].
+These models are almost always benchmarked on AUROC and, in better studies, on calibration
 curves or the Brier score.
 
 Two well-documented problems with this evaluation paradigm motivate the present work. First,
@@ -121,15 +122,18 @@ at standard cut-points), and both indices lose accuracy at the BMI extremes [4,5
 modern multi-feature ML inherits this behaviour, and how it interacts with other demographic
 axes, is not established. Second, **aggregate metrics average over the population and can hide
 subgroup-specific failure** — a model can discriminate and calibrate well overall while
-systematically missing cases in a demographic subgroup [12,13]; and **class-imbalance corrections,
+systematically missing cases in a demographic subgroup [12,13], and the fairness metrics used to
+detect this are themselves fragmented and inconsistently applied in clinical prediction [14]; and
+**class-imbalance corrections,
 now near-universal in this literature, are known to miscalibrate probabilities** by shifting the
 implicit outcome prevalence, an effect corrected only by post-hoc recalibration [10,11]. Third,
 point predictions — even calibrated probabilities — do not convey case-level uncertainty.
 Conformal prediction supplies prediction *sets* with a distribution-free finite-sample coverage
-guarantee [15,16], but that guarantee is *marginal*: it holds on average over the population, and
-exact conditional (subgroup) coverage is provably unattainable without distributional assumptions
-[17]. Group-balanced variants exist [18,22], but forcing equal coverage can itself increase
-downstream decision disparity [21].
+guarantee [15,16] and is beginning to be adopted in clinical AI [20] (with extensions to risk
+control beyond coverage [19]), but that guarantee is *marginal*: it holds on average over the
+population, and exact conditional (subgroup) coverage is provably unattainable without
+distributional assumptions [17]. Group-balanced variants exist [18,22], but forcing equal
+coverage can itself increase downstream decision disparity [21].
 
 Prior work has examined these dimensions **separately**. Sex-related bias has been reported in
 liver-disease classifiers on other datasets [12]; the class-imbalance calibration artifact has
@@ -315,7 +319,7 @@ The four class-balanced models over-predicted risk severely in raw output (out-o
 calibration intercepts −2.24, −1.86, −2.05, −2.05; the unweighted perceptron, −0.28). The shift
 matches the Bayesian prior-mismatch correction for training against an implicit 50:50 prior on a
 9.31%-prevalence outcome (log(0.0931/0.9069) ≈ −2.27). A single out-of-fold Platt step, applied
-once to the locked test, restored aggregate calibration (test ECE 0.25–0.30 → **0.011–0.026**;
+once to the locked test, restored aggregate calibration (test ECE 0.24–0.30 → **0.011–0.026**;
 Brier 0.146–0.176 → 0.069–0.072; intercepts → −0.15 to +0.14) with **AUROC unchanged by
 construction** (**Table 2**; **Figure 2**). Without this step the raw probabilities would
 over-refer a large fraction of the population; recalibration is mandatory, not cosmetic.
@@ -417,9 +421,12 @@ overlap coverage on the primary cohort for most models but breached the marginal
 two.
 
 A subsequent pre-registered evaluation of **conformal selective deferral** (Amendment #17) —
-abstaining on flagged-uncertain cases and referring them to elastography — did not improve
-subgroup coverage: no candidate rule met the pre-specified gate on the calibration partition, so
-the locked test was not touched. The mechanism is diagnostic. In the under-covered subgroups the
+abstaining on flagged-uncertain cases and referring them to elastography, in the spirit of
+learning-to-defer and abstaining classifiers [24,25,26] and of a recent conformal cost-aware
+deferral framework for clinical triage [27] — did not improve subgroup coverage: no candidate
+rule met the pre-specified gate on the calibration partition, so the locked test was not touched.
+Selective classification is itself known to *magnify* group disparities when abstention is not
+group-aware [24]. The mechanism here is diagnostic. In the under-covered subgroups the
 conformal coverage is carried by the two-class {positive, negative} prediction sets, which always
 contain the truth; the misses are confidently-scored *singleton* predictions. Deferring uncertain
 (two-class) cases therefore removes covering predictions and lowers retained coverage. A
