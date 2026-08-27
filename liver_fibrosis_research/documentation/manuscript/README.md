@@ -4,6 +4,9 @@
 - `LITERATURE_REVIEW.md` — search record, findings by theme, novelty positioning
   (Already done / Related but different / Distinctive), DOI-verification status, and the
   target-venue recommendation (§5).
+- `RELATED_WORK_SCAN.md` — the exhaustive annotated catalogue (~80 papers, 13 themes A–M),
+  each with what it did and a relevance tag. The starting bibliography; still needs a formal
+  PRISMA search on top.
 - `RESULTS_VERIFICATION.md` — second-reader log: every §3 / Tables 1–5 number checked against the
   frozen artifacts (one error found and fixed; remaining items for a co-author).
 

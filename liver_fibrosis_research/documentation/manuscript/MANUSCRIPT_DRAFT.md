@@ -403,7 +403,10 @@ Platt scaling [1]; the numerical agreement between our out-of-fold intercept shi
 NAFLD Fibrosis Score in lean patients [4,5]; our result shows the pattern survives in modern
 five-family ML where BMI is one of ten features and race/ethnicity is excluded from the model,
 and — unlike the serum-index literature — that it co-occurs with a conformal coverage failure in
-the same subgroup. That **marginal coverage does not imply subgroup coverage** is a theoretical
+the same subgroup. A competing explanation we cannot exclude is measurement bias in the reference
+standard: VCTE over-reads liver stiffness at high BMI, so part of the apparent detection advantage
+in obese participants may reflect inflated stiffness labels rather than true detection (§5).
+That **marginal coverage does not imply subgroup coverage** is a theoretical
 result [17], and enforcing equal coverage can worsen downstream fairness [21]; what we add is the
 empirical demonstration on this clinical task, triangulated across cohort constructions, that no
 tested group-wise method achieves acceptable and generalisable subgroup validity. This last point
@@ -457,6 +460,14 @@ register's mandated minimum set appears below.
   primary analysis, a VCTE (`LUXSMED`, not liver biopsy) reference standard, adults only, and a
   single 70/30 split without nested outer resampling of the locked test set. Operating thresholds
   were derived from out-of-fold predictions and their adoption recorded as a protocol amendment.
+- **Reference-standard measurement bias by BMI [J3].** VCTE liver-stiffness measurement is itself
+  BMI-dependent: obesity (and, more specifically, skin-to-capsule distance) is associated with
+  *falsely elevated* stiffness readings, and the standard probe is less reliable at high BMI
+  [D1–D4 in `RELATED_WORK_SCAN.md`]. NHANES applies a quality rule but does not eliminate this.
+  A component of the higher model sensitivity in obese participants could therefore reflect
+  inflated stiffness labels in that group rather than true detection — a threat to the
+  interpretation of the body-mass disparity that we cannot resolve with `LUXSMED` alone and that
+  a biopsy- or MRE-referenced cohort would be needed to disentangle.
 - **Pre-registered analyses not executed.** The all-ages (adolescent-inclusive) sensitivity
   cohort and survey-weighted / weighted-loss model training were pre-registered exploratory items
   and were formally deferred; no conclusion depends on them.
