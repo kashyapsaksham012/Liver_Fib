@@ -49,7 +49,7 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 | ID | Limitation | Evidence | Severity | Affects interpretation? | Wording |
 |---|---|---|---|---|---|
 | E1 | Only *marginal* coverage is guaranteed; subgroup/intersectional coverage fails and is not a conditional-validity guarantee | `subgroup_coverage.csv`, `intersectional_coverage_ci.csv` | HIGH | Yes | "Split conformal provides a marginal coverage guarantee only; subgroup coverage was empirically deficient." |
-| E2 | Subgroup conformal coverage was measured on CAND_1 only; not replicated on CAND_2/CAND_3/8.0 kPa | `OPTIONAL_ANALYSIS_DECISION_AUDIT.md` item 6 | MODERATE | Yes | "The subgroup coverage failure was demonstrated on the primary cohort and not directly re-measured on the sensitivity cohorts." |
+| E2 | ~~Subgroup conformal coverage measured on CAND_1 only~~ **REPLICATED 2026-08-27 (Amendment #16)** on 8.0 kPa / CAND_2 / CAND_3 | `CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md` | LOW (downgraded) | Yes | "The subgroup coverage failure was demonstrated on the primary cohort and replicated on two independently constructed sensitivity cohorts and an alternative threshold: BMI-Obese under-coverage was robust throughout; the older-age component was direction-robust with power-sensitive significance." |
 | E3 | Mondrian mitigation leaves 4/9 targets unresolved and breaches the XGBoost marginal tolerance (+5.27 pp) | `marginal_coverage_before_after.csv` | MODERATE | Yes | "Group-wise mitigation was partial and produced a marginal-coverage tolerance breach for one model." |
 | E4 | Intersectional overlap uses sequential (Age-over-BMI) precedence, not joint mitigation | `threshold_precedence_audit.csv` | MODERATE | Yes | "In the overlap population, single-attribute rules were applied sequentially rather than jointly." |
 | E5 | Frozen N0=0 M4b intersectional protection does not replicate temporally (1/5 models) | `temporal_m4b_results.csv` | MODERATE | Yes | "The frozen intersectional conformal configuration held for only one of five models on a later cycle." |
@@ -105,5 +105,6 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 
 ## Minimum limitations set for the manuscript (must all appear)
 
-D1, E1, E2, E3, E4, I1, J1, J3, J4, A1, B1, B2, C1, C3, F1, F2, G1, plus the general
-class-balancing-artifact disclosure (C1) and the underweight-uninterpretable note (B2).
+D1, E1, E3, E4, I1, J1, J3, J4, A1, B1, B2, C1, C3, F1, F2, G1, plus the general
+class-balancing-artifact disclosure (C1) and the underweight-uninterpretable note (B2). E2 is now
+a completeness note only (the replication was done — Amendment #16 — and is a strength, not a gap).
