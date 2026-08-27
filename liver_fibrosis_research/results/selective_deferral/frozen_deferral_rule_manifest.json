@@ -1,0 +1,248 @@
+{
+  "amendment": "#17",
+  "frozen_at": "2026-08-27T10:22:36.202233+00:00",
+  "developed_on": "conformal_calibration partition N=1002 ONLY; no test access",
+  "selected_candidate": "3d",
+  "models_passing_core_gate_on_calibration": 0,
+  "candidate_definitions": {
+    "3a": "defer two-class {pos,neg} sets",
+    "3b": "retain two-class sets; defer a singleton if (qhat - nonconformity(predicted class)) < delta_g; delta_g = smallest cutoff giving retained calib coverage >= 0.90 in group g (else defer all singletons); overlap Obese&60+ -> max(delta_g)",
+    "3d": "Mondrian group-conditional calibration quantile q_g = ceil((n_g+1)(1-alpha))-th smallest nonconformity score in group g; prediction sets use q_g; no deferral; overlap -> max(q_g)",
+    "3e": "3d then 3b (defer weak singletons under the Mondrian sets)"
+  },
+  "per_model_parameters": {
+    "3a:logistic": {
+      "rule": "defer set_size==2",
+      "qhat": 0.672744
+    },
+    "3a:random_forest": {
+      "rule": "defer set_size==2",
+      "qhat": 0.607211
+    },
+    "3a:xgboost": {
+      "rule": "defer set_size==2",
+      "qhat": 0.653193
+    },
+    "3a:lightgbm": {
+      "rule": "defer set_size==2",
+      "qhat": 0.656959
+    },
+    "3a:mlp": {
+      "rule": "defer set_size==2",
+      "qhat": 0.377967
+    },
+    "3b:logistic": {
+      "rule": "retain {both}; defer singleton if slack<delta_g; overlap->max",
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.45,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.415
+      },
+      "qhat": 0.672744
+    },
+    "3b:random_forest": {
+      "rule": "retain {both}; defer singleton if slack<delta_g; overlap->max",
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.36,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.275
+      },
+      "qhat": 0.607211
+    },
+    "3b:xgboost": {
+      "rule": "retain {both}; defer singleton if slack<delta_g; overlap->max",
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.46,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.405
+      },
+      "qhat": 0.653193
+    },
+    "3b:lightgbm": {
+      "rule": "retain {both}; defer singleton if slack<delta_g; overlap->max",
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.435,
+        "age:18-39": 0.0,
+        "age:40-59": 0.33,
+        "age:60+": 0.375
+      },
+      "qhat": 0.656959
+    },
+    "3b:mlp": {
+      "rule": "retain {both}; defer singleton if slack<delta_g; overlap->max",
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.377967,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.175
+      },
+      "qhat": 0.377967
+    },
+    "3d:logistic": {
+      "rule": "Mondrian q_g set construction; no deferral",
+      "q_g": {
+        "bmi:Normal": 0.4203879198848421,
+        "bmi:Overweight": 0.569235584917962,
+        "bmi:Obese": 0.7428067467067745,
+        "age:18-39": 0.5273334433273152,
+        "age:40-59": 0.6469568514285876,
+        "age:60+": 0.729911105521161
+      }
+    },
+    "3d:random_forest": {
+      "rule": "Mondrian q_g set construction; no deferral",
+      "q_g": {
+        "bmi:Normal": 0.4184907349909952,
+        "bmi:Overweight": 0.4867791616776178,
+        "bmi:Obese": 0.7096410844775073,
+        "age:18-39": 0.5339915411456716,
+        "age:40-59": 0.5976659586581953,
+        "age:60+": 0.6423887128833446
+      }
+    },
+    "3d:xgboost": {
+      "rule": "Mondrian q_g set construction; no deferral",
+      "q_g": {
+        "bmi:Normal": 0.42509383,
+        "bmi:Overweight": 0.5282084,
+        "bmi:Obese": 0.7652477,
+        "age:18-39": 0.54724044,
+        "age:40-59": 0.636465,
+        "age:60+": 0.731914
+      }
+    },
+    "3d:lightgbm": {
+      "rule": "Mondrian q_g set construction; no deferral",
+      "q_g": {
+        "bmi:Normal": 0.4418947548973247,
+        "bmi:Overweight": 0.5328985064351022,
+        "bmi:Obese": 0.7596495753027039,
+        "age:18-39": 0.5661039175607778,
+        "age:40-59": 0.6716778070847574,
+        "age:60+": 0.6897154116130225
+      }
+    },
+    "3d:mlp": {
+      "rule": "Mondrian q_g set construction; no deferral",
+      "q_g": {
+        "bmi:Normal": 0.074513692178357,
+        "bmi:Overweight": 0.143397633489696,
+        "bmi:Obese": 0.7529209370977967,
+        "age:18-39": 0.1773948925676274,
+        "age:40-59": 0.4819510414231238,
+        "age:60+": 0.5586762334667377
+      }
+    },
+    "3e:logistic": {
+      "rule": "Mondrian q_g + defer weak singletons (slack<delta_g)",
+      "q_g": {
+        "bmi:Normal": 0.4203879198848421,
+        "bmi:Overweight": 0.569235584917962,
+        "bmi:Obese": 0.7428067467067745,
+        "age:18-39": 0.5273334433273152,
+        "age:40-59": 0.6469568514285876,
+        "age:60+": 0.729911105521161
+      },
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.0,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.0
+      }
+    },
+    "3e:random_forest": {
+      "rule": "Mondrian q_g + defer weak singletons (slack<delta_g)",
+      "q_g": {
+        "bmi:Normal": 0.4184907349909952,
+        "bmi:Overweight": 0.4867791616776178,
+        "bmi:Obese": 0.7096410844775073,
+        "age:18-39": 0.5339915411456716,
+        "age:40-59": 0.5976659586581953,
+        "age:60+": 0.6423887128833446
+      },
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.0,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.0
+      }
+    },
+    "3e:xgboost": {
+      "rule": "Mondrian q_g + defer weak singletons (slack<delta_g)",
+      "q_g": {
+        "bmi:Normal": 0.42509383,
+        "bmi:Overweight": 0.5282084,
+        "bmi:Obese": 0.7652477,
+        "age:18-39": 0.54724044,
+        "age:40-59": 0.636465,
+        "age:60+": 0.731914
+      },
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.0,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.0
+      }
+    },
+    "3e:lightgbm": {
+      "rule": "Mondrian q_g + defer weak singletons (slack<delta_g)",
+      "q_g": {
+        "bmi:Normal": 0.4418947548973247,
+        "bmi:Overweight": 0.5328985064351022,
+        "bmi:Obese": 0.7596495753027039,
+        "age:18-39": 0.5661039175607778,
+        "age:40-59": 0.6716778070847574,
+        "age:60+": 0.6897154116130225
+      },
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.0,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.0
+      }
+    },
+    "3e:mlp": {
+      "rule": "Mondrian q_g + defer weak singletons (slack<delta_g)",
+      "q_g": {
+        "bmi:Normal": 0.074513692178357,
+        "bmi:Overweight": 0.143397633489696,
+        "bmi:Obese": 0.7529209370977967,
+        "age:18-39": 0.1773948925676274,
+        "age:40-59": 0.4819510414231238,
+        "age:60+": 0.5586762334667377
+      },
+      "delta_g": {
+        "bmi:Normal": 0.0,
+        "bmi:Overweight": 0.0,
+        "bmi:Obese": 0.0,
+        "age:18-39": 0.0,
+        "age:40-59": 0.0,
+        "age:60+": 0.0
+      }
+    }
+  },
+  "note": "coverage gate G1-G3 + deferral-burden G6-G7 evaluated fully; G4 = conformal-sens proxy; G4(Youden)/G5/G9 pending model stack",
+  "test_touched": false,
+  "verdict_stage": "DEVELOPMENT-STAGE NEGATIVE"
+}
