@@ -58,9 +58,16 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
     DEVELOPMENT-STAGE NEGATIVE — no pre-registered candidate met the gate; the locked test was not
     touched. Deferring flagged-uncertain (two-class) cases *lowers* retained coverage because the
     misses are confidently-scored wrong singletons, not uncertain sets.
-9c. **Do not claim the residual subgroup under-coverage was mitigated by any post-hoc method, or
-    that a training-time fix was attempted.** It was not — a training-time intervention is named
-    as future work only.
+9c. **Do not claim the residual subgroup under-coverage was mitigated to an acceptable standard by
+    any method, post-hoc or training-time.** The Amendment #19 training-time reweighting is
+    NEGATIVE by its pre-registered gate.
+9d. **Do not describe the Amendment #19 training-time reweighting as a fix.** Do claim: it removed
+    the matched-stiffness body-mass shortcut (0.18–0.25 → ~0.01 OOF) and **halved** the
+    Normal-vs-Obese sensitivity gap (BH-sig 5/5 → 0/4), with BMI-Obese conformal coverage 0.77–0.82
+    → 0.86–0.87. Do **not** omit: test AUROC −0.02 to −0.03; overall specificity up to −12 pp; a
+    newly BH-significant logistic Female sensitivity disparity (−15.1 pp); no gain on age-60+
+    coverage; the joint BMI×age arm **worsened** the age gap; the MLP was excluded for instability.
+    Do not claim it "closed" the gap or met the coverage target (0.86–0.87 < 0.88).
 10. **Do not claim faithful AFCP superiority.** **Do not cite the KNN-AFCP result at all**
     (INVALID). C3 adjudicated 2026-08-27 (`CONFLICT_ADJUDICATIONS.md`): faithful AFCP is
     EXPLORATORY; no AFCP-superiority or AFCP-adequacy claim is permitted.

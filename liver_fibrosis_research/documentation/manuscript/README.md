@@ -1,6 +1,6 @@
 # documentation/manuscript/
 
-- `MANUSCRIPT_DRAFT.md` — working draft (**v4**, 2026-08-27) of the primary manuscript.
+- `MANUSCRIPT_DRAFT.md` — working draft (**v5**, 2026-08-27) of the primary manuscript.
 - `LITERATURE_REVIEW.md` — search record, findings by theme, novelty positioning
   (Already done / Related but different / Distinctive), DOI-verification status, and the
   target-venue recommendation (§5).
@@ -42,7 +42,7 @@ framing, prohibited claims, and mandatory limitations follow:
   reference-standard measurement-bias sensitivity analysis, and the mitigation-narrative
   consolidation folded into v4.
 
-**Status.** Draft v4 for the authors.
+**Status.** Draft v5 for the authors.
 
 *Done:* literature-grounded Introduction (`[n]` markers) and §4.1 relation-to-prior-work;
 **28-item reference list, all verified against primary sources** (`REFERENCE_VERIFICATION.md`);
@@ -55,9 +55,16 @@ target-venue decision (`TARGET_VENUE_DECISION.md`).
 **v4 (Track 2, 2026-08-27):** references verified + corrected (Cao not Zhou; 22+23 merged; +ref 28
 from the search); new §2.13 (related-work search); Declarations section; TRIPOD blinding /
 sample-size sentences; §4.1 gains the survey-data parallel [28].
+**v4 → v5 (Amendment #19, 2026-08-27):** new §3.7b — one pre-registered **training-time**
+subgroup-reweighting mitigation, **VERDICT NEGATIVE**: it removed the body-mass score-ordering
+mechanism and halved the gap (BH-sig 5/5 → 0/4; BMI-Obese coverage 0.77–0.82 → 0.86–0.87) but
+failed the discrimination/specificity cost gates (AUROC −0.02–0.03; specificity up to −12 pp; a
+new logistic sex disparity) and did not help age-60+; Table 4 +2 rows; §2.8/abstract/§4/§4.1/§5
+[D1/D5]/§6 updated. `documentation/training_time_mitigation/AMENDMENT_19_CLOSURE.md`.
 
-*Before submission (`SUBMISSION_CHECKLIST.md`):* fold in Amendment #19 → v5; merge the experiment
-branch; paste remaining author bylines; full-text re-check of the ref [1] / ref [23] claims;
+*Before submission (`SUBMISSION_CHECKLIST.md`):* merge the experiment branch into
+`consolidation/evidence-freeze`; paste remaining author bylines; full-text re-check of the ref [1] /
+ref [23] claims;
 participant flow diagram + figure panel assembly; a co-author repeating `RESULTS_VERIFICATION.md`
 and a final read against `DO_NOT_CLAIM.md`; create the public code release + archival DOI;
 post to medRxiv; submit to JAMIA.

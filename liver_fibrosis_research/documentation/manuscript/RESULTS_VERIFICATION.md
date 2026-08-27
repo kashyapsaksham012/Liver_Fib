@@ -152,6 +152,31 @@ Reproducibility: `src/prepub_01_model_fit_alignment.py` and `src/prepub_02_vcte_
 re-run bit-for-bit (seed 42); leakage pre-check (test ∩ calibration = 0, test ∩ proper-train = 0)
 asserted in the Fix-1 script.
 
+## Amendment #19 addendum (2026-08-27) — §2.8, §3.7b, Table 4
+
+Every new number checked against `results/training_time_mitigation/`. Executed on the exact
+`requirements-phase3-lock.txt` pins (scikit-learn 1.9.0, xgboost 3.4.1, lightgbm 4.7.0,
+imbalanced-learn 0.14.2). MLP excluded (`MLP_FALLBACK=1`); 4 families; gate ≥ 3/4.
+
+| Claim | Artifact | Verdict |
+|---|---|---|
+| §3.7b matched-stiffness BMI coef collapsed 0.18–0.25 → 0.008–0.036 (OOF, 4/4) | `phase1_mechanism_diagnostic.csv` `bmi_shortcut_coef_reweighted` (arm A): 0.036 / 0.008 / 0.012 / 0.008 | OK |
+| §3.7b within-Normal-BMI OOF AUROC up for 3/4 | same, `normal_bmi_oof_auc_delta` (A): +0.012 / +0.013 / +0.008 / +0.016 | OK ("three of four" — XGBoost +0.008 counted as ~flat in the mechanism table) |
+| §3.7b / Table 4 gap halved: +27–48 → +14–17 pp; BH-sig 5/5 → 0/4 | `test_subgroup_sensitivity.csv` (arm A, bmi/Obese): disparity_pp 16.8 / 16.8 / 13.7 / 14.0; `significant_after_fdr_0.05` all False | OK |
+| §3.7b BMI-Obese conformal coverage 0.77–0.82 → 0.857–0.871 | `test_conformal.csv` (arm A, bmi:Obese): 0.8573 / 0.8596 / 0.8709 / 0.8664; wilson_lo 0.833–0.847 | OK |
+| §3.7b age-60+ coverage ~unchanged | `test_conformal.csv` (arm A, age:60+): 0.803 / 0.829 / 0.834 / 0.842 (baseline 0.811–0.856) | OK |
+| §3.7b marginal coverage on target | `test_conformal.csv` (arm A, ALL): 0.893–0.898 | OK |
+| §3.7b / Table 4 cost: AUROC −0.02–0.03; specificity up to −12 pp | `cost_accounting.csv` (arm A): delta_auroc −0.033 / −0.022 / −0.025 / −0.027; delta_spec −0.122 / −0.077 / −0.007 / −0.058 | OK |
+| §3.7b new logistic Female disparity (−15.1 pp, q ≈ 0.012) | `test_subgroup_sensitivity.csv` (arm A, sex/Female, logistic): disparity_pp −15.09, bh_fdr_p 0.012, significant True | OK |
+| §3.7b Arm B worsens age gap, BH-sig 3/4 | `test_subgroup_sensitivity.csv` (arm B, age/60+): RF −10.8 (q 0.025), XGB −13.7 (q 0.007), LGBM −17.2 (q 0.002) significant; logistic not | OK |
+| §3.7b MLP unstable → excluded | `ttm_01.log` "arm B mlp 3-seed OOF AUROC SD=0.0116"; `decision.csv` / manifests list 4 models | OK |
+| Table 4 verdict NEGATIVE, both arms | `decision.csv` (rows A, B, OVERALL) | OK |
+
+Reproducibility: 16 reweighted model artefacts all carry the exact frozen Phase-3 `best_params`
+(`tests/test_training_time_mitigation.py` T16, 16/16); two locked-test touches, leakage 0
+(`test_touch{1,2}_manifest.json`); 52/52 test suite. The isolated venv is not committed; pins in
+`requirements-phase3-lock.txt`.
+
 ## Items still to close (for a co-author)
 
 1. Independently re-run `src/manuscript_01_table1.py` and check Table 1 against
