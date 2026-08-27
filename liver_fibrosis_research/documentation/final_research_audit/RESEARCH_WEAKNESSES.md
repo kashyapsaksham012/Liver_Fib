@@ -20,16 +20,20 @@ temporal evaluation was completed and split into a separate manuscript — prese
 ### W2. No acceptable mitigation for the reliability–fairness failure
 
 Every intervention tested (Mondrian, corrected BMI mitigation, corrected subgroup calibration,
-group thresholds, Equal Opportunity, XGBoost retuning, joint conformal, and — Amendment #17 —
-conformal selective deferral) either fails the pre-specified multi-metric gate, does not
-generalize across model families, breaches the marginal-coverage tolerance, or (Mondrian re-run)
-restores subgroup coverage only by over-covering the well-served subgroups. Selective deferral
-adds a mechanistic result: the under-coverage is carried by confidently-scored wrong singleton
-predictions, not flagged-uncertain cases, so no defer-to-elastography layer can repair it — the
-residual failure is a within-subgroup score-ordering problem that needs a training-time
-intervention (outside the frozen scope). The study identifies a problem it cannot solve with
-post-hoc methods within its scope (`FINAL_SCIENTIFIC_FINDINGS.md` §14). This is scientifically
-honest but limits the translational contribution.
+group thresholds, Equal Opportunity, XGBoost retuning, joint conformal, Amendment #17 conformal
+selective deferral, and Amendment #19 training-time subgroup reweighting) either fails the
+pre-specified multi-metric gate, does not generalize across model families, breaches the
+marginal-coverage tolerance, or restores subgroup coverage only at a cost (Mondrian re-run —
+marginal over-coverage; training-time reweighting — a discrimination and specificity cost).
+Selective deferral showed the under-coverage is confidently-scored wrong singletons, not
+flagged-uncertain cases. The **Amendment #19 training-time reweighting** then confirmed that this
+score-ordering failure *is* training-time-addressable — it removed the body-mass shortcut and
+**halved** the sensitivity gap — but not without lowering test AUROC by 0.02–0.03 and specificity
+by up to 12 pp (and it did not restore subgroup coverage to nominal or help the age gap; a joint
+BMI×age arm worsened the age gap). The study identifies a problem it can **reduce but not solve
+within scope** (`FINAL_SCIENTIFIC_FINDINGS.md` §14). The remaining paths — more lean-fibrosis
+data, richer features, or an explicitly accepted performance–equity trade — are honest but limit
+the translational contribution.
 
 ### W3. The subgroup conformal-coverage failure — measured on one cohort → **RESOLVED 2026-08-27**
 

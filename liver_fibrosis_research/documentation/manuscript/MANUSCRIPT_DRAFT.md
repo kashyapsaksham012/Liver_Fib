@@ -1,12 +1,19 @@
 # Discrimination and aggregate calibration are insufficient evidence of subgroup-safe reliability: a calibration–fairness–uncertainty audit of routine-data models for significant liver fibrosis
 
-**Draft v4 — 2026-08-27.** Grounded strictly in
+**Draft v5 — 2026-08-27.** Grounded strictly in
 `documentation/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv`,
 `AUTHORITATIVE_RESULTS.md`, `MANUSCRIPT_FRAMING_GUIDANCE.md`, `FINAL_LIMITATIONS_REGISTER.md`,
 `DO_NOT_CLAIM.md`, and `CONFLICT_ADJUDICATIONS.md`; related-work positioning in
 `documentation/manuscript/LITERATURE_REVIEW.md`. Every numeric claim traces to a frozen result
 artifact (see Appendix A). This is a working draft for the authors, not a submission.
 
+**v4 → v5 changes (Amendment #19 + Track 2):** new §3.7b (one pre-registered **training-time**
+subgroup-reweighting mitigation — VERDICT NEGATIVE: it removed the body-mass score-ordering
+mechanism and halved the gap but failed the discrimination/specificity cost gates and did not
+reach the coverage target); Table 4 gains two training-time rows; §2.8, abstract, §4, §4.1, §5
+[D1/D5], §6 updated; §2.13 (documented related-work search); Declarations section; references
+verified against primary sources (`REFERENCE_VERIFICATION.md` — ref 1 corrected to **Cao et al.**,
+refs 22+23 merged, ref 28 added).
 **v3 → v4 changes (Amendment #18):** new §2.7b (two model fits and their alignment); new §3.4b
 (body-mass gap present in both fits — STRENGTHENING) and §3.4c (reference-standard measurement-bias
 sensitivity — verdict V3, with a matched-stiffness BMI-shortcut finding); §3.4, §3.7, Table 4,
@@ -43,8 +50,8 @@ control, corrected probability calibration with out-of-fold Platt scaling, condu
 pre-specified subgroup fairness audit (sex, race/ethnicity, age band, body-mass-index [BMI] band),
 and quantified predictive uncertainty with split-conformal prediction (marginal target 90%). We
 then tested group-wise (Mondrian) conformal recalibration and a structured set of threshold-,
-calibration-, conformal-, and selective-deferral-based mitigation strategies against a
-pre-specified multi-metric gate.
+calibration-, conformal-, selective-deferral-, and training-time-reweighting-based mitigation
+strategies against pre-specified multi-metric gates.
 Robustness was assessed across an alternative 8.0-kPa threshold and two independently constructed
 cohorts and a within-NHANES demographic holdout.
 
@@ -65,10 +72,13 @@ older (81–86%) participants — and their intersection (65–75%) — in every
 normal-weight and younger participants over-covered. This coverage failure replicated on both
 sensitivity cohorts and the alternative threshold. No mitigation strategy tested — group-wise
 conformal recalibration, subgroup-specific thresholds, subgroup calibration, equalized-odds
-post-processing, model retuning, joint intersectional calibration, or conformal selective
-deferral — produced an acceptable multi-metric fix; group-wise conformal recalibration restored
-subgroup coverage only by over-covering the well-served subgroups, and selective deferral did not
-help because the under-coverage is carried by confidently-scored singleton predictions. Withholding an entire
+post-processing, model retuning, joint intersectional calibration, conformal selective deferral,
+or a pre-registered training-time subgroup-reweighting intervention — produced an acceptable
+multi-metric fix. Group-wise conformal recalibration restored subgroup coverage only by
+over-covering the well-served subgroups; selective deferral did not help because the
+under-coverage is carried by confidently-scored singleton predictions; and the training-time
+reweighting halved the body-mass sensitivity gap and removed the underlying body-mass shortcut but
+at a discrimination and specificity cost that failed the pre-specified gate. Withholding an entire
 demographic subgroup from training degraded discrimination and calibration on that subgroup.
 
 **Conclusions.** In a large US survey population, routine-data models for significant liver
@@ -77,9 +87,10 @@ aggregate-calibrated, yet still under-detect normal-weight patients and provide 
 over-confident prediction sets for obese and older patients. **Discrimination plus aggregate
 calibration are insufficient evidence of subgroup-safe reliability**; the failing subgroups here
 were identifiable, reproducible across independently constructed cohorts, mechanism-linked, and
-resistant to every post-hoc mitigation strategy we tested — the residual failure is a
-within-subgroup score-ordering problem that points to a training-time rather than a post-hoc
-remedy. External validation has not been performed and is the foremost outstanding requirement.
+resistant to every mitigation strategy we tested. A training-time reweighting intervention
+addressed the underlying score-ordering mechanism and halved the body-mass gap but could not
+eliminate it within routine features and this sample without an unacceptable discrimination cost.
+External validation has not been performed and is the foremost outstanding requirement.
 
 ---
 
@@ -224,10 +235,15 @@ age-60+). Separately, we evaluated a structured set of interventions against a p
 multi-metric acceptance gate: BMI-specific decision thresholds, BMI-specific Platt scaling,
 joint BMI × age thresholds, subgroup-specific calibration, equalized-odds (equal-opportunity)
 post-processing, model retuning within the frozen hyperparameter family, joint
-(intersectional) conformal calibration, and — under a later pre-registered amendment
-(Amendment #17) — conformal selective deferral (abstaining on flagged-uncertain cases and
-referring them to elastography). Mitigation candidates were compared descriptively against
-the gate; no candidate-vs-candidate significance test was performed.
+(intersectional) conformal calibration, and — under later pre-registered amendments — conformal
+selective deferral (Amendment #17; abstaining on flagged-uncertain cases and referring them to
+elastography) and one **training-time** intervention (Amendment #19; retraining each family with
+Kamiran–Calders instance reweighting so that body-mass band is independent of the outcome in the
+reweighted training distribution, with predictors, outcome, splits, seed and frozen
+hyperparameters unchanged and the conformal-calibration and test sets never weighted). Each
+amendment fixed its own multi-metric gate and verdict rules before any locked-test access.
+Mitigation candidates were compared descriptively against the gate; no candidate-vs-candidate
+significance test was performed.
 
 ### 2.9 Sensitivity analyses
 
@@ -404,9 +420,35 @@ group-conditional (Mondrian) recalibration restored ≥ 0.88 subgroup coverage f
 age-60+ in all five model families with **zero** deferral — improving on the 5-of-9
 model×subgroup result above — but necessarily raised retained marginal coverage to 0.94–0.95;
 returning marginal coverage to target would require deliberately under-covering the well-served
-subgroups (*levelling down*). The residual failure is a within-subgroup score-ordering problem
-that no post-hoc decision layer repairs; a training-time intervention (subgroup reweighting or a
-subgroup-aware objective) is the indicated next step and is outside this study's frozen scope.
+subgroups (*levelling down*).
+
+### 3.7b Training-time mitigation (Amendment #19)
+
+Because every post-hoc method above either failed the gate or traded one subgroup for another, we
+tested one **training-time** intervention: retraining each family with Kamiran–Calders instance
+reweighting so that body-mass band is independent of the outcome in the reweighted training
+distribution (predictors, outcome, splits, seed and frozen hyperparameters unchanged; the
+conformal-calibration set and the locked test are never weighted). A pre-registered multi-metric
+gate and its verdicts were fixed before the two locked-test evaluations (**Table 4**). The
+multilayer perceptron was excluded (its resampling approximation was unstable across seeds), so
+four families were evaluated and the gate thresholds relaxed to ≥ 3/4 accordingly.
+
+The intervention **moved the mechanism**: on out-of-fold data the matched-stiffness BMI
+coefficient (§3.4) collapsed from 0.18–0.25 to 0.008–0.036 in all four families, and
+within-normal-weight discrimination rose for three of four — the models stopped using body mass as
+a risk cue and their within-subgroup score ordering improved. On the locked test the
+normal-weight-vs-obese sensitivity gap **halved**, from +27 to +48 pp (BH-significant in all
+models) to +14 to +17 pp (BH-significant in none), and BMI-obese conformal coverage rose from
+0.77–0.82 to **0.86–0.87** (still short of the 0.88 target). Age-60+ conformal coverage was
+essentially unchanged; a second, joint body-mass × age reweighting (secondary arm) reduced the
+body-mass gap similarly but **worsened** the age gap (BH-significant in three of four models),
+confirming that one objective cannot repair both mechanisms. The intervention also carried a
+cost: test AUROC fell 0.02–0.03, overall specificity fell up to 12 percentage points, and
+logistic regression acquired a newly BH-significant sex disparity. **By the pre-registered rule
+the verdict is NEGATIVE** — neither efficacy gate (gap closed; coverage ≥ 0.88) was met and the
+cost gates failed. The failure is therefore addressable at training time *in mechanism*, but not
+eliminable to an acceptable standard within these ten routine predictors and this sample without a
+discrimination–specificity trade the gate rejects.
 
 ### 3.8 Older-age findings (secondary observation)
 
@@ -463,17 +505,24 @@ often presented as a subgroup-safety property — under-covers obese and older p
 intersection) in every model, on every cohort construction we tried, while over-covering the
 better-served subgroups. Marginal coverage is met by redistribution, not by uniform reliability.
 
-Neither failure was repairable within our scope. Group-wise conformal recalibration is a genuine
-but partial repair that trades a subgroup fix for marginal over-coverage; threshold tuning
+Neither failure was repairable to an acceptable standard. Group-wise conformal recalibration is a
+genuine but partial repair that trades a subgroup fix for marginal over-coverage; threshold tuning
 helps one gap while worsening another because the two gaps have different mechanisms; selective
 deferral cannot help because the under-coverage is carried by confidently-scored singleton
 predictions rather than flagged-uncertain cases; and every calibration-, post-processing-, or
 retuning-based approach we tested either failed the pre-specified gate or failed to generalise
-across model families. The common thread is that the residual failure is a within-subgroup
-score-ordering problem, which points to a training-time intervention (subgroup reweighting or a
-subgroup-aware objective) as the next step — outside this study's frozen scope.
-Reporting "we identified a problem we could not solve with post-hoc methods" is uncomfortable but
-is the accurate result.
+across model families. The one training-time intervention we tested (§3.7b) is more informative:
+a subgroup-balancing objective removed the body-mass score-ordering mechanism — the models
+stopped assigning obese participants higher risk at equal liver stiffness — and halved the
+body-mass sensitivity gap, but it lowered discrimination and specificity beyond the pre-specified
+tolerance, did not close the age-60+ coverage shortfall, and in a joint body-mass × age variant
+worsened the age gap. The residual failure is thus addressable at training time *in mechanism* but
+not eliminable within these ten routine predictors and this sample without a discrimination cost
+the gate rejects; closing it would need more normal-weight fibrosis cases (the binding data
+limit), features that better separate lean fibrosis, or a deployment that explicitly accepts and
+monitors a quantified performance–equity trade.
+Reporting "we identified a problem we could reduce but not solve within scope" is uncomfortable
+but is the accurate result.
 
 Two framing points follow. First, the body-mass finding, not the age finding, is the robust
 subgroup result; the age-60+ *sensitivity* deficit is directionally suggestive but statistically
@@ -516,7 +565,8 @@ marginal-vs-subgroup coverage gap has independently been reported in survey-base
 prediction (~13 percentage-point weighted subgroup gaps under standard split conformal) [28],
 indicating the phenomenon is not specific to this clinical task. What we add is the
 empirical demonstration on routine-data fibrosis triage, triangulated across cohort constructions,
-that no tested group-wise method achieves acceptable and generalisable subgroup validity. This last point
+that no tested method — post-hoc *or* a pre-registered training-time reweighting — achieves
+acceptable subgroup validity without an offsetting cost. This last point
 contrasts with a recent conformal NAFLD-risk model on a non-NHANES cohort that reported
 distribution-free coverage without a subgroup coverage failure [23] — a difference in task,
 cohort, and outcome that itself argues against assuming subgroup validity transfers. *(Ref [23]'s
@@ -534,14 +584,20 @@ register's mandated minimum set appears below.
   independent, non-NHANES population or a later survey cycle, and no compatible cohort was
   identified. This is the foremost limitation. The Non-Hispanic Black holdout [J4] is a
   within-NHANES demographic holdout, not external validation.
-- **No acceptable mitigation [D1].** No calibration-, threshold-, conformal-, or
-  selective-deferral-based intervention tested produced an acceptable multi-metric fix for the
-  body-mass reliability–fairness failure; mitigation candidates were compared against a
+- **No acceptable mitigation [D1].** No calibration-, threshold-, conformal-, selective-deferral-,
+  or training-time-reweighting-based intervention tested produced an acceptable multi-metric fix
+  for the body-mass reliability–fairness failure; mitigation candidates were compared against a
   pre-specified gate without candidate-vs-candidate significance testing [A2]. Group-conditional
   conformal recalibration restores subgroup coverage only by over-covering the well-served
   subgroups; selective deferral cannot help because the under-coverage is carried by
-  confidently-scored singleton predictions, not flagged-uncertain cases. A training-time
-  intervention was not attempted (frozen scope).
+  confidently-scored singleton predictions, not flagged-uncertain cases. A pre-registered
+  training-time subgroup-reweighting intervention (§3.7b) removed the underlying body-mass
+  score-ordering mechanism and halved the sensitivity gap but lowered test AUROC by 0.02–0.03 and
+  specificity by up to 12 percentage points, did not reach the 0.88 subgroup-coverage target, did
+  not address the age-60+ shortfall, and — in a joint body-mass × age variant — worsened the age
+  gap; the multilayer perceptron was excluded for instability. The failure is addressable at
+  training time in mechanism but not eliminable within routine features and this sample without a
+  discrimination cost the gate rejects [D5].
 - **Conformal guarantees are marginal only [E1].** Split conformal provides a marginal coverage
   guarantee; subgroup coverage was empirically deficient and is **not** a conditional-validity
   guarantee. Group-wise mitigation was partial (5/9 targets) and breached the marginal-coverage
@@ -603,9 +659,12 @@ under-detect normal-weight patients and provide over-confident prediction sets f
 patients — failures that discrimination and aggregate calibration conceal. **Discrimination plus
 aggregate calibration are insufficient evidence of subgroup-safe reliability.** In this study the
 failing subgroups were identifiable, reproducible across independently constructed cohorts,
-mechanism-linked, and resistant to every post-hoc mitigation strategy we tested; the residual
-failure is a within-subgroup score-ordering problem that a training-time intervention, not a
-post-hoc layer, would need to address. Independent external validation is the necessary next step
+mechanism-linked, and resistant to every mitigation strategy we tested. A pre-registered
+training-time reweighting intervention removed the underlying score-ordering mechanism and halved
+the body-mass gap but could not eliminate it within routine features and this sample without a
+discrimination and specificity cost that failed the pre-specified gate — locating the remaining
+options in richer data or features, or an explicitly accepted performance–equity trade, rather
+than in a better post-hoc layer. Independent external validation is the necessary next step
 before any consideration of use.
 
 ---
@@ -770,12 +829,15 @@ on both replication cohorts; Age-60+ under-coverage is BH-significant 5/5 on CAN
 2/5 on the smaller CAND_3. Normal-weight, overweight, and 18–39-year-old participants over-cover
 throughout.*
 
-**Table 4 — Mitigation strategies evaluated against the pre-specified multi-metric acceptance
-gate.** Gate: full-cohort sensitivity and specificity within 5 pp of baseline; Brier within
-+0.01; Age-60+ vs 40–59 sensitivity gap within +5 pp; then absolute BMI gap as a secondary
-comparison. Sources: `results/mitigation/*`,
+**Table 4 — Mitigation strategies evaluated against pre-specified multi-metric acceptance gates.**
+Base gate: full-cohort sensitivity and specificity within 5 pp of baseline; Brier within +0.01;
+Age-60+ vs 40–59 sensitivity gap within +5 pp; then absolute BMI gap as a secondary comparison.
+The selective-deferral (Amendment #17) and training-time-reweighting (Amendment #19) amendments
+each fixed their own gate and verdicts before locked-test access (see
+`documentation/selective_deferral_mitigation/` and `documentation/training_time_mitigation/`).
+Sources: `results/mitigation/*`,
 `results/fairness_bmi_investigation/{phase3_corrected,phase4_corrected,phase7_mitigation_cleanup}/*`,
-`results/selective_deferral/*` (Amendment #17).
+`results/selective_deferral/*` (Amendment #17), `results/training_time_mitigation/*` (Amendment #19).
 
 | Intervention | Objective | Result vs gate | Disposition |
 |---|---|---|---|
@@ -787,10 +849,15 @@ comparison. Sources: `results/mitigation/*`,
 | XGBoost retuning within the frozen hyperparameter family | remove the XGBoost coverage-tolerance breach | every gap-closing candidate cost 11–22 pp overall sensitivity or flipped the breach | **NO ACCEPTABLE RETUNING** |
 | Joint (intersectional) conformal calibration (exploratory) | restore Obese ∩ 60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on the primary cohort, but XGBoost/LightGBM breach the ±5 pp marginal tolerance; joint calibration cell N = 138 | **EXPLORATORY ONLY** |
 | Conformal selective deferral (Amendment #17) | restore subgroup coverage by referring flagged-uncertain cases to elastography | **no candidate rule met the pre-specified gate** on the calibration partition (locked test not touched); deferring two-class {pos,neg} sets *lowers* retained coverage because the misses are confidently-scored singletons, not uncertain sets | **NO IMPROVEMENT** — mechanistic dead end for post-hoc deferral |
+| **Training-time subgroup reweighing — body-mass (Amendment #19, primary)** | remove the body-mass score-ordering failure at training time | matched-stiffness BMI coefficient collapsed 0.18–0.25 → 0.008–0.036 (OOF, 4/4); normal-weight-vs-obese sensitivity gap **halved** (+27–48 → +14–17 pp; BH-sig 4/4 → 0/4); BMI-obese conformal coverage 0.77–0.82 → **0.86–0.87** (< 0.88 target); age-60+ coverage unchanged. **Cost:** AUROC −0.02–0.03; specificity up to −12 pp; new logistic sex disparity. Efficacy gates (gap closed; coverage ≥ 0.88) not met; cost gates failed. | **NEGATIVE** — mechanism addressed, not eliminated to standard without a discrimination/specificity cost |
+| Training-time subgroup reweighing — body-mass × age (Amendment #19, secondary) | as above, jointly across body-mass and age | body-mass gap halved similarly, but **age-60+ sensitivity gap worsened (BH-sig 3/4)**; larger specificity cost; within-normal-weight OOF discrimination *fell* (sparse cells) | **NEGATIVE** — one objective cannot repair both mechanisms |
 
-*Successful: none. No intervention resolved the body-mass reliability–fairness failure within the
-pre-specified gate. The residual under-coverage is a within-subgroup score-ordering failure that
-post-hoc methods cannot repair; a training-time intervention is the indicated next step.*
+*Successful: none. No intervention — post-hoc or training-time — resolved the body-mass
+reliability–fairness failure within the pre-specified gate. The training-time reweighting
+(Amendment #19) is the first method to move both primary subgroup metrics substantially in the
+right direction and to remove the underlying score-ordering / body-mass-shortcut mechanism, but it
+does so only at a discrimination and specificity cost the gate rejects, and it does not address
+the age-60+ coverage shortfall.*
 
 **Table 5 — Sensitivity / robustness summary (per-model detail in the cited CSVs).** Sources:
 `results/sensitivity/primary_vs_sensitivity_comparison.csv`,
@@ -841,6 +908,7 @@ Every numbered claim in the Results maps to a row of
 | §3.5 conformal (marginal + subgroup) | CONF-01, CONF-02, CONF-03 | MANUSCRIPT_READY / _WITH_QUALIFICATION |
 | §3.6 conformal replication | CONF-02 (updated, Amendment #16) | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | §3.7 mitigation | MIT-01…MIT-06 | _WITH_QUALIFICATION / EXPLORATORY_ONLY / NO_IMPROVEMENT |
+| §3.7b training-time mitigation | MIT-07 | MANUSCRIPT_READY_WITH_QUALIFICATION (NEGATIVE — mechanism addressed, gate not met) |
 | §3.8 age (secondary) | FAIR-AGE-01 | MANUSCRIPT_READY_WITH_QUALIFICATION (secondary observation) |
 | §3.9 demographic holdout | GEN-01 | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | §3.10 sensitivity / secondary outcomes | SENS-01, SENS-02, SECOUT-01, MI-01 | _WITH_QUALIFICATION |
@@ -850,8 +918,10 @@ Every numbered claim in the Results maps to a row of
 clinical-grade discrimination; no universal or subgroup calibration adequacy; no conditional /
 subgroup / intersectional conformal validity; no successful mitigation — group-conditional
 conformal recalibration is not described as "solving" the coverage failure (it over-covers the
-well-served subgroups) and selective deferral is not described as effective; the
-reference-standard measurement-bias question is bounded, not resolved (verdict V3); no external or
+well-served subgroups), selective deferral is not described as effective, and the training-time
+reweighting is not described as a fix (it halved the gap and removed the mechanism but failed the
+cost gates); the reference-standard measurement-bias question is bounded, not resolved
+(verdict V3); no external or
 out-of-sample validation; the NHB holdout is not external validation; no
 deployment readiness; no causal mechanism; the age-60+ sensitivity disparity is not a co-headline
 finding and not significant in 5/5 models; the obese-and-60+ overlap is 294 people (13.7% of the

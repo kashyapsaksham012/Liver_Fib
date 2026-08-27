@@ -59,14 +59,18 @@ across a structured set of candidates.
 
 Mondrian (Project Phase 7), BMI thresholding / BMI-Platt / BMI×Age thresholds / combined
 (corrected Phase 3), subgroup calibration (corrected Phase 4), group Youden thresholds, Equal
-Opportunity, XGBoost retuning, joint conformal (Methods b/c, M4b), and conformal selective
-deferral (Amendment #17) were all evaluated against pre-declared multi-metric gates. Partial
+Opportunity, XGBoost retuning, joint conformal (Methods b/c, M4b), conformal selective deferral
+(Amendment #17), and one **training-time** subgroup-reweighting intervention (Amendment #19) were
+all evaluated against pre-declared multi-metric gates fixed before locked-test access. Partial
 successes (Mondrian 5/9; a re-run reaching 5/5 only by over-covering) and failures (everything
-else, including selective deferral) are labelled as such, and a documented tolerance breach
-(XGBoost +5.27 pp) is disclosed rather than smoothed over. The selective-deferral analysis stopped
-at the pre-registered gate on the calibration partition and did not touch the locked test — and
-produced a genuine mechanistic result (the under-coverage is confidently-scored wrong singletons,
-so post-hoc deferral cannot help; a training-time fix is indicated).
+else) are labelled as such, and documented costs (XGBoost +5.27 pp marginal breach; the
+training-time AUROC/specificity cost; a new logistic sex disparity) are disclosed rather than
+smoothed over. The selective-deferral analysis stopped at the pre-registered gate on the
+calibration partition (no locked-test touch) and showed the under-coverage is confidently-scored
+wrong singletons; the **Amendment #19** intervention then took the two pre-registered locked-test
+touches, applied the gate mechanically, and returned an honest NEGATIVE — the reweighting removed
+the body-mass shortcut and halved the gap but failed the discrimination cost gate — rather than
+reframing a partial improvement as a fix.
 
 ## 8. Sensitivity analyses triangulate the core findings across independent axes
 

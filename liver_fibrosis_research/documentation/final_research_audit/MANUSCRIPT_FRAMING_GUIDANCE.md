@@ -100,6 +100,14 @@ weight, and a reader must not conflate them.
 - **Selective deferral (Amendment #17): NO IMPROVEMENT.** Frame as a mechanistic dead-end for
   post-hoc methods, not as a failed attempt — it shows the under-coverage is confidently-scored
   wrong singletons, which is why a training-time intervention is the indicated next step.
+- **Training-time reweighting (Amendment #19): NEGATIVE.** Frame as the *informative* negative:
+  it is the first method to move both primary subgroup metrics substantially and to remove the
+  body-mass shortcut (gap halved, BH-sig 5/5 → 0/4; coverage 0.77–0.82 → 0.86–0.87) — confirming
+  the failure is training-time-addressable *in mechanism* — but it fails the pre-registered cost
+  gate (AUROC −0.02–0.03; specificity up to −12 pp; a new logistic sex disparity) and does not
+  help age-60+ (the joint arm worsens it). **Always state the cost in the same breath as the
+  gain.** The sharpened conclusion: closing the gap needs data / features / an explicit
+  performance–equity trade, not a better objective alone. Do **not** call it a fix or a success.
 
 ## 6. Cross-references
 

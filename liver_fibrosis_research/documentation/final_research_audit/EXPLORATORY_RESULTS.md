@@ -150,6 +150,27 @@ co-occurrence result is **not confirmed**.
   pre-registered negative — but listed here for completeness alongside the other mitigation
   attempts. `documentation/selective_deferral_mitigation/*`.
 
+## E13. Training-time subgroup reweighting (Amendment #19) — pre-registered, NEGATIVE
+
+- **Purpose:** test the training-time intervention that Amendment #17 indicated — retrain the
+  frozen families with Kamiran–Calders instance reweighting (body-mass band ⟂ outcome in the
+  reweighted training distribution).
+- **Result:** two locked-test touches; gate applied mechanically. **VERDICT NEGATIVE (no
+  efficacy)**, both arms. Arm A (primary, 4 BMI bands; MLP excluded for instability): removed the
+  matched-stiffness body-mass shortcut (0.18–0.25 → 0.008–0.036 OOF), **halved** the
+  Normal-vs-Obese sensitivity gap (+27–48 → +14–17 pp; BH-sig 5/5 → 0/4), BMI-Obese conformal
+  coverage 0.77–0.82 → 0.857–0.871 (< 0.88). **Cost:** test AUROC −0.02–0.03; specificity up to
+  −12 pp; new logistic Female sensitivity disparity (−15.1 pp). Age-60+ coverage unchanged. Arm B
+  (12 BMI×age cells): body-mass gap halved but **age gap worsened, BH-sig 3/4**.
+  `results/training_time_mitigation/*`.
+- **Limitation:** MLP not evaluable in the frozen implementation (no `sample_weight`; resampling
+  approximation unstable). Normal-BMI has 50 training / 22 test fibrosis cases — the binding data
+  limit. New tests not folded into the frozen 182-test pooled family.
+- **Manuscript:** §3.7b + Table 4 rows; **NEGATIVE** — the failure is addressable at training time
+  *in mechanism* but not eliminable within routine features and this sample without a gate-failing
+  discrimination cost. Pre-registered negative, not exploratory; listed here for completeness.
+  `documentation/training_time_mitigation/*`.
+
 ---
 
 ## Governing rule (do not violate)
