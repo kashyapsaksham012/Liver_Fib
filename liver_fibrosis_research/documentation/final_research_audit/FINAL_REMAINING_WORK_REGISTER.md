@@ -139,6 +139,20 @@ An item is not REQUIRED merely because it is unfinished. Basis:
   descriptive pass is a justified low-cost option to close a pre-registered SECONDARY item.
   **Full retraining is NOT justified.**
 
+- **UPDATE 2026-08-27 — EXECUTED (relabel-only descriptive pass).** Done under Protocol
+  Amendment #15. Script `src/sens_13_secondary_severity_outcomes.py`; results
+  `results/sensitivity/secondary_severity_outcomes_*.{csv,json}`; report
+  `documentation/sensitivity/SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`. Findings:
+  discrimination comparable to the primary 8.2-kPa outcome for both cutpoints (AUROC 0.85–0.86
+  ≥9.7 kPa; 0.84–0.86 ≥13.6 kPa; no model-family separation); raw over-prediction worsens at the
+  lower prevalences; **the frozen 8.2-kPa Platt recalibration does not transport** (recalibrated
+  intercepts −0.4 to −0.8 for ≥9.7 kPa, −1.2 to −1.9 for ≥13.6 kPa); BMI-Obese-vs-Normal
+  sensitivity disparity direction preserved in 5/5 models for ≥9.7 kPa but **not independently
+  powered** (Normal-BMI n=11 test positives; only logistic's CI excludes 0); Age-60+ remains
+  fragile. ≥13.6 kPa reported overall-only (59 test positives). Status: **EXECUTED — relabel-only,
+  descriptive; not a deployable severity-staging model claim.** No per-outcome retraining or
+  recalibration performed.
+
 ## 11. Survey-weighted / weighted-loss model training — **DO_NOT_RUN → DO NOT DO**
 
 - Frozen **EXPLORATORY** item (`statistical_analysis_plan.md` EXPLORATORY item 4), unexecuted,
@@ -161,7 +175,7 @@ An item is not REQUIRED merely because it is unfinished. Basis:
 | 7 | XGBoost mitigation retuning | DO_NOT_RUN (resolved) | DO NOT DO |
 | 8 | Joint-mitigation hardening | DO_NOT_RUN | DO NOT DO |
 | 9 | AFCP narrative-status resolution | OPTIONAL (docs only) | DO NOT DO (adjudicate on paper) |
-| 10 | Severity-graded secondary outcomes | IMPORTANT (status) / OPTIONAL (execute) | ADD to register; relabel-only pass DO-able |
+| 10 | Severity-graded secondary outcomes | IMPORTANT (status) / OPTIONAL (execute) | **EXECUTED 2026-08-27 (relabel-only, Amendment #15)** — see item 10 UPDATE |
 | 11 | Survey-weighted / weighted-loss training | DO_NOT_RUN | DO NOT DO |
 | — | Temporal validation (NHANES 2021–2023) | SEPARATE_WORK — COMPLETE | no action |
 | — | External (non-NHANES) validation | SEPARATE_WORK — NOT EXECUTED / blocked | top future priority; out of scope here |
@@ -175,7 +189,7 @@ compatible independent cohort.
 
 | Item | Where frozen | Result artifact? | Disposition |
 |---|---|---|---|
-| Severity-graded secondary outcomes (≥9.7, ≥13.6 kPa) | `statistical_analysis_plan.md` SECONDARY item 2; `PHASE2_PROTOCOL_FREEZE.md` row 17 | NONE | see item 10 — ADD to register |
+| Severity-graded secondary outcomes (≥9.7, ≥13.6 kPa) | `statistical_analysis_plan.md` SECONDARY item 2; `PHASE2_PROTOCOL_FREEZE.md` row 17 | **`results/sensitivity/secondary_severity_outcomes_*` (Amendment #15, 2026-08-27)** | see item 10 UPDATE — EXECUTED relabel-only |
 | Survey-weighted / weighted-loss training | `statistical_analysis_plan.md` EXPLORATORY item 4; `survey_weight_protocol.md` | NONE | see item 11 — formally defer |
 | F3+ / F4 stage-specific modelling beyond relabel | `primary_outcome_definition.md` (noted as unexecuted) | NONE | subsumed by item 10; DO NOT DO beyond relabel |
 

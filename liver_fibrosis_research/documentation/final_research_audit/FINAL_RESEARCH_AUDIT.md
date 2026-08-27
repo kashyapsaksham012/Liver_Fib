@@ -255,8 +255,16 @@ is triangulated across three independent cohort perturbations plus a temporal cy
   discrimination/calibration pass** (no retraining); cirrhosis subgroup fairness would be
   low-powered (~53 test positives) and should be reported overall-only. Full retraining is not
   justified. *(Status resolution = IMPORTANT; execution = OPTIONAL.)*
-- **Correct or annotate `documentation/MASTER_RESEARCH_RESULTS.md`** conformal section to match
-  the raw artifacts (conflict C1).
+  **DONE 2026-08-27 (Amendment #15):** executed as a relabel-only descriptive pass —
+  `src/sens_13_secondary_severity_outcomes.py`,
+  `documentation/sensitivity/SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`. Discrimination
+  comparable to primary; frozen 8.2-kPa recalibration does not transport to the rarer outcomes;
+  BMI-Obese disparity direction preserved but underpowered (Normal-BMI n=11 test positives);
+  ≥13.6 kPa reported overall-only. Not a deployable severity-staging claim.
+- **`documentation/MASTER_RESEARCH_RESULTS.md`** — **DONE 2026-08-27:** deleted in the
+  pre-manuscript consolidation (verified factual errors incl. conflict C1; recoverable from git
+  history). Superseded by `MASTER_END_TO_END_RESEARCH_REPORT.md` + `final_research_audit/`. See
+  `documentation/START_HERE.md`.
 
 ## 13. OPTIONAL work
 

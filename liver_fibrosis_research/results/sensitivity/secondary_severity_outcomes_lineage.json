@@ -1,0 +1,43 @@
+{
+  "analysis": "Pre-registered SECONDARY: severity-graded outcomes (>=9.7 kPa advanced fibrosis, >=13.6 kPa cirrhosis)",
+  "mode": "RELABEL-ONLY DESCRIPTIVE PASS (mirrors sens_03 8.0 kPa)",
+  "generated_utc": "2026-08-27T06:20:47.335120+00:00",
+  "script": "src/sens_13_secondary_severity_outcomes.py",
+  "preregistration": [
+    "documentation/phase2/statistical_analysis_plan.md SECONDARY item 2",
+    "documentation/phase2/primary_outcome_definition.md",
+    "documentation/phase2/PHASE2_PROTOCOL_FREEZE.md row 17"
+  ],
+  "inputs": {
+    "cohort": "data/processed/analysis_dataset_primary.parquet (CAND_1, N=7,153)",
+    "outcome_columns": [
+      "outcome_secondary_advanced_9.7kPa (411 pos, 5.75%)",
+      "outcome_secondary_cirrhosis_13.6kPa (177 pos, 2.47%)"
+    ],
+    "frozen_oof_predictions": "results/predictions/validation_predictions_<model>.csv",
+    "frozen_test_predictions": "results/predictions/test_predictions_<model>.csv",
+    "frozen_platt_recalibrated_test": "results/calibration/test_set_recalibrated_predictions.csv",
+    "models": [
+      "logistic",
+      "random_forest",
+      "xgboost",
+      "lightgbm",
+      "mlp"
+    ]
+  },
+  "not_done": [
+    "No model retraining",
+    "No Platt re-fit (frozen 8.2 kPa params applied unchanged)",
+    "No conformal calibration repetition",
+    "No subgroup fairness for >=13.6 kPa (test positives ~59, insufficient)",
+    "No FDR correction (descriptive secondary pass; CI-only, matching sens_03)"
+  ],
+  "test_lock": {
+    "test_reaccessed_for_model_fitting": false,
+    "youden_thresholds_rederived_on": "frozen OOF predictions, relabeled"
+  },
+  "outputs": [
+    "results/sensitivity/secondary_severity_outcomes_results.csv",
+    "results/sensitivity/secondary_severity_outcomes_9p7_bmi_age_fairness.csv"
+  ]
+}
