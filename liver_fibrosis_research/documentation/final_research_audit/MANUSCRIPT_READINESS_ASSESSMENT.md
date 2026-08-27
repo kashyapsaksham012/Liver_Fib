@@ -70,7 +70,8 @@ disparity; DCA showing net benefit within the plausible threshold range.
 `FINAL_LIMITATIONS_REGISTER.md` enumerates 40+ limitations across 10 categories with severity and
 wording. The mandated minimum set (external validation absent; partial temporal replication;
 Age-60+ fragile; Phase 7 partial + XGBoost breach + sequential overlap; no acceptable BMI
-mitigation; conformal marginal-only; conformal measured on CAND_1 only; MI narrow + no lineage;
+mitigation; conformal marginal-only; conformal subgroup coverage replicated on 8.0 kPa / CAND_2 /
+CAND_3 (Amendment #16; BMI-Obese robust, Age-60+ direction robust); MI narrow + no lineage;
 NHB holdout internal; single survey / VCTE reference / cross-sectional; underweight
 uninterpretable; class-balancing artifact) is complete.
 

@@ -98,6 +98,19 @@ An item is not REQUIRED merely because it is unfinished. Basis:
 - **Recommendation:** not needed for the base manuscript; **run this FIRST** if a reviewer
   challenges the generalizability of the conformal subgroup finding.
 
+- **UPDATE 2026-08-27 — EXECUTED (CAND_2, CAND_3) under Protocol Amendment #16.** The 8.0-kPa
+  conformal replication was already done (BMI-investigation Phase 6). Script
+  `src/sens_14_conformal_replication_sensitivity_cohorts.py`; results
+  `results/sensitivity/conformal_replication_*.{csv,json}`; report
+  `documentation/sensitivity/CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md`.
+  **The CAND_1 pattern replicates:** marginal coverage meets target on both cohorts (0.896–0.917);
+  **BMI-Obese under-covers in 5/5 models on both** (CI excludes 0.90, FDR-significant throughout);
+  **Age-60+ under-covers in direction in 5/5 on both**, FDR-significant 5/5 on CAND_2 and 2/5 on
+  CAND_3 (small Age-60+ cell). BMI-Normal/Overweight/Age-18–39 over-cover, as on CAND_1. The
+  subgroup conformal-coverage finding — and specifically BMI-Obese under-coverage — is now
+  triangulated across CAND_1 / 8.0 kPa / CAND_2 / CAND_3. Status: **EXECUTED — robustness check,
+  not a new primary result; CAND_1 numbers unchanged.**
+
 ## 7. XGBoost mitigation retuning — **DO_NOT_RUN (RESOLVED) → DO NOT DO**
 
 - **Status:** already executed and independently verified 2026-08-27
@@ -171,7 +184,7 @@ An item is not REQUIRED merely because it is unfinished. Basis:
 | 3 | Conformal-coverage comparison under MI | DO_NOT_RUN | DO NOT DO |
 | 4 | Phase 5 MI-conformal lineage reconstruction | OPTIONAL | DO NOT DO (revisit if cited) |
 | 5 | Full 8.0-kPa retraining pipeline | DO_NOT_RUN | DO NOT DO |
-| 6 | Conformal replication CAND_2/CAND_3/8.0 kPa | OPTIONAL | DO NOT DO now (run first if challenged) |
+| 6 | Conformal replication CAND_2/CAND_3/8.0 kPa | OPTIONAL | **EXECUTED 2026-08-27 (Amendment #16; 8.0 kPa was already done)** — pattern replicates; see item 6 UPDATE |
 | 7 | XGBoost mitigation retuning | DO_NOT_RUN (resolved) | DO NOT DO |
 | 8 | Joint-mitigation hardening | DO_NOT_RUN | DO NOT DO |
 | 9 | AFCP narrative-status resolution | OPTIONAL (docs only) | DO NOT DO (adjudicate on paper) |

@@ -152,6 +152,12 @@ Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.m
 - **C1–C4 conflict adjudications** — `CONFLICT_ADJUDICATIONS.md` (all four RESOLVED).
 - **Manuscript framing decision** — `MANUSCRIPT_FRAMING_GUIDANCE.md` (Age-60+ sensitivity demoted
   to secondary observation).
+- **Amendment #16 — conformal subgroup-coverage replication on CAND_2 / CAND_3** (8.0 kPa was
+  already done). The CAND_1 marginal-vs-subgroup coverage pattern **replicates**: BMI-Obese
+  under-covers in 5/5 models on both new cohorts (FDR-significant); Age-60+ under-covers in
+  direction on both (FDR-significant 5/5 CAND_2, 2/5 CAND_3). The one previously un-triangulated
+  primary finding is now triangulated across four constructions.
+  Report: `documentation/sensitivity/CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md`.
 
 ## 8. Freeze
 

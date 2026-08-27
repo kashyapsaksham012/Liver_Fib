@@ -217,8 +217,12 @@ mitigation with an acceptable multi-metric profile was identified.**
 - **Threshold-robustness verdicts:** discrimination = ROBUST (magnitude drifts by cohort);
   BMI-Obese sensitivity disparity = ROBUST (magnitude changed, direction fixed); calibration
   correction = ROBUST; Age-60+ disparity significance = THRESHOLD-SENSITIVE /
-  SPECIFICATION-SENSITIVE; conformal subgroup replication on sensitivity cohorts = INCONCLUSIVE
-  (not measured); marginal conformal validity = ROBUST by construction.
+  SPECIFICATION-SENSITIVE; marginal conformal validity = ROBUST by construction.
+- **Conformal subgroup replication (Amendment #16, executed 2026-08-27):** replicated on CAND_2
+  and CAND_3 (8.0 kPa already done). BMI-Obese under-coverage = **ROBUST** (5/5 models, CI
+  excludes 0.90, FDR-significant on both new cohorts); Age-60+ under-coverage = **direction
+  ROBUST, significance power-sensitive** (5/5 FDR-significant CAND_2, 2/5 CAND_3); marginal-vs-
+  subgroup contrast replicates. `documentation/sensitivity/CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md`.
 
 ## 9. Remaining unresolved issues
 
@@ -278,9 +282,11 @@ is triangulated across three independent cohort perturbations plus a temporal cy
 
 ## 13. OPTIONAL work
 
-- Conformal subgroup-coverage replication on CAND_2 / CAND_3 / 8.0 kPa — the single
-  un-triangulated primary finding; run **first** if a reviewer challenges conformal
-  generalizability. Low methodological risk (frozen framework, existing cohorts).
+- Conformal subgroup-coverage replication on CAND_2 / CAND_3 / 8.0 kPa — **DONE 2026-08-27
+  (Amendment #16).** Pattern replicates: marginal coverage on target both cohorts; BMI-Obese
+  under-covers 5/5 models both cohorts (FDR-significant); Age-60+ under-covers in direction both,
+  FDR-significant 5/5 CAND_2 and 2/5 CAND_3. The finding is triangulated across four constructions.
+  `documentation/sensitivity/CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md`.
 - Phase 5 MI conformal executable-lineage reconstruction — only if that result becomes a
   load-bearing manuscript claim.
 - CAND_4 all-ages — EXPLORATORY tier only; cannot be promoted to a primary/secondary conclusion.
@@ -345,7 +351,9 @@ validation; temporal result is PARTIAL, not full, replication; Age-60+ significa
 specification-sensitive; Phase 7 mitigation is partial (5/9), with an XGBoost coverage breach and
 sequential (not joint) overlap handling; no acceptable BMI-sensitivity mitigation was found;
 conformal subgroup coverage is empirical and not a conditional-validity guarantee; conformal
-subgroup coverage was measured on CAND_1 only; MI is narrow-scope (NHB) and the MI conformal
+subgroup coverage was primarily measured on CAND_1 and replicated on 8.0 kPa / CAND_2 / CAND_3
+(Amendment #16 — BMI-Obese robust; Age-60+ direction robust, significance power-sensitive on the
+smaller CAND_3); MI is narrow-scope (NHB) and the MI conformal
 tables lack executable lineage; NHB holdout is within-NHANES; single survey program, single
 country, cross-sectional VCTE reference standard (not biopsy); Underweight-BMI is uninterpretable
 (1 positive); small subgroup / intersectional cells limit precision; class-balancing artifact

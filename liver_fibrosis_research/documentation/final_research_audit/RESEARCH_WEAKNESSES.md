@@ -26,7 +26,16 @@ marginal-coverage tolerance, or fails temporally. The study identifies a problem
 solve within its scope (`FINAL_SCIENTIFIC_FINDINGS.md` §14). This is scientifically honest but
 limits the translational contribution.
 
-### W3. The subgroup conformal-coverage failure — the headline finding — is measured on one cohort
+### W3. The subgroup conformal-coverage failure — measured on one cohort → **RESOLVED 2026-08-27**
+
+> **UPDATE 2026-08-27 (Amendment #16):** replicated on CAND_2 and CAND_3 (8.0 kPa was already
+> done). Marginal coverage meets target on both; **BMI-Obese under-covers in 5/5 models on both
+> cohorts** (FDR-significant); Age-60+ under-covers in direction on both (FDR-significant 5/5
+> CAND_2, 2/5 CAND_3). The finding is now triangulated across four constructions. This W3 concern
+> is closed for BMI-Obese; the Age-60+ conformal component retains the same
+> direction-robust/significance-fragile character as the Age-60+ sensitivity finding. See
+> `documentation/sensitivity/CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md`.
+
 
 BMI-Obese (76.8–82.3%) and Age-60+ (81.1–85.6%) under-coverage is demonstrated only on CAND_1.
 The three sensitivity analyses replicated discrimination / calibration / fairness but **did not
