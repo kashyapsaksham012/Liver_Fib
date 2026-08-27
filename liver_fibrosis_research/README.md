@@ -47,7 +47,12 @@ relaxed-elastography-eligibility cohort, a fasting-extended-predictor cohort) an
 multiple-imputation check for a documented Non-Hispanic Black selection-bias concern all reproduce
 the primary findings' qualitative pattern (the BMI-Obese disparity is stable in 15/15 instances;
 the Age-60+ disparity's direction never reverses but its statistical significance is lost in 9/12).
-Scope limits in `documentation/final_research_audit/FINAL_SCIENTIFIC_FINDINGS.md`.
+The pre-registered severity-graded SECONDARY outcomes (≥9.7 kPa advanced fibrosis, ≥13.6 kPa
+cirrhosis) were also executed as a relabel-only descriptive pass (Amendment #15): discrimination
+is comparable to the primary outcome, but the frozen 8.2-kPa recalibration does not transport to
+the rarer outcomes. Scope limits in
+`documentation/final_research_audit/FINAL_SCIENTIFIC_FINDINGS.md` and
+`documentation/sensitivity/SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`.
 
 ## Follow-up work completed since the original Phases 1–8
 - **BMI-fairness investigation (its own Phases 0–7):** independent reproduction of the disparity,

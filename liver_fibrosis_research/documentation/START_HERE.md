@@ -124,10 +124,21 @@ manuscript-level dispositions:
 - The **Non-Hispanic Black subgroup holdout (Phase 8)** is a *within-NHANES demographic holdout*.
   Neither it nor the 2021–2023 temporal work is external validation. Do not describe either as such.
 
-## 6. Freeze
+## 6. Executed during / after consolidation (2026-08-27)
 
-This consolidation is tagged as the pre-manuscript evidence freeze. After this point, the
-analysis set is closed: no rerun, retuning, recalibration, or re-selection of any Phase 0–8,
-BMI-investigation, temporal, or sensitivity artifact without a new dated protocol amendment.
-Remaining permitted work is enumerated in
+- **Amendment #15 — pre-registered SECONDARY severity-graded outcomes (≥9.7 kPa, ≥13.6 kPa),
+  relabel-only descriptive pass.** Closes the one pre-registered analysis that had no result
+  artifact. Discrimination comparable to the primary outcome; the frozen 8.2-kPa Platt
+  recalibration does **not** transport to the rarer outcomes; BMI-Obese disparity direction
+  preserved but underpowered (Normal-BMI n=11 test positives); ≥13.6 kPa reported overall-only.
+  Not a deployable severity-staging claim.
+  Report: `documentation/sensitivity/SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`;
+  results: `results/sensitivity/secondary_severity_outcomes_*`.
+
+## 7. Freeze
+
+This consolidation is tagged as the pre-manuscript evidence freeze (`evidence-freeze`). After
+this point the analysis set is closed: no rerun, retuning, recalibration, or re-selection of any
+Phase 0–8, BMI-investigation, temporal, or sensitivity artifact without a new dated protocol
+amendment. Remaining permitted work is enumerated in
 `documentation/final_research_audit/FINAL_REMAINING_WORK_REGISTER.md`.
