@@ -130,6 +130,28 @@ Tables 1–5 matches its cited frozen artifact to the precision stated. Verifica
 were closed in-session (BMI-Obese fairness q ≤ 0.006 for all 5 models; CAND_2/CAND_3 marginal
 coverage confirmed; 8.0-kPa BMI-Obese conformal confirmed).
 
+## Amendment #18 addendum (2026-08-27) — §2.7b, §3.4 matched-stiffness, §3.4b, §3.4c, §3.7, Table 4
+
+Every new number checked against its result CSV (`results/prepublication_fixes/`,
+`results/selective_deferral/`).
+
+| Claim | Artifact | Verdict |
+|---|---|---|
+| §3.4b refit classification gap −42.0 / −27.5 / −32.1 / −32.8 / −35.3 pp | `fix1_comparison_table.csv` `refit_classification_gap_at_tau_star_pp` (−41.95 / −27.53 / −32.08 / −32.79 / −35.26) | OK (rounded) |
+| §3.4b "negative at every threshold for 4/5; MLP flips at high thresholds" | `fix1_comparison_table.csv` `refit_gap_negative_at_all_sweep_thresholds` True ×4 / MLP False; `fix1_threshold_robustness.csv` MLP > 0 at ≥ 0.50 | OK |
+| §3.4b verdict STRENGTHENING | `FIX1_MODEL_FIT_ALIGNMENT.md` (rule 0.3: ct ≤ −15 pp 4/5, cl ≤ −15 pp 5/5) | OK |
+| §3.4 / §3.4c matched-stiffness "obese +0.19–0.33, p < 0.001, 5/5" | `fix2_bmi_shortcut_check.csv` `beta_is_obese` 0.332 / 0.254 / 0.267 / 0.278 / 0.191; `p_value` 0.0 ×5 | OK |
+| §3.4c obese sensitivity stable, median Δ 0.03 | `fix2_obese_side_highpower.csv` `delta_obese_sens` 0.039 / −0.002 / 0.012 / 0.036 / 0.027 → |median| 0.026 | OK (→ "0.03") |
+| §3.4c BMI-Obese coverage 0.70–0.77 at ≥ 12 kPa (4 class-weighted) | `fix2_coverage_under_stricter_labels.csv` Obese@12: LR 0.768 / RF 0.748 / XGB 0.702 / LGBM 0.733 (MLP 0.882, degenerate) | OK |
+| §3.4c "7 Normal-BMI positives at ≥ 12 kPa" | `fix2_gap_by_stiffness_threshold.csv` `nB_pos` @ cut 12.0 = 7 | OK |
+| §3.4c verdict V3 | `FIX2_VCTE_BIAS_SENSITIVITY.md` (rule 0.3: Normal-BMI positives 7 < 8; models with gap ≥ +15 pp @12 = 0/5) | OK |
+| §3.7 / Table 4 deferral "no candidate meets the gate (0/5)" | `results/selective_deferral/phase3_candidate_metrics.csv` `core` False all rows; `PHASE3_RULE_DEVELOPMENT.md` "0/5" | OK |
+| §3.7 / Table 4 Mondrian 3d "≥ 0.88 for 5/5, retained marginal 0.94–0.95" | `phase3_candidate_metrics.csv` 3d rows: `cov_bmi_Obese` ≈ 0.904, `cov_age_60+` 0.920–0.947, `retained_marginal_cov` 0.937–0.953 | OK |
+
+Reproducibility: `src/prepub_01_model_fit_alignment.py` and `src/prepub_02_vcte_bias_sensitivity.py`
+re-run bit-for-bit (seed 42); leakage pre-check (test ∩ calibration = 0, test ∩ proper-train = 0)
+asserted in the Fix-1 script.
+
 ## Items still to close (for a co-author)
 
 1. Independently re-run `src/manuscript_01_table1.py` and check Table 1 against
@@ -137,3 +159,4 @@ coverage confirmed; 8.0-kPa BMI-Obese conformal confirmed).
    BMI bands 109/1,802/2,316/2,926; age bands 2,423/2,318/2,412 — all matched in this pass).
 2. Read every Results sentence against `DO_NOT_CLAIM.md` once more.
 3. Re-verify each reference DOI/PMID (see `LITERATURE_REVIEW.md` §4 and the DOI-status note).
+4. Independently re-run the two Amendment #18 scripts and re-check the addendum table above.

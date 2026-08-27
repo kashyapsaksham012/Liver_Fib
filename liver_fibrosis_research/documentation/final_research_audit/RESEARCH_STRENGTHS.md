@@ -59,10 +59,14 @@ across a structured set of candidates.
 
 Mondrian (Project Phase 7), BMI thresholding / BMI-Platt / BMI×Age thresholds / combined
 (corrected Phase 3), subgroup calibration (corrected Phase 4), group Youden thresholds, Equal
-Opportunity, XGBoost retuning, and joint conformal (Methods b/c, M4b) were all evaluated against
-pre-declared multi-metric gates. Partial successes (Mondrian 5/9) and failures (everything else)
-are labelled as such, and a documented tolerance breach (XGBoost +5.27 pp) is disclosed rather
-than smoothed over.
+Opportunity, XGBoost retuning, joint conformal (Methods b/c, M4b), and conformal selective
+deferral (Amendment #17) were all evaluated against pre-declared multi-metric gates. Partial
+successes (Mondrian 5/9; a re-run reaching 5/5 only by over-covering) and failures (everything
+else, including selective deferral) are labelled as such, and a documented tolerance breach
+(XGBoost +5.27 pp) is disclosed rather than smoothed over. The selective-deferral analysis stopped
+at the pre-registered gate on the calibration partition and did not touch the locked test — and
+produced a genuine mechanistic result (the under-coverage is confidently-scored wrong singletons,
+so post-hoc deferral cannot help; a training-time fix is indicated).
 
 ## 8. Sensitivity analyses triangulate the core findings across independent axes
 

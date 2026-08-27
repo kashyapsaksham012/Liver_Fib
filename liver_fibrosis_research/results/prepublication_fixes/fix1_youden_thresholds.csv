@@ -1,0 +1,6 @@
+model,tau_star_calibration,youden_J,calibration_positives,calibration_negatives,note
+logistic,0.555,0.5152,93,909,derived from 93 positives -- noisier than the Phase-3 threshold (466 OOF positives); the threshold sweep (fix1_threshold_robustness) is the primary robustness evidence
+random_forest,0.345,0.4936,93,909,derived from 93 positives -- noisier than the Phase-3 threshold (466 OOF positives); the threshold sweep (fix1_threshold_robustness) is the primary robustness evidence
+xgboost,0.4,0.5539,93,909,derived from 93 positives -- noisier than the Phase-3 threshold (466 OOF positives); the threshold sweep (fix1_threshold_robustness) is the primary robustness evidence
+lightgbm,0.37,0.5421,93,909,derived from 93 positives -- noisier than the Phase-3 threshold (466 OOF positives); the threshold sweep (fix1_threshold_robustness) is the primary robustness evidence
+mlp,0.115,0.5477,93,909,derived from 93 positives -- noisier than the Phase-3 threshold (466 OOF positives); the threshold sweep (fix1_threshold_robustness) is the primary robustness evidence

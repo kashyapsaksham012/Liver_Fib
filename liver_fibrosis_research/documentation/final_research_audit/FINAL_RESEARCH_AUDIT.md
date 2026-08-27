@@ -199,9 +199,14 @@ See `EXPLORATORY_RESULTS.md` and `VERIFIED_WITH_LIMITATIONS.md`. Consolidated in
 | Equal Opportunity post-processing (D06) | equalize TPR | ~50–80 pp target-group sensitivity gain at ~38–40 pp specificity cost; ~399 excess FP per 1,000 normal-weight screened | **EXPLORATORY — clinically unacceptable** |
 | XGBoost mitigation retuning (BMI-inv Phase 7) | remove XGBoost coverage-tolerance breach | every gap-closing candidate costs 11–22 pp overall sensitivity or flips the breach | **NO ACCEPTABLE RETUNING** |
 | Joint intersectional conformal (Method b / c / M4b N0=0) | restore BMI-Obese ∩ Age-60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on CAND_1, but XGBoost/LightGBM breach ±5 pp marginal tolerance | **EXPLORATORY / VALID SECONDARY METHOD only** |
+| Mondrian re-run (Amendment #17, cand. 3d) | restore subgroup conformal coverage | BMI-Obese & Age-60+ ≥ 0.88 for 5/5 models with zero deferral, but retained marginal coverage rises to 0.94–0.95 (over-covers); restoring target marginal coverage needs *levelling down* | **PARTIALLY EFFECTIVE** (over-covers) |
+| Conformal selective deferral (Amendment #17) | restore subgroup coverage by deferring flagged-uncertain cases to elastography | no pre-registered candidate meets the multi-metric gate (0/5 models, calibration partition); deferring two-class sets *lowers* retained coverage — the misses are confidently-scored wrong singletons; locked test NOT touched | **NO IMPROVEMENT (DEVELOPMENT-STAGE NEGATIVE)** |
 
 **No intervention resolved the BMI classification (sensitivity) disparity. No BMI-sensitivity
-mitigation with an acceptable multi-metric profile was identified.**
+mitigation with an acceptable multi-metric profile was identified. The residual conformal
+under-coverage is a within-subgroup score-ordering failure that post-hoc methods (recalibration,
+deferral) cannot repair; a training-time intervention is the indicated next step (outside the
+frozen scope).**
 
 ## 8. Robustness findings
 
