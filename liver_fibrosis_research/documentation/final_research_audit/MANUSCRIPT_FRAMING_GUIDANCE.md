@@ -15,10 +15,12 @@ Two things, and only these two, carry the abstract and the framing:
    families (FDR q ≤ 0.006), independently reproduced, stable across three sensitivity cohorts
    (15/15), and enlarged in a later NHANES cycle. This is the single most robust finding in the
    study.
-2. **The methodological point:** discrimination plus aggregate calibration are insufficient
-   evidence of subgroup-safe reliability — split-conformal prediction meets its marginal coverage
-   target (88–91%) while under-covering identifiable subgroups (BMI-Obese 77–82%, Age-60+ 81–86%)
-   in every model, and no mitigation tested produced an acceptable fix.
+2. **The methodological point (the paper's thesis sentence):** *discrimination plus aggregate
+   calibration are insufficient evidence of subgroup-safe reliability; the failing subgroups are
+   identifiable, reproducible, mechanism-linked, and resistant to every mitigation strategy we
+   tested.* Split-conformal prediction meets its marginal coverage target (88–91%) while
+   under-covering identifiable subgroups (BMI-Obese 77–82%, Age-60+ 81–86%) in every model, on
+   every cohort construction, and no mitigation tested produced an acceptable fix.
 
 ## 2. Age-60+ — demoted to a secondary observation
 

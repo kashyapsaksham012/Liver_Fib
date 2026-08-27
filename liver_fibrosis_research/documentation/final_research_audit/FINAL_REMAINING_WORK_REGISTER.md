@@ -166,12 +166,17 @@ An item is not REQUIRED merely because it is unfinished. Basis:
   descriptive; not a deployable severity-staging model claim.** No per-outcome retraining or
   recalibration performed.
 
-## 11. Survey-weighted / weighted-loss model training — **DO_NOT_RUN → DO NOT DO**
+## 11. Survey-weighted / weighted-loss model training — **DO_NOT_RUN → FORMALLY DEFERRED 2026-08-27**
 
-- Frozen **EXPLORATORY** item (`statistical_analysis_plan.md` EXPLORATORY item 4), unexecuted,
-  not in any register. The plan itself calls ML weighting a "genuinely unresolved methodological
-  status"; no manuscript claim depends on it.
-- **Recommendation:** DO NOT DO; add a one-line register entry marking it formally deferred.
+- Frozen **EXPLORATORY** item (`statistical_analysis_plan.md` EXPLORATORY item 4).
+- **REGISTER ENTRY (2026-08-27):** **NOT EXECUTED — FORMALLY DEFERRED.** Not executed, not
+  planned, and no manuscript claim depends on it. The frozen plan itself records ML
+  survey-weighting as a "genuinely unresolved methodological status"
+  (`survey_weight_protocol.md`). Complete-case, unweighted training is the pre-registered
+  primary strategy. Revisit only under a new dated protocol amendment. The manuscript notes it as
+  a pre-registered exploratory item that was deferred (`MANUSCRIPT_DRAFT.md` §5).
+- This closes the second of the two previously-untracked pre-registered items (the first,
+  severity-graded secondary outcomes, is EXECUTED — item 10, Amendment #15).
 
 ---
 
@@ -189,7 +194,7 @@ An item is not REQUIRED merely because it is unfinished. Basis:
 | 8 | Joint-mitigation hardening | DO_NOT_RUN | DO NOT DO |
 | 9 | AFCP narrative-status resolution | OPTIONAL (docs only) | DO NOT DO (adjudicate on paper) |
 | 10 | Severity-graded secondary outcomes | IMPORTANT (status) / OPTIONAL (execute) | **EXECUTED 2026-08-27 (relabel-only, Amendment #15)** — see item 10 UPDATE |
-| 11 | Survey-weighted / weighted-loss training | DO_NOT_RUN | DO NOT DO |
+| 11 | Survey-weighted / weighted-loss training | DO_NOT_RUN | **NOT EXECUTED — FORMALLY DEFERRED 2026-08-27** (see item 11 entry) |
 | — | Temporal validation (NHANES 2021–2023) | SEPARATE_WORK — COMPLETE | no action |
 | — | External (non-NHANES) validation | SEPARATE_WORK — NOT EXECUTED / blocked | top future priority; out of scope here |
 
@@ -203,7 +208,7 @@ compatible independent cohort.
 | Item | Where frozen | Result artifact? | Disposition |
 |---|---|---|---|
 | Severity-graded secondary outcomes (≥9.7, ≥13.6 kPa) | `statistical_analysis_plan.md` SECONDARY item 2; `PHASE2_PROTOCOL_FREEZE.md` row 17 | **`results/sensitivity/secondary_severity_outcomes_*` (Amendment #15, 2026-08-27)** | see item 10 UPDATE — EXECUTED relabel-only |
-| Survey-weighted / weighted-loss training | `statistical_analysis_plan.md` EXPLORATORY item 4; `survey_weight_protocol.md` | NONE | see item 11 — formally defer |
+| Survey-weighted / weighted-loss training | `statistical_analysis_plan.md` EXPLORATORY item 4; `survey_weight_protocol.md` | NONE | **NOT EXECUTED — FORMALLY DEFERRED 2026-08-27** (item 11) |
 | F3+ / F4 stage-specific modelling beyond relabel | `primary_outcome_definition.md` (noted as unexecuted) | NONE | subsumed by item 10; DO NOT DO beyond relabel |
 
 None of these were executed. None is REQUIRED. Two (secondary outcomes, weighted training) are

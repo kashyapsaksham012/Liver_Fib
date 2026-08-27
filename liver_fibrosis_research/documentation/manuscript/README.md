@@ -10,7 +10,9 @@ framing, prohibited claims, and mandatory limitations follow:
   headline; the age-60+ *sensitivity* disparity is a secondary observation; the age-60+
   *conformal* under-coverage is retained at full strength.
 - `documentation/final_research_audit/DO_NOT_CLAIM.md` — claims the evidence does not support.
-- `documentation/final_research_audit/FINAL_LIMITATIONS_REGISTER.md` — the minimum limitations set.
+- `documentation/final_research_audit/FINAL_LIMITATIONS_REGISTER.md` — the minimum limitations
+  set. **Draft §5 reproduces every ID in that register's mandated minimum set**, tagged inline
+  (D1, E1, E3, E4, I1, J1, J3, J4, A1, B1, B2, C1, C3, F1, F2, G1, plus C2/B3/A2/A5/D4/F3/J2/J5).
 - `documentation/final_research_audit/CONFLICT_ADJUDICATIONS.md` — C1–C4, all resolved.
 - `documentation/final_research_audit/AUTHORITATIVE_RESULTS.md` — the verified numbers and their
   recommended wording.
