@@ -1,0 +1,52 @@
+{
+  "purpose": "Temporal outcome and demographic companion file only; no model evaluation performed.",
+  "source_files_used": {
+    "frozen_temporal_cohort": "data/processed/temporal_validation/temporal_validation_input_cobas6000_alt.csv",
+    "LUX_L": "NHANES 2021\u20132023 temporal validation dataset/LUX_L.xpt",
+    "DEMO_L": "NHANES 2021\u20132023 temporal validation dataset/DEMO_L.xpt"
+  },
+  "source_sha256": {
+    "frozen_temporal_cohort": "5a8f147729f3fe37515606965be1c8d90c968ea1c7df17666bc01996db1f74dc",
+    "LUX_L": "40e49c5f1b58054e4787cd59cdeb224cd7658784b760274c3449bd4c1eb64c34",
+    "DEMO_L": "ca4374a158b493b8b0163e1388da21d57a18d1b9cecff2aa4e2fa2bec494fe23"
+  },
+  "output_file": "results/temporal_validation/temporal_validation_labels_demographics.csv",
+  "output_sha256": "fdc58ad28a715d61fa1943a33ae3bc84c167b7dc7bef737ebad66ea48441cec0",
+  "columns": [
+    "SEQN",
+    "LUXSMED",
+    "LUAXSTAT",
+    "outcome",
+    "RIDRETH3"
+  ],
+  "outcome_definition": {
+    "positive": "LUXSMED >= 8.2",
+    "negative": "LUXSMED < 8.2",
+    "missing_luxsmed": "outcome remains missing"
+  },
+  "validation": {
+    "rows": 4910,
+    "unique_seqn": 4910,
+    "duplicate_seqn": 0,
+    "missing_seqn": 0,
+    "lux_source_seqn_matches": 4910,
+    "demo_source_seqn_matches": 4910,
+    "unmatched_lux_seqn": [],
+    "unmatched_demo_seqn": [],
+    "missing_LUXSMED": 0,
+    "missing_LUAXSTAT": 0,
+    "missing_RIDRETH3": 0,
+    "positive_outcome_count": 563,
+    "negative_outcome_count": 4347,
+    "outcome_prevalence_among_nonmissing_LUXSMED": 0.11466395112016294,
+    "output_seqns_exactly_match_frozen_temporal_cohort": true
+  },
+  "integrity": {
+    "cohort_file_unchanged": true,
+    "prediction_files_unchanged": true,
+    "prediction_sha256_before_after_equal": true,
+    "models_modified": false,
+    "evaluation_performed": false,
+    "cohort_rebuilt_or_redefined": false
+  }
+}
