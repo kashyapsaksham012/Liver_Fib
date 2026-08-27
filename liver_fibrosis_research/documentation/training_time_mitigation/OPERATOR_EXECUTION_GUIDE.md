@@ -28,9 +28,16 @@ python3 src/ttm_02_conformal_refit_reweighted.py # proper-train refit x 2 arms; 
 python3 src/ttm_03_test_classification.py        # LOCKED-TEST TOUCH #1
 python3 src/ttm_04_test_conformal.py             # LOCKED-TEST TOUCH #2
 
+# --- Phase 2.3 + Phase 3 (pandas-only; mechanical, no judgement) ---
+python3 src/ttm_05_apply_gate.py                 # applies G1-G7 -> decision.csv
+python3 src/ttm_06_comparison.py                 # comparison_vs_battery / mechanism / cost
+
 # --- validate ---
 python3 tests/test_training_time_mitigation.py   # T16-T18 now run
 ```
+
+`ttm_05` / `ttm_06` are deterministic pandas scripts; if the environment used for Phases 3-5 has
+pandas they can also be run there from the touch CSVs.
 
 Then send back (or commit on this branch) the contents of `results/training_time_mitigation/`:
 `phase1_mechanism_diagnostic.csv`, `youden_thresholds_arm{A,B}.csv`, `platt_params_arm{A,B}.csv`,
