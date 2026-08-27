@@ -190,6 +190,16 @@ Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.m
   mitigation narrative consolidated into one Table 4 / §3.7; selective deferral = NO IMPROVEMENT.
   Manuscript → **v4**. Folder: `documentation/prepublication_fixes/` (closure
   `AMENDMENT_18_CLOSURE.md`); tests `tests/test_prepub_fixes.py` (19/19).
+- **Amendment #19 — one training-time mitigation (subgroup instance reweighting).** **PRE-REGISTERED,
+  PENDING EXECUTION.** On git branch `experiment/training-time-mitigation` (off this branch @
+  Amendment #18). Phase 0 (pre-registration: weight formula, 2 arms, frozen `best_params`, G1–G7
+  gate + 4 verdicts + pre-written manuscript consequences) and all scripts (`src/ttm_00`…`ttm_06`)
+  are committed; Phases 1–2 (retraining + 2 locked-test touches) run by the operator on the pinned
+  environment (`requirements-phase3-lock.txt`) — `scikit-learn` etc. are not in the plan-authoring
+  environment. Folder: `documentation/training_time_mitigation/` (`TRAINING_TIME_MITIGATION_PLAN.md`,
+  `AMENDMENT_19_TEXT.md`, `OPERATOR_EXECUTION_GUIDE.md`). Honest prior: Normal-BMI has 50 training /
+  22 test fibrosis positives; modal expected outcome PARTIAL or NEGATIVE (no efficacy). Verdict and
+  manuscript integration land after execution.
 
 ## 8. Freeze
 
