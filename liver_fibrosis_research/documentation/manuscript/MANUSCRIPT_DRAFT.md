@@ -1,18 +1,21 @@
 # Discrimination and aggregate calibration are insufficient evidence of subgroup-safe reliability: a calibration–fairness–uncertainty audit of routine-data models for significant liver fibrosis
 
-**Draft v2 — 2026-08-27.** Grounded strictly in
+**Draft v3 — 2026-08-27.** Grounded strictly in
 `documentation/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv`,
 `AUTHORITATIVE_RESULTS.md`, `MANUSCRIPT_FRAMING_GUIDANCE.md`, `FINAL_LIMITATIONS_REGISTER.md`,
 `DO_NOT_CLAIM.md`, and `CONFLICT_ADJUDICATIONS.md`; related-work positioning in
 `documentation/manuscript/LITERATURE_REVIEW.md`. Every numeric claim traces to a frozen result
 artifact (see Appendix A). This is a working draft for the authors, not a submission.
 
-**v2 changes:** literature-grounded Introduction with citation markers `[n]`; new §4.1 (relation
-to prior work); working reference list (§References); Tables 2 and 3 rendered from the frozen
-CSVs. **Still outstanding before submission:** Table 1 / Tables 4–5 and all figures; a formal
-PubMed + IEEE/ACM + arXiv systematic search with DOI/PMID verification; TRIPOD+AI checklist
-(Appendix B); target-journal choice and reformatting; a second reader checking every Results
-sentence against its registry `claim_id`.
+**v2 → v3 changes:** literature-grounded Introduction with `[n]` markers; new §4.1 (relation to
+prior work); 28-item reference list; **Tables 1–5 rendered from the frozen artifacts** (Table 1
+via `src/manuscript_01_table1.py`, a read-only descriptive script); TRIPOD+AI crosswalk
+(Appendix B); every figure already exists as a committed PNG (§Figures); a full second-reader
+number check (`documentation/manuscript/RESULTS_VERIFICATION.md` — one Table 3 value corrected).
+**Still outstanding:** a formal PRISMA-style systematic search + DOI/PMID/author verification
+(10/28 verified; `LITERATURE_REVIEW.md` §4); figure panel assembly to the chosen journal's style;
+target-journal choice (`LITERATURE_REVIEW.md` §5); a human co-author repeating the verification
+pass and a final read against `DO_NOT_CLAIM.md`.
 
 ---
 
@@ -273,8 +276,9 @@ Split-conformal prediction met its target overall: marginal coverage **88.1–90
 five models. Within subgroups, coverage **failed** for the same populations flagged by the
 fairness audit: **BMI-obese 76.8–82.3%** and **age-60+ 81.1–85.6%**, with Wilson intervals
 excluding 90% and BH-significant for every model; the **obese-and-60+ intersection (N = 294)
-fell to 65–75%**. Normal-weight, overweight, and 18–39-year-old participants **over-covered**
-(≈ 0.95–0.97) — the marginal guarantee is met by borrowing coverage from over-served subgroups
+fell to 65–75%** (Wilson intervals exclude 90%). Normal-weight, overweight, and 18–39-year-old
+participants **over-covered** (≈ 0.94–0.97) — the marginal guarantee is met by borrowing coverage
+from over-served subgroups
 (**Figure 4**; **Table 3**). Better-calibrated probabilities (the perceptron) produced tighter
 prediction sets (96.9% singletons vs. 23–43% ambiguous two-class sets for the class-weighted
 models); coverage *validity* does not require calibration, but *efficiency* benefits from it.
@@ -486,7 +490,7 @@ positioning is in `documentation/manuscript/LITERATURE_REVIEW.md`.*
 9. Collins et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* 2024. PMID:38626948
 10. van den Goorbergh, van Smeden, Timmerman, Van Calster. The harm of class imbalance corrections for risk prediction models: illustration and simulation using logistic regression. *JAMIA* 2022;29(9):1525–1534. doi:10.1093/jamia/ocac093
 11. Carriero et al. The harms of class imbalance corrections for machine-learning-based prediction models: a simulation study. *Stat Med* 2025. doi:10.1002/sim.10320
-12. Straw & Wu. Investigating for bias in healthcare algorithms: a sex-stratified analysis of supervised machine learning models in liver disease prediction. *BMJ Health Care Inform* 2022. PMC9039354
+12. Straw I, Wu H. Investigating for bias in healthcare algorithms: a sex-stratified analysis of supervised machine learning models in liver disease prediction. *BMJ Health Care Inform* 2022;29(1):e100457. doi:10.1136/bmjhci-2021-100457
 13. Understanding algorithmic fairness for clinical prediction in terms of subgroup net benefit and health equity. arXiv:2412.07879, 2024.
 14. Critical appraisal of fairness metrics for artificial-intelligence-based clinical prediction models: a scoping review. *Lancet Digit Health* 2026.
 15. Vovk, Gammerman, Shafer. *Algorithmic Learning in a Random World*. Springer, 2005.
@@ -494,7 +498,7 @@ positioning is in `documentation/manuscript/LITERATURE_REVIEW.md`.*
 17. Barber, Candès, Ramdas, Tibshirani. The limits of distribution-free conditional predictive inference. *Inf Inference* 2021. arXiv:1903.04684
 18. Romano, Barber, Sabbatti, Candès. With malice toward none: assessing uncertainty via equalized coverage. *Harv Data Sci Rev* 2020.
 19. Angelopoulos, Bates, Fisch, Lei, Schuster. Conformal risk control. *ICLR* 2024.
-20. Conformal prediction in clinical artificial intelligence. *CHEST* 2025.
+20. Conformal prediction in clinical artificial intelligence. *CHEST* 2025 (article S0012-3692(25)05184-0; authors to be confirmed from full text).
 21. Conformal prediction sets can cause disparate impact. *ICLR* 2025.
 22. Conformal classification with equalized coverage for adaptively selected groups. *NeurIPS* 2024.
 23. Zhou & Sesia. Adaptively fair conformal prediction. 2024.
@@ -508,9 +512,44 @@ positioning is in `documentation/manuscript/LITERATURE_REVIEW.md`.*
 
 ## Tables
 
-**Table 1** — Baseline characteristics of the primary cohort (N = 7,153), overall and by fibrosis
-status and BMI band. *(To be rendered from `results/tables/phase1_table1.md`,
-`phase2_outcome_prevalence.csv`.)*
+**Table 1 — Baseline characteristics of the primary analytic cohort (N = 7,153), overall and by
+significant-fibrosis status.** Source: `results/tables/manuscript_table1_by_fibrosis.{csv,md}`
+(`src/manuscript_01_table1.py`). Continuous: mean (SD), Welch *t*-test; categorical: n (%),
+χ² test. Liver stiffness is the outcome measurement, shown for description only.
+
+| Characteristic | Overall (N=7,153) | No fibrosis (n=6,487) | Significant fibrosis (n=666) | p |
+|---|---|---|---|---|
+| Age, years | 49.0 (18.1) | 48.3 (18.2) | 55.6 (16.0) | <0.001 |
+| Body-mass index, kg/m² | 29.6 (7.2) | 29.0 (6.5) | 35.6 (9.8) | <0.001 |
+| ALT, U/L | 22.4 (19.3) | 21.3 (17.5) | 33.2 (30.1) | <0.001 |
+| AST, U/L | 21.9 (14.5) | 21.1 (11.8) | 30.4 (28.5) | <0.001 |
+| Albumin, g/dL | 4.1 (0.3) | 4.1 (0.3) | 4.0 (0.4) | <0.001 |
+| Alkaline phosphatase, IU/L | 77.6 (25.7) | 76.7 (23.7) | 86.8 (38.8) | <0.001 |
+| Total bilirubin, mg/dL | 0.5 (0.3) | 0.5 (0.3) | 0.5 (0.3) | <0.001 |
+| Platelet count, 10⁹/L | 246.7 (64.8) | 248.2 (63.8) | 232.6 (72.1) | <0.001 |
+| HDL cholesterol, mg/dL | 53.4 (15.8) | 53.9 (15.7) | 48.3 (15.7) | <0.001 |
+| Liver stiffness (VCTE), kPa | 5.8 (4.6) | 4.9 (1.2) | 14.2 (11.5) | <0.001 |
+| Female sex, n (%) | 3,622 (50.6) | 3,350 (51.6) | 272 (40.8) | <0.001 |
+| Race/ethnicity, n (%) | | | | 0.017 |
+|  Non-Hispanic White | 2,484 (34.7) | 2,247 (34.6) | 237 (35.6) | |
+|  Non-Hispanic Black | 1,787 (25.0) | 1,610 (24.8) | 177 (26.6) | |
+|  Non-Hispanic Asian | 866 (12.1) | 814 (12.5) | 52 (7.8) | |
+|  Mexican American | 902 (12.6) | 808 (12.5) | 94 (14.1) | |
+|  Other Hispanic | 754 (10.5) | 685 (10.6) | 69 (10.4) | |
+|  Other / multi-racial | 360 (5.0) | 323 (5.0) | 37 (5.6) | |
+| Age band, n (%) | | | | <0.001 |
+|  18–39 | 2,423 (33.9) | 2,301 (35.5) | 122 (18.3) | |
+|  40–59 | 2,318 (32.4) | 2,097 (32.3) | 221 (33.2) | |
+|  60+ | 2,412 (33.7) | 2,089 (32.2) | 323 (48.5) | |
+| BMI band, n (%) | | | | <0.001 |
+|  Underweight (<18.5) | 109 (1.5) | 104 (1.6) | 5 (0.8) | |
+|  Normal (18.5–24.9) | 1,802 (25.2) | 1,730 (26.7) | 72 (10.8) | |
+|  Overweight (25–29.9) | 2,316 (32.4) | 2,195 (33.8) | 121 (18.2) | |
+|  Obese (≥30) | 2,926 (40.9) | 2,458 (37.9) | 468 (70.3) | |
+
+*Prevalence of significant fibrosis: 9.31%. Fibrosis-positive participants are older, heavier,
+more often male, and concentrated in the obese and 60+ bands — the covariate structure the
+subgroup analyses interrogate.*
 
 **Table 2 — Discrimination and calibration by model family, locked test set (N = 2,146; 200
 positive).** Discrimination from `results/tables/phase3_final_baseline_results.csv`; calibration
@@ -546,7 +585,7 @@ each model × dimension family. **Bold** = interval excludes 0.90 and BH-signifi
 | Age — 18–39 | **0.958** | **0.939** | **0.943** | **0.941** | **0.953** |
 | Age — 40–59 | 0.919 | 0.893 | 0.890 | 0.901 | 0.884 |
 | **Age — 60+** | **0.849** | **0.856** | **0.811** | **0.848** | **0.838** |
-| Obese ∩ 60+ (N = 294) | 0.720–0.752 across models (Clopper–Pearson; all exclude 0.90) | | | | |
+| Obese ∩ 60+ (N = 294) | 0.694 | 0.752 | 0.650 | 0.711 | 0.738 |
 | **BMI-Obese, CAND_2** | **0.790** | **0.812** | **0.802** | **0.805** | **0.841** |
 | **BMI-Obese, CAND_3** | **0.799** | **0.813** | **0.817** | **0.838** | **0.838** |
 | **BMI-Obese, 8.0 kPa relabel** | 0.790–0.822 across models (all BH-significant) | | | | |
@@ -558,16 +597,48 @@ on both replication cohorts; Age-60+ under-coverage is BH-significant 5/5 on CAN
 2/5 on the smaller CAND_3. Normal-weight, overweight, and 18–39-year-old participants over-cover
 throughout.*
 
-**Table 4** — Mitigation strategies, objective, outcome vs the pre-specified acceptance gate, and
-disposition. *(To be rendered from `results/mitigation/*`,
-`results/fairness_bmi_investigation/{phase3_corrected,phase4_corrected,phase7_mitigation_cleanup}/*`.)*
+**Table 4 — Mitigation strategies evaluated against the pre-specified multi-metric acceptance
+gate.** Gate: full-cohort sensitivity and specificity within 5 pp of baseline; Brier within
++0.01; Age-60+ vs 40–59 sensitivity gap within +5 pp; then absolute BMI gap as a secondary
+comparison. Sources: `results/mitigation/*`,
+`results/fairness_bmi_investigation/{phase3_corrected,phase4_corrected,phase7_mitigation_cleanup}/*`.
 
-**Table 5** — Sensitivity/robustness summary: primary vs 8.0 kPa relabel / CAND_2 / CAND_3 /
-targeted multiple imputation. *(To be rendered from
+| Intervention | Objective | Result vs gate | Disposition |
+|---|---|---|---|
+| Group-wise (Mondrian) conformal recalibration | restore subgroup conformal coverage | nominal coverage restored in **5 / 9** targeted model×subgroup combinations; **XGBoost marginal coverage 93.4% (+5.3 pp tolerance breach)**; overlap handled by sequential (age-over-BMI) precedence, not jointly | **PARTIALLY EFFECTIVE** (coverage only) |
+| BMI-specific decision thresholds / BMI-specific Platt / BMI×Age thresholds / combined (independent split) | close the normal-weight sensitivity gap | **none** passed the gate across model families; MLP only received a candidate (BMI-Platt: locked-test gap 39.0 → 34.5 pp; no formal inference) | **NO ACCEPTABLE MITIGATION** |
+| Subgroup-specific probability calibration | improve subgroup reliability via calibration | ECE improved for 3 models; classification decisions and sensitivity gaps unchanged; no reliability gain (Decision B) | **NO ACCEPTABLE MITIGATION** |
+| Group-specific Youden thresholds (exploratory) | equalize subgroup sensitivity | BMI gap roughly halved but **age gap widened 26–133%**; ~38–40 pp specificity cost in normal-weight | **EXPLORATORY** — two-mechanism diagnostic, not a fix |
+| Equalized-odds (equal-opportunity) post-processing (exploratory) | equalize true-positive rate | ~50–80 pp target-group sensitivity gain at ~40 pp specificity cost; ≈ 399 excess false positives per 1,000 normal-weight screened | **EXPLORATORY** — clinically unacceptable |
+| XGBoost retuning within the frozen hyperparameter family | remove the XGBoost coverage-tolerance breach | every gap-closing candidate cost 11–22 pp overall sensitivity or flipped the breach | **NO ACCEPTABLE RETUNING** |
+| Joint (intersectional) conformal calibration (exploratory) | restore Obese ∩ 60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on the primary cohort, but XGBoost/LightGBM breach the ±5 pp marginal tolerance; joint calibration cell N = 138 | **EXPLORATORY ONLY** |
+
+*Successful: none. No intervention resolved the body-mass reliability–fairness failure within the
+pre-specified gate.*
+
+**Table 5 — Sensitivity / robustness summary (per-model detail in the cited CSVs).** Sources:
 `results/sensitivity/primary_vs_sensitivity_comparison.csv`,
-`sensitivity_discrimination_calibration_results.csv`, `mi_black_subgroup_comparison.csv`.)*
+`sensitivity_discrimination_calibration_results.csv`, `mi_black_subgroup_comparison.csv`,
+`conformal_replication_subgroup.csv`.
+
+| Perturbation | Test AUROC band | Normal-vs-Obese sensitivity gap | Age-60+ vs 40–59 gap | Conformal BMI-Obese coverage | Verdict |
+|---|---|---|---|---|---|
+| **Primary** — 8.2 kPa, CAND_1 (test N=2,146) | 0.823–0.843 | 27.1–47.7 pp; **5/5 BH-significant** | −8.6 to −14.7 pp; BH-significant 4/5 | 0.768–0.823; **5/5 BH-significant** | — |
+| 8.0-kPa outcome relabel (frozen predictions rescored) | 0.814–0.833 | 35.1–51.6 pp; 5/5 significant | negative 5/5; significant 2/5 | 0.790–0.822; 5/5 significant | discrimination + BMI gap robust; **Age significance is threshold-sensitive** |
+| CAND_2 — relaxed elastography eligibility, fresh fit (N=7,639) | 0.853–0.857 | ≈ 30–55 pp; 5/5 significant | attenuated (significant 3/4 lost) | 0.790–0.841; 5/5 significant | pattern stable; Age significance lost |
+| CAND_3 — fasting-extended 12-predictor, fresh fit (N=3,582) | 0.828–0.846 | ≈ 38–63 pp; 5/5 significant | attenuated (significant 4/4 lost) | 0.799–0.838; 5/5 significant | pattern stable; Age significance lost |
+| Targeted multiple imputation (Non-Hispanic Black selection question; full pool N=7,768) | ΔAUROC < 0.007 | — | — | — | NHB sensitivity Δ ≤ ±4.2 pp; all bootstrap CIs include 0; 4/5 STABLE, MLP indeterminate |
+
+*The full-pipeline 8.0-kPa re-run's own verdict was "some major findings are threshold-sensitive"
+(Age-60+ significance, some conformal detail); 8.2 kPa remains the primary analysis. The
+BMI-Obese sensitivity gap is stable in 15/15 tested model×cohort instances; the Age-60+ gap's
+direction never reverses across these constructions but its significance is lost in 9/12.*
 
 ## Figures
+
+All figure files below are committed PNGs in the repository (generated during the frozen
+analysis). For submission they need only relabelling/panel assembly to the target journal's
+style — no re-computation.
 
 | # | Content | File(s) |
 |---|---|---|

@@ -237,5 +237,50 @@ Selective prediction / deferral (future work):
 27. Madras, Pitassi, Zemel. Predict responsibly: improving fairness and accuracy by learning to defer. *NeurIPS* 2018.
 28. Conformal selective prediction with cost-aware deferral for safe clinical triage under distribution shift. *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w
 
-**Before submission:** run a proper PubMed + IEEE/ACM + arXiv systematic search with dual
-screening, verify every DOI/PMID above, and add any 2026 work that appears in the interim.
+### DOI / PMID verification status (2026-08-27)
+
+| Refs | Status |
+|---|---|
+| 1, 2, 4, 9, 10, 11, 12, 17, 24, 28 | **verified** via web this pass (identifiers in the reference list) |
+| 3, 5, 6, 7, 8, 13, 14, 15, 16, 18, 19, 21, 22, 23, 25, 26, 27 | **not yet verified** — titles/venues located but exact DOI/PMID and author lists still to be pinned down |
+| 20 (CHEST 2025 conformal review) | article id `S0012-3692(25)05184-0`; **author list not retrieved** |
+
+**Before submission:** this single web pass is **not** a systematic review. Run a proper
+PubMed + Embase + IEEE Xplore + ACM DL + arXiv search with a documented query string, date, and
+PRISMA flow diagram; two independent screeners; and verify every DOI/PMID and author list. Add
+any 2026 work that appears in the interim (the field is moving quickly).
+
+---
+
+## 5. Target-venue recommendation
+
+Given the profile — a **methodological reliability audit**, not a deployable model; modest
+discrimination; no external validation; a defensible but narrow, application-level contribution —
+the fit is a clinical-informatics / ML-for-health / fairness venue, **not** a hepatology or
+general clinical journal.
+
+**Primary targets (in rough order of fit):**
+
+1. ***JAMIA*** (Journal of the American Medical Informatics Association) — publishes fairness and
+   calibration audits of clinical prediction models; the class-imbalance-calibration reference
+   [10] is theirs; strong reviewer match. TRIPOD+AI expected.
+2. ***Journal of Biomedical Informatics*** — methods-forward; publishes subgroup-reliability and
+   conformal-in-clinical work (incl. the bias-aware risk–coverage line).
+3. ***npj Digital Medicine*** — higher visibility; would want the framing sharpened to the
+   "aggregate metrics are insufficient evidence of subgroup safety" thesis and would still flag
+   the absence of external validation.
+4. ***PLOS Digital Health*** — receptive to negative/limitation-focused results and fairness
+   audits; open access.
+
+**Conference option:** *ML4H* (Machine Learning for Health, NeurIPS workshop) or *ACM CHIL* —
+faster turnaround, methods audience, negative results welcome; a workshop paper could precede a
+journal version.
+
+**Not recommended:** *Hepatology*, *J Hepatol*, *Clin Gastroenterol Hepatol*, *BMC
+Gastroenterology* — they would (correctly) treat this as a prediction-model paper and reject on
+modest discrimination + no external validation.
+
+**Framing for whichever venue:** lead with the methodological thesis and the conformal
+subgroup-coverage contrast; the body-mass finding is the concrete case; state plainly that the
+calibration result replicates prior work and that external validation is the foremost outstanding
+requirement.
