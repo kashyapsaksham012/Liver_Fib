@@ -9,6 +9,19 @@
   PRISMA search on top.
 - `RESULTS_VERIFICATION.md` — second-reader log: every §3 / Tables 1–5 number checked against the
   frozen artifacts (one error found and fixed; remaining items for a co-author).
+- `REFERENCE_VERIFICATION.md` — **Track 2.2**: all 28 references checked against primary sources.
+  Material findings: ref 1 is **Cao et al.** not "Zhou et al."; refs 22+23 are one paper (merged);
+  several metadata fixes. A co-author still needs full author bylines + the CHEST 2026 byline.
+- `LITERATURE_SEARCH_RECORD.md` — **Track 2.3**: the documented single-reviewer search (databases,
+  query strings, date, flow). Found and added ref 28 (Rafe & Das, arXiv:2605.05562 — the same
+  marginal-vs-subgroup coverage phenomenon in survey-based social measurement; strengthens §4.1).
+  Novelty claim stands.
+- `TRIPOD_AI_CHECKLIST.md` — **Track 2.4**: item-by-item map of the manuscript to TRIPOD+AI, with
+  the ~6 small gaps to close (blinding sentences, flow figure, declarations — most now done).
+- `TARGET_VENUE_DECISION.md` — **Track 2.1**: recommendation = medRxiv preprint → **JAMIA**
+  primary (no mandatory APC), then JBI → PLOS Digital Health (APC waiver) → JMIR AI.
+- `SUBMISSION_CHECKLIST.md` — **Track 2.5**: blocking items, boilerplate drafts (funding, ethics,
+  data/code availability, cover letter), order of operations.
 
 **Grounding.** Every numeric claim traces to a frozen result artifact via
 `results/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv` (Appendix A of the draft). The
@@ -31,23 +44,23 @@ framing, prohibited claims, and mandatory limitations follow:
 
 **Status.** Draft v4 for the authors.
 
-*Done:* literature-grounded Introduction (`[n]` markers) and §4.1 relation-to-prior-work; working
-28-item reference list; Tables 1–5 rendered from the frozen artifacts (Table 1 via
-`src/manuscript_01_table1.py`, a read-only descriptive script); every figure already exists as a
-committed PNG (§Figures); TRIPOD+AI crosswalk (Appendix B); a full second-reader number check
-(`RESULTS_VERIFICATION.md` — one error found and fixed, plus the Amendment #18 addendum);
-DOI verification for 10/28 references; target-venue recommendation (`LITERATURE_REVIEW.md` §5 —
-JAMIA / JBI / npj Digital Medicine / PLOS Digital Health; **not** hepatology).
-**v3 → v4 (Amendment #18):** §2.7b (two model fits), §3.4b (fit alignment — STRENGTHENING),
-§3.4c (reference-standard measurement bias — verdict V3 + matched-stiffness BMI shortcut),
-Table 4 + §3.7 consolidated (selective deferral = NO IMPROVEMENT), abstract / §4 / §4.1 / §5
-updated.
+*Done:* literature-grounded Introduction (`[n]` markers) and §4.1 relation-to-prior-work;
+**28-item reference list, all verified against primary sources** (`REFERENCE_VERIFICATION.md`);
+Tables 1–5 rendered from the frozen artifacts; every figure exists as a committed PNG (§Figures);
+TRIPOD+AI checklist (`TRIPOD_AI_CHECKLIST.md`) + Declarations section (funding/ethics/conflicts/
+protocol/data-availability); a full second-reader number check (`RESULTS_VERIFICATION.md`, incl.
+Amendment #18 addendum); documented literature search (`LITERATURE_SEARCH_RECORD.md`);
+target-venue decision (`TARGET_VENUE_DECISION.md`).
+**v3 → v4 (Amendment #18):** §2.7b, §3.4b, §3.4c, Table 4/§3.7, abstract/§4/§4.1/§5.
+**v4 (Track 2, 2026-08-27):** references verified + corrected (Cao not Zhou; 22+23 merged; +ref 28
+from the search); new §2.13 (related-work search); Declarations section; TRIPOD blinding /
+sample-size sentences; §4.1 gains the survey-data parallel [28].
 
-*Before submission:* a formal PRISMA-style systematic search (documented query, two screeners,
-flow diagram) and DOI/PMID + author verification of the remaining references; panel assembly /
-relabelling of the figures to the chosen journal's style; a human co-author repeating the
-`RESULTS_VERIFICATION.md` pass and a final read against `DO_NOT_CLAIM.md`; journal choice and
-reformatting.
+*Before submission (`SUBMISSION_CHECKLIST.md`):* fold in Amendment #19 → v5; merge the experiment
+branch; paste remaining author bylines; full-text re-check of the ref [1] / ref [23] claims;
+participant flow diagram + figure panel assembly; a co-author repeating `RESULTS_VERIFICATION.md`
+and a final read against `DO_NOT_CLAIM.md`; create the public code release + archival DOI;
+post to medRxiv; submit to JAMIA.
 
 **Not a deployable-model paper.** The framing is a methodological/reliability audit:
 discrimination plus aggregate calibration are insufficient evidence of subgroup-safe reliability.
