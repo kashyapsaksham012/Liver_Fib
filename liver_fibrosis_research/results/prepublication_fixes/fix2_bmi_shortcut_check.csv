@@ -1,0 +1,6 @@
+model,n_band,beta_is_obese,se,t,p_value,mean_score_diff_obese_minus_normal_matched_stiffness
+logistic,102,0.3319,0.0429,7.74,0.0,0.3391
+random_forest,102,0.2536,0.0442,5.73,0.0,0.245
+xgboost,102,0.2674,0.0475,5.63,0.0,0.2855
+lightgbm,102,0.2777,0.0462,6.01,0.0,0.2915
+mlp,102,0.1906,0.0401,4.75,0.0,0.1876

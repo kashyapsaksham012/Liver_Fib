@@ -1,0 +1,15 @@
+arm,gate,pass,note
+A,G1_sensitivity_efficacy,False,"1/4 models; logistic:47.7->16.8, random_forest:31.6->16.8, xgboost:31.4->13.7, lightgbm:27.1->14.0"
+A,G2_coverage_efficacy,False,"0/4 models; logistic:Ob=0.857(lo0.833),60+=0.803, random_forest:Ob=0.860(lo0.835),60+=0.829, xgboost:Ob=0.871(lo0.847),60+=0.834, lightgbm:Ob=0.866(lo0.842),60+=0.842"
+A,G3_marginal_in_0.87_0.93,True,logistic:0.898; random_forest:0.893; xgboost:0.898; lightgbm:0.898
+A,G4_auroc_within_-0.02,False,logistic:0.8007(base 0.8334); random_forest:0.8127(base 0.8343); xgboost:0.8182(base 0.8429); lightgbm:0.8123(base 0.8394)
+A,G5_brier_within_+0.01,True,logistic:0.0743; random_forest:0.0738; xgboost:0.0730; lightgbm:0.0734
+A,G6_no_other_subgroup_harm,False,age not-worsened 4/4; newly-sig sex/race rows: 1
+A,G7_overall_sens_spec_within_5pp,False,"logistic:Δsens+0.060,Δspec-0.122; random_forest:Δsens+0.015,Δspec-0.077; xgboost:Δsens-0.025,Δspec-0.007; lightgbm:Δsens-0.015,Δspec-0.058"
+B,G1_sensitivity_efficacy,False,"0/4 models; logistic:47.7->19.7, random_forest:31.6->18.7, xgboost:31.4->17.3, lightgbm:27.1->18.2"
+B,G2_coverage_efficacy,False,"0/4 models; logistic:Ob=0.846(lo0.821),60+=0.846, random_forest:Ob=0.846(lo0.821),60+=0.874, xgboost:Ob=0.844(lo0.818),60+=0.845, lightgbm:Ob=0.839(lo0.813),60+=0.877"
+B,G3_marginal_in_0.87_0.93,True,logistic:0.898; random_forest:0.898; xgboost:0.890; lightgbm:0.896
+B,G4_auroc_within_-0.02,False,logistic:0.8052(base 0.8334); random_forest:0.8128(base 0.8343); xgboost:0.8128(base 0.8429); lightgbm:0.8112(base 0.8394)
+B,G5_brier_within_+0.01,True,logistic:0.0747; random_forest:0.0725; xgboost:0.0728; lightgbm:0.0724
+B,G6_no_other_subgroup_harm,False,age not-worsened 4/4; newly-sig sex/race rows: 1
+B,G7_overall_sens_spec_within_5pp,False,"logistic:Δsens+0.050,Δspec-0.113; random_forest:Δsens+0.065,Δspec-0.154; xgboost:Δsens-0.005,Δspec-0.064; lightgbm:Δsens+0.015,Δspec-0.109"

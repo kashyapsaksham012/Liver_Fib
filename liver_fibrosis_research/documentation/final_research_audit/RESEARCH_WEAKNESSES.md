@@ -20,11 +20,20 @@ temporal evaluation was completed and split into a separate manuscript — prese
 ### W2. No acceptable mitigation for the reliability–fairness failure
 
 Every intervention tested (Mondrian, corrected BMI mitigation, corrected subgroup calibration,
-group thresholds, Equal Opportunity, XGBoost retuning, joint conformal) either fails the
-pre-specified multi-metric gate, does not generalize across model families, or breaches the
-marginal-coverage tolerance. The study identifies a problem it cannot
-solve within its scope (`FINAL_SCIENTIFIC_FINDINGS.md` §14). This is scientifically honest but
-limits the translational contribution.
+group thresholds, Equal Opportunity, XGBoost retuning, joint conformal, Amendment #17 conformal
+selective deferral, and Amendment #19 training-time subgroup reweighting) either fails the
+pre-specified multi-metric gate, does not generalize across model families, breaches the
+marginal-coverage tolerance, or restores subgroup coverage only at a cost (Mondrian re-run —
+marginal over-coverage; training-time reweighting — a discrimination and specificity cost).
+Selective deferral showed the under-coverage is confidently-scored wrong singletons, not
+flagged-uncertain cases. The **Amendment #19 training-time reweighting** then confirmed that this
+score-ordering failure *is* training-time-addressable — it removed the body-mass shortcut and
+**halved** the sensitivity gap — but not without lowering test AUROC by 0.02–0.03 and specificity
+by up to 12 pp (and it did not restore subgroup coverage to nominal or help the age gap; a joint
+BMI×age arm worsened the age gap). The study identifies a problem it can **reduce but not solve
+within scope** (`FINAL_SCIENTIFIC_FINDINGS.md` §14). The remaining paths — more lean-fibrosis
+data, richer features, or an explicitly accepted performance–equity trade — are honest but limit
+the translational contribution.
 
 ### W3. The subgroup conformal-coverage failure — measured on one cohort → **RESOLVED 2026-08-27**
 
@@ -70,7 +79,7 @@ protocol-frozen — but it remains a gap a reviewer may raise).
 
 ### W8. Intersectional and small-subgroup cells are underpowered
 
-The BMI-Obese ∩ Age-60+ cell (N=294, 35 positives) and the joint calibration cell (N=138, 30
+The BMI-Obese ∩ Age-60+ cell (N=294, 61 positives) and the joint calibration cell (N=138, 30
 positives) support only descriptive statements. Normal-BMI rests on 22 test positives;
 Underweight (1 positive) is uninterpretable.
 

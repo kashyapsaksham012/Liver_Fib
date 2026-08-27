@@ -50,8 +50,8 @@ under-coverage* (finding 6, §12) is a separate, firmer result and is retained a
 
 ## 5. BMI × Age reliability (intersectional) — **SUPPORTED WITH LIMITATIONS** (descriptive)
 
-In the BMI-Obese ∩ Age-60+ cell (test N=294, 35 positives) baseline split-conformal coverage
-collapses to 64.97–75.17% (Clopper–Pearson CIs exclude 90%). Descriptive, pre-specified,
+In the BMI-Obese ∩ Age-60+ cell (test N=294, 61 positives) baseline split-conformal coverage
+collapses to 64.97–75.17% (Wilson CIs exclude 90%). Descriptive, pre-specified,
 small-cell. `results/uncertainty/intersectional_coverage_ci.csv`. **NOT SUPPORTED:** any
 conditional-validity or causal-interaction claim; the
 "294 = ~62%" characterisation (that is the union — see `SUPERSEDED_INVALID_RESULTS.md` S3).
@@ -67,11 +67,24 @@ excluding 90%, FDR-significant. `results/uncertainty/marginal_coverage_test_set.
 ## 7. Mitigation effectiveness — **NOT SUPPORTED as a solution; PARTIALLY EFFECTIVE for conformal coverage** (see §14)
 
 No intervention (Mondrian, corrected BMI mitigation, corrected subgroup calibration, group
-thresholds, Equal Opportunity, XGBoost retuning, joint conformal) produced an acceptable
-multi-metric fix for the BMI classification disparity. Mondrian conformal recalibration is a
-genuine but partial repair of subgroup **coverage** (5/9 targets; XGBoost breach; sequential
-overlap handling). `results/mitigation/test_set_mitigation_final.csv`,
-`phase3_corrected/`, `phase4_corrected/`, `phase7_mitigation_cleanup/`.
+thresholds, Equal Opportunity, XGBoost retuning, joint conformal, selective deferral) produced an
+acceptable multi-metric fix for the BMI classification disparity. Mondrian conformal recalibration
+is a genuine but partial repair of subgroup **coverage** (Project Phase 7: 5/9 targets, XGBoost
+breach, sequential overlap; Amendment #17 re-run: ≥0.88 for 5/5 models with zero deferral but
+retained marginal coverage 0.94–0.95 — over-covers). **Selective deferral (Amendment #17):
+DEVELOPMENT-STAGE NEGATIVE** — no pre-registered candidate meets the gate on the calibration
+partition (locked test not touched); the under-coverage is confidently-scored wrong singletons,
+not flagged-uncertain cases, so a defer-to-elastography layer cannot fix it. **Training-time
+subgroup reweighting (Amendment #19): NEGATIVE by the pre-registered gate** — it removed the
+body-mass score-ordering mechanism (matched-stiffness BMI coef 0.18–0.25 → 0.008–0.036 OOF) and
+**halved** the Normal-vs-Obese sensitivity gap (BH-sig 5/5 → 0/4) with BMI-Obese conformal
+coverage 0.77–0.82 → 0.86–0.87, but at a discrimination cost (test AUROC −0.02 to −0.03), a
+specificity cost (up to −12 pp), a new logistic Female sensitivity disparity, and no gain on
+age-60+; the joint BMI×age arm worsened the age gap. The failure is addressable at training time
+*in mechanism* but not eliminable within routine features and this sample without a
+gate-failing cost.
+`results/mitigation/test_set_mitigation_final.csv`, `phase3_corrected/`, `phase4_corrected/`,
+`phase7_mitigation_cleanup/`, `results/selective_deferral/`, `results/training_time_mitigation/`.
 
 ## 8. MI robustness — **SUPPORTED WITH LIMITATIONS (narrow scope)**
 
@@ -113,7 +126,11 @@ evidence base. **NOT SUPPORTED:** any temporal or external replication claim; cl
 | Corrected mitigation result | **NO ACCEPTABLE MITIGATION IDENTIFIED** (only MLP got BMI-Platt: gap 39.03 → 34.48 pp, no formal inference) (`PHASE3_CORRECTED_MITIGATION_REPORT.md`) | SUPPORTED WITH LIMITATIONS |
 | Subgroup-calibration evidence | **No acceptable subgroup-calibration improvement**; classification gaps identical to global Platt; no joint calibrator; Decision B (`PHASE4_CORRECTED_FINAL_AUDIT_REPORT.md`) | SUPPORTED WITH LIMITATIONS |
 | Conformal coverage in BMI groups | BMI-**Obese** under-covers (76.8–82.3%); Normal-BMI/Overweight over-cover; Mondrian restores 2/5 Obese targets; not resolved for RF/XGB/LGBM (`subgroup_coverage.csv`, `test_set_mitigation_final.csv`) | CONFIRMED (failure); PARTIALLY EFFECTIVE (mitigation) |
-| Remaining limitation | Normal-BMI has 22 test positives; mechanism non-causal; no acceptable fix |
+| Model-fit alignment (Amendment #18) | Normal-vs-Obese classification-sensitivity gap present on the proper-train-refit models too: −27 to −42 pp, 5/5 models; negative at every threshold in a 0.30–0.60 sweep for 4/5 (`results/prepublication_fixes/fix1_*.csv`) | **STRENGTHENING** (pre-registered rule) |
+| Matched-stiffness BMI shortcut (Amendment #18) | At LUXSMED 8.2–12 kPa, obese get predicted probability 0.19–0.33 higher than Normal at identical stiffness (OLS `is_obese` coef, p<0.001 all 5 models) (`fix2_bmi_shortcut_check.csv`) | CONFIRMED (fairness finding, independent of measurement bias) |
+| Reference-standard measurement bias (Amendment #18) | Relabel at ≥9.7/10/12/13.6 kPa: obese sensitivity + obese conformal coverage stable (Δ≈0.03); BMI-Obese under-coverage persists/worsens; raw Obese−Normal sensitivity gap narrows/reverses but Normal-BMI n=7 at ≥12 kPa → underpowered (`fix2_*.csv`) | **V3** (pre-registered): residual measurement contribution cannot be formally excluded; demonstrated mechanism does not depend on it |
+| Training-time reweighting (Amendment #19) | Kamiran–Calders instance reweighting removed the matched-stiffness BMI shortcut (0.18–0.25 → ~0.01 OOF) and **halved** the sensitivity gap (BH-sig 5/5 → 0/4); BMI-Obese coverage 0.77–0.82 → 0.86–0.87; **cost:** AUROC −0.02–0.03, specificity up to −12 pp, new logistic sex disparity; efficacy + cost gates not met (`results/training_time_mitigation/*`) | **NEGATIVE** by the pre-registered gate — mechanism addressable at training time but not eliminable within routine features / this sample without a gate-failing cost |
+| Remaining limitation | Normal-BMI has 22 test positives (50 in training — the binding data limit); mechanism non-causal; no acceptable post-hoc *or* training-time fix within the pre-registered gates; measurement-bias question underpowered on the Normal-BMI side |
 
 **Currently supported conclusion:** the Normal-BMI vs Obese sensitivity disparity is real,
 reproduced, mechanism-linked, robust across independently constructed cohorts, and **NO ACCEPTABLE
@@ -134,8 +151,9 @@ BMI-SENSITIVITY MITIGATION HAS BEEN IDENTIFIED.** Repository evidence does **not
 | MI conformal (BMI-inv Phase 5) | descriptively consistent with complete-case; BMI-Obese still under-covers | EXPLORATORY / `LINEAGE NOT FOUND` |
 | Joint conformal (Method b/c, M4b N0=0) | CAND_1 intersectional coverage ≥90% for 4–5/5; XGB/LGBM marginal breach | EXPLORATORY |
 | Faithful AFCP | near-target single-attribute; intersection still <90%; overall >90% | EXPLORATORY (C3 ADJUDICATED 2026-08-27: KNN-AFCP INVALID, faithful AFCP EXPLORATORY, no superiority claim) |
+| Selective deferral (Amendment #17) | no pre-registered candidate meets the gate; deferring uncertain sets lowers retained coverage; Mondrian 3d restores 5/5 with zero deferral but over-covers marginally (0.94–0.95) | DEVELOPMENT-STAGE NEGATIVE (locked test not touched) |
 | 8.0-kPa conformal | some detail threshold-sensitive (BMI-inv Phase 6) | SUPPORTED WITH LIMITATIONS |
-| CAND_2 / CAND_3 conformal replication | NOT MEASURED | INCONCLUSIVE |
+| CAND_2 / CAND_3 conformal replication | **MEASURED (Amendment #16):** marginal on target (0.896–0.917); BMI-Obese under-covers 5/5 both cohorts (FDR-sig); Age-60+ direction-robust, FDR-sig 5/5 CAND_2 / 2/5 CAND_3 | CONFIRMED (BMI-Obese); SUPPORTED WITH LIMITATIONS (Age-60+) |
 
 **Do not claim conditional / subgroup conformal validity.** Marginal validity holds; subgroup
 adequacy does not; no method tested achieves subgroup or intersectional validity that is
@@ -166,15 +184,27 @@ replacement for the primary analysis.
 | Intervention | Objective | Method | Result | Status | Manuscript |
 |---|---|---|---|---|---|
 | Mondrian (Project Phase 7) | restore subgroup conformal coverage | FDR-gated group-conditional quantiles for dual-criterion targets | 5/9 nominal; XGBoost +5.27 pp marginal breach; Age-over-BMI precedence in overlap | **PARTIALLY EFFECTIVE** | MANUSCRIPT_READY_WITH_QUALIFICATION |
+| Mondrian re-run (Amendment #17, candidate 3d) | restore subgroup conformal coverage on the calibration partition | group-conditional quantiles, no deferral | BMI-Obese & Age-60+ ≥ 0.88 for **5/5** models with zero deferral, but retained **marginal coverage rises to 0.94–0.95** (G2 fail) and well-served subgroups stay > 0.95 (G3 fail) — restoring target marginal coverage needs *levelling down* | **PARTIALLY EFFECTIVE** (coverage only; over-covers) | MANUSCRIPT_READY_WITH_QUALIFICATION |
+| Conformal selective deferral (Amendment #17) | restore subgroup coverage by deferring flagged-uncertain cases to elastography | pre-registered candidates 3a/3b/3d/3e vs a multi-metric core gate, calibration partition only | **no candidate meets the core gate (0/5 models)**; deferring two-class {pos,neg} sets *lowers* retained coverage (the misses are wrong singletons); locked test NOT touched (Phase 4 skipped per pre-registration) | **NO IMPROVEMENT / DEVELOPMENT-STAGE NEGATIVE** | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | Corrected BMI-sensitivity mitigation (BMI-inv Phase 3) | close Normal-BMI sensitivity gap | 4 candidates, independent split, multi-metric gate | none passed across families; MLP-only BMI-Platt (39.03→34.48 pp) | **NO ACCEPTABLE MITIGATION** | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | Corrected subgroup calibration (BMI-inv Phase 4) | improve subgroup reliability via calibration | equal-frequency ECE, independent fit/eval, explicit fallback | ECE improved 3 models; classification/gaps unchanged; no reliability gain; Decision B | **NO ACCEPTABLE MITIGATION** | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | Group-specific Youden thresholds (D05/D07) | equalize subgroup sensitivity | OOF-derived subgroup thresholds | BMI gap halved; Age gap +26–133%; ~40 pp specificity cost | **EXPLORATORY ONLY** | EXPLORATORY_ONLY |
 | Equal Opportunity post-processing (D06) | equalize TPR | subgroup threshold shift to target TPR | ~50–80 pp sensitivity gain at ~40 pp specificity cost; ~399 excess FP/1,000 | **EXPLORATORY ONLY** (clinically unacceptable) | EXPLORATORY_ONLY |
 | XGBoost mitigation retuning (BMI-inv Phase 7) | remove XGBoost coverage breach | authorized Phase 3 candidate family, OOF only | every gap-closing candidate costs 11–22 pp sensitivity or flips the breach | **NO ACCEPTABLE RETUNING** | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | Joint intersectional conformal (Method b/c, M4b N0=0) | restore Obese∩60+ coverage | joint-cell / shrinkage quantiles | CAND_1 ≥90% for 4–5/5; XGB/LGBM marginal breach | **EXPLORATORY ONLY / VALID SECONDARY METHOD** | EXPLORATORY_ONLY |
+| **Training-time subgroup reweighing — BMI (Amendment #19, Arm A, primary)** | remove the body-mass score-ordering failure at training time | Kamiran–Calders instance reweighting; frozen hyperparameters; 2 locked-test touches; MLP excluded (unstable), gate ≥3/4 | matched-stiffness BMI coef 0.18–0.25 → 0.008–0.036 (OOF); Normal-vs-Obese sensitivity gap **halved** (+27–48 → +14–17 pp; BH-sig 5/5 → 0/4); BMI-Obese conformal coverage 0.77–0.82 → 0.857–0.871 (<0.88); age-60+ coverage unchanged. **Cost:** AUROC −0.02–0.03; specificity up to −12 pp; new logistic Female disparity (−15.1 pp). Efficacy + cost gates not met. | **NEGATIVE** (mechanism addressed, not eliminated to standard) | MANUSCRIPT_READY_WITH_QUALIFICATION |
+| Training-time subgroup reweighing — BMI×age (Amendment #19, Arm B, secondary) | as above, jointly | 12 BMI×age cells (4 use the Arm-A fallback weight) | body-mass gap halved similarly, but **age-60+ sensitivity gap worsened, BH-sig 3/4**; larger specificity cost; within-Normal-BMI OOF AUROC *fell* | **NEGATIVE** (one objective cannot repair both mechanisms) | supporting |
 
 **Classification key:** SUCCESSFUL — *none*. PARTIALLY EFFECTIVE — Mondrian (conformal coverage
-only). NO ACCEPTABLE MITIGATION — corrected BMI mitigation, corrected subgroup calibration,
-XGBoost retuning. EXPLORATORY ONLY — group thresholds, Equal Opportunity, joint conformal.
+only, at the cost of marginal over-coverage). NO ACCEPTABLE MITIGATION — corrected BMI mitigation,
+corrected subgroup calibration, XGBoost retuning. NO IMPROVEMENT — selective deferral. NEGATIVE
+(mechanism addressed, gate not met) — training-time reweighting. EXPLORATORY ONLY — group
+thresholds, Equal Opportunity, joint conformal.
 
-**Do not describe any intervention as successful because one metric improved.**
+**Do not describe any intervention as successful because one metric improved.** The residual
+under-coverage is a within-subgroup score-ordering failure that no post-hoc method repairs; the
+Amendment #19 training-time reweighting addresses the mechanism and halves the gap but not without
+a gate-failing discrimination/specificity cost. Closing the gap to an acceptable standard would
+require more normal-weight fibrosis cases (50 train / 22 test — the binding data limit), features
+that better separate lean fibrosis, or an explicitly accepted performance–equity trade — not a
+better objective alone.

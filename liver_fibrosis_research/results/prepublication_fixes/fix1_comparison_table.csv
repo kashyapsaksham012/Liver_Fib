@@ -1,0 +1,6 @@
+model,fulltrain_classification_gap_pp_(sec3.4),refit_conformal_sensitivity_gap_pp,refit_classification_gap_at_tau_star_pp,refit_gap_negative_at_all_sweep_thresholds
+logistic,-47.66,-40.19,-41.95,True
+random_forest,-31.62,-30.65,-27.53,True
+xgboost,-31.36,-32.79,-32.08,True
+lightgbm,-27.08,-23.7,-32.79,True
+mlp,-39.03,6.49,-35.26,False

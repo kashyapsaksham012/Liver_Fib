@@ -20,6 +20,16 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
    (`PHASE4_CORRECTED_FINAL_AUDIT_REPORT.md`).
 4. **Do not claim Project Phase 7 resolved the BMI classification (sensitivity) disparity.**
    Phase 7 targets conformal coverage only, and only partially (5/9).
+4a. **Do not claim the VCTE reference-standard measurement-bias question is resolved.** Amendment
+    #18 verdict: **V3 (underpowered on the Normal-BMI side)** — a residual measurement contribution
+    cannot be formally excluded (only 7 Normal-BMI fibrosis-positive test cases at ≥ 12 kPa). Do
+    claim: obese sensitivity/coverage are stable under stricter labels, and at matched stiffness
+    the models score obese participants 0.19–0.33 higher (p<0.001, 5/5) — a BMI shortcut
+    independent of the artefact. Do **not** claim the body-mass disparity is *entirely* a shortcut
+    and not at all measurement, or vice versa.
+4b. **Do not claim the body-mass gap is an artefact of the Phase-3 full-train fit.** Amendment #18
+    (Fix 1): the gap is present on the proper-train-refit models too (−27 to −42 pp, 5/5;
+    STRENGTHENING).
 5. **Do not claim Age-60+ significance in 5/5 models.** It is 4/5; Logistic is not
    FDR-significant.
 6. **Do not claim a monotone "older is worse" age gradient.** The age effect is non-monotonic
@@ -40,6 +50,24 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
    coverage is guaranteed; BMI-Obese, Age-60+, and the Obese∩60+ intersection all under-cover.
 9. **Do not claim any conformal mitigation method (Mondrian, joint, M4b, AFCP) achieves subgroup
    or intersectional validity.** All either miss targets or breach the marginal tolerance.
+9a. **Do not claim group-conditional (Mondrian) conformal recalibration "solves" or "restores"
+    subgroup coverage without stating its cost.** The Amendment #17 re-run reaches ≥ 0.88 for 5/5
+    models only by raising retained marginal coverage to 0.94–0.95 (over-covering); returning
+    marginal coverage to target would require *levelling down* the well-served subgroups.
+9b. **Do not present conformal selective deferral (Amendment #17) as effective.** Verdict:
+    DEVELOPMENT-STAGE NEGATIVE — no pre-registered candidate met the gate; the locked test was not
+    touched. Deferring flagged-uncertain (two-class) cases *lowers* retained coverage because the
+    misses are confidently-scored wrong singletons, not uncertain sets.
+9c. **Do not claim the residual subgroup under-coverage was mitigated to an acceptable standard by
+    any method, post-hoc or training-time.** The Amendment #19 training-time reweighting is
+    NEGATIVE by its pre-registered gate.
+9d. **Do not describe the Amendment #19 training-time reweighting as a fix.** Do claim: it removed
+    the matched-stiffness body-mass shortcut (0.18–0.25 → ~0.01 OOF) and **halved** the
+    Normal-vs-Obese sensitivity gap (BH-sig 5/5 → 0/4), with BMI-Obese conformal coverage 0.77–0.82
+    → 0.86–0.87. Do **not** omit: test AUROC −0.02 to −0.03; overall specificity up to −12 pp; a
+    newly BH-significant logistic Female sensitivity disparity (−15.1 pp); no gain on age-60+
+    coverage; the joint BMI×age arm **worsened** the age gap; the MLP was excluded for instability.
+    Do not claim it "closed" the gap or met the coverage target (0.86–0.87 < 0.88).
 10. **Do not claim faithful AFCP superiority.** **Do not cite the KNN-AFCP result at all**
     (INVALID). C3 adjudicated 2026-08-27 (`CONFLICT_ADJUDICATIONS.md`): faithful AFCP is
     EXPLORATORY; no AFCP-superiority or AFCP-adequacy claim is permitted.

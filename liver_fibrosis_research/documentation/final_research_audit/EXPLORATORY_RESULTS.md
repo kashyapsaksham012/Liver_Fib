@@ -129,6 +129,48 @@ co-occurrence result is **not confirmed**.
 - **Source:** `results/fairness/intersectional_exploratory_metrics.csv`. Pre-specified cells
   computed descriptively; no post-hoc FDR claims. Manuscript: supporting only.
 
+## E12. Conformal selective deferral (Amendment #17) — pre-registered, DEVELOPMENT-STAGE NEGATIVE
+
+- **Purpose:** test whether abstaining on flagged-uncertain cases and referring them to
+  elastography restores BMI-Obese / Age-60+ conformal coverage.
+- **Result:** on the conformal-calibration partition (N=1,002; **locked test not touched**), none
+  of the pre-registered candidates (3a defer two-class sets; 3b defer weak singletons; 3d/3e
+  group-conditional Mondrian) meets the multi-metric core gate for any of the 5 models. 3a makes
+  BMI-Obese coverage *worse* (0.58–0.82). 3b lifts under-covered groups to ~0.90 but defers
+  15–40% overall and fails the retained-marginal-coverage gate. 3d (Mondrian) restores BMI-Obese
+  and Age-60+ to ≥ 0.88 for 5/5 with zero deferral but raises retained marginal coverage to
+  0.94–0.95 and leaves well-served subgroups > 0.95 (*levelling down* required to fix).
+  `results/selective_deferral/phase3_candidate_metrics.csv`,
+  `frozen_deferral_rule_manifest.json`.
+- **Limitation:** development-stage; per the pre-registered gate the locked test was not accessed,
+  so there is no confirmatory test-set number. No post-hoc gate relaxation permitted.
+- **Manuscript:** report as **NO IMPROVEMENT** in the mitigation results (Table 4 / §3.7) with the
+  mechanism (under-coverage = confidently-scored wrong singletons, not uncertain sets → post-hoc
+  deferral cannot fix it → training-time intervention indicated). Not "exploratory" — it is a
+  pre-registered negative — but listed here for completeness alongside the other mitigation
+  attempts. `documentation/selective_deferral_mitigation/*`.
+
+## E13. Training-time subgroup reweighting (Amendment #19) — pre-registered, NEGATIVE
+
+- **Purpose:** test the training-time intervention that Amendment #17 indicated — retrain the
+  frozen families with Kamiran–Calders instance reweighting (body-mass band ⟂ outcome in the
+  reweighted training distribution).
+- **Result:** two locked-test touches; gate applied mechanically. **VERDICT NEGATIVE (no
+  efficacy)**, both arms. Arm A (primary, 4 BMI bands; MLP excluded for instability): removed the
+  matched-stiffness body-mass shortcut (0.18–0.25 → 0.008–0.036 OOF), **halved** the
+  Normal-vs-Obese sensitivity gap (+27–48 → +14–17 pp; BH-sig 5/5 → 0/4), BMI-Obese conformal
+  coverage 0.77–0.82 → 0.857–0.871 (< 0.88). **Cost:** test AUROC −0.02–0.03; specificity up to
+  −12 pp; new logistic Female sensitivity disparity (−15.1 pp). Age-60+ coverage unchanged. Arm B
+  (12 BMI×age cells): body-mass gap halved but **age gap worsened, BH-sig 3/4**.
+  `results/training_time_mitigation/*`.
+- **Limitation:** MLP not evaluable in the frozen implementation (no `sample_weight`; resampling
+  approximation unstable). Normal-BMI has 50 training / 22 test fibrosis cases — the binding data
+  limit. New tests not folded into the frozen 182-test pooled family.
+- **Manuscript:** §3.7b + Table 4 rows; **NEGATIVE** — the failure is addressable at training time
+  *in mechanism* but not eliminable within routine features and this sample without a gate-failing
+  discrimination cost. Pre-registered negative, not exploratory; listed here for completeness.
+  `documentation/training_time_mitigation/*`.
+
 ---
 
 ## Governing rule (do not violate)

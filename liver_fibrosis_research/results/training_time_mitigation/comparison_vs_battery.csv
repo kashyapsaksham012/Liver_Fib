@@ -1,0 +1,12 @@
+stage,arm,method,obese_minus_normal_pp,bmi_obese_cov,age60_cov,marginal_cov,overall_sens,overall_spec,auroc,disposition
+frozen baseline,,baseline,31.62,0.8018,0.8475,0.8961,0.795,0.736,0.8343,-
+post-hoc battery,,Subgroup Youden thresholds (exploratory),~ +14 to +16 (halved),n/a,n/a,n/a,,,,EXPLORATORY
+post-hoc battery,,Subgroup calibration,unchanged,unchanged,unchanged,unchanged,,,,NO ACCEPTABLE MITIGATION
+post-hoc battery,,Mondrian conformal (Project Phase 7),n/a (coverage-only),>= 0.88 for 5/9 targets,partial,XGB 0.934 (+5.3 pp breach),,,,PARTIALLY EFFECTIVE
+post-hoc battery,,"Mondrian re-run (Amendment #17, 3d)",n/a,>= 0.88 for 5/5,>= 0.88 for 5/5,0.94-0.95 (over-covers),,,,PARTIALLY EFFECTIVE
+post-hoc battery,,Equalized-odds post-processing (exploratory),~ 0 (equalised),n/a,n/a,n/a,,,,EXPLORATORY (clinically unacceptable)
+post-hoc battery,,XGBoost retuning,n/a,no breach removed w/o cost,n/a,n/a,,,,NO ACCEPTABLE RETUNING
+post-hoc battery,,Joint intersectional conformal (exploratory),n/a,n/a,n/a,XGB/LGBM breach ±5 pp,,,,EXPLORATORY
+post-hoc battery,,Conformal selective deferral (Amendment #17),n/a,lowered (deferring uncertain sets),lowered,n/a,,,,NO IMPROVEMENT
+training-time,A,subgroup reweighing (arm A),15.39,0.863,0.8313,0.8982,0.808,0.665,0.8125,NEGATIVE (no efficacy)
+training-time,B,subgroup reweighing (arm B),18.47,0.8448,0.8603,0.897,0.825,0.627,0.812,NEGATIVE (no efficacy)

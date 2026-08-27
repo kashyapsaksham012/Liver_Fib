@@ -75,14 +75,39 @@ weight, and a reader must not conflate them.
 > for significant liver fibrosis (AUROC ≈ 0.82–0.84) and, after a required out-of-fold
 > recalibration, were well calibrated in aggregate. That aggregate adequacy concealed a
 > reproducible, mechanism-linked detection failure in normal-weight participants, who were
-> substantially under-identified across every model, every sensitivity cohort, and a later NHANES
-> cycle in which the gap widened. Split-conformal prediction exposed a parallel reliability gap:
-> marginal coverage met its target while coverage for obese and older participants — and their
-> intersection — fell well below it, and no calibration-, threshold-, or conformal-based
-> intervention we tested produced an acceptable repair. A consistent-direction but
-> specification-sensitive sensitivity deficit in older participants is reported as a secondary
-> observation. The contribution is not a deployable model but a demonstration that discrimination
-> and aggregate calibration are insufficient evidence of subgroup-safe reliability.
+> substantially under-identified across every model and every sensitivity cohort, in both model
+> fits, and at matched liver stiffness (a body-mass risk shortcut). Split-conformal prediction
+> exposed a parallel reliability gap: marginal coverage met its target while coverage for obese
+> and older participants — and their intersection — fell well below it, and no calibration-,
+> threshold-, conformal-, or selective-deferral-based intervention we tested produced an
+> acceptable repair (group-conditional recalibration only over-covers the well-served subgroups).
+> A consistent-direction but specification-sensitive sensitivity deficit in older participants is
+> reported as a secondary observation. The contribution is not a deployable model but a
+> demonstration that discrimination and aggregate calibration are insufficient evidence of
+> subgroup-safe reliability.
+
+## 5b. Amendment #18 pre-publication fixes — how to frame them
+
+- **Fit alignment (Fix 1): STRENGTHENING.** State plainly that the body-mass gap is present in
+  both the full-train fit (fairness audit) and the proper-train-refit fit (conformal). Do not
+  hedge the link between the two findings.
+- **Reference-standard measurement bias (Fix 2): verdict V3.** Keep the body-mass finding; add the
+  caveat that a residual BMI-dependent measurement contribution could not be excluded (Normal-BMI
+  underpowered at stricter labels). But lead the limitation paragraph with the evidence *against*
+  the artefact explaining the gap: obese sensitivity/coverage stable under stricter labels, and
+  the matched-stiffness shortcut (obese +0.19–0.33 predicted probability at identical stiffness,
+  p<0.001, 5/5). Net effect: a strengthening of the fairness interpretation, not a retreat.
+- **Selective deferral (Amendment #17): NO IMPROVEMENT.** Frame as a mechanistic dead-end for
+  post-hoc methods, not as a failed attempt — it shows the under-coverage is confidently-scored
+  wrong singletons, which is why a training-time intervention is the indicated next step.
+- **Training-time reweighting (Amendment #19): NEGATIVE.** Frame as the *informative* negative:
+  it is the first method to move both primary subgroup metrics substantially and to remove the
+  body-mass shortcut (gap halved, BH-sig 5/5 → 0/4; coverage 0.77–0.82 → 0.86–0.87) — confirming
+  the failure is training-time-addressable *in mechanism* — but it fails the pre-registered cost
+  gate (AUROC −0.02–0.03; specificity up to −12 pp; a new logistic sex disparity) and does not
+  help age-60+ (the joint arm worsens it). **Always state the cost in the same breath as the
+  gain.** The sharpened conclusion: closing the gap needs data / features / an explicit
+  performance–equity trade, not a better objective alone. Do **not** call it a fix or a success.
 
 ## 6. Cross-references
 

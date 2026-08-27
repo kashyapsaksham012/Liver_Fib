@@ -1,0 +1,9 @@
+arm,model,normal_bmi_oof_auc_baseline,normal_bmi_oof_auc_reweighted,normal_bmi_oof_auc_delta,normal_bmi_score_separation_baseline,normal_bmi_score_separation_reweighted,bmi_shortcut_coef_baseline,bmi_shortcut_coef_reweighted,youden_threshold,platt_intercept,platt_slope
+A,logistic,0.8031,0.8151,0.0119,0.2258,0.2932,0.2485,0.036,0.4676,-2.2545,1.1088
+A,random_forest,0.8314,0.8444,0.0131,0.2729,0.3217,0.1845,0.0077,0.4136,-1.7823,1.3123
+A,xgboost,0.8283,0.836,0.0077,0.3214,0.3804,0.2222,0.0116,0.4383,-1.9769,1.1402
+A,lightgbm,0.81,0.8264,0.0164,0.3133,0.3633,0.2116,0.008,0.4658,-2.014,1.1885
+B,logistic,0.8031,0.7942,-0.0089,0.2258,0.1836,0.2485,0.0903,0.4671,-2.2789,1.1708
+B,random_forest,0.8314,0.8195,-0.0119,0.2729,0.2568,0.1845,0.0595,0.3672,-1.7892,1.347
+B,xgboost,0.8283,0.8221,-0.0062,0.3214,0.2824,0.2222,0.063,0.3681,-1.89,1.1948
+B,lightgbm,0.81,0.8096,-0.0003,0.3133,0.2362,0.2116,0.053,0.409,-1.9328,1.2039

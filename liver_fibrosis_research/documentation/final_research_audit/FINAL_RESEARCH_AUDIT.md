@@ -199,9 +199,16 @@ See `EXPLORATORY_RESULTS.md` and `VERIFIED_WITH_LIMITATIONS.md`. Consolidated in
 | Equal Opportunity post-processing (D06) | equalize TPR | ~50–80 pp target-group sensitivity gain at ~38–40 pp specificity cost; ~399 excess FP per 1,000 normal-weight screened | **EXPLORATORY — clinically unacceptable** |
 | XGBoost mitigation retuning (BMI-inv Phase 7) | remove XGBoost coverage-tolerance breach | every gap-closing candidate costs 11–22 pp overall sensitivity or flips the breach | **NO ACCEPTABLE RETUNING** |
 | Joint intersectional conformal (Method b / c / M4b N0=0) | restore BMI-Obese ∩ Age-60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on CAND_1, but XGBoost/LightGBM breach ±5 pp marginal tolerance | **EXPLORATORY / VALID SECONDARY METHOD only** |
+| Mondrian re-run (Amendment #17, cand. 3d) | restore subgroup conformal coverage | BMI-Obese & Age-60+ ≥ 0.88 for 5/5 models with zero deferral, but retained marginal coverage rises to 0.94–0.95 (over-covers); restoring target marginal coverage needs *levelling down* | **PARTIALLY EFFECTIVE** (over-covers) |
+| Conformal selective deferral (Amendment #17) | restore subgroup coverage by deferring flagged-uncertain cases to elastography | no pre-registered candidate meets the multi-metric gate (0/5 models, calibration partition); deferring two-class sets *lowers* retained coverage — the misses are confidently-scored wrong singletons; locked test NOT touched | **NO IMPROVEMENT (DEVELOPMENT-STAGE NEGATIVE)** |
+| **Training-time subgroup reweighing (Amendment #19)** | remove the body-mass score-ordering failure at training time (Kamiran–Calders instance reweighting; frozen hyperparameters; 2 locked-test touches; MLP excluded, gate ≥3/4) | removed the matched-stiffness BMI shortcut (0.18–0.25 → 0.008–0.036 OOF); **halved** the Normal-vs-Obese sensitivity gap (+27–48 → +14–17 pp; BH-sig 5/5 → 0/4); BMI-Obese conformal coverage 0.77–0.82 → 0.857–0.871 (<0.88). **Cost:** test AUROC −0.02 to −0.03; specificity up to −12 pp; new logistic Female disparity; joint BMI×age arm worsened the age gap. Efficacy + cost gates not met. | **NEGATIVE** — mechanism addressed, not eliminated to standard |
 
-**No intervention resolved the BMI classification (sensitivity) disparity. No BMI-sensitivity
-mitigation with an acceptable multi-metric profile was identified.**
+**No intervention — post-hoc or training-time — resolved the body-mass reliability–fairness failure
+within its pre-registered gate. The training-time reweighting (Amendment #19) removed the
+underlying score-ordering mechanism and halved the sensitivity gap but at a discrimination and
+specificity cost the gate rejects. Closing the gap to an acceptable standard is a data / feature
+problem (Normal-BMI: 50 training / 22 test fibrosis cases) or requires an explicitly accepted
+performance–equity trade — not a better objective alone.**
 
 ## 8. Robustness findings
 

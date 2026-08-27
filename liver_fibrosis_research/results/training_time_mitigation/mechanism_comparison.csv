@@ -1,0 +1,9 @@
+arm,model,normal_bmi_oof_auc_delta,score_separation_delta,shortcut_coef_baseline,shortcut_coef_reweighted,interpretation
+A,logistic,0.0119,0.0674,0.2485,0.036,score ordering improved
+A,random_forest,0.0131,0.0488,0.1845,0.0077,score ordering improved
+A,xgboost,0.0077,0.059,0.2222,0.0116,threshold shift only / no ordering gain
+A,lightgbm,0.0164,0.05,0.2116,0.008,score ordering improved
+B,logistic,-0.0089,-0.0422,0.2485,0.0903,threshold shift only / no ordering gain
+B,random_forest,-0.0119,-0.0161,0.1845,0.0595,threshold shift only / no ordering gain
+B,xgboost,-0.0062,-0.039,0.2222,0.063,threshold shift only / no ordering gain
+B,lightgbm,-0.0003,-0.0771,0.2116,0.053,threshold shift only / no ordering gain
