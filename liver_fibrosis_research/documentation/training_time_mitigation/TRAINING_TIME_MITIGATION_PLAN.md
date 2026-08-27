@@ -410,7 +410,9 @@ Docs: `AMENDMENT_19_TEXT.md`, `PRE_EXECUTION_SNAPSHOT.md`, `PHASE1_INTERVENTION_
 (all under `documentation/training_time_mitigation/`).
 Code: `src/ttm_00_compute_weights.py`, `src/ttm_01_train_reweighted.py`,
 `src/ttm_02_conformal_refit_reweighted.py`, `src/ttm_03_test_classification.py`,
-`src/ttm_04_test_conformal.py`, `tests/test_training_time_mitigation.py`.
+`src/ttm_04_test_conformal.py`, `src/ttm_05_apply_gate.py` (mechanical G1–G7),
+`src/ttm_06_comparison.py` (Phase 3), `tests/test_training_time_mitigation.py`,
+`documentation/training_time_mitigation/OPERATOR_EXECUTION_GUIDE.md`.
 Results: `results/training_time_mitigation/*.csv`.
 Models: `models/training_time_mitigation/*.joblib`.
 Modified: the manuscript, ~8 register files, `protocol_amendment_registry.md`, `test_set_lock.md`,
