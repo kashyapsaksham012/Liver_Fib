@@ -1,0 +1,4 @@
+arm,G1,G2,G3,G4,G5,G6,G7,verdict
+A,False,False,True,False,True,False,False,NEGATIVE (no efficacy)
+B,False,False,True,False,True,False,False,NEGATIVE (no efficacy)
+OVERALL,,,,,,,,NEGATIVE (no efficacy)

@@ -113,12 +113,12 @@ noted. "Reproducibility" = whether a raw artifact + script + input lineage chain
 
 ## A7. Intersectional conformal coverage (baseline, descriptive)
 
-- **Claim:** For BMI-Obese ∩ Age-60+ (test N=294, 35 positives) baseline split-conformal
-  coverage collapses to 64.97–75.17% (Clopper–Pearson CIs exclude 90%).
+- **Claim:** For BMI-Obese ∩ Age-60+ (test N=294, 61 positives) baseline split-conformal
+  coverage collapses to 64.97–75.17% (Wilson CIs exclude 90%).
 - **Source artifact:** `results/uncertainty/intersectional_coverage_ci.csv`.
 - **Phase:** Project Phase 6. **Authority:** AUTHORITATIVE (descriptive). **Reproducibility:**
   ESTABLISHED.
-- **Limitation:** N=294 / 35 positives → wide CIs; descriptive, pre-specified cell.
+- **Limitation:** N=294 / 61 positives → wide CIs; descriptive, pre-specified cell.
 - **Manuscript wording:** "In the obese-and-60+ intersection (N=294), baseline conformal
   coverage fell to 65–75%."
 

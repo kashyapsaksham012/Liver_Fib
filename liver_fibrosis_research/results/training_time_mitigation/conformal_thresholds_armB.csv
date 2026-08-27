@@ -1,0 +1,5 @@
+arm,model,calibration_n,k_finite_sample,quantile_level,threshold,score_definition
+B,logistic,1002,903,0.901198,0.623904,1 - P(y=true_class | x)
+B,random_forest,1002,903,0.901198,0.569407,1 - P(y=true_class | x)
+B,xgboost,1002,903,0.901198,0.593911,1 - P(y=true_class | x)
+B,lightgbm,1002,903,0.901198,0.582291,1 - P(y=true_class | x)

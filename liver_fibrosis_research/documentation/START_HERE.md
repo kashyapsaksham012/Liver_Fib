@@ -66,7 +66,7 @@ markdown files; anything self-labelled a *snapshot*, *decision log*, *correction
    `PHASE2_PROTOCOL_FREEZE.md`, `primary_outcome_definition.md`, `statistical_analysis_plan.md`,
    `sensitivity_analysis_plan.md`, `fairness_subgroup_protocol.md`, `missing_data_protocol.md`,
    `uncertainty_protocol.md`, …), the `documentation/phase3/` design/protocol files, and
-   `documentation/end_to_end/protocol_amendment_registry.md` (16 amendments). These define what
+   `documentation/end_to_end/protocol_amendment_registry.md` (19 amendments). These define what
    was pre-specified; they are not result documents.
 9. **Historical / superseded / exploratory / process** — `documentation/archive/` (including
    `process_trail/`), `documentation/**/archive/`, and anything self-labelled SUPERSEDED / INVALID
@@ -171,6 +171,39 @@ Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.m
   direction on both (FDR-significant 5/5 CAND_2, 2/5 CAND_3). The one previously un-triangulated
   primary finding is now triangulated across four constructions.
   Report: `documentation/sensitivity/CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md`.
+- **Amendment #17 — conformal selective-deferral mitigation.** VERDICT: **DEVELOPMENT-STAGE
+  NEGATIVE.** No pre-registered candidate meets the gate on the calibration partition, so the
+  locked test was not touched. Mechanism: the subgroup under-coverage is confidently-scored wrong
+  *singleton* predictions, not flagged-uncertain cases, so deferring uncertain cases *lowers*
+  retained coverage. A group-conditional (Mondrian) re-run restores ≥ 0.88 subgroup coverage for
+  5/5 models with zero deferral but over-covers marginally (0.94–0.95). The residual failure needs
+  a training-time intervention (outside frozen scope). Folder:
+  `documentation/selective_deferral_mitigation/`.
+- **Amendment #18 — pre-publication fixes.** Fix 1 (model-fit alignment): the body-mass
+  sensitivity gap is present in **both** the full-train fit (fairness audit) and the
+  proper-train-refit fit (conformal) — −27 to −42 pp, 5/5 models — **STRENGTHENING**. Fix 2 (VCTE
+  reference-standard measurement bias, relabel-only): obese detection and conformal coverage are
+  stable under stricter fibrosis labels, and at matched liver stiffness the models score obese
+  participants 0.19–0.33 higher (p<0.001, 5/5) — a BMI risk shortcut independent of the artefact;
+  but the Normal-BMI side is underpowered at stricter thresholds (7 positives at ≥12 kPa), so a
+  residual measurement contribution **cannot be formally excluded** (verdict **V3**). Fix 3:
+  mitigation narrative consolidated into one Table 4 / §3.7; selective deferral = NO IMPROVEMENT.
+  Manuscript → **v4**. Folder: `documentation/prepublication_fixes/` (closure
+  `AMENDMENT_18_CLOSURE.md`); tests `tests/test_prepub_fixes.py` (19/19).
+- **Amendment #19 — one training-time mitigation (subgroup instance reweighting).** **EXECUTED
+  2026-08-27 — VERDICT: NEGATIVE (no efficacy)** by the pre-registered gate, both arms. Retrained
+  the frozen families with Kamiran–Calders reweighting (body-mass band ⟂ outcome); 2 locked-test
+  touches; MLP excluded for instability (4 families, gate ≥ 3/4). **Arm A (primary):** removed the
+  matched-stiffness body-mass shortcut (0.18–0.25 → ~0.01 OOF) and **halved** the Normal-vs-Obese
+  sensitivity gap (+27–48 → +14–17 pp; BH-sig 5/5 → 0/4); BMI-Obese conformal coverage 0.77–0.82 →
+  0.86–0.87 (< 0.88); age-60+ unchanged. **Cost (fails the gate):** test AUROC −0.02 to −0.03;
+  specificity up to −12 pp; new logistic Female sensitivity disparity. **Arm B** worsened the age
+  gap (BH-sig 3/4). The failure is addressable at training time *in mechanism* but not eliminable
+  within routine features and this sample without a gate-failing discrimination cost — sharpening
+  the earlier open "training-time intervention is the indicated next step" into a bounded result.
+  Manuscript → **v5**. Folder: `documentation/training_time_mitigation/` (closure
+  `AMENDMENT_19_CLOSURE.md`); tests `tests/test_training_time_mitigation.py` (52/52). Executed on
+  branch `experiment/training-time-mitigation`; merges back here.
 
 ## 8. Freeze
 
