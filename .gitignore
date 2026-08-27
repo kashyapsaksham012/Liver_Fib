@@ -1,2 +1,19 @@
+# OS
 .DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+.exploratory_venv/
+*/.venv/
+*/.exploratory_venv/
+
+# Out-of-scope data (separate temporal-validation manuscript)
 NHANES 2021–2023 temporal validation dataset/
