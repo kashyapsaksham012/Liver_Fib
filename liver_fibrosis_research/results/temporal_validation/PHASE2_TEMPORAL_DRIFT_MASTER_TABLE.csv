@@ -1,0 +1,86 @@
+Variable/Domain,2017–2020,2021–2023,Absolute Difference,Relative Difference,Drift Status,Evidence
+cohort_size,7153.0,4910.0,-2243.0,-0.31357472389207325,CLEAR DRIFT,Cohort membership + outcome labels from original 2017–2020 master cohort vs temporal validation cohort with same 8.2 kPa outcome definition.
+outcome_positive,666.0,563.0,-103.0,-0.15465465465465467,CLEAR DRIFT,Cohort membership + outcome labels from original 2017–2020 master cohort vs temporal validation cohort with same 8.2 kPa outcome definition.
+outcome_negative,6487.0,4347.0,-2140.0,-0.3298905503314321,CLEAR DRIFT,Cohort membership + outcome labels from original 2017–2020 master cohort vs temporal validation cohort with same 8.2 kPa outcome definition.
+outcome_prevalence,0.09310778694254158,0.11466395112016294,0.02155616417762135,0.231518381925714,CLEAR DRIFT,Cohort membership + outcome labels from original 2017–2020 master cohort vs temporal validation cohort with same 8.2 kPa outcome definition.
+RIDAGEYR,n=7153; mean=49.008; sd=18.081; med=50.000; IQR=33.000-63.000; missing=0 (0.00%),n=4910; mean=52.153; sd=17.959; med=55.000; IQR=37.000-67.000; missing=0 (0.00%),SMD=0.1745; mean diff=3.1452,6.4177%,POSSIBLE DRIFT,Continuous-variable comparison with SMD as distribution-shift measure.
+RIAGENDR,n=7153; mean=1.506; sd=0.500; med=2.000; IQR=1.000-2.000; missing=0 (0.00%),n=4910; mean=1.540; sd=0.498; med=2.000; IQR=1.000-2.000; missing=0 (0.00%),SMD=0.0680; mean diff=0.0340,2.2548%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+BMXBMI,n=7153; mean=29.615; sd=7.168; med=28.500; IQR=24.600-33.300; missing=0 (0.00%),n=4910; mean=29.255; sd=6.850; med=28.000; IQR=24.400-32.900; missing=0 (0.00%),SMD=-0.0513; mean diff=-0.3596,-1.2143%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+LBXSATSI,n=7153; mean=22.426; sd=19.327; med=18.000; IQR=13.000-26.000; missing=0 (0.00%),n=4910; mean=21.247; sd=17.490; med=17.101; IQR=11.926-24.346; missing=0 (0.00%),SMD=-0.0640; mean diff=-1.1796,-5.2597%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+LBXSASSI,n=7153; mean=21.928; sd=14.460; med=19.000; IQR=16.000-24.000; missing=0 (0.00%),n=4910; mean=22.653; sd=15.168; med=20.000; IQR=17.000-25.000; missing=0 (0.00%),SMD=0.0489; mean diff=0.7247,3.3051%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+LBXSAL,n=7153; mean=4.078; sd=0.334; med=4.100; IQR=3.900-4.300; missing=0 (0.00%),n=4910; mean=4.096; sd=0.342; med=4.100; IQR=3.900-4.300; missing=0 (0.00%),SMD=0.0522; mean diff=0.0176,0.4326%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+LBXSAPSI,n=7153; mean=77.632; sd=25.686; med=74.000; IQR=61.000-89.000; missing=0 (0.00%),n=4910; mean=84.240; sd=28.058; med=80.000; IQR=66.000-97.000; missing=0 (0.00%),SMD=0.2457; mean diff=6.6082,8.5122%,CLEAR DRIFT,Continuous-variable comparison with SMD as distribution-shift measure.
+LBXSTB,n=7153; mean=0.460; sd=0.278; med=0.400; IQR=0.300-0.600; missing=0 (0.00%),n=4910; mean=0.503; sd=0.409; med=0.400; IQR=0.300-0.600; missing=0 (0.00%),SMD=0.1218; mean diff=0.0426,9.2533%,POSSIBLE DRIFT,Continuous-variable comparison with SMD as distribution-shift measure.
+LBXPLTSI,n=7153; mean=246.743; sd=64.817; med=239.000; IQR=203.000-282.000; missing=0 (0.00%),n=4910; mean=255.878; sd=66.057; med=250.000; IQR=211.000-292.000; missing=0 (0.00%),SMD=0.1396; mean diff=9.1349,3.7022%,POSSIBLE DRIFT,Continuous-variable comparison with SMD as distribution-shift measure.
+LBDHDD,n=7153; mean=53.407; sd=15.766; med=51.000; IQR=42.000-62.000; missing=0 (0.00%),n=4910; mean=54.552; sd=14.728; med=53.000; IQR=44.000-62.000; missing=0 (0.00%),SMD=0.0751; mean diff=1.1453,2.1445%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+RIAGENDR,n=7153; mean=nan; sd=nan; med=nan; IQR=nan-nan; missing=0 (0.00%),n=4910; mean=nan; sd=nan; med=nan; IQR=nan-nan; missing=0 (0.00%),SMD=nan; mean diff=nan,nan%,NO MATERIAL CHANGE,Continuous-variable comparison with SMD as distribution-shift measure.
+Missingness:RIDAGEYR,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:RIAGENDR,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:BMXBMI,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBXSATSI,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBXSASSI,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBXSAL,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBXSAPSI,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBXSTB,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBXPLTSI,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Missingness:LBDHDD,0 (0.00%),0 (0.00%),0 (0.00%),N/A,NO MATERIAL CHANGE,Missingness drift for the same variable across the two cohorts.
+Subgroup:BMI:Underweight,n=109; pct=1.52%; prevalence=4.59%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Normal,n=1802; pct=25.19%; prevalence=4.00%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Overweight,n=2316; pct=32.38%; prevalence=5.22%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Obese,n=2926; pct=40.91%; prevalence=15.99%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Age:18-39,n=2423; pct=33.87%; prevalence=5.04%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Age:40-59,n=2318; pct=32.41%; prevalence=9.53%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Age:60+,n=2412; pct=33.72%; prevalence=13.39%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Sex:Male,n=3531; pct=49.36%; prevalence=11.16%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Sex:Female,n=3622; pct=50.64%; prevalence=7.51%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Mexican American,n=902; pct=12.61%; prevalence=10.42%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Other Hispanic,n=754; pct=10.54%; prevalence=9.15%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Non-Hispanic White,n=2484; pct=34.73%; prevalence=9.54%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Non-Hispanic Black,n=1787; pct=24.98%; prevalence=9.90%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Non-Hispanic Asian,n=866; pct=12.11%; prevalence=6.00%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Other Race / Multi-Racial,n=360; pct=5.03%; prevalence=10.28%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Underweight,n=66; pct=0.92%; prevalence=1.52%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Normal,n=777; pct=10.86%; prevalence=1.42%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Overweight,n=669; pct=9.35%; prevalence=1.64%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Obese,n=911; pct=12.74%; prevalence=10.87%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Underweight,n=25; pct=0.35%; prevalence=8.00%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Normal,n=479; pct=6.70%; prevalence=3.76%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Overweight,n=770; pct=10.76%; prevalence=4.94%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Obese,n=1044; pct=14.60%; prevalence=15.61%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Underweight,n=18; pct=0.25%; prevalence=11.11%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Normal,n=546; pct=7.63%; prevalence=7.88%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Overweight,n=877; pct=12.26%; prevalence=8.21%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Obese,n=971; pct=13.57%; prevalence=21.22%,,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Underweight,,n=79; pct=1.61%; prevalence=3.80%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Normal,,n=1328; pct=27.05%; prevalence=4.89%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Overweight,,n=1607; pct=32.73%; prevalence=7.03%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI:Obese,,n=1896; pct=38.62%; prevalence=20.15%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Age:18-39,,n=1407; pct=28.66%; prevalence=6.89%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Age:40-59,,n=1401; pct=28.53%; prevalence=13.13%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Age:60+,,n=2102; pct=42.81%; prevalence=13.42%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Sex:Male,,n=2257; pct=45.97%; prevalence=13.20%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Sex:Female,,n=2653; pct=54.03%; prevalence=9.99%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Mexican American,,n=352; pct=7.17%; prevalence=12.22%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Other Hispanic,,n=514; pct=10.47%; prevalence=8.95%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Non-Hispanic White,,n=2905; pct=59.16%; prevalence=12.46%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Non-Hispanic Black,,n=543; pct=11.06%; prevalence=10.31%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Non-Hispanic Asian,,n=282; pct=5.74%; prevalence=7.09%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:Race/Ethnicity:Other Race / Multi-Racial,,n=314; pct=6.40%; prevalence=11.46%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Underweight,,n=40; pct=0.81%; prevalence=0.00%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Normal,,n=464; pct=9.45%; prevalence=3.02%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Overweight,,n=413; pct=8.41%; prevalence=2.42%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:18-39 / Obese,,n=490; pct=9.98%; prevalence=14.90%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Underweight,,n=17; pct=0.35%; prevalence=5.88%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Normal,,n=333; pct=6.78%; prevalence=6.01%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Overweight,,n=433; pct=8.82%; prevalence=7.39%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:40-59 / Obese,,n=618; pct=12.59%; prevalence=21.20%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Underweight,,n=22; pct=0.45%; prevalence=9.09%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Normal,,n=531; pct=10.81%; prevalence=5.84%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Overweight,,n=761; pct=15.50%; prevalence=9.33%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Subgroup:BMI × Age:60+ / Obese,,n=788; pct=16.05%; prevalence=22.59%,,,,Original Phase 2 subgroup definitions applied without redefining groups.
+Outcome:prevalence,0.09310778694254158,0.11466395112016294,0.02155616417762135,0.231518381925714,CLEAR DRIFT,Outcome distribution comparison using the same frozen target threshold.
+Outcome:median_lsm,5.0,5.0,0.0,0.0,NO MATERIAL CHANGE,Outcome distribution comparison using the same frozen target threshold.
+Outcome:q1_lsm,4.1,4.1,0.0,0.0,NO MATERIAL CHANGE,Outcome distribution comparison using the same frozen target threshold.
+Outcome:q3_lsm,6.1,6.3,0.20000000000000018,0.03278688524590167,NO MATERIAL CHANGE,Outcome distribution comparison using the same frozen target threshold.
+Outcome:iqr_lsm,2.0,2.2,0.20000000000000018,0.10000000000000009,NO MATERIAL CHANGE,Outcome distribution comparison using the same frozen target threshold.
+Measurement:LBXSATSI,Original raw ALT measurement (not bridged),Cobas 8000 to Cobas 6000 bridge applied: Y_Cobas6000 = -1.529 + 1.035 * X_Cobas8000,N/A,N/A,POSSIBLE DRIFT,src/prepare_temporal_validation_alt_bridge.py

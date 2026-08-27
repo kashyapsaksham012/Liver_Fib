@@ -1,0 +1,165 @@
+{
+  "purpose": "Frozen Phase 6 conformal-refit probability preparation only; no coverage or other evaluation performed.",
+  "frozen_temporal_predictor_input": {
+    "path": "data/processed/temporal_validation/temporal_validation_input_cobas6000_alt.csv",
+    "sha256": "5a8f147729f3fe37515606965be1c8d90c968ea1c7df17666bc01996db1f74dc",
+    "rows": 4910,
+    "unique_seqn": 4910
+  },
+  "source_artifacts": {
+    "conformal_thresholds": {
+      "path": "results/uncertainty/conformal_thresholds_by_model.csv",
+      "sha256": "23909e42f7ed2f514528694e54ee6a253850e6d4517b2aeaec5d8104efbbbdd2"
+    },
+    "m4b_final_N0_0": {
+      "path": "results/tables/m4b_prespecified_n0_final_results.csv",
+      "sha256": "f2e20057443d4dbeb945537e6062716f22693593a25252f90e5e4bca705ca4db"
+    },
+    "m4b_quantiles": {
+      "path": "results/tables/m4b_lightgbm_failure_analysis.csv",
+      "sha256": "c1c4d68264cc314ce14df0449b2c53addb0aa23ecd73d605ebff7caaf1ee58a9"
+    }
+  },
+  "platt_parameters": {
+    "logistic": {
+      "intercept": -2.2425092340626467,
+      "slope": 1.0606141984796142,
+      "source": "results/calibration/recalibrated_oof_predictions_logistic.csv",
+      "sha256": "93dc4343c0aaa3a7b55dd3928b6f270361d09d8f2b13653753b2ca34064d84eb"
+    },
+    "random_forest": {
+      "intercept": -1.8624503510946009,
+      "slope": 1.1985161482626705,
+      "source": "results/calibration/recalibrated_oof_predictions_random_forest.csv",
+      "sha256": "06538b66027835647d2400896859b5d2adf7fb92cab9d4e1bedc98a38a41818c"
+    },
+    "xgboost": {
+      "intercept": -2.04600734967736,
+      "slope": 1.0393196167404997,
+      "source": "results/calibration/recalibrated_oof_predictions_xgboost.csv",
+      "sha256": "c968a60cc2382a7e0195e9413fcedbc6de79b4fae7b3846660e6ef51693cbc07"
+    },
+    "lightgbm": {
+      "intercept": -2.0534825634726364,
+      "slope": 1.062210153464346,
+      "source": "results/calibration/recalibrated_oof_predictions_lightgbm.csv",
+      "sha256": "867b48a689eead4980fa32f7a3a3a33a65a676b81e76260c54ca7f7ed5f418a6"
+    },
+    "mlp": {
+      "intercept": -0.280857523668988,
+      "slope": 0.8296271775833082,
+      "source": "results/calibration/recalibrated_oof_predictions_mlp.csv",
+      "sha256": "a70952a46885b3e453faa219b1f62b6f2ab698c41b65683b71b80484424633c8"
+    }
+  },
+  "models": [
+    {
+      "model": "logistic",
+      "prediction_file": "results/temporal_validation/temporal_conformal_refit_predictions_logistic.csv",
+      "prediction_sha256": "a00a4273d4c368c5601f6d855c3ede4e3fcd7321d9fa3e0a68f7d4655ca5d459",
+      "n_predictions": 4910,
+      "unique_seqn": 4910,
+      "missing_predictions": false,
+      "finite_predictions": true,
+      "probability_range_0_1": true,
+      "artifact": "models/phase6_conformal_refit/model_logistic_proper_train_refit.joblib",
+      "artifact_sha256": "000e51505e76d49ebf02a57d29a3132ea1fa837b49497e142c9fd8caeb73c630",
+      "artifact_registry_sha256": null,
+      "frozen_global_conformal_threshold": 0.672744,
+      "m4b_n0": 0,
+      "m4b_q_global": 0.4095,
+      "m4b_q_obese": 0.732,
+      "m4b_q_age60": 0.6093,
+      "m4b_q_joint": 0.7602,
+      "m4b_q_m4b_n0": 0.7602
+    },
+    {
+      "model": "random_forest",
+      "prediction_file": "results/temporal_validation/temporal_conformal_refit_predictions_random_forest.csv",
+      "prediction_sha256": "f48ed270ef57266a0cb9a718b03732696084a6e148bf52b2c460e9c3ed6421e4",
+      "n_predictions": 4910,
+      "unique_seqn": 4910,
+      "missing_predictions": false,
+      "finite_predictions": true,
+      "probability_range_0_1": true,
+      "artifact": "models/phase6_conformal_refit/model_random_forest_proper_train_refit.joblib",
+      "artifact_sha256": "22a63c50c43b6aef4834223c4b27c03a811dd8881e770cfaea2437d946d32618",
+      "artifact_registry_sha256": null,
+      "frozen_global_conformal_threshold": 0.607211,
+      "m4b_n0": 0,
+      "m4b_q_global": 0.4397,
+      "m4b_q_obese": 0.6771,
+      "m4b_q_age60": 0.5673,
+      "m4b_q_joint": 0.7893,
+      "m4b_q_m4b_n0": 0.7893
+    },
+    {
+      "model": "xgboost",
+      "prediction_file": "results/temporal_validation/temporal_conformal_refit_predictions_xgboost.csv",
+      "prediction_sha256": "1ed8d542ea035d2389e49e70ed5ba4ac0b705d2e6488b27a3748c1cea0eae010",
+      "n_predictions": 4910,
+      "unique_seqn": 4910,
+      "missing_predictions": false,
+      "finite_predictions": true,
+      "probability_range_0_1": true,
+      "artifact": "models/phase6_conformal_refit/model_xgboost_proper_train_refit.joblib",
+      "artifact_sha256": "9e7745d64f3b967a06cb053b2dfea9e0950075e5c788aecb6a1c3b245d83dfc8",
+      "artifact_registry_sha256": null,
+      "frozen_global_conformal_threshold": 0.653193,
+      "m4b_n0": 0,
+      "m4b_q_global": 0.4275,
+      "m4b_q_obese": 0.6706,
+      "m4b_q_age60": 0.5726,
+      "m4b_q_joint": 0.717,
+      "m4b_q_m4b_n0": 0.717
+    },
+    {
+      "model": "lightgbm",
+      "prediction_file": "results/temporal_validation/temporal_conformal_refit_predictions_lightgbm.csv",
+      "prediction_sha256": "0d9bf8302e11664b9fd12b893c5161299f16c1f695a56759c75436ba6dfc0f8c",
+      "n_predictions": 4910,
+      "unique_seqn": 4910,
+      "missing_predictions": false,
+      "finite_predictions": true,
+      "probability_range_0_1": true,
+      "artifact": "models/phase6_conformal_refit/model_lightgbm_proper_train_refit.joblib",
+      "artifact_sha256": "597ad772bf68ef6a1022d6b44ef3039c90220ae614a0f11ec015a23c59fa0856",
+      "artifact_registry_sha256": null,
+      "frozen_global_conformal_threshold": 0.656959,
+      "m4b_n0": 0,
+      "m4b_q_global": 0.3966,
+      "m4b_q_obese": 0.6749,
+      "m4b_q_age60": 0.6248,
+      "m4b_q_joint": 0.7224,
+      "m4b_q_m4b_n0": 0.7224
+    },
+    {
+      "model": "mlp",
+      "prediction_file": "results/temporal_validation/temporal_conformal_refit_predictions_mlp.csv",
+      "prediction_sha256": "89ede26981e29d8ea538540d4e070854a15e9509d3983aef4cd4d1da98b69c56",
+      "n_predictions": 4910,
+      "unique_seqn": 4910,
+      "missing_predictions": false,
+      "finite_predictions": true,
+      "probability_range_0_1": true,
+      "artifact": "models/phase6_conformal_refit/model_mlp_proper_train_refit.joblib",
+      "artifact_sha256": "5bd9a684357c6069b71163c46865d0358745154b813d947627acef5ecca79cb3",
+      "artifact_registry_sha256": null,
+      "frozen_global_conformal_threshold": 0.377967,
+      "m4b_n0": 0,
+      "m4b_q_global": 0.3859,
+      "m4b_q_obese": 0.7672,
+      "m4b_q_age60": 0.59,
+      "m4b_q_joint": 0.7873,
+      "m4b_q_m4b_n0": 0.7873
+    }
+  ],
+  "integrity": {
+    "all_outputs_exactly_match_4910_anchor_seqns": true,
+    "no_temporal_outcomes_or_demographics_used_for_parameters": true,
+    "retraining_refitting_recalibration_tuning_or_quantile_recomputation": false,
+    "N0": 0,
+    "frozen_inputs_unchanged_before_after": true,
+    "evaluation_performed": false
+  }
+}

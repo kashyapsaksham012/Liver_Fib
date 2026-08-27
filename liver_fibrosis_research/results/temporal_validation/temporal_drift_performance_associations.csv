@@ -1,0 +1,23 @@
+model,metric,drift_reference,locked_value,temporal_value,delta,relationship_classification,evidence
+logistic,AUROC,ALP clear drift + age/BMI fairness deterioration,0.8334,0.7818691235,-0.0515308765,SUPPORTED ASSOCIATION,AUROC fell for all 5 models while BMI and age fairness gaps widened; ALP showed clear drift.
+random_forest,AUROC,ALP clear drift + age/BMI fairness deterioration,0.8343,0.7764702469,-0.0578297531,SUPPORTED ASSOCIATION,Consistent AUROC decline across models with persistent ALP/BMI/age drift.
+xgboost,AUROC,ALP clear drift + age/BMI fairness deterioration,0.8429,0.7824203295,-0.0604796705,SUPPORTED ASSOCIATION,All models moved in same direction for AUROC despite different calibration intercepts.
+lightgbm,AUROC,ALP clear drift + age/BMI fairness deterioration,0.8394,0.7785655651,-0.0608344349,SUPPORTED ASSOCIATION,AUROC deterioration coincided with age-composition shift toward older adults.
+mlp,AUROC,ALP clear drift + age/BMI fairness deterioration,0.8229,0.7813906489,-0.0415093511,SUPPORTED ASSOCIATION,MLP showed the smallest AUROC drop but the same overall drift pattern.
+logistic,sensitivity,BMI sensitivity gap widened from 47.7 pp to 68.9 pp,0.75,0.6660746004,-0.0839253996,SUPPORTED ASSOCIATION,Sensitivity fell most in obese subgroup; BMI composition remained high-risk and sensitivity gap worsened.
+random_forest,sensitivity,BMI sensitivity gap widened from 31.6 pp to 62.8 pp,0.79,0.6909413854,-0.0990586146,SUPPORTED ASSOCIATION,Sensitivity decline was accompanied by increased obese-subgroup gap.
+xgboost,sensitivity,BMI sensitivity gap widened from 31.4 pp to 67.7 pp,0.845,0.7388987567,-0.1061012433,SUPPORTED ASSOCIATION,Model sensitivity fell with increased BMI subgroup disparity.
+lightgbm,sensitivity,BMI sensitivity gap widened from 27.1 pp to 67.6 pp,0.795,0.674955595,-0.120044405,SUPPORTED ASSOCIATION,Strong sensitivity decline aligned with increased BMI heterogeneity and fairness deterioration.
+mlp,sensitivity,BMI sensitivity gap widened from 39.0 pp to 71.9 pp,0.815,0.7744227353,-0.0405772647,SUPPORTED ASSOCIATION,Sensitivity decline remained consistent with obesity-related fairness deterioration.
+logistic,Brier,prevalence 9.31% -> 11.47%,0.17546,0.1837844687,0.0083244687,SUPPORTED ASSOCIATION,"Brier increased with higher prevalence, but classification performance still remained within the temporal validation summary."
+random_forest,Brier,prevalence 9.31% -> 11.47%,0.145839,0.1502141501,0.0043751501,SUPPORTED ASSOCIATION,Higher prevalence coincided with modest rise in Brier loss.
+xgboost,Brier,prevalence 9.31% -> 11.47%,0.15573,0.1592530257,0.0035230257,SUPPORTED ASSOCIATION,Brier remained modestly elevated under higher prevalence.
+lightgbm,Brier,prevalence 9.31% -> 11.47%,0.160316,0.1637806397,0.0034646397,SUPPORTED ASSOCIATION,Prevalence increase coincided with slightly higher Brier loss.
+mlp,Brier,prevalence 9.31% -> 11.47%,0.071641,0.0850792853,0.0134382853,SUPPORTED ASSOCIATION,The model with the best ECE still showed increased Brier loss as prevalence rose.
+logistic,ECE,prevalence change and score distribution shift,0.296667,0.2846394544,-0.0120275456,OBSERVED,"ECE decreased despite higher prevalence, indicating calibration summary is not driven by a single threshold shift."
+random_forest,ECE,prevalence change and score distribution shift,0.245208,0.2217853941,-0.0234226059,OBSERVED,"ECE decreased, but this did not offset the AUROC and sensitivity losses."
+xgboost,ECE,prevalence change and score distribution shift,0.257165,0.233464486,-0.023700514,OBSERVED,"ECE decreased, while score distribution remained stable across the cohort."
+lightgbm,ECE,prevalence change and score distribution shift,0.263789,0.2409090308,-0.0228799692,OBSERVED,Lower ECE did not eliminate the performance deterioration14.
+mlp,ECE,prevalence change and score distribution shift,0.029026,0.020794136,-0.008231864,OBSERVED,MLP retained the lowest ECE while still showing fair-gap deterioration.
+all_models,score_distribution,Threshold exceed proportion changed little relative to cohort drift,,,,NOT SUPPORTED,"The proportion above frozen threshold remained near the original distribution for all models, so a large threshold shift is not supported by the repository evidence."
+all_models,ALT_bridge,LBXSATSI transformation applied in 2021-2023 only,,,,POSSIBLE EXPLANATION,"ALT measurement bridge was applied to 2021-2023 data, but no repository-level model recalibration or correction was performed."

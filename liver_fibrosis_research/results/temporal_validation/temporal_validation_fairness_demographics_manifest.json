@@ -1,0 +1,43 @@
+{
+  "purpose": "Temporal fairness-demographic attachment only; no evaluation performed.",
+  "source_files_used": {
+    "anchor": "results/temporal_validation/temporal_validation_labels_demographics.csv",
+    "BMX_L": "NHANES 2021\u20132023 temporal validation dataset/BMX_L.xpt",
+    "DEMO_L": "NHANES 2021\u20132023 temporal validation dataset/DEMO_L.xpt"
+  },
+  "source_sha256": {
+    "anchor": "fdc58ad28a715d61fa1943a33ae3bc84c167b7dc7bef737ebad66ea48441cec0",
+    "BMX_L": "44440c416d9ad709e8b1708a5975378ab4d5b18edc39eb5015c2ae7186500170",
+    "DEMO_L": "ca4374a158b493b8b0163e1388da21d57a18d1b9cecff2aa4e2fa2bec494fe23"
+  },
+  "output_file": "results/temporal_validation/temporal_validation_fairness_demographics.csv",
+  "output_sha256": "165d7b381ca37e217331ce8d6c63e3329c0477c1510279ea4dc1d36eab3be8e7",
+  "columns": [
+    "SEQN",
+    "BMXBMI",
+    "RIDAGEYR",
+    "RIAGENDR"
+  ],
+  "validation": {
+    "rows": 4910,
+    "unique_seqn": 4910,
+    "duplicate_seqn": 0,
+    "missing_seqn": 0,
+    "exact_seqn_match_to_anchor": true,
+    "matched_from_BMX_L": 4910,
+    "matched_from_DEMO_L": 4910,
+    "unmatched_seqn": [],
+    "missingness": {
+      "BMXBMI": 0,
+      "RIDAGEYR": 0,
+      "RIAGENDR": 0
+    }
+  },
+  "integrity": {
+    "cohort_rebuilt_or_redefined": false,
+    "predictors_modified": false,
+    "outcomes_modified": false,
+    "models_modified": false,
+    "evaluation_performed": false
+  }
+}
