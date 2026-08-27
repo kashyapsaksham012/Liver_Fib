@@ -1,0 +1,165 @@
+{
+  "seed": 20260826,
+  "development_split": "OOF rows sorted by SEQN; even index fit, odd index independent evaluation",
+  "selection_gate": "full-cohort sensitivity/specificity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp; then smallest absolute BMI gap",
+  "chosen": {
+    "logistic": "original_frozen",
+    "random_forest": "original_frozen",
+    "xgboost": "original_frozen",
+    "lightgbm": "original_frozen",
+    "mlp": "bmi_platt_calibration"
+  },
+  "parameters": {
+    "logistic": {
+      "global_threshold": 0.5173,
+      "bmi_thresholds": {
+        "Normal": "0.1884496984200987",
+        "Obese": "0.604465036131362"
+      },
+      "platt_global_threshold": 0.12515138322312308,
+      "combined_thresholds": {
+        "Normal": "0.024928683721309037",
+        "Obese": "0.1505892158540518"
+      },
+      "bmi_age_thresholds": {
+        "('18-39', 'Normal')": "None",
+        "('18-39', 'Obese')": "0.554997692500244",
+        "('40-59', 'Normal')": "None",
+        "('40-59', 'Obese')": "0.6987478344826364",
+        "('60+', 'Normal')": "0.4798644023190553",
+        "('60+', 'Obese')": "0.7243676275923302"
+      },
+      "bmi_platt_coefficients": {
+        "Normal": {
+          "intercept": -1.9187540509609253,
+          "slope": 1.1969859661633067
+        },
+        "Obese": {
+          "intercept": -2.1610621212110335,
+          "slope": 1.0164352613032257
+        }
+      }
+    },
+    "random_forest": {
+      "global_threshold": 0.4499,
+      "bmi_thresholds": {
+        "Normal": "0.2170145245048318",
+        "Obese": "0.5286332137980053"
+      },
+      "platt_global_threshold": 0.15630177434354442,
+      "combined_thresholds": {
+        "Normal": "0.03096515042474759",
+        "Obese": "0.15630177434354442"
+      },
+      "bmi_age_thresholds": {
+        "('18-39', 'Normal')": "None",
+        "('18-39', 'Obese')": "0.5299080044500102",
+        "('40-59', 'Normal')": "None",
+        "('40-59', 'Obese')": "0.6269458716782906",
+        "('60+', 'Normal')": "0.3633600383594541",
+        "('60+', 'Obese')": "0.6424922977507762"
+      },
+      "bmi_platt_coefficients": {
+        "Normal": {
+          "intercept": -1.4868523957169582,
+          "slope": 1.5248302995857057
+        },
+        "Obese": {
+          "intercept": -1.8150185666285987,
+          "slope": 1.1251891413619266
+        }
+      }
+    },
+    "xgboost": {
+      "global_threshold": 0.4108,
+      "bmi_thresholds": {
+        "Normal": "0.28614485",
+        "Obese": "0.5884219"
+      },
+      "platt_global_threshold": 0.13286092213274858,
+      "combined_thresholds": {
+        "Normal": "0.051960189482622245",
+        "Obese": "0.16024635850838548"
+      },
+      "bmi_age_thresholds": {
+        "('18-39', 'Normal')": "None",
+        "('18-39', 'Obese')": "0.5496369",
+        "('40-59', 'Normal')": "None",
+        "('40-59', 'Obese')": "0.7023769",
+        "('60+', 'Normal')": "0.42411345",
+        "('60+', 'Obese')": "0.6532284"
+      },
+      "bmi_platt_coefficients": {
+        "Normal": {
+          "intercept": -1.6863064164757258,
+          "slope": 1.3319145945501523
+        },
+        "Obese": {
+          "intercept": -2.0169885427362897,
+          "slope": 1.0088039667246027
+        }
+      }
+    },
+    "lightgbm": {
+      "global_threshold": 0.4988,
+      "bmi_thresholds": {
+        "Normal": "0.2362775489361672",
+        "Obese": "0.6080450829519338"
+      },
+      "platt_global_threshold": 0.14540573454856995,
+      "combined_thresholds": {
+        "Normal": "0.037598242307996355",
+        "Obese": "0.17523882776710964"
+      },
+      "bmi_age_thresholds": {
+        "('18-39', 'Normal')": "None",
+        "('18-39', 'Obese')": "0.5107233668736658",
+        "('40-59', 'Normal')": "None",
+        "('40-59', 'Obese')": "0.5926676420891347",
+        "('60+', 'Normal')": "0.3657722983755053",
+        "('60+', 'Obese')": "0.6219471507183362"
+      },
+      "bmi_platt_coefficients": {
+        "Normal": {
+          "intercept": -1.8307076762558248,
+          "slope": 1.203350065864398
+        },
+        "Obese": {
+          "intercept": -1.9925490898542733,
+          "slope": 1.0102545695740113
+        }
+      }
+    },
+    "mlp": {
+      "global_threshold": 0.1065,
+      "bmi_thresholds": {
+        "Normal": "0.0171737814221675",
+        "Obese": "0.1317040835740195"
+      },
+      "platt_global_threshold": 0.12146604585744387,
+      "combined_thresholds": {
+        "Normal": "0.02928879245591546",
+        "Obese": "0.1431970873913003"
+      },
+      "bmi_age_thresholds": {
+        "('18-39', 'Normal')": "None",
+        "('18-39', 'Obese')": "0.1382677599454712",
+        "('40-59', 'Normal')": "None",
+        "('40-59', 'Obese')": "0.1032576223703893",
+        "('60+', 'Normal')": "0.0593474264757119",
+        "('60+', 'Obese')": "0.1993650352160557"
+      },
+      "bmi_platt_coefficients": {
+        "Normal": {
+          "intercept": 0.10677427551067876,
+          "slope": 0.8914146714793584
+        },
+        "Obese": {
+          "intercept": -0.3049306137378939,
+          "slope": 0.7868902938939404
+        }
+      }
+    }
+  },
+  "test_access": "NOT YET ACCESSED DURING DEVELOPMENT; this manifest freezes selection before test loading"
+}

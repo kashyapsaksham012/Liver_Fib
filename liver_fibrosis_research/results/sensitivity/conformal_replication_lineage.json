@@ -1,0 +1,32 @@
+{
+  "analysis": "Conformal subgroup-coverage replication on CAND_2 and CAND_3 (Amendment #16)",
+  "generated_utc": "2026-08-27T06:47:21.415470+00:00",
+  "script": "src/sens_14_conformal_replication_sensitivity_cohorts.py",
+  "mirrors": "src/phase6_02_conformal_refit.py, phase6_03_conformal_calibration.py, phase6_04_final_test_touch.py",
+  "method": {
+    "split": "fresh 70/30 stratified (seed=42), then 80/20 stratified (seed=42) of train -> proper-train/conformal-cal",
+    "refit": "5 frozen model families on proper-train only, frozen Phase 3 best_params, no search",
+    "nonconformity_score": "1 - P(true class | x)",
+    "threshold": "k-th smallest calibration score, k = ceil((n_cal+1)*(1-alpha)), alpha=0.10",
+    "inference": "Wilson 95% CI; one-sample binomial vs 0.90; BH-FDR within each (model x dimension) family"
+  },
+  "prespecified_targets": [
+    "BMI-Obese",
+    "Age-60+"
+  ],
+  "cohorts": {
+    "CAND_2": "analysis_dataset_cand2_relaxed_elastography.parquet",
+    "CAND_3": "analysis_dataset_secondary.parquet"
+  },
+  "not_done": [
+    "8.0 kPa conformal replication -- ALREADY EXECUTED (BMI-investigation Phase 6, results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_conformal_results.csv)",
+    "No CAND_1 artifact loaded or modified",
+    "No hyperparameter search",
+    "No FDR pooling across cohorts"
+  ],
+  "outputs": [
+    "results/sensitivity/conformal_replication_marginal.csv",
+    "results/sensitivity/conformal_replication_subgroup.csv",
+    "results/sensitivity/conformal_replication_thresholds.csv"
+  ]
+}

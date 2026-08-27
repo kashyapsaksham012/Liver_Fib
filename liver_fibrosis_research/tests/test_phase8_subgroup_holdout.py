@@ -50,8 +50,8 @@ master = pd.read_parquet(ROOT / "data" / "processed" / "analysis_dataset_primary
 check("TEST1_project_phase8_equals_mentor_phase14", "Project Phase 8" in crosswalk_text and "Mentor Phase 14" in crosswalk_text)
 check("TEST1_mentor_generalization_text_recorded", "Generalization" in info_text)
 
-# TEST 2: temporal-validation infeasibility documented with evidence
-check("TEST2_temporal_infeasibility_documented", "single constant" in snapshot_text or "SDDSRVYR" in snapshot_text)
+# TEST 2: within-release time-split infeasibility documented with evidence
+check("TEST2_within_release_timesplit_infeasibility_documented", "single constant" in snapshot_text or "SDDSRVYR" in snapshot_text)
 check("TEST2_no_fabricated_cycle_split", "2017-2018" not in protocol_text and "2019-2020" not in protocol_text.replace("2019-March 2020", ""))
 
 # TEST 3: candidate matrix exists and covers required minimum candidates

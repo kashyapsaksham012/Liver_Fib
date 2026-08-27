@@ -1,0 +1,6 @@
+model,proper_train_n,proper_train_positive_n,conformal_calibration_n,conformal_calibration_positive_n,target_coverage,finite_sample_k,quantile_level,conformal_threshold,score_definition
+logistic,4005,393,1002,104,0.9,903,0.9011976047904192,0.6683019325789672,1-P(true class)
+random_forest,4005,393,1002,104,0.9,903,0.9011976047904192,0.6215569905887417,1-P(true class)
+xgboost,4005,393,1002,104,0.9,903,0.9011976047904192,0.6710087060928345,1-P(true class)
+lightgbm,4005,393,1002,104,0.9,903,0.9011976047904192,0.6601085061849704,1-P(true class)
+mlp,4005,393,1002,104,0.9,903,0.9011976047904192,0.46641403927322045,1-P(true class)

@@ -1,5 +1,10 @@
 # Liver Fibrosis ML Reliability Study
 
+> **New readers / anyone citing a number: start with
+> [`documentation/START_HERE.md`](documentation/START_HERE.md)** — it fixes the documentation
+> authority order, records what is superseded, and adjudicates the known conflicts. The repository
+> is at its **pre-manuscript evidence freeze** (see the `evidence-freeze` git tag).
+
 ## Research question
 In adults with a quality-valid transient elastography exam, how accurately, fairly, and reliably
 can routine demographic and laboratory predictors identify significant liver fibrosis — and does a
@@ -40,26 +45,43 @@ statistically significant pairwise difference in discrimination (test AUC 0.8229
 Three independently-derived cohort/threshold variants (8.0 kPa outcome relabeling, a
 relaxed-elastography-eligibility cohort, a fasting-extended-predictor cohort) and a fold-embedded
 multiple-imputation check for a documented Non-Hispanic Black selection-bias concern all reproduce
-the primary findings' qualitative pattern; details and scope limits in
-`documentation/final_audit/FINAL_SCIENTIFIC_INTERPRETATION.md`.
+the primary findings' qualitative pattern (the BMI-Obese disparity is stable in 15/15 instances;
+the Age-60+ disparity's direction never reverses but its statistical significance is lost in 9/12).
+The pre-registered severity-graded SECONDARY outcomes (≥9.7 kPa advanced fibrosis, ≥13.6 kPa
+cirrhosis) were also executed as a relabel-only descriptive pass (Amendment #15): discrimination
+is comparable to the primary outcome, but the frozen 8.2-kPa recalibration does not transport to
+the rarer outcomes. Scope limits in
+`documentation/final_research_audit/FINAL_SCIENTIFIC_FINDINGS.md` and
+`documentation/sensitivity/SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`.
+
+## Follow-up work completed since the original Phases 1–8
+- **BMI-fairness investigation (its own Phases 0–7):** independent reproduction of the disparity,
+  mechanism diagnosis (score-distribution + threshold, non-causal), and a structured mitigation
+  search — **no acceptable BMI-sensitivity mitigation was identified**; XGBoost coverage-breach
+  retuning also found no acceptable candidate. `documentation/fairness_bmi_investigation/`.
 
 ## Current project status
-Phases 1–8 and all listed sensitivity analyses are complete. Known open items — no external
-(non-NHANES) validation, no intersectional mitigation for the BMI×Age overlap population, an
-unresolved XGBoost coverage-tolerance breach, and an unexecuted all-ages sensitivity cohort — are
-tracked in full in `documentation/final_audit/REMAINING_ANALYSES_AND_RESEARCH_STATUS.md`.
+Phases 1–8, the BMI-fairness investigation, and the full sensitivity suite are
+complete. The repository is at its **pre-manuscript evidence freeze**. No non-validation analysis
+is required before manuscript preparation. Open items — no external (non-NHANES) validation, no
+acceptable BMI-sensitivity mitigation, an unresolved XGBoost coverage-tolerance breach, no primary
+joint mitigation for the BMI×Age overlap, and an unexecuted all-ages sensitivity cohort — are
+tracked in `documentation/final_research_audit/FINAL_REMAINING_WORK_REGISTER.md`.
 
 ## Known limitations
-No external validation has ever been performed on this project; temporal (cross-cycle) validation
-is infeasible within this NHANES release; the Age-60+ fairness finding's direction is robust across
-every sensitivity check but its statistical significance is specification-sensitive; the Phase 7
-mitigation is a genuine but partial fix, not a resolution.
+No external (non-NHANES) validation and no out-of-sample (later-cycle or independent-cohort)
+evaluation has been performed within the scope of this study; generalizability beyond the
+NHANES 2017–March 2020 development setting is unestablished. The Age-60+ fairness finding's
+direction is robust but its statistical significance is specification-sensitive. The Phase 7
+mitigation is a genuine but partial fix (5/9), not a resolution. Full limitations register:
+`documentation/final_research_audit/FINAL_LIMITATIONS_REGISTER.md`.
 
 ## Detailed documentation
+- **Authority map and reading order: `documentation/START_HERE.md` (read first).**
+- Current master synthesis: `documentation/final_research_audit/FINAL_RESEARCH_AUDIT.md`;
+  narrative history: `documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md`.
 - Phase-by-phase reports: `PHASE1_DATA_ASSEMBLY_REPORT.md` through
   `PHASE8_SUBGROUP_HOLDOUT_GENERALIZATION_RESULTS_REPORT.md` (this directory).
-- Sensitivity analyses: `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md`,
+- Sensitivity / extension reports: `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md`,
   `MULTIPLE_IMPUTATION_SENSITIVITY_RESULTS_REPORT.md`, `RELIABILITY_EXTENSION_RESULTS_REPORT.md`.
-- Consolidated, independently-re-verified audit: `documentation/final_audit/` — start with
-  `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md` and `FINAL_CLAIM_AUDIT.md`.
 - Reproducing this project: `documentation/final_audit/REPRODUCIBILITY.md`.
