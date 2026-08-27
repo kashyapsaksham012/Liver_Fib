@@ -24,6 +24,10 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
    FDR-significant.
 6. **Do not claim a monotone "older is worse" age gradient.** The age effect is non-monotonic
    (peak ≈65 y).
+6a. **Do not present the Age-60+ *sensitivity* disparity in the abstract or as a co-headline with
+    the BMI finding.** Framing decision 2026-08-27 (`MANUSCRIPT_FRAMING_GUIDANCE.md`): it is a
+    secondary observation (Results body + Limitations only). The Age-60+ *conformal
+    under-coverage* is separate and is retained at full strength.
 
 ## Calibration
 
@@ -37,10 +41,12 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
 9. **Do not claim any conformal mitigation method (Mondrian, joint, M4b, AFCP) achieves subgroup
    or intersectional validity.** All either miss targets, breach the marginal tolerance, or fail
    temporally.
-10. **Do not claim faithful AFCP superiority** (final narrative status
-    `CONFLICT UNRESOLVED IN REPOSITORY`). **Do not cite the KNN-AFCP result at all** (INVALID).
+10. **Do not claim faithful AFCP superiority.** **Do not cite the KNN-AFCP result at all**
+    (INVALID). C3 adjudicated 2026-08-27 (`CONFLICT_ADJUDICATIONS.md`): faithful AFCP is
+    EXPLORATORY; no AFCP-superiority or AFCP-adequacy claim is permitted.
 11. **Do not present the exploratory joint mitigation as a primary result** or as a solution to
-    the intersectional coverage problem.
+    the intersectional coverage problem. C2 adjudicated 2026-08-27: executed 2026-08-24,
+    EXPLORATORY only.
 12. **Do not report N0=100 as the M4b parameter** (SUPERSEDED by N0=0).
 13. **Do not use the conformal-coverage numbers or the "Normal-BMI under-covers" statement from
     `documentation/MASTER_RESEARCH_RESULTS.md`** (items 26–27, §3.5) — they are erroneous
@@ -95,9 +101,13 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
 
 ## Cohort scope
 
-30. **Do not report CAND_4 (all-ages) performance** — constructed only, `NOT_EXECUTED`.
-31. **Do not report advanced-fibrosis (≥9.7 kPa) or cirrhosis (≥13.6 kPa) model performance** —
-    pre-registered secondary outcomes, `NOT_EXECUTED`.
+30. **Do not report CAND_4 (all-ages) performance** — constructed only, `NOT_EXECUTED`. C4
+    adjudicated 2026-08-27: DISTINCT — EXPLORATORY — UNEXECUTED (Amendment #14).
+31. **Do not report advanced-fibrosis (≥9.7 kPa) or cirrhosis (≥13.6 kPa) results as deployable
+    severity-staging model performance.** Executed 2026-08-27 as a **relabel-only descriptive
+    pass** (Amendment #15) — discrimination and calibration only, on frozen 8.2-kPa models; no
+    per-outcome retraining or recalibration. Report only at that scope
+    (`SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`).
 32. **Do not describe the BMI-Obese ∩ Age-60+ overlap as ~62% of the cohort** — it is 294 people
     (13.7% of the test set); 62% is the *union*.
 

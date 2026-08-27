@@ -65,9 +65,10 @@ document in tier 2–4 explicitly records the reconciliation.
 1. This file.
 2. `documentation/final_research_audit/FINAL_RESEARCH_AUDIT.md` (master synthesis).
 3. `documentation/final_research_audit/FINAL_SCIENTIFIC_FINDINGS.md` +
-   `MANUSCRIPT_READINESS_ASSESSMENT.md` + `DO_NOT_CLAIM.md`.
-4. `documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md` for phase-level narrative.
-5. Individual phase reports / investigation reports as needed for method detail.
+   `MANUSCRIPT_READINESS_ASSESSMENT.md` + `MANUSCRIPT_FRAMING_GUIDANCE.md` + `DO_NOT_CLAIM.md`.
+4. `documentation/final_research_audit/CONFLICT_ADJUDICATIONS.md` (C1–C4, resolved 2026-08-27).
+5. `documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md` for phase-level narrative.
+6. Individual phase reports / investigation reports as needed for method detail.
 
 ## 3. Superseded and removed
 
@@ -89,10 +90,10 @@ document in tier 2–4 explicitly records the reconciliation.
   CAND_4 remains correctly NOT EXECUTED. Use `documentation/final_research_audit/` for current
   status.
 
-## 4. The four documented unresolved conflicts (adjudications)
+## 4. The four conflicts — ADJUDICATED 2026-08-27 (RESOLVED)
 
-These are recorded as `CONFLICT UNRESOLVED IN REPOSITORY` in the audit trail. One-line
-manuscript-level dispositions:
+Recorded as `CONFLICT UNRESOLVED IN REPOSITORY` in the audit trail; formally resolved in
+`documentation/final_research_audit/CONFLICT_ADJUDICATIONS.md`. One-line dispositions:
 
 - **C1 — conformal subgroup under-coverage (which BMI group, and the numbers).** RESOLVED against
   the raw artifact: `results/uncertainty/subgroup_coverage.csv` +
@@ -124,7 +125,21 @@ manuscript-level dispositions:
 - The **Non-Hispanic Black subgroup holdout (Phase 8)** is a *within-NHANES demographic holdout*.
   Neither it nor the 2021–2023 temporal work is external validation. Do not describe either as such.
 
-## 6. Executed during / after consolidation (2026-08-27)
+## 6. Manuscript framing (headline discipline)
+
+Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.md`. In brief:
+
+- **Headline = the normal-weight (Normal-BMI) under-detection finding** plus the methodological
+  marginal-vs-subgroup conformal-coverage contrast. Nothing else carries the abstract.
+- **The Age-60+ *sensitivity* disparity is a secondary observation**, not a co-headline: Results
+  body and Limitations only, always stated with its fragility (4/5 models; significance lost 9/12
+  under alternative specifications; direction reverses temporally; non-monotonic). Never paired
+  with the BMI finding as "two subgroup failures."
+- **The Age-60+ *conformal* under-coverage stays at full strength** in the conformal results
+  (5/5 models, CIs exclude 90%, persists temporally). It is a different, firmer finding than the
+  sensitivity disparity — keep the two explicitly distinct in the text.
+
+## 7. Executed during / after consolidation (2026-08-27)
 
 - **Amendment #15 — pre-registered SECONDARY severity-graded outcomes (≥9.7 kPa, ≥13.6 kPa),
   relabel-only descriptive pass.** Closes the one pre-registered analysis that had no result
@@ -134,8 +149,11 @@ manuscript-level dispositions:
   Not a deployable severity-staging claim.
   Report: `documentation/sensitivity/SECONDARY_SEVERITY_GRADED_OUTCOMES_RESULTS_REPORT.md`;
   results: `results/sensitivity/secondary_severity_outcomes_*`.
+- **C1–C4 conflict adjudications** — `CONFLICT_ADJUDICATIONS.md` (all four RESOLVED).
+- **Manuscript framing decision** — `MANUSCRIPT_FRAMING_GUIDANCE.md` (Age-60+ sensitivity demoted
+  to secondary observation).
 
-## 7. Freeze
+## 8. Freeze
 
 This consolidation is tagged as the pre-manuscript evidence freeze (`evidence-freeze`). After
 this point the analysis set is closed: no rerun, retuning, recalibration, or re-selection of any

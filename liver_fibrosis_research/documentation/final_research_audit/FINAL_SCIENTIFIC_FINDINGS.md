@@ -45,6 +45,11 @@ statistically fragile, non-monotonic.** `fairness_inference.csv`,
 `results/temporal_validation/temporal_fairness_results.csv`.
 **NOT SUPPORTED:** "Age-60+ deficit significant in all models"; "older is monotonically worse".
 
+**MANUSCRIPT FRAMING (2026-08-27, `MANUSCRIPT_FRAMING_GUIDANCE.md`):** the Age-60+ *sensitivity*
+disparity is a **secondary observation** — Results body and Limitations only, not the abstract or
+headline, and not paired with the BMI finding as "two subgroup failures." The Age-60+ *conformal
+under-coverage* (finding 6, §12) is a separate, firmer result and is retained at full strength.
+
 ## 5. BMI × Age reliability (intersectional) — **SUPPORTED WITH LIMITATIONS** (descriptive)
 
 In the BMI-Obese ∩ Age-60+ cell (test N=294, 35 positives) baseline split-conformal coverage
@@ -136,7 +141,7 @@ MITIGATION HAS BEEN IDENTIFIED.** Repository evidence does **not** contradict th
 | Mondrian mitigation (Project Phase 7) | 5/9 targets nominal; XGBoost marginal +5.27 pp breach; sequential overlap | PARTIALLY EFFECTIVE |
 | MI conformal (BMI-inv Phase 5) | descriptively consistent with complete-case; BMI-Obese still under-covers | EXPLORATORY / `LINEAGE NOT FOUND` |
 | Joint conformal (Method b/c, M4b N0=0) | CAND_1 intersectional coverage ≥90% for 4–5/5; XGB/LGBM marginal breach; **fails temporally (1/5)** | EXPLORATORY |
-| Faithful AFCP | near-target single-attribute; intersection still <90%; overall >90% | EXPLORATORY; narrative status CONFLICT UNRESOLVED |
+| Faithful AFCP | near-target single-attribute; intersection still <90%; overall >90% | EXPLORATORY (C3 ADJUDICATED 2026-08-27: KNN-AFCP INVALID, faithful AFCP EXPLORATORY, no superiority claim) |
 | 8.0-kPa conformal | some detail threshold-sensitive (BMI-inv Phase 6) | SUPPORTED WITH LIMITATIONS |
 | CAND_2 / CAND_3 conformal replication | NOT MEASURED | INCONCLUSIVE |
 
