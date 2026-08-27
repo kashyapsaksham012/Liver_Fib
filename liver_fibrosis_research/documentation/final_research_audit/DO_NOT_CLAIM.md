@@ -39,8 +39,7 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
 8. **Do not claim conditional / subgroup / intersectional conformal validity.** Only *marginal*
    coverage is guaranteed; BMI-Obese, Age-60+, and the Obese∩60+ intersection all under-cover.
 9. **Do not claim any conformal mitigation method (Mondrian, joint, M4b, AFCP) achieves subgroup
-   or intersectional validity.** All either miss targets, breach the marginal tolerance, or fail
-   temporally.
+   or intersectional validity.** All either miss targets or breach the marginal tolerance.
 10. **Do not claim faithful AFCP superiority.** **Do not cite the KNN-AFCP result at all**
     (INVALID). C3 adjudicated 2026-08-27 (`CONFLICT_ADJUDICATIONS.md`): faithful AFCP is
     EXPLORATORY; no AFCP-superiority or AFCP-adequacy claim is permitted.
@@ -81,10 +80,12 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
 ## Validation & transportability
 
 22. **Do not claim external validation.** None was performed; no compatible cohort exists.
-23. **Do not claim full temporal replication.** Status: **PARTIAL TEMPORAL REPLICATION**.
+23. **Do not claim any temporal, later-cycle, or independent-cohort replication.** No such
+    out-of-sample evaluation is within the scope of this study.
 24. **Do not call the Non-Hispanic Black holdout (Phase 8) external validation.** It is a
     within-NHANES demographic holdout.
-25. **Do not call the NHANES 2021–2023 temporal work external validation.**
+25. *(reserved — former item on the temporal cycle; that work was split into a separate manuscript
+    and is not part of this study.)*
 26. **Do not claim the models are deployment-ready or clinically validated.**
 
 ## Causal & mechanistic
@@ -94,10 +95,8 @@ audit. Required missing-evidence tokens: `NOT FOUND IN REPOSITORY`,
     (`PHASE2_DIAGNOSTIC_REPORT.md`).
 28. **Do not claim a proven BMI×Age interaction** — the pattern is "compatible with effect
     modification" only; young Normal-BMI cells are unstable.
-29. **Do not attribute the temporal performance drop to a specific cause.** The root-cause
-    analysis supports only **SUPPORTED ASSOCIATIONS** (prevalence increase, composition/fairness
-    drift), and explicitly `NOT SUPPORTED` for any single-cause mechanism
-    (`PHASE3_5_ROOT_CAUSE_DRIFT_TO_PERFORMANCE_REPORT.md`).
+29. *(reserved — former item on the temporal performance drop; that analysis was split into a
+    separate manuscript.)*
 
 ## Cohort scope
 

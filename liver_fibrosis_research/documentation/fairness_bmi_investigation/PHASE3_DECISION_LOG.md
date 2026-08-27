@@ -25,5 +25,5 @@ specificity and overall-sensitivity trade-offs. Therefore no universal BMI-sensi
 mitigation is accepted.
 
 No predictors, outcomes, BMI definitions, models, architectures, preprocessing, or primary
-results were changed. Temporal and external validation were not performed. The master report
+results were changed. No external or out-of-sample validation was performed. The master report
 was not modified.

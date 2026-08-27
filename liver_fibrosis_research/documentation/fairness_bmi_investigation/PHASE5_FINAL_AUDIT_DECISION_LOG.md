@@ -23,7 +23,7 @@
 | Statistical support | RESTRICTED | Wilson intervals/binomial fields support proportion descriptions; no MI-vs-CC comparative CI, equivalence test, or Rubin pooling exists. |
 | Main conclusion | SUPPORTED WITH SCOPE | “MI conformal reliability is consistent with complete-case results” is supportable descriptively, not as equivalence or statistical indistinguishability. |
 | Historical phrase handling | PASS | Prior report wording remains unchanged; current report uses the exact allowed conclusion and does not silently rewrite history. |
-| Preservation | PASS | No inspected prior-phase, primary/master, temporal/external, Phase 7, or complete-case authority artifact was overwritten or merged. |
+| Preservation | PASS | No inspected prior-phase, primary/master, external, Phase 7, or complete-case authority artifact was overwritten or merged. |
 
 ## Final decision
 

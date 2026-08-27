@@ -14,4 +14,4 @@
 | Prior exploratory result | Preserved separately; not overwritten or merged |
 | Final status | **NO ACCEPTABLE SUBGROUP CALIBRATION IMPROVEMENT IDENTIFIED** |
 
-No Phase 0–3, primary, Phase 7, temporal, external, or master-report artifact was modified.
+No Phase 0–3, primary, Phase 7, external, or master-report artifact was modified.

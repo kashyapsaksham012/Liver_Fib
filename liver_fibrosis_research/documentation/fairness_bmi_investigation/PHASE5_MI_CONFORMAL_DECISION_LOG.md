@@ -6,7 +6,7 @@
 4. **Analysis executed once.** Each of five MI datasets used seed 42+i and training-only, pipeline-embedded IterativeImputer(BayesianRidge, sample_posterior=True). Frozen Phase 3 hyperparameters were reused without search. Each model was calibrated on the fixed 1,002-row calibration partition and evaluated once on the fixed 2,146-row test set.
 5. **No invented pooling.** CSVs retain imputation index and seed. `phase5_mi_uncertainty.csv` contains descriptive means/ranges/SDs only; it is not Rubin pooling and is not inferential synthesis.
 6. **Subgroups/cells.** All frozen Phase 5 dimensions and exactly the 26 pre-specified intersectional cells were evaluated. Small-cell precision limitations are retained rather than hidden.
-7. **Scope discipline.** No Phase 0–4, Phase 7, master, primary complete-case, temporal, external, or prior exploratory artifacts were modified. The only writes were the new Phase 5 MI namespace and its requested documentation/figures.
+7. **Scope discipline.** No Phase 0–4, Phase 7, master, primary complete-case, external, or prior exploratory artifacts were modified. The only writes were the new Phase 5 MI namespace and its requested documentation/figures.
 8. **Evidence summary.** BMI-Obese undercoverage persisted across all five models and all five imputations; overall MI coverage remained close to frozen complete-case values, with model-dependent descriptive deltas. Non-Hispanic Black coverage is shown per imputation without a pooled claim.
 
 Final conclusion: MI CONFORMAL RELIABILITY IS CONSISTENT WITH COMPLETE-CASE RESULTS

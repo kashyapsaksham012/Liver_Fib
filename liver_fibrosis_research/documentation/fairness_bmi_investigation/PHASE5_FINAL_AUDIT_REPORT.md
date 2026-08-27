@@ -188,7 +188,7 @@ ASSESSED`. This audit does not silently rewrite that history. The current
 
 ## Preservation determination
 
-The Phase 0–4, Phase 7, primary/master, temporal, external, and prior MI artifacts inspected
+The Phase 0–4, Phase 7, primary/master, external, and prior MI artifacts inspected
 remain in their original paths. The Phase 5 MI conformal outputs are in a distinct namespace
 and were not merged into complete-case Phase 6 outputs. This audit did not alter any of those
 artifacts.

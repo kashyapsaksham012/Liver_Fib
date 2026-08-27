@@ -37,9 +37,9 @@ transportability question, distinct from every prior phase.
 external validation, not a sensitivity cohort, not an internal train/test re-split of the same
 kind Phase 3 already performed.
 
-## 6. Dataset independence — temporal-validation infeasibility
+## 6. Dataset independence — within-release time-split infeasibility
 
-Temporal (cross-cycle) validation, the mentor's other named option, is **not feasible**:
+A within-release (cross-cycle) time split, the mentor's other named option, is **not feasible**:
 `SDDSRVYR` (NHANES release-cycle code) is a single constant value (66.0) across the entire
 2017–March 2020 pre-pandemic combined release used by this project (all 15,560 `P_DEMO.xpt` rows);
 no sub-cycle or exam-date variable distinguishing 2017–2018 from 2019–March 2020 participants
@@ -214,7 +214,7 @@ to the committed run — confirming full determinism under the fixed seed (42) u
 ## 22. Automated tests
 
 `tests/test_phase8_subgroup_holdout.py`: 35 live checks covering official-definition verification,
-temporal-infeasibility documentation, candidate-matrix existence, prior-commitment transparency
+within-release time-split infeasibility documentation, candidate-matrix existence, prior-commitment transparency
 (PATH B, not presented as discovery), commit-ordering (protocol before training), training/holdout
 disjointness and complete subgroup exclusion, no leakage into preprocessing/tuning/threshold
 selection, frozen predictor/outcome/model-family preservation, count accuracy, no post-hoc tuning,

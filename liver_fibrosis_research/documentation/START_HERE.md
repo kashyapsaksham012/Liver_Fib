@@ -22,7 +22,7 @@ conflicts. Read this before citing any number from any other document.
    `FINAL_RESEARCH_QUALITY_ASSESSMENT.md`) are its typed breakdowns.
    Machine-readable claim registry: `results/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv`.
 3. **`documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md`** — narrative history from
-   data assembly through temporal validation. Consistent with (2); use for context and phase
+   data assembly through the sensitivity suite. Consistent with (2); use for context and phase
    detail.
 4. **`documentation/final_audit/` — 5 active files** (2026-08-24/25) —
    `MASTER_END_TO_END_RESEARCH_REPORT.md` (narrative history),
@@ -46,8 +46,7 @@ conflicts. Read this before citing any number from any other document.
    `CAND4_CLASSIFICATION_RESOLUTION_REPORT.md`, `END_TO_END_PHASE1_TO_PHASE3_VERIFICATION_REPORT.md`,
    `FINAL_PRE_CALIBRATION_*`). The primary detailed record of each phase. Frozen; append-only.
 7. **Follow-up investigation phase reports** — `documentation/fairness_bmi_investigation/`
-   (BMI follow-up Phases 0–7) and `results/temporal_validation/PHASE*` (NHANES 2021–2023 temporal
-   validation). Authoritative for their own scope; each carries its own decision log.
+   (BMI follow-up Phases 0–7). Authoritative for their own scope; each carries its own decision log.
 8. **Protocol freezes / pre-registration** — `documentation/phase2/` (`PHASE2_PROTOCOL_FREEZE.md`,
    `primary_outcome_definition.md`, `statistical_analysis_plan.md`, `sensitivity_analysis_plan.md`,
    `fairness_subgroup_protocol.md`, `missing_data_protocol.md`, `uncertainty_protocol.md`),
@@ -85,12 +84,10 @@ document in tier 2–4 explicitly records the reconciliation.
   (raw: 88.12–90.82%), and listed Phase 3 operating-point sensitivity/specificity and Phase 7
   mitigation targets that do not match `results/tables/phase3_final_baseline_results.csv` or
   `results/mitigation/`. Do not restore or cite it. Its correct replacements are tiers 2–3 above.
-- **`results/tables/final_research_status.csv` is STALE on three rows** (kept unedited per the
+- **`results/tables/final_research_status.csv` is STALE on one row** (kept unedited per the
   append-only convention): "Intersectional (joint) Mondrian mitigation — NOT EXECUTED" (it *was*
-  executed, exploratory only — conflict C2 below); "Temporal (cross-cycle) validation — NOT
-  EXECUTED / infeasible" (NHANES 2021–2023 temporal validation *is* complete — see §5);
-  CAND_4 remains correctly NOT EXECUTED. Use `documentation/final_research_audit/` for current
-  status.
+  executed, exploratory only — conflict C2 below). CAND_4 remains correctly NOT EXECUTED. Use
+  `documentation/final_research_audit/` for current status.
 
 ## 4. The four conflicts — ADJUDICATED 2026-08-27 (RESOLVED)
 
@@ -105,8 +102,7 @@ Recorded as `CONFLICT UNRESOLVED IN REPOSITORY` in the audit trail; formally res
 - **C2 — joint intersectional Mondrian mitigation execution status.** It **was executed** (2026-08-24,
   `results/mitigation/joint_intersectional_mitigation.csv`) and is **EXPLORATORY ONLY** — never a
   primary result. The stale status CSV row is superseded by the dated artifact + the BMI-investigation
-  Phase 7 cleanup audit. It fails the marginal-coverage tolerance for XGBoost/LightGBM and does not
-  replicate temporally (1/5 models).
+  Phase 7 cleanup audit. It fails the marginal-coverage tolerance for XGBoost/LightGBM.
 - **C3 — faithful-AFCP final narrative status.** The old KNN-approximation AFCP is **INVALID — do
   not cite**. Faithful AFCP is **EXPLORATORY**. **No AFCP-superiority claim is permitted** under
   either label.
@@ -116,16 +112,15 @@ Recorded as `CONFLICT UNRESOLVED IN REPOSITORY` in the audit trail; formally res
 
 ## 5. Validation boundary (state explicitly in any write-up)
 
-- **NHANES 2021–2023 temporal validation — SEPARATE WORK, COMPLETE.** N=4,910; 563 positives
-  (11.47%); frozen models/thresholds/conformal params, no temporal refit. Result:
-  **PARTIAL TEMPORAL REPLICATION** (discrimination AUROC → 0.777–0.782; BMI-Obese sensitivity
-  disparity persisted and enlarged; Age-60+ disparity shrank/reversed; subgroup + intersectional
-  conformal under-coverage persisted; frozen N0=0 M4b held for 1/5 models vs 4/5 originally).
-  Source: `results/temporal_validation/PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`.
+- **No out-of-sample evaluation is in scope for this study.** There is no later-cycle (temporal)
+  analysis and no independent-cohort analysis. A NHANES 2021–2023 temporal evaluation was carried
+  out but has been **split into a separate manuscript** and removed from this repository (preserved
+  on the `temporal-validation-standalone` git branch); it is **not** part of this study's evidence
+  base and must not be cited here.
 - **External (non-NHANES) validation — NOT PERFORMED / NOT FEASIBLE within current evidence.** No
   compatible independent cohort identified. The project's foremost generalizability limitation.
-- The **Non-Hispanic Black subgroup holdout (Phase 8)** is a *within-NHANES demographic holdout*.
-  Neither it nor the 2021–2023 temporal work is external validation. Do not describe either as such.
+- The **Non-Hispanic Black subgroup holdout (Phase 8)** is a *within-NHANES demographic holdout*,
+  not external validation. Do not describe it as such.
 
 ## 6. Manuscript framing (headline discipline)
 
@@ -135,11 +130,11 @@ Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.m
   marginal-vs-subgroup conformal-coverage contrast. Nothing else carries the abstract.
 - **The Age-60+ *sensitivity* disparity is a secondary observation**, not a co-headline: Results
   body and Limitations only, always stated with its fragility (4/5 models; significance lost 9/12
-  under alternative specifications; direction reverses temporally; non-monotonic). Never paired
-  with the BMI finding as "two subgroup failures."
+  under alternative specifications; non-monotonic). Never paired with the BMI finding as "two
+  subgroup failures."
 - **The Age-60+ *conformal* under-coverage stays at full strength** in the conformal results
-  (5/5 models, CIs exclude 90%, persists temporally). It is a different, firmer finding than the
-  sensitivity disparity — keep the two explicitly distinct in the text.
+  (5/5 models, CIs exclude 90%). It is a different, firmer finding than the sensitivity disparity
+  — keep the two explicitly distinct in the text.
 
 ## 7. Executed during / after consolidation (2026-08-27)
 
@@ -165,6 +160,12 @@ Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.m
 
 This consolidation is tagged as the pre-manuscript evidence freeze (`evidence-freeze`). After
 this point the analysis set is closed: no rerun, retuning, recalibration, or re-selection of any
-Phase 0–8, BMI-investigation, temporal, or sensitivity artifact without a new dated protocol
+Phase 0–8, BMI-investigation, or sensitivity artifact without a new dated protocol
 amendment. Remaining permitted work is enumerated in
 `documentation/final_research_audit/FINAL_REMAINING_WORK_REGISTER.md`.
+
+> **Scope note (temporal validation split out):** a NHANES 2021–2023 temporal evaluation was
+> completed and then moved to a **separate manuscript**. All temporal code, results, and documents
+> were removed from this repository and preserved on the `temporal-validation-standalone` git
+> branch. This study's scope is the frozen NHANES 2017–March 2020 analysis only; no temporal or
+> external out-of-sample result is part of its evidence base.

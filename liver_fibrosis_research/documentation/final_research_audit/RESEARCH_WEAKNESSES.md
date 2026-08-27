@@ -8,21 +8,21 @@ analysis was skipped.
 
 ## Tier 1 — material, must be prominent in the manuscript
 
-### W1. No external validation, and only partial temporal replication
+### W1. No external or out-of-sample validation
 
 The models have never been evaluated on an independent non-NHANES population, and no compatible
-cohort has been identified (`external_validation_future_work.md`). The one out-of-sample check
-that exists — NHANES 2021–2023 — is **PARTIAL TEMPORAL REPLICATION**: discrimination fell
-(AUROC → 0.7765–0.7824), and the frozen intersectional conformal configuration held for only 1
-of 5 models (`PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`). Generalizability beyond the development
-setting is essentially unestablished.
+cohort has been identified (`external_validation_future_work.md`). No later-cycle (temporal) or
+independent-cohort evaluation is within the scope of this study. Generalizability beyond the
+NHANES 2017–March 2020 development setting is essentially unestablished. (A NHANES 2021–2023
+temporal evaluation was completed and split into a separate manuscript — preserved on the
+`temporal-validation-standalone` git branch — and is not part of this study's evidence base.)
 
 ### W2. No acceptable mitigation for the reliability–fairness failure
 
 Every intervention tested (Mondrian, corrected BMI mitigation, corrected subgroup calibration,
 group thresholds, Equal Opportunity, XGBoost retuning, joint conformal) either fails the
-pre-specified multi-metric gate, does not generalize across model families, breaches the
-marginal-coverage tolerance, or fails temporally. The study identifies a problem it cannot
+pre-specified multi-metric gate, does not generalize across model families, or breaches the
+marginal-coverage tolerance. The study identifies a problem it cannot
 solve within its scope (`FINAL_SCIENTIFIC_FINDINGS.md` §14). This is scientifically honest but
 limits the translational contribution.
 
@@ -52,9 +52,8 @@ stand-alone diagnostic, and the manuscript must not imply otherwise.
 
 ### W5. The Age-60+ finding is statistically fragile
 
-Significant in 4/5 primary models, lost in 9/12 sensitivity-cohort instances, direction reverses
-temporally, and the underlying age effect is non-monotonic. It is close to a null result under
-several specifications.
+Significant in 4/5 primary models, lost in 9/12 sensitivity-cohort instances, and the underlying
+age effect is non-monotonic. It is close to a null result under several specifications.
 
 ### W6. Class-balancing artifact required a post-hoc fix
 
@@ -77,9 +76,8 @@ Underweight (1 positive) is uninterpretable.
 
 ### W9. Single reference standard, single survey program, cross-sectional
 
-The outcome is VCTE-defined significant fibrosis (not biopsy), from one US survey release. The
-pre-pandemic primary cohort and the 2021–2023 temporal cohort differ in composition and required
-an ALT assay bridge.
+The outcome is VCTE-defined significant fibrosis (not biopsy), from one US pre-pandemic survey
+release, evaluated cross-sectionally.
 
 ## Tier 3 — documentation / provenance
 

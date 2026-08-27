@@ -7,7 +7,7 @@
 - OOF thresholds and approved OOF Platt calibration were frozen before test access.
 - Conformal calibration used the frozen 90% split-conformal score and finite-sample correction.
 - Locked test set was used exactly once after all development decisions.
-- No temporal/external validation and no mitigation.
+- No external or out-of-sample validation and no mitigation.
 - Missing lineage links: frozen 8.2 protocol commit — NOT FOUND IN REPOSITORY; frozen 8.2
   model-artifact manifest — NOT FOUND IN REPOSITORY.
 

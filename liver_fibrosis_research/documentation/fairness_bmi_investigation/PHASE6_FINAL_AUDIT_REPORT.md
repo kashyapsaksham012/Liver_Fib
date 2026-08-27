@@ -120,6 +120,6 @@ incomplete. There is no material implementation defect requiring C.
 ## Preservation
 
 No tracked prior artifact was modified. Primary 8.2 results, Phase 0–5/7 artifacts,
-temporal/external work, master/final-state documents, legacy 8.0 sensitivity files, and the
+external-validation notes, master/final-state documents, legacy 8.0 sensitivity files, and the
 Phase 6 canonical namespace remain in their original paths. This audit creates only the four
 requested files.

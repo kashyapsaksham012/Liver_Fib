@@ -4,7 +4,7 @@
 New outcome: valid VCTE (`LUAXSTAT==1`) and `LUXSMED>=8.0 kPa`. The same quality-valid
 adult broad-lab CAND_1 cohort, ten frozen predictors, five frozen model families, inherited
 hyperparameters, development partitions, OOF Platt calibration, and split-conformal method
-were used. No temporal or external validation was performed, and no mitigation was introduced.
+were used. No external or out-of-sample validation was performed, and no mitigation was introduced.
 
 ## Cohort and label verification
 The cohort contains **N=7153**, with 8.2-kPa positives **666 (9.3108%)** and

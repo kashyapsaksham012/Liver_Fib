@@ -108,23 +108,15 @@ modified. Format: OLD RESULT → CURRENT REPLACEMENT → REASON → MANUSCRIPT S
   88.12–90.82%; `results/uncertainty/subgroup_coverage.csv` → **BMI-Obese** fails
   (76.8–82.3%), Normal-BMI/Overweight over-cover (0.95–0.97), Age-60+ 81.1–85.6%. Consistent
   with `MASTER_END_TO_END_RESEARCH_REPORT.md` §B4 and the `final_research_state` registers.
-- **REASON:** `MASTER_RESEARCH_RESULTS.md` (frozen at git HEAD 142595d, before temporal work and
-  the final consolidation) misreports its own cited CSV and inverts the BMI group label; all its
+- **REASON:** `MASTER_RESEARCH_RESULTS.md` (frozen at git HEAD 142595d, before the final
+  consolidation) misreports its own cited CSV and inverts the BMI group label; all its
   other spot-checked numbers reconcile.
 - **MANUSCRIPT STATUS:** the conformal-coverage numbers and BMI label in
   `MASTER_RESEARCH_RESULTS.md` are **SUPERSEDED / erroneous**; cite the raw CSVs and
   `MASTER_END_TO_END_RESEARCH_REPORT.md`. **Flagged for the register owner to correct or
   annotate `MASTER_RESEARCH_RESULTS.md`; not modified by this audit.**
 
-## S11. Earlier temporal preflight ("FAILED — DO NOT PROCEED")
-
-- **OLD:** `results/temporal_validation/PHASE3_FAILURE_REPORT.md` — first preflight failed
-  (outcome + `RIDRETH3` companion data absent).
-- **CURRENT:** resolved by attaching `LUX_L.xpt` / `DEMO_L.xpt` and bridging BMX/DEMO; all 4,910
-  SEQNs matched; temporal Phases 1–4 completed
-  (`PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`).
-- **REASON:** intermediate data-preparation failure, since resolved.
-- **MANUSCRIPT STATUS:** historical intermediate record; not a final result.
+## S11. *(removed — earlier temporal-preflight record; the NHANES 2021–2023 temporal work was split into a separate manuscript and removed from this repository, preserved on the `temporal-validation-standalone` branch)*
 
 ## S12. CAND_4 all-ages cohort
 

@@ -37,11 +37,10 @@ superseded by the corresponding entry below.
 - **Basis:** `results/mitigation/joint_intersectional_mitigation.csv` (generated 2026-08-24T12:42
   UTC), `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`,
   `documentation/fairness_bmi_investigation/PHASE7_MITIGATION_CLEANUP_VERIFICATION.md`; the method
-  breaches the ±5 pp marginal-coverage tolerance for XGBoost/LightGBM and replicates temporally
-  for only 1/5 models, which is itself part of why it stays exploratory.
+  breaches the ±5 pp marginal-coverage tolerance for XGBoost/LightGBM, which is itself part of why
+  it stays exploratory.
 - **STATUS: RESOLVED.** (`results/tables/final_research_status.csv` remains unedited per the
-  append-only convention; treat its joint-mitigation and temporal-validation rows as stale — see
-  `START_HERE.md` §3.)
+  append-only convention; treat its joint-mitigation row as stale — see `START_HERE.md` §3.)
 
 ## C3 — Faithful-AFCP final narrative status
 

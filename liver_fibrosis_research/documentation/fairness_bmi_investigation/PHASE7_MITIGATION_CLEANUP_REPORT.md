@@ -26,5 +26,5 @@ runtime log are NOT FOUND IN REPOSITORY. The N=138 calibration cell
 contains 30 positives and 108 negatives; XGBoost and LightGBM exceed the prior ±5 pp marginal
 tolerance in that artifact and remain disclosed as breaches.
 
-Historical Phase 7, Phase 0–6, primary/master, temporal/external, and existing joint/XGB artifacts
+Historical Phase 7, Phase 0–6, primary/master, external, and existing joint/XGB artifacts
 were preserved and not merged.

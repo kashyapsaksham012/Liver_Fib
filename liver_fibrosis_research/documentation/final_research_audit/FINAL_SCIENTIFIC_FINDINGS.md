@@ -27,22 +27,20 @@ applied once to the locked test restores aggregate calibration (test ECE → 0.0
 ## 3. BMI fairness — **CONFIRMED** (see §11 for the consolidated BMI assessment)
 
 Normal-BMI sensitivity is 27.1–47.7 pp lower than Obese in all 5 models, FDR-significant
-(q ≤ 0.006); independently reproduced; stable across all three sensitivity cohorts (15/15) and
-**enlarged temporally** to 62.8–71.9 pp. `results/fairness/fairness_inference.csv`,
+(q ≤ 0.006); independently reproduced; stable across all three sensitivity cohorts (15/15).
+`results/fairness/fairness_inference.csv`,
 `results/fairness_bmi_investigation/phase1_bmi_reproduction.csv`,
-`results/sensitivity/primary_vs_sensitivity_comparison.csv`,
-`results/temporal_validation/temporal_fairness_results.csv`.
+`results/sensitivity/primary_vs_sensitivity_comparison.csv`.
 This is the single most robust finding in the study.
 
 ## 4. Age fairness — **SUPPORTED WITH LIMITATIONS**
 
 Age-60+ sensitivity is lower than Age-40–59 in 5/5 primary models (−8.6 to −14.7 pp),
 FDR-significant in **4/5** (not Logistic). Direction never reverses across sensitivity cohorts;
-significance is lost in 9/12 instances and reverses direction temporally (60+ slightly higher).
+significance is lost in 9/12 instances.
 The shape is non-monotonic (peak ≈65 y, no decline at 70+). **Directionally robust,
 statistically fragile, non-monotonic.** `fairness_inference.csv`,
-`primary_vs_sensitivity_comparison.csv`, `results/diagnostics/continuous_age_metrics.csv`,
-`results/temporal_validation/temporal_fairness_results.csv`.
+`primary_vs_sensitivity_comparison.csv`, `results/diagnostics/continuous_age_metrics.csv`.
 **NOT SUPPORTED:** "Age-60+ deficit significant in all models"; "older is monotonically worse".
 
 **MANUSCRIPT FRAMING (2026-08-27, `MANUSCRIPT_FRAMING_GUIDANCE.md`):** the Age-60+ *sensitivity*
@@ -54,8 +52,8 @@ under-coverage* (finding 6, §12) is a separate, firmer result and is retained a
 
 In the BMI-Obese ∩ Age-60+ cell (test N=294, 35 positives) baseline split-conformal coverage
 collapses to 64.97–75.17% (Clopper–Pearson CIs exclude 90%). Descriptive, pre-specified,
-small-cell. `results/uncertainty/intersectional_coverage_ci.csv`. Persists temporally
-(69.7–76.5%). **NOT SUPPORTED:** any conditional-validity or causal-interaction claim; the
+small-cell. `results/uncertainty/intersectional_coverage_ci.csv`. **NOT SUPPORTED:** any
+conditional-validity or causal-interaction claim; the
 "294 = ~62%" characterisation (that is the union — see `SUPERSEDED_INVALID_RESULTS.md` S3).
 
 ## 6. Conformal reliability — **CONFIRMED for the marginal/subgroup split** (see §12)
@@ -94,17 +92,12 @@ THRESHOLD-SENSITIVE"** — Age-60+ significance and some conformal detail are th
 `results/sensitivity/alternative_threshold_8p0kPa_results.csv`,
 `results/fairness_bmi_investigation/phase6_8kpa_robustness/phase6_8kpa_vs_82_comparison.csv`.
 
-## 10. Temporal transportability — **NOT SUPPORTED as full replication; PARTIAL TEMPORAL REPLICATION**
+## 10. Out-of-sample transportability — **NOT ESTABLISHED**
 
-NHANES 2021–2023 (N=4,910; 11.4664%): AUROC declined to 0.7765–0.7824 (discrimination MIXED —
-AUROC down, PR-AUC up); raw calibration still poor (Brier worse); **BMI-Obese sensitivity
-disparity persisted and enlarged (62.8–71.9 pp)**; Age-60+ disparity shrank/reversed; marginal
-conformal coverage near target but subgroup/intersectional under-coverage persisted; frozen
-N0=0 M4b met its intersectional target for **1/5 models** (vs 4/5 originally). Final
-classification **PARTIAL TEMPORAL REPLICATION**. `PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`.
-**NOT SUPPORTED:** full temporal replication, external validation, clinical readiness, causal
-drift explanation (root-cause analysis found only SUPPORTED ASSOCIATIONS —
-`PHASE3_5_ROOT_CAUSE_DRIFT_TO_PERFORMANCE_REPORT.md`).
+No later-cycle (temporal) or independent-cohort evaluation is within the scope of this study. A
+NHANES 2021–2023 temporal evaluation was completed and has been split into a separate manuscript
+(preserved on the `temporal-validation-standalone` git branch); it is not part of this study's
+evidence base. **NOT SUPPORTED:** any temporal or external replication claim; clinical readiness.
 
 ---
 
@@ -120,12 +113,11 @@ drift explanation (root-cause analysis found only SUPPORTED ASSOCIATIONS —
 | Corrected mitigation result | **NO ACCEPTABLE MITIGATION IDENTIFIED** (only MLP got BMI-Platt: gap 39.03 → 34.48 pp, no formal inference) (`PHASE3_CORRECTED_MITIGATION_REPORT.md`) | SUPPORTED WITH LIMITATIONS |
 | Subgroup-calibration evidence | **No acceptable subgroup-calibration improvement**; classification gaps identical to global Platt; no joint calibrator; Decision B (`PHASE4_CORRECTED_FINAL_AUDIT_REPORT.md`) | SUPPORTED WITH LIMITATIONS |
 | Conformal coverage in BMI groups | BMI-**Obese** under-covers (76.8–82.3%); Normal-BMI/Overweight over-cover; Mondrian restores 2/5 Obese targets; not resolved for RF/XGB/LGBM (`subgroup_coverage.csv`, `test_set_mitigation_final.csv`) | CONFIRMED (failure); PARTIALLY EFFECTIVE (mitigation) |
-| Temporal | Disparity persisted and **enlarged** to 62.8–71.9 pp | CONFIRMED |
-| Remaining limitation | Normal-BMI has 22 test positives; mechanism non-causal; no acceptable fix; conformal replication on sensitivity cohorts not measured |
+| Remaining limitation | Normal-BMI has 22 test positives; mechanism non-causal; no acceptable fix |
 
 **Currently supported conclusion:** the Normal-BMI vs Obese sensitivity disparity is real,
-reproduced, mechanism-linked, robust across cohorts and time, and **NO ACCEPTABLE BMI-SENSITIVITY
-MITIGATION HAS BEEN IDENTIFIED.** Repository evidence does **not** contradict this wording.
+reproduced, mechanism-linked, robust across independently constructed cohorts, and **NO ACCEPTABLE
+BMI-SENSITIVITY MITIGATION HAS BEEN IDENTIFIED.** Repository evidence does **not** contradict this wording.
 **DO NOT CLAIM** BMI fairness was solved, or that subgroup calibration / Phase 7 solved it.
 
 ---
@@ -140,14 +132,14 @@ MITIGATION HAS BEEN IDENTIFIED.** Repository evidence does **not** contradict th
 | Exploratory intersectional (Obese ∩ 60+, N=294) | baseline 64.97–75.17% | SUPPORTED WITH LIMITATIONS (descriptive, small cell) |
 | Mondrian mitigation (Project Phase 7) | 5/9 targets nominal; XGBoost marginal +5.27 pp breach; sequential overlap | PARTIALLY EFFECTIVE |
 | MI conformal (BMI-inv Phase 5) | descriptively consistent with complete-case; BMI-Obese still under-covers | EXPLORATORY / `LINEAGE NOT FOUND` |
-| Joint conformal (Method b/c, M4b N0=0) | CAND_1 intersectional coverage ≥90% for 4–5/5; XGB/LGBM marginal breach; **fails temporally (1/5)** | EXPLORATORY |
+| Joint conformal (Method b/c, M4b N0=0) | CAND_1 intersectional coverage ≥90% for 4–5/5; XGB/LGBM marginal breach | EXPLORATORY |
 | Faithful AFCP | near-target single-attribute; intersection still <90%; overall >90% | EXPLORATORY (C3 ADJUDICATED 2026-08-27: KNN-AFCP INVALID, faithful AFCP EXPLORATORY, no superiority claim) |
 | 8.0-kPa conformal | some detail threshold-sensitive (BMI-inv Phase 6) | SUPPORTED WITH LIMITATIONS |
 | CAND_2 / CAND_3 conformal replication | NOT MEASURED | INCONCLUSIVE |
 
 **Do not claim conditional / subgroup conformal validity.** Marginal validity holds; subgroup
 adequacy does not; no method tested achieves subgroup or intersectional validity that is
-acceptable on all metrics and replicates over time.
+acceptable on all metrics.
 
 ---
 
@@ -179,7 +171,7 @@ replacement for the primary analysis.
 | Group-specific Youden thresholds (D05/D07) | equalize subgroup sensitivity | OOF-derived subgroup thresholds | BMI gap halved; Age gap +26–133%; ~40 pp specificity cost | **EXPLORATORY ONLY** | EXPLORATORY_ONLY |
 | Equal Opportunity post-processing (D06) | equalize TPR | subgroup threshold shift to target TPR | ~50–80 pp sensitivity gain at ~40 pp specificity cost; ~399 excess FP/1,000 | **EXPLORATORY ONLY** (clinically unacceptable) | EXPLORATORY_ONLY |
 | XGBoost mitigation retuning (BMI-inv Phase 7) | remove XGBoost coverage breach | authorized Phase 3 candidate family, OOF only | every gap-closing candidate costs 11–22 pp sensitivity or flips the breach | **NO ACCEPTABLE RETUNING** | MANUSCRIPT_READY_WITH_QUALIFICATION |
-| Joint intersectional conformal (Method b/c, M4b N0=0) | restore Obese∩60+ coverage | joint-cell / shrinkage quantiles | CAND_1 ≥90% for 4–5/5; XGB/LGBM marginal breach; temporal 1/5 | **EXPLORATORY ONLY / VALID SECONDARY METHOD** | EXPLORATORY_ONLY |
+| Joint intersectional conformal (Method b/c, M4b N0=0) | restore Obese∩60+ coverage | joint-cell / shrinkage quantiles | CAND_1 ≥90% for 4–5/5; XGB/LGBM marginal breach | **EXPLORATORY ONLY / VALID SECONDARY METHOD** | EXPLORATORY_ONLY |
 
 **Classification key:** SUCCESSFUL — *none*. PARTIALLY EFFECTIVE — Mondrian (conformal coverage
 only). NO ACCEPTABLE MITIGATION — corrected BMI mitigation, corrected subgroup calibration,

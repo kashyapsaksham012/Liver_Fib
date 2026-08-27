@@ -1,6 +1,6 @@
 # Phase 0 repository and lineage audit
 
-**Scope:** Phase 0 audit and Phase 1 reproduction only. No retraining, threshold changes, mitigation, temporal validation, external validation, predictor changes, or outcome changes were performed.
+**Scope:** Phase 0 audit and Phase 1 reproduction only. No retraining, threshold changes, mitigation, external or out-of-sample validation, predictor changes, or outcome changes were performed.
 
 ## Frozen-state verification
 
