@@ -182,9 +182,8 @@ models retrained on the remaining N=5,366 (489 positive, 9.113%) and evaluated o
 - Calibration becomes materially unstable on the holdout: intercepts −0.577 to −2.169, slopes
   0.636–0.972 (all below 1, i.e. systematic overprediction) — worse and more variable than the
   primary-cohort recalibrated results in B.4.
-- Temporal (cross-cycle) external validation was determined infeasible: `SDDSRVYR` is constant
-  (66.0) across every record in this NHANES release, so no independent time-split exists within
-  the data itself. **No external, non-NHANES validation has been performed at any point in this
+- No out-of-sample (later-cycle or independent-cohort) evaluation is within the scope of this
+  study, and **no external, non-NHANES validation has been performed at any point in this
   project** — this remains the single most important unaddressed generalization question (see
   `../reliability_extension/external_validation_future_work.md`).
 Full detail: `../../PHASE8_SUBGROUP_HOLDOUT_GENERALIZATION_RESULTS_REPORT.md`.

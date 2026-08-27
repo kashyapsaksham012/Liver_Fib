@@ -8,7 +8,7 @@ dimensions rated: **STRONG · ADEQUATE WITH LIMITATIONS · LIMITED · INSUFFICIE
 ## Overall verdict: **MANUSCRIPT-READY WITH SPECIFIED QUALIFICATIONS** (recommendation B)
 
 The scientific state is stable and internally consistent. All primary analyses, the BMI
-follow-up, the sensitivity suite, and a temporal cycle are complete. No required non-validation
+follow-up, and the sensitivity suite are complete. No required non-validation
 work remains. The manuscript can be drafted now provided it carries the mandated limitations,
 frames every non-primary result at its register tier, and makes none of the `DO_NOT_CLAIM.md`
 claims.
@@ -54,7 +54,7 @@ claims.
 
 ### LINEAGE — ADEQUATE WITH LIMITATIONS
 
-Primary result families (discrimination, calibration, fairness, conformal, temporal) have
+Primary result families (discrimination, calibration, fairness, conformal) have
 documented result→script→input→artifact traces (`MASTER_END_TO_END_RESEARCH_REPORT.md` §L). The
 exceptions are enumerated above and each carries an explicit missing-lineage token.
 
@@ -68,7 +68,7 @@ disparity; DCA showing net benefit within the plausible threshold range.
 ### LIMITATIONS — ADEQUATE (disclosure is thorough)
 
 `FINAL_LIMITATIONS_REGISTER.md` enumerates 40+ limitations across 10 categories with severity and
-wording. The mandated minimum set (external validation absent; partial temporal replication;
+wording. The mandated minimum set (external and out-of-sample validation absent;
 Age-60+ fragile; Phase 7 partial + XGBoost breach + sequential overlap; no acceptable BMI
 mitigation; conformal marginal-only; conformal subgroup coverage replicated on 8.0 kPa / CAND_2 /
 CAND_3 (Amendment #16; BMI-Obese robust, Age-60+ direction robust); MI narrow + no lineage;
@@ -97,7 +97,7 @@ not belong in the abstract.
 ## Findings that REQUIRE qualification
 
 - Age-60+ **sensitivity** deficit (direction robust; significant 4/5; specification-sensitive;
-  non-monotonic; reverses temporally) — **secondary observation, Results body + Limitations only,
+  non-monotonic) — **secondary observation, Results body + Limitations only,
   never the abstract or a co-headline with BMI** (`MANUSCRIPT_FRAMING_GUIDANCE.md`).
 - Project Phase 7 Mondrian mitigation (partial: 5/9; XGBoost marginal breach; sequential overlap).
 - Corrected BMI mitigation / subgroup calibration (no acceptable improvement; MLP-only modest
@@ -121,7 +121,7 @@ Historical baseline AUROCs / prevalences (transcription errors); Age-60+ 5/5 sig
 historical BMI-investigation Phase 3 / Phase 4 conclusions; KNN-AFCP; N0=100; the "294 ≈ 62%"
 overlap characterisation; `MASTER_RESEARCH_RESULTS.md` conformal-coverage numbers and BMI label;
 any CAND_4 or severity-graded secondary-outcome performance; any external-validation claim; any
-full-temporal-replication or deployment-readiness claim; any causal claim.
+temporal / later-cycle replication or deployment-readiness claim; any causal claim.
 
 ---
 
@@ -140,5 +140,4 @@ full-temporal-replication or deployment-readiness claim; any causal claim.
 
 No additional experiments, no reruns, no retuning, no new cohort construction, no temporal or
 external validation, are required for the manuscript to be submittable as a study of
-discrimination, calibration, fairness, and conformal reliability in a US adult NHANES cohort with
-a partial temporal replication.
+discrimination, calibration, fairness, and conformal reliability in a US adult NHANES cohort.

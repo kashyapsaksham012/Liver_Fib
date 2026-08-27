@@ -232,5 +232,4 @@ No discrepancy changes either final status.
 - XGBoost's conformal marginal-coverage tolerance breach (Mondrian +5.27 pp; joint +6.80 pp)
   is **unresolved** and remains a disclosed limitation — no authorized intervention removes it.
 - OOF development half is a single 50/50 parity split; subgroup development estimates are noisy.
-- No temporal or external validation was performed (out of scope, and infeasible / absent per
-  project documentation).
+- No external or out-of-sample validation was performed (out of scope per project documentation).

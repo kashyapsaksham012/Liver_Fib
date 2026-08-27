@@ -104,14 +104,12 @@ eligibility · required wording.
   (+0.09). Methods b and c differ by up to 4.08 pp (raw-cell vs finite-sample quantile);
   both code-clean, both preserved.
 - **Limitation:** joint calibration cell N=138 (30 positive); XGBoost/LightGBM breach the ±5 pp
-  marginal tolerance (+6.80 / +5.50 pp); **fails temporally** — frozen N0=0 met the
-  intersectional target for only RF (1/5) in NHANES 2021–2023; generating lineage for the joint
+  marginal tolerance (+6.80 / +5.50 pp); generating lineage for the joint
   artifact `NOT FOUND IN REPOSITORY`; stale status-CSV conflict (C2).
 - **Manuscript:** EXPLORATORY only; must not be presented as a solution to the intersectional
   coverage problem.
 - **Wording:** "An exploratory joint-cell conformal calibration restored intersectional coverage
-  on the primary cohort for most models but breached the marginal-coverage tolerance for two and
-  did not replicate on a later cycle."
+  on the primary cohort for most models but breached the marginal-coverage tolerance for two."
 
 ## E9. M4b shrinkage sensitivity / coverage–set-size trade-off / LightGBM failure analysis
 

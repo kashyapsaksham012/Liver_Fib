@@ -59,15 +59,9 @@ the rarer outcomes. Scope limits in
   mechanism diagnosis (score-distribution + threshold, non-causal), and a structured mitigation
   search — **no acceptable BMI-sensitivity mitigation was identified**; XGBoost coverage-breach
   retuning also found no acceptable candidate. `documentation/fairness_bmi_investigation/`.
-- **NHANES 2021–2023 temporal validation (separate work, complete):** frozen models/thresholds/
-  conformal parameters applied to a later cycle (N=4,910). Result: **PARTIAL TEMPORAL REPLICATION**
-  — discrimination fell (AUROC 0.777–0.782), the BMI-Obese sensitivity disparity persisted and
-  enlarged, the Age-60+ disparity shrank/reversed, subgroup and intersectional conformal
-  under-coverage persisted, and the frozen intersectional-mitigation configuration held for only
-  1/5 models. `results/temporal_validation/PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`.
 
 ## Current project status
-Phases 1–8, the BMI-fairness investigation, the full sensitivity suite, and a temporal cycle are
+Phases 1–8, the BMI-fairness investigation, and the full sensitivity suite are
 complete. The repository is at its **pre-manuscript evidence freeze**. No non-validation analysis
 is required before manuscript preparation. Open items — no external (non-NHANES) validation, no
 acceptable BMI-sensitivity mitigation, an unresolved XGBoost coverage-tolerance breach, no primary
@@ -75,11 +69,11 @@ joint mitigation for the BMI×Age overlap, and an unexecuted all-ages sensitivit
 tracked in `documentation/final_research_audit/FINAL_REMAINING_WORK_REGISTER.md`.
 
 ## Known limitations
-No external (non-NHANES) validation has been performed; the only out-of-sample evidence is the
-NHANES 2021–2023 temporal work, which is a **partial**, not full, replication. The Age-60+ fairness
-finding's direction is robust but its statistical significance is specification-sensitive (and
-reverses in the temporal cycle). The Phase 7 mitigation is a genuine but partial fix (5/9), not a
-resolution. Full limitations register:
+No external (non-NHANES) validation and no out-of-sample (later-cycle or independent-cohort)
+evaluation has been performed within the scope of this study; generalizability beyond the
+NHANES 2017–March 2020 development setting is unestablished. The Age-60+ fairness finding's
+direction is robust but its statistical significance is specification-sensitive. The Phase 7
+mitigation is a genuine but partial fix (5/9), not a resolution. Full limitations register:
 `documentation/final_research_audit/FINAL_LIMITATIONS_REGISTER.md`.
 
 ## Detailed documentation

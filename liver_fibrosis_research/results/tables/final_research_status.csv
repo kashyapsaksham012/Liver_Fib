@@ -17,6 +17,5 @@ Broader multiple imputation (non-NHB scope),"NOT EXECUTED, NOT FROZEN",-,No,No,N
 Intersectional (joint) Mondrian mitigation,NOT EXECUTED,294-person overlap population,No,No,No,Would require new mitigation-logic design
 XGBoost mitigation re-tuning,NOT EXECUTED,-,No,No,No,Would require new tuning pass
 External (non-NHANES) validation,NOT EXECUTED,Independent cohort (none identified),No,No,No,Requires an independent dataset - largest open limitation
-Temporal (cross-cycle) validation,NOT EXECUTED - infeasible with this data,-,N/A,N/A,Documented as a limitation,Not resolvable within this NHANES release
 Reliability extension (co-occurrence + DCA),COMPLETE,Frozen test-set predictions,Yes,Yes,Yes,None
 Literature novelty/duplication audit,COMPLETE (separate task),N/A,N/A,Yes (published artifact),Supporting material,None

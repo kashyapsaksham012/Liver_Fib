@@ -76,14 +76,7 @@ and calibration stories reproduce (`results/sensitivity/primary_vs_sensitivity_c
 The BMI-investigation Phase 6 re-ran OOF Platt and split conformal at 8.0 kPa and reached an
 honest verdict ("SOME MAJOR FINDINGS ARE THRESHOLD-SENSITIVE") rather than asserting invariance.
 
-## 10. A completed later-cycle temporal evaluation with frozen models
-
-NHANES 2021–2023 (N=4,910) evaluated with frozen models, frozen thresholds, frozen conformal
-parameters, and frozen N0=0 M4b — no temporal refitting — with a documented preflight failure
-and its resolution, integrity hashes, and a synthesis that classifies the result as **PARTIAL
-TEMPORAL REPLICATION** (`PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`).
-
-## 11. Preservation and audit discipline
+## 10. Preservation and audit discipline
 
 Superseded and invalid work (historical Phase 3/4, KNN-AFCP, N0=100, leakage-prone early
 diagnostic scripts) is preserved on disk and explicitly demarcated
@@ -93,7 +86,7 @@ diagnostic scripts) is preserved on disk and explicitly demarcated
 this audit) cross-check the numbers, and documented conflicts are labelled
 `CONFLICT UNRESOLVED IN REPOSITORY` rather than silently resolved.
 
-## 12. Reproducibility infrastructure
+## 11. Reproducibility infrastructure
 
 Frozen environment / package locks, seed recording, split ID files, model lineage
 (`results/tables/model_lineage.csv`), result-to-script-to-data lineage
@@ -101,7 +94,7 @@ Frozen environment / package locks, seed recording, split ID files, model lineag
 (`results/diagnostics/frozen_file_hashes.json`), and an internal validation suite reporting
 44/44 tests passed (`documentation/audit_reports/internal_validation_results.csv`).
 
-## 13. Clinically grounded predictor set and interpretability
+## 12. Clinically grounded predictor set and interpretability
 
 Ten low-cost routine primary-care variables; the top four features (ALT, AST, BMI, Age) are
 consistent across all five families and physiologically sensible
@@ -111,4 +104,4 @@ consistent across all five families and physiologically sensible
 
 **Bottom line:** the methodological rigor, transparency, and self-auditing are the strongest
 aspects of this work and are exactly what make its negative findings (subgroup coverage failure,
-no acceptable BMI mitigation, partial temporal replication) credible.
+no acceptable BMI mitigation) credible.

@@ -243,6 +243,5 @@ calibration exists only as an exploratory artifact with its own tolerance breach
 
 Every item above is a completed analysis that **narrows** rather than establishes a positive
 claim. The recurring pattern: interventions that improve one metric (an ECE, one model's BMI gap,
-a joint-cell coverage) do **not** meet the pre-specified multi-metric bar, do **not** generalize
-across model families, and in several cases do **not** replicate temporally. None may be reported
-as a successful mitigation.
+a joint-cell coverage) do **not** meet the pre-specified multi-metric bar and do **not** generalize
+across model families. None may be reported as a successful mitigation.

@@ -122,7 +122,7 @@ An item is not REQUIRED merely because it is unfinished. Basis:
 ## 8. Joint-mitigation hardening / re-freeze — **DO_NOT_RUN → DO NOT DO**
 
 - The joint intersectional artifact is EXPLORATORY with generating lineage
-  `NOT FOUND IN REPOSITORY` and its own tolerance breaches; it fails temporally (1/5 models). No
+  `NOT FOUND IN REPOSITORY` and its own tolerance breaches. No
   authorized protocol exists to "harden" it, and it is not a manuscript-primary object.
   Preserve as exploratory; do not attempt to promote or re-derive it here.
 
@@ -195,8 +195,8 @@ An item is not REQUIRED merely because it is unfinished. Basis:
 | 9 | AFCP narrative-status resolution | OPTIONAL (docs only) | DO NOT DO (adjudicate on paper) |
 | 10 | Severity-graded secondary outcomes | IMPORTANT (status) / OPTIONAL (execute) | **EXECUTED 2026-08-27 (relabel-only, Amendment #15)** — see item 10 UPDATE |
 | 11 | Survey-weighted / weighted-loss training | DO_NOT_RUN | **NOT EXECUTED — FORMALLY DEFERRED 2026-08-27** (see item 11 entry) |
-| — | Temporal validation (NHANES 2021–2023) | SEPARATE_WORK — COMPLETE | no action |
-| — | External (non-NHANES) validation | SEPARATE_WORK — NOT EXECUTED / blocked | top future priority; out of scope here |
+| — | Temporal validation (NHANES 2021–2023) | SPLIT INTO A SEPARATE MANUSCRIPT | removed from this repo; preserved on the `temporal-validation-standalone` branch; not part of this study |
+| — | External (non-NHANES) validation | NOT EXECUTED / blocked | top future priority; out of scope here |
 
 **No item among the repository's remaining non-validation work is REQUIRED before manuscript
 preparation.** The single genuinely material gap — external validation — is SEPARATE WORK,

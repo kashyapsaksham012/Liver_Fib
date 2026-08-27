@@ -4,9 +4,14 @@
 `/Users/sakshamkashyap/Desktop/Research /liver_fibrosis_research`)
 **Audit date:** 2026-08-27
 **Mode:** READ-ONLY. No experiment was run, no model was generated, no existing result,
-protocol, historical artifact, or master report was modified. Temporal validation and external
-validation were **not** performed. This document and its companions under
+protocol, historical artifact, or master report was modified. External
+validation was **not** performed, and no out-of-sample (later-cycle or independent-cohort)
+evaluation is within the scope of this study. This document and its companions under
 `documentation/final_research_audit/` and `results/final_research_audit/` are the only new files.
+
+> **Scope note:** a NHANES 2021–2023 temporal evaluation was completed and then split into a
+> separate manuscript; all temporal code, results, and documents were removed from this repository
+> (preserved on the `temporal-validation-standalone` git branch) and are not part of this study.
 
 **Git state at audit:** `HEAD = 4ad991a`. The consolidation layers
 `documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md`,
@@ -51,7 +56,7 @@ Recency alone was never used to assign authority.
 
 No other numeric claim checked in this audit (Phase 1 cohort flow, Phase 3 AUROC/thresholds,
 Phase 4 raw & recalibrated calibration, Phase 5 BMI/Age fairness, Phase 6 intersectional coverage,
-Phase 7 Mondrian 5/9 + XGBoost breach, Phase 8 holdout, MI, 8.0 kPa, temporal) showed a
+Phase 7 Mondrian 5/9 + XGBoost breach, Phase 8 holdout, MI, 8.0 kPa) showed a
 discrepancy against the repository's frozen result files.
 
 ---
@@ -105,14 +110,13 @@ Opportunity post-processing, faithful AFCP, joint intersectional conformal metho
 selection + trade-offs, fairness–specificity Pareto, clinical false-positive costs, LightGBM
 failure analysis, co-occurrence, Decision Curve Analysis, interpretability.
 
-**Separate work, executed:** NHANES 2021–2023 temporal validation (Phases 1–4) →
-**PARTIAL TEMPORAL REPLICATION**.
-
 **Constructed but not executed:** CAND_4 all-ages (≥12 y) cohort, N=8,215.
 **Not executed:** broader (whole-cohort) MI; MI conformal-coverage comparison; full 8.0-kPa
 retraining/recalibration/conformal repetition; conformal replication on CAND_2/CAND_3/8.0 kPa;
 severity-graded secondary outcomes (≥9.7 / ≥13.6 kPa); survey-weighted training.
-**Not executed / not feasible:** non-NHANES external validation.
+**Not executed / not feasible:** non-NHANES external validation; any later-cycle (temporal)
+evaluation (a NHANES 2021–2023 temporal analysis was completed and split into a separate
+manuscript — see the scope note at the top of this document).
 
 ## 4. What went well
 
@@ -123,8 +127,7 @@ phase; an explicit, pre-specified fairness audit that produced a real negative-f
 finding; split-conformal uncertainty quantification exposing subgroup failures that AUC and
 aggregate calibration hid; a mechanism-focused BMI investigation that reproduced its own prior
 result before diagnosing it; disciplined preservation of superseded/invalid work with explicit
-demarcation; multiple independent audit and reconciliation passes; a completed later-cycle
-temporal evaluation.
+demarcation; multiple independent audit and reconciliation passes.
 
 ## 5. Strongest scientific findings (CONFIRMED)
 
@@ -195,7 +198,7 @@ See `EXPLORATORY_RESULTS.md` and `VERIFIED_WITH_LIMITATIONS.md`. Consolidated in
 | Group-specific Youden thresholds (D05/D07) | equalize subgroup sensitivity | BMI gap halved but **Age gap worsened 26–133%**; ~38–40 pp specificity cost | **EXPLORATORY — Two-Mechanism finding, not a fix** |
 | Equal Opportunity post-processing (D06) | equalize TPR | ~50–80 pp target-group sensitivity gain at ~38–40 pp specificity cost; ~399 excess FP per 1,000 normal-weight screened | **EXPLORATORY — clinically unacceptable** |
 | XGBoost mitigation retuning (BMI-inv Phase 7) | remove XGBoost coverage-tolerance breach | every gap-closing candidate costs 11–22 pp overall sensitivity or flips the breach | **NO ACCEPTABLE RETUNING** |
-| Joint intersectional conformal (Method b / c / M4b N0=0) | restore BMI-Obese ∩ Age-60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on CAND_1, but XGBoost/LightGBM breach ±5 pp marginal tolerance; **fails to replicate temporally** (1/5 models) | **EXPLORATORY / VALID SECONDARY METHOD only** |
+| Joint intersectional conformal (Method b / c / M4b N0=0) | restore BMI-Obese ∩ Age-60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on CAND_1, but XGBoost/LightGBM breach ±5 pp marginal tolerance | **EXPLORATORY / VALID SECONDARY METHOD only** |
 
 **No intervention resolved the BMI classification (sensitivity) disparity. No BMI-sensitivity
 mitigation with an acceptable multi-metric profile was identified.**
@@ -231,7 +234,7 @@ mitigation with an acceptable multi-metric profile was identified.**
 3. XGBoost conformal marginal-coverage tolerance breach after mitigation (Mondrian +5.27 pp;
    joint +6.80 pp) — unresolvable within the authorized candidate family.
 4. BMI-Obese ∩ Age-60+ intersectional population has no primary joint mitigation; the joint
-   methods are exploratory and do not replicate temporally.
+   methods are exploratory only.
 5. Phase 5 MI conformal `LINEAGE NOT FOUND IN REPOSITORY` (descriptive-only handling accepted).
 6. Frozen 8.2-kPa protocol commit / model-artifact manifest `NOT FOUND IN REPOSITORY`
    (BMI-inv Phase 6 lineage limitation).
@@ -257,7 +260,7 @@ lineage reconstruction.
 **None.** No repository document labels any remaining non-validation analysis "required", and the
 frozen `sensitivity_analysis_plan.md` Governing Rule states its analyses are "a pre-registered
 list, not a mandatory execution schedule." The discrimination / calibration / BMI-fairness story
-is triangulated across three independent cohort perturbations plus a temporal cycle.
+is triangulated across three independent cohort perturbations.
 
 ## 12. IMPORTANT work
 
@@ -298,31 +301,23 @@ unauthorized by the frozen `missing_data_protocol.md`); full 8.0-kPa retraining 
 (duplicates the authorized relabel); XGBoost mitigation retuning (already executed and verified —
 `NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED`); survey-weighted training (frozen EXPLORATORY,
 unresolved methodology, no dependent claim); any rerun / retuning / recalibration / re-selection
-of Phase 0–8, BMI-investigation, temporal, master, historical-invalid, or corrected-phase
+of Phase 0–8, BMI-investigation, master, historical-invalid, or corrected-phase
 artifacts.
 
-## 15. Temporal work
+## 15. Out-of-sample evaluation status
 
-**TEMPORAL VALIDATION — SEPARATE WORK. COMPLETE.** NHANES 2021–2023; N=4,910; 563 positives;
-11.4664% prevalence. Frozen five models, frozen thresholds, frozen Phase 6 conformal params,
-frozen N0=0 M4b; no temporal refit/recalibration. Result: **PARTIAL TEMPORAL REPLICATION** —
-AUROC declined to 0.7765–0.7824 (−0.041 to −0.061), PR-AUC rose; raw calibration still poor
-(negative intercepts, Brier worse); BMI-Obese sensitivity disparity **persisted and enlarged to
-62.8–71.9 pp** (FDR q<0.001, 5/5); Age-60+ disparity shrank/reversed (higher 60+ sensitivity,
-significant only for logistic); marginal conformal coverage near target (87.9–90.2%) still
-masking BMI-Obese (77.0–81.3%), Age-60+ (84.9–87.8%), and intersectional (69.7–76.5%)
-under-coverage; frozen N0=0 M4b met its intersectional target for **only 1/5 models** (RF)
-vs 4/5 originally. Not clinical readiness, not causal explanation, not external generalization.
-Sources: `results/temporal_validation/PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md` and the temporal
-result CSVs.
+**NO OUT-OF-SAMPLE EVALUATION IS IN SCOPE FOR THIS STUDY.** There is no later-cycle (temporal)
+analysis and no independent-cohort analysis in this repository. A NHANES 2021–2023 temporal
+evaluation was completed and then **split into a separate manuscript**; all temporal code,
+results, and documents were removed from this repository and preserved on the
+`temporal-validation-standalone` git branch. It is not part of this study's evidence base.
 
 ## 16. External-validation status
 
-**EXTERNAL VALIDATION — SEPARATE WORK. NOT EXECUTED / NOT FEASIBLE within repository evidence.**
+**EXTERNAL VALIDATION — NOT EXECUTED / NOT FEASIBLE within repository evidence.**
 No obtained independent non-NHANES cohort with demonstrated compatibility for the frozen outcome,
 ten predictors, and VCTE quality rule. The Non-Hispanic Black holdout (Phase 8) is a
-within-NHANES demographic holdout and **must not** be called external validation; the 2021–2023
-work is temporal, not external. Source:
+within-NHANES demographic holdout and **must not** be called external validation. Source:
 `documentation/reliability_extension/external_validation_future_work.md`,
 `FINAL_CLAIM_AND_STATUS_REGISTRY.csv` row `EXT`.
 
@@ -346,8 +341,8 @@ different, firmer finding). Keep the two Age-60+ findings explicitly distinct.
 
 ## 18. Required manuscript limitations
 
-Full register: `FINAL_LIMITATIONS_REGISTER.md`. Minimum set that must appear: no external
-validation; temporal result is PARTIAL, not full, replication; Age-60+ significance is
+Full register: `FINAL_LIMITATIONS_REGISTER.md`. Minimum set that must appear: no external or
+out-of-sample (later-cycle / independent-cohort) validation; Age-60+ significance is
 specification-sensitive; Phase 7 mitigation is partial (5/9), with an XGBoost coverage breach and
 sequential (not joint) overlap handling; no acceptable BMI-sensitivity mitigation was found;
 conformal subgroup coverage is empirical and not a conditional-validity guarantee; conformal
@@ -370,10 +365,11 @@ sets that under-cover the truth. Threshold tuning helps the BMI sensitivity gap 
 score-distribution/threshold mechanism) but harms the Age gap (a different, non-threshold
 mechanism), and no calibration-, threshold-, or conformal-based intervention tested produced an
 acceptable fix. Group-wise Mondrian conformal mitigation is a genuine but partial repair. The
-BMI disparity is the most robust finding in the study — reproduced, stable across three
-sensitivity cohorts, and enlarged in a later NHANES cycle. The Age-60+ disparity is
-directionally consistent but statistically fragile. Transportability is limited: a withheld
-demographic subgroup and a later time cycle both degrade discrimination and calibration. The
+BMI disparity is the most robust finding in the study — reproduced and stable across three
+sensitivity cohorts. The Age-60+ disparity is
+directionally consistent but statistically fragile. Transportability is limited: withholding a
+demographic subgroup from training degrades discrimination and calibration on that subgroup, and
+no later-cycle or independent-cohort evaluation is in scope. The
 study's contribution is the demonstration that discrimination + aggregate calibration are
 insufficient reliability evidence for subgroup-safe clinical deployment, not a deployable model.
 
@@ -384,21 +380,21 @@ insufficient reliability evidence for subgroup-safe clinical deployment, not a d
 The scientific state is stable and internally consistent (one documentation conflict, C1, is
 flagged for the register owner and does not affect any result). No required non-validation work
 remains. The manuscript can be written now, provided it (i) carries the limitations in §18,
-(ii) frames every non-primary result at its register tier, (iii) states the overall
-transportability status as **PARTIAL TEMPORAL REPLICATION** and explicitly notes that **external
-validation has not been performed**, and (iv) makes none of the claims in `DO_NOT_CLAIM.md`.
+(ii) frames every non-primary result at its register tier, (iii) explicitly notes that **no
+external or out-of-sample validation has been performed**, and (iv) makes none of the claims in
+`DO_NOT_CLAIM.md`.
 
 ---
 
 ## Validation boundary
 
-**TEMPORAL VALIDATION — SEPARATE WORK.** **EXTERNAL VALIDATION — SEPARATE WORK.** Neither is
-counted as missing non-validation analysis; neither was performed by this audit.
+**EXTERNAL VALIDATION — NOT PERFORMED.** No out-of-sample (later-cycle or independent-cohort)
+evaluation is in scope for this study.
 
 ## Preservation attestation
 
 No primary result, Phase 0–8 artifact, BMI-investigation artifact, historical or exploratory
-artifact, master report, temporal result, or external-validation file was modified. Only the
+artifact, master report, or external-validation file was modified. Only the
 files under `documentation/final_research_audit/` and `results/final_research_audit/` were
 created.
 

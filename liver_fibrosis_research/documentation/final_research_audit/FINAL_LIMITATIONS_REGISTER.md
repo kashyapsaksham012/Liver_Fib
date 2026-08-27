@@ -10,7 +10,7 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 
 | ID | Limitation | Evidence | Severity | Affects interpretation? | Manuscript wording |
 |---|---|---|---|---|---|
-| A1 | Age-60+ disparity significance is specification-sensitive (4/5 primary; lost in 9/12 sensitivity-cohort instances; reverses temporally) | `fairness_inference.csv`, `primary_vs_sensitivity_comparison.csv`, `temporal_fairness_results.csv` | MODERATE | Yes | "The older-age sensitivity deficit was directionally consistent but statistically significant in four of five models and not robust to alternative specifications." |
+| A1 | Age-60+ disparity significance is specification-sensitive (4/5 primary; lost in 9/12 sensitivity-cohort instances) | `fairness_inference.csv`, `primary_vs_sensitivity_comparison.csv` | MODERATE | Yes | "The older-age sensitivity deficit was directionally consistent but statistically significant in four of five models and not robust to alternative specifications." |
 | A2 | No formal comparative inference (p-values / CIs) for corrected Phase 3 / Phase 4 mitigation candidate differences | `PHASE3_CORRECTED_MITIGATION_REPORT.md`, `PHASE4_CORRECTED_FINAL_AUDIT_REPORT.md` | MODERATE | Yes | "Mitigation candidates were compared descriptively against a pre-specified gate; no candidate-vs-candidate significance test was performed." |
 | A3 | Co-occurrence of the fairness and coverage flags is not a confirmed association (permutation p=0.1195) | `RELIABILITY_EXTENSION_RESULTS_REPORT.md` | LOW | Yes (if cited) | "The apparent co-occurrence of the two subgroup failures was not statistically confirmed under a category-block permutation test." |
 | A4 | BH-FDR ceiling: NHB MI adjusted p=0.978 for all 5 models is a correction artifact, not evidence of no effect | `mi_black_subgroup_comparison.csv` | LOW | Yes | "The adjusted p-values reflect the correction ceiling on a five-member test family and should not be read as evidence of equivalence." |
@@ -32,7 +32,6 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 |---|---|---|---|---|---|
 | C1 | Raw probabilities from four of five models require post-hoc OOF Platt recalibration; without it they are unusable | `primary_metrics_by_model.csv`, `test_set_calibration_final.csv` | MODERATE | Yes | "Class-balanced models are not usable without out-of-fold recalibration; this step is mandatory, not optional." |
 | C2 | Aggregate calibration adequacy does not extend to subgroups | `PHASE2_DIAGNOSTIC_REPORT.md`, `subgroup_recalibration_metrics.csv` | MODERATE | Yes | "Recalibration restored aggregate but not subgroup-level calibration behaviour." |
-| C3 | Temporal calibration remains poor (negative intercepts, worse Brier); no temporal recalibration performed | `temporal_calibration_results.csv` | MODERATE | Yes | "On a later cycle, raw calibration remained poor and was not re-fit." |
 | C4 | Isotonic calibration was not adopted (466 OOF positives); Platt is a 2-parameter approximation | `amendment_8_provenance.md` | LOW | No | "Platt scaling was chosen over isotonic regression given the limited number of positive cases." |
 
 ## D. Fairness
@@ -52,7 +51,6 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 | E2 | ~~Subgroup conformal coverage measured on CAND_1 only~~ **REPLICATED 2026-08-27 (Amendment #16)** on 8.0 kPa / CAND_2 / CAND_3 | `CONFORMAL_REPLICATION_SENSITIVITY_COHORTS_RESULTS_REPORT.md` | LOW (downgraded) | Yes | "The subgroup coverage failure was demonstrated on the primary cohort and replicated on two independently constructed sensitivity cohorts and an alternative threshold: BMI-Obese under-coverage was robust throughout; the older-age component was direction-robust with power-sensitive significance." |
 | E3 | Mondrian mitigation leaves 4/9 targets unresolved and breaches the XGBoost marginal tolerance (+5.27 pp) | `marginal_coverage_before_after.csv` | MODERATE | Yes | "Group-wise mitigation was partial and produced a marginal-coverage tolerance breach for one model." |
 | E4 | Intersectional overlap uses sequential (Age-over-BMI) precedence, not joint mitigation | `threshold_precedence_audit.csv` | MODERATE | Yes | "In the overlap population, single-attribute rules were applied sequentially rather than jointly." |
-| E5 | Frozen N0=0 M4b intersectional protection does not replicate temporally (1/5 models) | `temporal_m4b_results.csv` | MODERATE | Yes | "The frozen intersectional conformal configuration held for only one of five models on a later cycle." |
 | E6 | AFCP final narrative status unresolved | `stage1_decision_report.md` | LOW | No | (omit AFCP or label it exploratory) |
 
 ## F. Multiple imputation
@@ -82,14 +80,11 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 | H6 | Two master syntheses disagree on conformal subgroup coverage (conflict C1); raw CSV resolves it | `MASTER_RESEARCH_RESULTS.md` vs `MASTER_END_TO_END_RESEARCH_REPORT.md` | LOW | Yes (for whoever reads the wrong doc) | (cite raw CSV + MASTER_END_TO_END) |
 | H7 | Adoption of OOF Youden thresholds recorded as a protocol amendment (post-hoc procedure formalised) | `threshold_selection_audit.md` | LOW | No | "Operating thresholds were derived from out-of-fold predictions and their adoption documented as a protocol amendment." |
 
-## I. Temporal
+## I. Out-of-sample evaluation
 
 | ID | Limitation | Evidence | Severity | Affects interpretation? | Wording |
 |---|---|---|---|---|---|
-| I1 | Temporal result is **PARTIAL TEMPORAL REPLICATION**, not full replication | `PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md` | HIGH | Yes | "A later NHANES cycle only partially replicated the findings." |
-| I2 | Temporal cohort differs in prevalence (11.47% vs 9.31%) and age/BMI composition; an ALT measurement bridge was applied | `PHASE3_5_ROOT_CAUSE_DRIFT_TO_PERFORMANCE_REPORT.md` | MODERATE | Yes | "The 2021–2023 cohort differed in prevalence and composition, and an ALT assay bridge was required." |
-| I3 | Temporal drift-to-performance is an association only; no causal explanation | same | MODERATE | Yes | "Observed drift is associated with, not shown to cause, the performance change." |
-| I4 | Frozen-model evaluation only; no temporal refit / threshold reselection / recalibration | `PHASE3_TEMPORAL_VALIDATION_REPORT.md` | LOW | No | "The temporal analysis evaluated frozen models without updating." |
+| I1 | No later-cycle (temporal) or independent-cohort evaluation is within the scope of this study; generalizability beyond the NHANES 2017–March 2020 development setting is unestablished. (A NHANES 2021–2023 temporal evaluation was completed and split into a separate manuscript — preserved on the `temporal-validation-standalone` git branch — and is not part of this study's evidence base.) | — | HIGH | Yes | "The models were not evaluated on any later survey cycle or independent population; transportability is unestablished." |
 
 ## J. External validity
 
@@ -105,6 +100,6 @@ prominent), **MODERATE** (qualifies a finding), **LOW** (disclosure completeness
 
 ## Minimum limitations set for the manuscript (must all appear)
 
-D1, E1, E3, E4, I1, J1, J3, J4, A1, B1, B2, C1, C3, F1, F2, G1, plus the general
+D1, E1, E3, E4, I1, J1, J3, J4, A1, B1, B2, C1, F1, F2, G1, plus the general
 class-balancing-artifact disclosure (C1) and the underweight-uninterpretable note (B2). E2 is now
 a completeness note only (the replication was done — Amendment #16 — and is a strength, not a gap).

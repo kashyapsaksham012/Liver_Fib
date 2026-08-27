@@ -575,7 +575,7 @@ def main():
 New outcome: valid VCTE (`LUAXSTAT==1`) and `LUXSMED>=8.0 kPa`. The same quality-valid
 adult broad-lab CAND_1 cohort, ten frozen predictors, five frozen model families, inherited
 hyperparameters, development partitions, OOF Platt calibration, and split-conformal method
-were used. No temporal or external validation was performed, and no mitigation was introduced.
+were used. No external or out-of-sample validation was performed, and no mitigation was introduced.
 
 ## Cohort and label verification
 The cohort contains **N={n}**, with 8.2-kPa positives **{pos82} ({100*pos82/n:.4f}%)** and
@@ -614,7 +614,7 @@ Complete available input/output hashes and runtime metadata are in `phase6_8kpa_
 - OOF thresholds and approved OOF Platt calibration were frozen before test access.
 - Conformal calibration used the frozen 90% split-conformal score and finite-sample correction.
 - Locked test set was used exactly once after all development decisions.
-- No temporal/external validation and no mitigation.
+- No external or out-of-sample validation and no mitigation.
 - Missing lineage links: frozen 8.2 protocol commit — NOT FOUND IN REPOSITORY; frozen 8.2
   model-artifact manifest — NOT FOUND IN REPOSITORY.
 

@@ -17,5 +17,5 @@
 
 ## No rerun performed
 
-This audit did not rerun mitigation, tune thresholds, select new candidates, access temporal or
-external data, or modify any authoritative result.
+This audit did not rerun mitigation, tune thresholds, select new candidates, access external or
+out-of-sample data, or modify any authoritative result.

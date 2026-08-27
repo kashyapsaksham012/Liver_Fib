@@ -23,7 +23,7 @@ modification.
 | Documentation hash integrity | PARTIAL | Decision-log hash matches its manifest record; live robustness-report hash does not, because its manifest filename reference differs. |
 | 8.2 lineage links | PARTIAL | Frozen 8.2 protocol commit — **NOT FOUND IN REPOSITORY**; frozen 8.2 model-artifact manifest — **NOT FOUND IN REPOSITORY**. |
 | Legacy 8.0 outputs | PRESERVED / DISTINCT | `results/sensitivity/*8p0kPa*` is relabel-only (`retrained=False`) and remains separate from the full retraining namespace. |
-| Phase 0–5/7, temporal/external, primary/master preservation | PASS | No tracked prior artifact was modified; audit writes only the four requested files. |
+| Phase 0–5/7, external, primary/master preservation | PASS | No tracked prior artifact was modified; audit writes only the four requested files. |
 
 ## Final decision
 

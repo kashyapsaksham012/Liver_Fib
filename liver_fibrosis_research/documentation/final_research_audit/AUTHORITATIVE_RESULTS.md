@@ -209,11 +209,9 @@ noted. "Reproducibility" = whether a raw artifact + script + input lineage chain
 - **Source artifact:** `results/diagnostics/stage1/m4b_n0_cv_selection.csv`,
   `results/tables/m4b_prespecified_n0_final_results.csv`.
 - **Source script:** `src/sens_12_m4b_n0_prespecified.py`.
-- **Phase:** Stage-1 diagnostics. **Authority:** AUTHORITATIVE for the selection *process* and
-  for freezing N0=0 for temporal use; the coverage *result* is EXPLORATORY (see
-  `EXPLORATORY_RESULTS.md`).
-- **Limitation:** The joint-cell coverage outcome is exploratory and did not replicate
-  temporally (1/5 models).
+- **Phase:** Stage-1 diagnostics. **Authority:** AUTHORITATIVE for the selection *process*; the
+  coverage *result* is EXPLORATORY (see `EXPLORATORY_RESULTS.md`).
+- **Limitation:** The joint-cell coverage outcome is exploratory only.
 
 ---
 
@@ -230,5 +228,5 @@ Age-60+ sensitivity deficit: negative 5/5, FDR-significant 4/5 (not Logistic)
 Conformal: marginal 88.12–90.82% | BMI-Obese 76.8–82.3% | Age-60+ 81.1–85.6% | Obese∩60+ 64.97–75.17%
 Phase 7 Mondrian: 5/9 targets nominal; XGBoost marginal 93.4% (+5.27 pp breach)
 Phase 8 NHB holdout: AUROC 0.7719–0.7893 (within-NHANES)
-Temporal (separate work): N=4,910 | 563 pos | 11.4664% | AUROC 0.7765–0.7824 | BMI-Obese deficit 62.8–71.9 pp | PARTIAL TEMPORAL REPLICATION
+Out-of-sample (later-cycle / independent-cohort): none in scope for this study
 ```

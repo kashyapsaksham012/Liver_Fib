@@ -36,6 +36,14 @@ directly cited and not superseded: `MASTER_END_TO_END_RESEARCH_REPORT.md`,
 `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md`, `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`,
 `REPRODUCIBILITY.md` (plus `CHANGELOG_RESEARCH.md`).
 
+## Temporal validation split out
+
+A NHANES 2021–2023 temporal evaluation was completed as separate work and later **split into its
+own manuscript**. All temporal code, results, and documents were removed from this repository and
+preserved on the `temporal-validation-standalone` git branch. Files under this `archive/` tree
+that mention temporal validation are frozen historical snapshots and were not edited; they are
+not a source for this study, whose scope is the frozen NHANES 2017–March 2020 analysis only.
+
 ## Authority
 
 See `documentation/START_HERE.md` for the full documentation authority hierarchy and reading order.

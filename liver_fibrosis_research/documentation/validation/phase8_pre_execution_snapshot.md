@@ -18,7 +18,7 @@ training. Precedes `documentation/validation/phase8_holdout_candidate_decision.m
 |---|---|
 | `info.md` (mentor plan, repo root parent) | `528b5221f13c248c3b5a278bd03cb441691c10d761cef66ff37643ab533097ff` |
 | `documentation/phase_numbering_crosswalk.md` | `407a8ab308f2fed1a41a725e552715cc403325fe605dd6bf3428416b865d8764` |
-| `documentation/audit_reports/raw_file_inventory.md` (temporal-infeasibility evidence) | `3fa8c5056d2b30a90f5a2523eb596a321e4e5f85bb047542e777f73fcc9bbfab` |
+| `documentation/audit_reports/raw_file_inventory.md` (within-release time-split infeasibility evidence) | `3fa8c5056d2b30a90f5a2523eb596a321e4e5f85bb047542e777f73fcc9bbfab` |
 
 **Verified:** Project Phase 8 = Mentor Phase 14 = "Generalization" (crosswalk table, row 9).
 Mentor `info.md` text for Phase 14, quoted in full: *"If your NHANES data support it, perform a
@@ -27,7 +27,7 @@ perform subgroup holdout experiments. Ask: Does performance drop? Which groups a
 Does calibration remain stable?"* No external/independently-sourced dataset is mentioned anywhere
 in this text.
 
-**Temporal validation — re-confirmed infeasible:** `raw_file_inventory.md` records `SDDSRVYR`
+**Within-release time-split — re-confirmed infeasible:** `raw_file_inventory.md` records `SDDSRVYR`
 (release-cycle code) as a single constant value (66.0) across all 15,560 `P_DEMO.xpt` rows — the
 NHANES 2017–March 2020 "pre-pandemic" combined release. No sub-cycle or exam-date variable
 distinguishing 2017–2018 from 2019–March 2020 participants exists in any of the 8 raw source

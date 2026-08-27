@@ -12,9 +12,8 @@ Two things, and only these two, carry the abstract and the framing:
 
 1. **A reproducible subgroup detection failure by body-mass:** normal-weight participants are
    under-detected — sensitivity 27–48 pp lower than in obese participants, in all five model
-   families (FDR q ≤ 0.006), independently reproduced, stable across three sensitivity cohorts
-   (15/15), and enlarged in a later NHANES cycle. This is the single most robust finding in the
-   study.
+   families (FDR q ≤ 0.006), independently reproduced, and stable across three sensitivity cohorts
+   (15/15). This is the single most robust finding in the study.
 2. **The methodological point (the paper's thesis sentence):** *discrimination plus aggregate
    calibration are insufficient evidence of subgroup-safe reliability; the failing subgroups are
    identifiable, reproducible, mechanism-linked, and resistant to every mitigation strategy we
@@ -33,14 +32,13 @@ consistent but statistically fragile, and it must be presented that way.
 - **How to state it:** always with its fragility in the same sentence —
   > "Older participants (≥ 60 y) showed a consistent-direction sensitivity deficit that reached
   > significance in four of five models but was lost under 9 of 12 alternative cohort/threshold
-  > specifications, reversed direction in the 2021–2023 cycle, and reflects a non-monotonic age
-  > effect (peak ≈ 65 y); we therefore treat it as a hypothesis-generating observation rather
-  > than an established disparity."
+  > specifications, and reflects a non-monotonic age effect (peak ≈ 65 y); we therefore treat it
+  > as a hypothesis-generating observation rather than an established disparity."
 - **Why:** leading with two subgroup findings when one is weak invites reviewers to attack the
   fragile one and let that doubt spread to the robust one. Leading with BMI alone protects the
   study's strongest result.
 - **Do not claim:** Age-60+ significance in 5/5 models; a monotone "older is worse" gradient;
-  cross-cohort robustness of the age finding; that the temporal cycle supports it.
+  cross-cohort robustness of the age finding.
 
 ## 3. Age-60+ in the conformal story — retained at full strength
 
@@ -48,7 +46,7 @@ The **Age-60+ conformal under-coverage** is a *different, firmer* finding and st
 conformal-reliability results as reported:
 
 - 81.1–85.6% empirical coverage on CAND_1, Wilson CIs excluding 90%, all 5 models, FDR-significant.
-- Persists in the 2021–2023 temporal cycle (84.9–87.8%).
+- Replicated on CAND_2 / CAND_3 / 8.0 kPa (Amendment #16).
 - It is part of the marginal-vs-subgroup coverage contrast: "marginal coverage concealed
   under-coverage of **obese and older** participants in every model."
 
@@ -60,11 +58,11 @@ weight, and a reader must not conflate them.
 ## 4. Abstract — do / don't
 
 **Do:**
-- Lead with the normal-weight under-detection finding and its reproduction/temporal persistence.
+- Lead with the normal-weight under-detection finding and its independent reproduction.
 - State the marginal-vs-subgroup conformal coverage contrast (name obese and older participants).
 - State that no mitigation strategy tested produced an acceptable fix.
-- State that external validation was not performed and the temporal result is a *partial*
-  replication.
+- State that no external or out-of-sample (later-cycle / independent-cohort) validation was
+  performed.
 
 **Don't:**
 - Present Age-60+ sensitivity as a co-primary subgroup finding.

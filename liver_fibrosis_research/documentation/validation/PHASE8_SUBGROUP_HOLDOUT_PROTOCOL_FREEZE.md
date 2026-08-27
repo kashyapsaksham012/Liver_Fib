@@ -13,7 +13,7 @@ it, perform a temporal or subgroup validation. For example: train on one portion
 another. Or perform subgroup holdout experiments. Ask: Does performance drop? Which groups are
 most affected? Does calibration remain stable?"*
 
-## 2. Temporal-validation infeasibility
+## 2. Within-release time-split infeasibility
 
 Confirmed not feasible: `SDDSRVYR` is a single constant value (66.0) across the entire NHANES
 "2017–March 2020 pre-pandemic" combined release used by this project; no sub-cycle or exam-date

@@ -1,10 +1,15 @@
-# Machine Learning for Liver Fibrosis Prediction: A Comprehensive Evaluation of Discrimination, Calibration, Fairness, Conformal Reliability, and Temporal Transportability
+# Machine Learning for Liver Fibrosis Prediction: A Comprehensive Evaluation of Discrimination, Calibration, Fairness, and Conformal Reliability
 
 **Final master report.** This report consolidates the repository's research from initial data
-assembly through the completed NHANES 2021–2023 temporal-validation work. Repository paths below
+assembly through the completed sensitivity suite. Repository paths below
 are relative to `liver_fibrosis_research/`. Numerical claims are accompanied by the result file,
 phase, and status. Where the repository records a limitation, conflict, or missing analysis, it
 is stated explicitly.
+
+> **Scope note:** a NHANES 2021–2023 temporal evaluation was completed and then split into a
+> separate manuscript; all temporal code, results, and documents were removed from this repository
+> (preserved on the `temporal-validation-standalone` git branch) and are not part of this study.
+> Sections referring to temporal validation have been removed or marked accordingly.
 
 ## Evidence and authority convention
 
@@ -13,8 +18,7 @@ The primary consolidation authorities are `documentation/final_audit/RESEARCH_AU
 `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`. Raw-result authority is assigned where the
 repository explicitly identifies a result file as final/frozen/authoritative. A later completed
 artifact supersedes an older status entry only where the repository explicitly documents that
-reconciliation. The earlier temporal preflight failure is not a final-result source; it is retained
-as an intermediate failure/resolution record.
+reconciliation.
 
 # A. COMPLETE RESEARCH HISTORY
 
@@ -254,8 +258,8 @@ final narrative status; no unconditional AFCP superiority claim is permitted.
 The old N0=100 sweep is **SUPERSEDED**. Proper calibration-only N0 selection and the final
 prespecified N0=0 artifact are in `results/diagnostics/stage1/m4b_n0_cv_selection.csv`,
 `results/tables/m4b_prespecified_n0_final_results.csv`, and
-`results/tables/m4b_shrinkage_sensitivity.csv`. The final N0=0 M4b configuration was frozen for
-temporal use. **FINAL / AUTHORITATIVE for N0=0; old N0=100 SUPERSEDED.**
+`results/tables/m4b_shrinkage_sensitivity.csv`. The final N0=0 M4b configuration was frozen.
+**FINAL / AUTHORITATIVE for N0=0; old N0=100 SUPERSEDED.**
 
 Coverage-versus-set-size, fairness-specificity Pareto, clinical false-positive cost, BMI-versus-
 Age intervention response, and LightGBM failure analyses are in
@@ -302,13 +306,13 @@ Conformal coverage under MI was not authorized or performed: **NOT EXECUTED.**
 
 ## B12. External-validation investigation
 
-The repository investigated whether an independent non-NHANES cohort could be used. The only
-identified data used for validation were NHANES 2017–March 2020 and the later NHANES 2021–2023
-release; the latter is temporal validation, not external validation. The external-validation
-review found no obtained independent non-NHANES dataset with demonstrated compatibility for the
-frozen outcome, ten predictors, and VCTE quality rule. Access status for a usable independent
-cohort is therefore unavailable; compatibility is not established; and external validation was
-not performed. Source: `documentation/reliability_extension/external_validation_future_work.md`
+The repository investigated whether an independent non-NHANES cohort could be used. The
+external-validation review found no obtained independent non-NHANES dataset with demonstrated
+compatibility for the frozen outcome, ten predictors, and VCTE quality rule. Access status for a
+usable independent cohort is therefore unavailable; compatibility is not established; and external
+validation was not performed. No out-of-sample (later-cycle or independent-cohort) evaluation is
+within the scope of this study. Source:
+`documentation/reliability_extension/external_validation_future_work.md`
 and `README.md`. **NOT EXECUTED / NOT FEASIBLE within the repository evidence.** The NHB holdout
 is a within-NHANES demographic holdout and must not be called external validation.
 
@@ -322,109 +326,12 @@ effective, incomplete Mondrian mitigation. It does not support claims that the m
 unconditionally fair, have subgroup-valid conformal coverage, or have an externally validated
 deployment population.
 
-# D. TEMPORAL VALIDATION RESULTS
+# D. OUT-OF-SAMPLE EVALUATION
 
-## D1. Discovery, preparation, and preflight
-
-The temporal dataset was NHANES 2021–2023. The initial frozen prediction input contained 4,910
-rows and the ten frozen predictors. The first preflight failed because outcome and
-`RIDRETH3` companion data were absent; this is recorded in
-`results/temporal_validation/PHASE3_FAILURE_REPORT.md` as **FAILED — DO NOT PROCEED** at that
-intermediate stage. The resolution attached `LUX_L.xpt` (`LUXSMED`, `LUAXSTAT`) and `DEMO_L.xpt`
-(`RIDRETH3`) and independently bridged `BMX_L.xpt`/`DEMO_L.xpt` for BMI, age, and sex. All 4,910
-SEQNs matched, with zero duplicates, zero missing SEQNs, and zero missing outcome/demographic
-values. Sources: `TEMPORAL_LABELS_DEMOGRAPHICS_AUDIT.md` and
-`TEMPORAL_FAIRNESS_DEMOGRAPHICS_AUDIT.md`. **EXECUTED AND VERIFIED.**
-
-The final temporal cohort had N=4,910, 563 positives, 4,347 negatives, and 11.4664% prevalence
-under `LUXSMED >= 8.2`. Source: `temporal_validation_labels_demographics.csv` and
-`PHASE1_FREEZE_AND_PRESERVE_AUDIT.md`. **FINAL / AUTHORITATIVE.**
-
-## D2. Frozen prediction and integrity process
-
-Phase 3 frozen predictions used the five Phase 3 models, frozen thresholds, and no temporal
-refitting, threshold selection, or recalibration. Phase 6 conformal-refit predictions used the
-frozen proper-train artifacts and frozen global quantiles. M4b used frozen N0=0. All five model
-prediction sets contained 4,910 unique SEQNs, finite probabilities in [0,1], and no dropped
-values. SHA-256 hashes for the Phase 6 artifacts and the before/after integrity checks are in
-`TEMPORAL_CONFORMAL_INPUT_AUDIT.md`, `PHASE1_FREEZE_AND_PRESERVE_AUDIT.md`,
-`predictions/temporal_prediction_manifest.json`, and
-`temporal_conformal_refit_prediction_manifest.json`. **FINAL / AUTHORITATIVE.**
-
-## D3. Temporal discrimination
-
-| Model | AUROC (95% CI) | PR-AUC (95% CI) | Sensitivity | Specificity | PPV | NPV |
-|---|---|---|---:|---:|---:|---:|
-| Logistic | 0.7818691235171272 (0.7613177437508856–0.8014042424250571) | 0.39160132338282544 (0.35111831086637574–0.43765519406923137) | 0.6660746003552398 | 0.7412008281573499 | 0.25 | 0.9448680351906158 |
-| Random Forest | 0.7764702469312863 (0.7547085318728876–0.7973415739469376) | 0.3849341578036976 (0.3428625886391652–0.4279319733394979) | 0.6909413854351687 | 0.7471819645732689 | 0.2614247311827957 | 0.9491525423728814 |
-| XGBoost | 0.7824203294896013 (0.7618869849057684–0.8030882078151037) | 0.41319837892121647 (0.3734597876447709–0.4545844355509524) | 0.738898756660746 | 0.68391994478951 | 0.2324022346368715 | 0.9528846153846153 |
-| LightGBM | 0.7785655651127888 (0.7571065400171342–0.8004774009896055) | 0.4049293071780483 (0.36535355685506354–0.4473395867639001) | 0.6749555950266429 | 0.7579940188635841 | 0.26536312849162014 | 0.9473835537665325 |
-| MLP | 0.7813906489479892 (0.7597309816244451–0.8020405593918739) | 0.4075498819924695 (0.36477667077989834–0.4541620606897944) | 0.7744227353463587 | 0.6540142627099149 | 0.22474226804123712 | 0.9572390572390572 |
-
-Source: `results/temporal_validation/temporal_discrimination_results.csv`, n=4,910, bootstrap
-n=2,000, seed 42. **FINAL / AUTHORITATIVE.**
-
-## D4. Temporal calibration
-
-| Model | Intercept | Slope | Brier | ECE |
-|---|---:|---:|---:|---:|
-| Logistic | -2.0010662385526583 | 0.9057715507405403 | 0.18378446870183301 | 0.2846394544299061 |
-| Random Forest | -1.6395641367289593 | 1.030507734512039 | 0.15021415013669104 | 0.2217853941422908 |
-| XGBoost | -1.7806552029763787 | 0.9339817130775262 | 0.1592530257237445 | 0.23346448599613037 |
-| LightGBM | -1.7981452680493346 | 0.9473251722317894 | 0.16378063968899564 | 0.2409090307784023 |
-| MLP | -0.3711133672472523 | 0.833157942462588 | 0.08507928526203189 | 0.020794136031349997 |
-
-Source: `results/temporal_validation/temporal_calibration_results.csv`. **FINAL /
-AUTHORITATIVE.** Intercepts remained negative and Brier scores were higher than the locked-test
-recalibrated values; no temporal recalibration was performed.
-
-## D5. Temporal fairness
-
-The complete subgroup table, definitions, confidence intervals, raw p-values, FDR-adjusted
-p-values, and significance indicators are in
-`results/temporal_validation/temporal_fairness_results.csv` and
-`temporal_validation_fairness_demographics.csv`. **FINAL / AUTHORITATIVE.** The temporal
-fairness result is that the Normal-BMI sensitivity deficit versus Obese widened to 62.8–71.9
-percentage points, with FDR q<0.001 across all five models. Sex, race/ethnicity, BMI, age, and
-BMI x Age rows are present in the authoritative table; any row-level value not reproduced here
-is **NOT FOUND IN REPOSITORY** for this report's summarized narrative and must be read from that
-file rather than inferred.
-
-## D6. Temporal conformal coverage
-
-| Model | Overall | BMI-Obese | Age-60+ | BMI-Obese x Age-60+ | Mean set size |
-|---|---:|---:|---:|---:|---:|
-| Logistic | 0.9022403258655805 | 0.8127637130801688 | 0.8653663177925784 | 0.7195431472081218 | 1.4527494908350305 |
-| Random Forest | 0.8906313645621181 | 0.790084388185654 | 0.8748810656517603 | 0.7652284263959391 | 1.240529531568228 |
-| XGBoost | 0.8824847250509165 | 0.770042194092827 | 0.8491912464319695 | 0.6967005076142132 | 1.285336048879837 |
-| LightGBM | 0.8936863543788187 | 0.7895569620253164 | 0.8782112274024738 | 0.75 | 1.3191446028513238 |
-| MLP | 0.8786150712830957 | 0.7827004219409283 | 0.8491912464319695 | 0.733502538071066 | 0.9712830957230143 |
-
-The authoritative table reports marginal coverage 87.9–90.2% across models and intersectional
-coverage 69.7–76.5%. Full confidence intervals, singleton/doubleton rates, coverage gaps, drift,
-and frozen thresholds are in `results/temporal_validation/temporal_conformal_results.csv`.
-Source: that CSV and `PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`. **FINAL / AUTHORITATIVE.**
-
-## D7. Temporal M4b
-
-With frozen N0=0, intersectional coverage reached the >=90% target only for Random Forest
-(90.10%); it failed for Logistic (88.58%), XGBoost (87.69%), LightGBM (87.31%), and MLP
-(88.58%). Source: `results/temporal_validation/temporal_m4b_results.csv` and
-`PHASE1_FREEZE_AND_PRESERVE_AUDIT.md`. **FINAL / AUTHORITATIVE.**
-
-# E. ORIGINAL VS TEMPORAL COMPARISON
-
-Temporal AUROC declined by 0.041–0.061 across models: the primary locked range 0.8229–0.8429
-became 0.7765–0.7824. PR-AUC increased by 0.019–0.042. Sensitivity and specificity changed by
-model and are fully enumerated in `temporal_original_vs_validation_comparison.csv`. Calibration
-remained imperfect, with negative temporal intercepts; Brier scores worsened relative to the
-primary recalibrated test values while ECE decreased in the reported synthesis. Marginal
-conformal coverage remained near the 90% target, but BMI x Age intersectional coverage collapsed
-to 69.7–76.5%. BMI fairness worsened, with 62.8–71.9 pp temporal deficits. M4b replicated its
-intersectional target only for Random Forest. Source:
-`results/temporal_validation/PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md`,
-`temporal_original_vs_validation_comparison.csv`, and the temporal metric tables. **FINAL /
-AUTHORITATIVE.**
+No out-of-sample (later-cycle or independent-cohort) evaluation is within the scope of this study.
+A NHANES 2021–2023 temporal evaluation was completed and then **split into a separate manuscript**;
+all temporal code, results, and documents were removed from this repository and preserved on the
+`temporal-validation-standalone` git branch. It is not part of this study's evidence base.
 
 # F. COMPLETE LIST OF SUPERSEDED / INVALID / UNVERIFIED / ABANDONED WORK
 
@@ -445,8 +352,8 @@ AUTHORITATIVE.**
 * Full 8.0 kPa retraining, recalibration, and conformal repetition are **NOT EXECUTED**.
 * XGBoost mitigation retuning is **NOT EXECUTED**.
 * Non-NHANES external validation is **NOT EXECUTED**.
-* The earlier temporal preflight was **FAILED** but is resolved by the later outcome/demographic
-  preparation; it is not a final temporal result.
+* No out-of-sample (later-cycle or independent-cohort) evaluation is in scope; the NHANES
+  2021–2023 temporal work was split into a separate manuscript and removed from this repository.
 
 # G. ALL DOCUMENTED CORRECTIONS
 
@@ -468,27 +375,24 @@ robust across primary and tested sensitivity specifications. Age-60+ disparity w
 consistent but less statistically stable. Split conformal prediction met approximately marginal
 coverage while failing in the same clinically important subgroups. Mondrian mitigation was
 partially effective, not a complete fix. NHB holdout testing showed moderate discrimination
-attenuation and materially unstable calibration. The 2021–2023 temporal study showed reduced
-AUROC, worsened BMI fairness, persistent calibration limitations, near-target marginal coverage
-but severe intersectional coverage loss, and M4b success in only one model. Final classification:
-**PARTIAL TEMPORAL REPLICATION.**
+attenuation and materially unstable calibration. No out-of-sample (later-cycle or
+independent-cohort) evaluation is within the scope of this study.
 
 # I. CURRENT LIMITATIONS
 
-No non-NHANES external validation has been performed. CAND_4, broader MI, MI conformal coverage,
+No non-NHANES external validation, and no out-of-sample (later-cycle or independent-cohort)
+evaluation, has been performed. CAND_4, broader MI, MI conformal coverage,
 XGBoost mitigation retuning, and full 8.0 kPa pipeline repetition were not executed. Genuine
 joint mitigation was not the original primary implementation; the later exploratory joint
 artifact has tolerance breaches. AFCP narrative status contains an explicitly preserved conflict.
-Temporal fairness row-level claims must use the complete CSV because this report deliberately does
-not infer unshown subgroup values. Any missing lineage link is **LINEAGE NOT FOUND IN REPOSITORY**.
+Any missing lineage link is **LINEAGE NOT FOUND IN REPOSITORY**.
 
 # J. CURRENT SCIENTIFIC STATUS
 
 Primary Phases 1–8, reliability extension, CAND_2/CAND_3 sensitivity, 8.0 kPa narrow-scope
-sensitivity, and NHB MI narrow-scope sensitivity are complete. Temporal validation Phases 1–4
-are complete. The project is manuscript-ready only with the qualifications and statuses in this
-report. The scientifically correct overall status is **PARTIAL TEMPORAL REPLICATION**, not full
-replication and not external validation.
+sensitivity, and NHB MI narrow-scope sensitivity are complete. The project is manuscript-ready
+only with the qualifications and statuses in this report. No external or out-of-sample validation
+has been performed.
 
 # K. MANUSCRIPT-READY AUTHORITATIVE NUMBERS
 
@@ -498,10 +402,8 @@ calibration N=4,005/1,002; five-model AUROC 0.8229–0.8429; no FDR-significant 
 OOF intercepts -2.243 to -0.281; locked-test Platt changes shown in B2; Normal-BMI versus Obese
 deficit 27.1–47.7 pp in 5/5; Age-60+ deficit significant in 4/5; marginal conformal coverage
 88.12–90.82%; BMI-Obese 76.8–82.3%; Age-60+ 81.1–85.6%; Mondrian resolution 5/9 with XGBoost
-93.4% tolerance breach; NHB holdout N=1,787 and AUC 0.7719–0.7893; temporal N=4,910, 563
-positives, 11.4664%; temporal AUROC 0.7765–0.7824; temporal PR-AUC 0.3849–0.4132; temporal
-BMI sensitivity deficit 62.8–71.9 pp; temporal intersectional conformal coverage 69.7–76.5%;
-and final status **PARTIAL TEMPORAL REPLICATION**. Each number is sourced in sections B–E.
+93.4% tolerance breach; NHB holdout N=1,787 and AUC 0.7719–0.7893. Each number is sourced in
+sections B–C.
 
 # L. COMPLETE SOURCE FILE REGISTER
 
@@ -553,27 +455,11 @@ protocol, lineage, or audit context. A file not listed was not used as factual e
 | `results/reliability_extension/dca_summary.csv` | CSV | DCA summary | exploratory extension |
 | `results/reliability_extension/cooccurrence_correlation_results.csv` | CSV | co-occurrence inference | exploratory extension |
 | `RELIABILITY_EXTENSION_RESULTS_REPORT.md` | Markdown | DCA/co-occurrence interpretation | exploratory extension |
-| `results/temporal_validation/PHASE1_FREEZE_AND_PRESERVE_AUDIT.md` | Markdown | temporal freeze/integrity | authoritative |
-| `results/temporal_validation/PHASE3_FAILURE_REPORT.md` | Markdown | resolved intermediate preflight failure | historical intermediate |
-| `results/temporal_validation/PHASE3_TEMPORAL_VALIDATION_REPORT.md` | Markdown | frozen prediction evaluation scope | authoritative |
-| `results/temporal_validation/PHASE4_TEMPORAL_VALIDATION_SYNTHESIS.md` | Markdown | final temporal synthesis | authoritative |
-| `results/temporal_validation/TEMPORAL_LABELS_DEMOGRAPHICS_AUDIT.md` | Markdown | temporal labels and demographics | authoritative preparation audit |
-| `results/temporal_validation/TEMPORAL_FAIRNESS_DEMOGRAPHICS_AUDIT.md` | Markdown | temporal demographic bridge | authoritative preparation audit |
-| `results/temporal_validation/TEMPORAL_CONFORMAL_INPUT_AUDIT.md` | Markdown | conformal input integrity | authoritative audit |
-| `results/temporal_validation/temporal_validation_labels_demographics.csv` | CSV | temporal cohort/outcome | authoritative |
-| `results/temporal_validation/temporal_discrimination_results.csv` | CSV | temporal discrimination | authoritative |
-| `results/temporal_validation/temporal_calibration_results.csv` | CSV | temporal calibration | authoritative |
-| `results/temporal_validation/temporal_fairness_results.csv` | CSV | temporal subgroup metrics/FDR | authoritative |
-| `results/temporal_validation/temporal_conformal_results.csv` | CSV | temporal conformal metrics | authoritative |
-| `results/temporal_validation/temporal_m4b_results.csv` | CSV | temporal M4b | authoritative |
-| `results/temporal_validation/temporal_original_vs_validation_comparison.csv` | CSV | primary-temporal comparison | authoritative |
-| `results/temporal_validation/predictions/temporal_prediction_manifest.json` | JSON | frozen prediction manifest | authoritative |
-| `results/temporal_validation/temporal_conformal_refit_prediction_manifest.json` | JSON | conformal prediction manifest | authoritative |
-| `data/processed/temporal_validation/temporal_validation_input_cobas6000_alt_manifest.json` | JSON | temporal input manifest | supporting |
 | `src/phase7_04_final_test_touch.py` | Python | mitigation precedence implementation | source-code authority |
-| `src/temporal_validation/run_phase3_temporal_validation.py` | Python | temporal evaluation script | source-code lineage |
-| `src/temporal_validation/synthesize_phase4_temporal_validation.py` | Python | temporal synthesis script | source-code lineage |
-| `src/generate_temporal_predictions_frozen.py` | Python | frozen temporal predictions | source-code lineage |
+
+*(The NHANES 2021–2023 temporal-validation files formerly listed here were removed from this
+repository when that work was split into a separate manuscript; they are preserved on the
+`temporal-validation-standalone` git branch.)*
 
 For any major finding whose result-to-script-to-input-to-artifact-to-training/evaluation chain is
 not established by the cited lineage tables and manifests, the correct statement is:
@@ -591,10 +477,6 @@ not established by the cited lineage tables and manifests, the correct statement
 * **Fairness and conformal:** final finding -> `results/fairness/fairness_inference.csv` or
   `results/uncertainty/subgroup_coverage.csv` -> Phase 5/6 scripts -> frozen recalibrated
   predictions or Phase 6 artifacts -> train/proper-train/calibration/test split registries.
-* **Temporal validation:** final finding -> the corresponding file under
-  `results/temporal_validation/` -> `src/temporal_validation/run_phase3_temporal_validation.py`
-  or `synthesize_phase4_temporal_validation.py` -> temporal labels/demographics and manifests
-  -> frozen Phase 3/Phase 6 models and parameters -> NHANES 2021–2023 evaluation cohort.
 
 These traces establish the repository's documented lineage for the major result families. Any
 unlisted intermediate artifact, unreviewed raw-file hash, or unsupported result linkage remains
@@ -602,10 +484,10 @@ unlisted intermediate artifact, unreviewed raw-file hash, or unsupported result 
 
 ## Final self-verification
 
-All requested master sections A–L are present. All five model families, primary phases, documented
+All requested master sections are present. All five model families, primary phases, documented
 diagnostics/mitigations, NHB holdout, external-validation investigation, historical corrections,
-temporal preparation, temporal results, conflicts, missing analyses, lineage caveat, manuscript
-numbers, and source register are explicitly covered. The report does not claim external
-validation, full temporal replication, or unsupported subgroup values.
+conflicts, missing analyses, lineage caveat, manuscript numbers, and source register are
+explicitly covered. The report does not claim external validation, any out-of-sample replication,
+or unsupported subgroup values.
 
 **FINAL MASTER REPORT VERIFIED**

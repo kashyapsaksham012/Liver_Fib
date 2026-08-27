@@ -1,6 +1,6 @@
 # Phase 2 BMI Fairness Mechanism Diagnosis
 
-**Study:** Machine Learning for Liver Fibrosis Prediction: A Comprehensive Evaluation of Discrimination, Calibration, Fairness, Conformal Reliability, and Temporal Transportability  
+**Study:** Machine Learning for Liver Fibrosis Prediction: A Comprehensive Evaluation of Discrimination, Calibration, Fairness, and Conformal Reliability  
 **Status:** COMPLETE — diagnostic only  
 **Data used:** 5-fold OOF predictions on the frozen training partition (`N=5,007`), linked to `analysis_dataset_primary.parquet`. The locked test partition was not used for Phase 2 discovery, threshold analysis, or method selection.
 
@@ -78,4 +78,4 @@ For **each of Logistic Regression, Random Forest, XGBoost, LightGBM, and MLP**:
 
 ## Stop condition
 
-Phase 2 is complete. No mitigation, group-specific threshold, recalibration, retraining, predictor change, temporal validation, external validation, or master-report modification was performed.
+Phase 2 is complete. No mitigation, group-specific threshold, recalibration, retraining, predictor change, external or out-of-sample validation, or master-report modification was performed.
