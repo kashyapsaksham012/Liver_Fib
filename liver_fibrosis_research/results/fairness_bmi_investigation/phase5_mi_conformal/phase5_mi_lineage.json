@@ -1,0 +1,142 @@
+{
+  "manifest_type": "Phase 5 MI conformal reliability selection/protocol manifest",
+  "created_utc": "2026-08-26T18:00:24.874592+00:00",
+  "lineage_status": "ESTABLISHED",
+  "lineage_gate": "PASS: committed MI artifacts and protocol are present and internally consistent",
+  "authorized_mi_protocol": {
+    "m": 5,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "imputer": "sklearn IterativeImputer(estimator=BayesianRidge(), max_iter=10, sample_posterior=True)",
+    "predictors": [
+      "RIDAGEYR",
+      "RIAGENDR",
+      "BMXBMI",
+      "LBXSATSI",
+      "LBXSASSI",
+      "LBXSAL",
+      "LBXSAPSI",
+      "LBXSTB",
+      "LBXPLTSI",
+      "LBDHDD"
+    ],
+    "outcome_used_as_imputation_predictor": false,
+    "cohort_n": 7768,
+    "complete_case_n": 7153,
+    "excluded_n": 615,
+    "model_refit": "frozen Phase 3 five families and best_params reused unchanged; no tuning",
+    "pooling": "no inferential pooling; report each imputation separately and descriptive between-imputation synthesis only"
+  },
+  "authorized_conformal_protocol": {
+    "method": "standard split conformal binary classification",
+    "target_coverage": 0.9,
+    "score": "1-P(y=true_class|x)",
+    "calibration": "fixed conformal_calibration_ids; finite-sample corrected order statistic",
+    "subgroups": "frozen Phase 5 sex, race_ethnicity, age, BMI bins",
+    "intersectional": "exact pre-specified 26 cells from phase2_intersectional_feasibility.csv",
+    "ci": "Wilson 95% for coverage proportions",
+    "locked_test_expected_sha256": "a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779",
+    "test_access_before_manifest": false,
+    "official_test_evaluations_planned": 1
+  },
+  "pre_test_selection_decisions": {
+    "models": [
+      "logistic",
+      "random_forest",
+      "xgboost",
+      "lightgbm",
+      "mlp"
+    ],
+    "thresholds": "recalibrate conformal threshold separately within each authorized MI dataset/model using fixed calibration partition; no model selection based on test",
+    "comparison": "complete-case values read from frozen Phase 6 outputs; MI test results are reported per dataset",
+    "final_conclusion_phrase": "MI CONFORMAL RELIABILITY IS CONSISTENT WITH COMPLETE-CASE RESULTS"
+  },
+  "lineage_checks": {
+    "pool_n": 7768,
+    "complete_case_n": 7153,
+    "excluded_n": 615,
+    "mi_registry_rows": 5,
+    "mi_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "mi_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "sample_posterior_all": true,
+    "registry_hashes_match": true,
+    "distinct_mi_hashes": true,
+    "outcome_excluded_from_imputation": true,
+    "predictor_set_match": true
+  },
+  "artifact_sha256": {
+    "src/mi_01_construct_and_diagnostics.py": "70f5143b7eca6580fc9ec5bb18fec9ec75804a37b5a954a44a40902bec71cd03",
+    "src/mi_02_black_subgroup_comparison.py": "25c08fa123d36a7586affbf3c061acb1b75b0c82ab404c672315896999274441",
+    "src/mi_03_black_subgroup_inference.py": "f987b308bd8a0c1cd12ab2f7b9efe5909b09ff7e0341991f8aea09b5e2fd452f",
+    "results/sensitivity/multiple_imputation_registry.csv": "8d57c1b5b6417df5a3361d919bac8316fd4f19a189db08ecda5a6317fda3fe30",
+    "results/sensitivity/multiple_imputation_diagnostics.csv": "0262de06c672a79bc745cc589c7cc11d071bac7b57a30e6bd974e7ac8e56157a",
+    "documentation/sensitivity/mi_protocol_extraction_and_gaps.md": "67416f8e39dadcd26f83c180bd288a4a4db73897035d52d97f384c3fdcc4bfe5",
+    "documentation/sensitivity/multiple_imputation_pre_execution_snapshot.md": "070bcdbd9376e296995ca993f088577e665dffc72d74a26a69a52146fab1918b",
+    "documentation/end_to_end/protocol_amendment_registry.md": "29a3e3299bd2af36aaea264f332555cd413c995cedda42a1a6b64211d8e67cae",
+    "documentation/phase2/missing_data_protocol.md": "8bdd17a9a18c18f8a1202c53f6aa33115e860fcda0e7c289824beee600ac8b49",
+    "documentation/phase2/sensitivity_analysis_plan.md": "0110c749578212022305ba1abcbb279c3256d35f269ad2e0ddff08709984606b",
+    "documentation/phase2/uncertainty_protocol.md": "9983ad3c1604c2a2f43ecfc6afcf876d0ef8a5acc17ff0b9923011323869f7d7",
+    "results/uncertainty/conformal_thresholds_by_model.csv": "23909e42f7ed2f514528694e54ee6a253850e6d4517b2aeaec5d8104efbbbdd2",
+    "results/uncertainty/conformal_model_refit_registry.csv": "956b90ae5779f6328caed17aaa1cb4447982dcf4d534ed7712d4dbdefc8cf9c3",
+    "results/tables/model_lineage.csv": "32a8a8960e9ed37fb689ec30c0f90cc42f2ea1e8b664156d4474a5c1ac2fd02f",
+    "data/processed/analysis_dataset_primary.parquet": "1c1f16a44e3abf91c9d1d72d255e2dcf5be19a73f6bfe450dd52cb2812023938",
+    "data/processed/splits/proper_train_ids.csv": "bc29dbe6402ffb82790801a97d6baf26732f6964bf77741a8f716e78dab01fef",
+    "data/processed/splits/conformal_calibration_ids.csv": "4d696cbcd0f2aecfd07dd7b223825df10c39bbfaf3f093a117e4c224b6c5b3c5",
+    "results/sensitivity/mi_imputed_dataset_0.csv": "74509ff3648f74d5a21ffd234c5426c45b5ec0fe34e066d0d64f339567d67a9e",
+    "results/sensitivity/mi_imputed_dataset_1.csv": "14d3c44c21fd7b3405e12ef06de0341d19488534027e36f481ba72c1d4402508",
+    "results/sensitivity/mi_imputed_dataset_2.csv": "841efe8d164a9292f7e64142ca0af80cad4dabde9115b0c475d568bb02d86e86",
+    "results/sensitivity/mi_imputed_dataset_3.csv": "5a4289204910ddc5e1eb110415e931140ef4badd988a08a23087cf9e9294feb8",
+    "results/sensitivity/mi_imputed_dataset_4.csv": "361533d2013dba4f60b3306f9f528c19b4e62fdbb7f3576f1e584d1d149e0b81",
+    "models/phase3/model_lightgbm_v1.joblib": "dc9d494ad363b0ef388189bb323b223a7496515618fa4f2dc9060ed2ebd75b02",
+    "models/phase3/model_logistic_v1.joblib": "ca312c8162aa01f65a93284ce29f58d9056a9c0b2cf5f7c56175b39e224ef9d5",
+    "models/phase3/model_mlp_balanced_v1_sensitivity.joblib": "d89a49e31e401493dd7c1ec8234cf823c386ac518edf9d475a872c6779b5bb9d",
+    "models/phase3/model_mlp_v1.joblib": "4d760b5a0eec1205f625fedc5c6e17f1ea2349faf1fbd85fb9a1820383f773cc",
+    "models/phase3/model_random_forest_v1.joblib": "37ba542322a2fd4eca821e20f906c415a249e5410a74c1766f80aeda3e8da08a",
+    "models/phase3/model_xgboost_v1.joblib": "8e2b3244d3bb5e5b425e330019e6a4e9850b368a647cb4423c40a80b29a48ec4",
+    "models/phase6_conformal_refit/model_lightgbm_proper_train_refit.joblib": "597ad772bf68ef6a1022d6b44ef3039c90220ae614a0f11ec015a23c59fa0856",
+    "models/phase6_conformal_refit/model_logistic_proper_train_refit.joblib": "000e51505e76d49ebf02a57d29a3132ea1fa837b49497e142c9fd8caeb73c630",
+    "models/phase6_conformal_refit/model_mlp_proper_train_refit.joblib": "5bd9a684357c6069b71163c46865d0358745154b813d947627acef5ecca79cb3",
+    "models/phase6_conformal_refit/model_random_forest_proper_train_refit.joblib": "22a63c50c43b6aef4834223c4b27c03a811dd8881e770cfaea2437d946d32618",
+    "models/phase6_conformal_refit/model_xgboost_proper_train_refit.joblib": "9e7745d64f3b967a06cb053b2dfea9e0950075e5c788aecb6a1c3b245d83dfc8",
+    "src/phase3_05_train_and_tune.py": "2eccb17b02c27fa2c4e3e7481b786d52b7fb676e0b177e9f60fc5122e9754768",
+    "src/phase6_02_conformal_refit.py": "3bcce55ec7b3bb02b27f168406c50edeed40bf08f6384206b2aeacd5f5379d8b",
+    "src/phase6_03_conformal_calibration.py": "b311673fb39340de824bd55579ba9dd149c9f9386a1be05513b71a30bbae5ac3",
+    "src/phase6_04_final_test_touch.py": "c01baca066cb3c79031ae934726f6443740b66b64c2927a3a0651d104839fdb4"
+  },
+  "analysis_status": "COMPLETED",
+  "final_conclusion": "MI CONFORMAL RELIABILITY IS CONSISTENT WITH COMPLETE-CASE RESULTS",
+  "official_test_evaluation_count": 1,
+  "test_accessed_after_manifest": true,
+  "test_set_live_sha256": "a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779",
+  "test_set_n": 2146,
+  "expanded_proper_train_n": 4620,
+  "calibration_n": 1002,
+  "outputs_sha256": {
+    "phase5_mi_conformal_overall.csv": "cdbb2b9f053921be0e6f67c85f22fcad3d903d578fdd72e11a3d1ae898d9fe8c",
+    "phase5_mi_conformal_subgroups.csv": "54450dd2c46cc97f8abd963b302e5053db72cb45a8705c73f1a2e6dae6f81402"
+  },
+  "figures_sha256": {
+    "phase5_mi_coverage_lightgbm.png": "7158eeef3cd6be83fad21eefb478c8e9fc7f3d84b4f727409534e9711568e1e3",
+    "phase5_mi_coverage_logistic.png": "26dd39eaade8bbf00225ec606a0e311e7f9038225200023f05e6565b02343ff5",
+    "phase5_mi_coverage_mlp.png": "bc7b85029322a5afb9c978898a5bb23a9a093a8d4ef82816d817d82d81405060",
+    "phase5_mi_coverage_random_forest.png": "15bd91e033a0dd11305f85d1a5c3d937123699a0761485f1d21ca21f8fa350ac",
+    "phase5_mi_coverage_xgboost.png": "e1ac13c71c20a4ca2459e0d90c041954e61efe8f7dde1b25a65bd4270a981a38"
+  }
+}

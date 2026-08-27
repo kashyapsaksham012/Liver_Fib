@@ -1,0 +1,2 @@
+cohort,n,valid_vcte_n,outcome_8.2_positive_n,outcome_8.2_prevalence_pct,outcome_8.0_positive_n,outcome_8.0_prevalence_pct,labels_differ_n,labels_differ_pct,new_outcome_source,eight_point_two_source,existing_sensitivity_column_agrees
+CAND_1 quality-valid adult broad-lab cohort,7153,7153,666,9.310779,715,9.995806,49,0.685027,interim/nhanes_master_phase1.parquet: LUAXSTAT==1 and LUXSMED>=8.0,interim/nhanes_master_phase1.parquet: LUAXSTAT==1 and LUXSMED>=8.2,True

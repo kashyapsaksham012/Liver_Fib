@@ -1,0 +1,6 @@
+model,selected_candidate,oof_gap_change_pp,oof_specificity_change_pp,oof_auroc_change,oof_brier_change,selection_gate
+logistic,bmi_youden,-39.92682926829268,-0.44750430292599397,0.0,0.0,specificity >= baseline-5pp; sensitivity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp
+random_forest,bmi_platt_global_youden,-5.6585365853658445,3.0981067125645523,0.00012931544773198134,-0.07623873348874788,specificity >= baseline-5pp; sensitivity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp
+xgboost,bmi_platt_global_youden,-1.2195121951219576,1.0671256454389044,7.285377337018506e-05,-0.0925497889924749,specificity >= baseline-5pp; sensitivity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp
+lightgbm,bmi_platt_global_youden,-1.6951219512195124,-0.44750430292599397,0.0002249360252803978,-0.09453203086956041,specificity >= baseline-5pp; sensitivity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp
+mlp,bmi_youden,-36.536585365853654,1.376936316695354,0.0,0.0,specificity >= baseline-5pp; sensitivity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp

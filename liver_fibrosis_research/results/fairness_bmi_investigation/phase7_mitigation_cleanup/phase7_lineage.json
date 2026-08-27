@@ -1,0 +1,35 @@
+{
+  "script_sha256": "64ed229059afef6d81b29c37c8e627e488c17ec8b92d525ab70898f3fa8ee15d",
+  "runtime": {
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "started_utc": "2026-08-27T03:59:07.389143+00:00",
+    "finished_utc": "2026-08-27T03:59:08.067147+00:00"
+  },
+  "input_hashes": {
+    "oof_predictions": "4cfa72d64ef4f6f52c0466935646335f209c17eee3488dc1dfa2f73dc9b89abd",
+    "conformal_calibration_ids": "4d696cbcd0f2aecfd07dd7b223825df10c39bbfaf3f093a117e4c224b6c5b3c5",
+    "phase6_refit_model": "9e7745d64f3b967a06cb053b2dfea9e0950075e5c788aecb6a1c3b245d83dfc8",
+    "global_conformal_thresholds": "23909e42f7ed2f514528694e54ee6a253850e6d4517b2aeaec5d8104efbbbdd2",
+    "prior_joint_artifact": "fd9d94071a45a49da9bcc4e4a232880e06439d948e123833a7f0acaa8108e5c6",
+    "locked_test_prediction_sets": "527969c3529389d3e857e4e86e66e0aab06cc5e5784e73a48d471f155f175506",
+    "locked_test_predictions": "651ef1bcbbd2f36121a26f52508479349b25b526bc7563bef183efc7f5e57e4a"
+  },
+  "selection_manifest": "results/fairness_bmi_investigation/phase7_mitigation_cleanup/phase7_selection_manifest.json",
+  "chosen_candidate_or_status": "NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED",
+  "test_order": [
+    "OOF development evaluation",
+    "calibration development evaluation",
+    "selection manifest written",
+    "single locked-test confirmation",
+    "lineage hashes and reports written"
+  ],
+  "previous_outputs_preserved": true,
+  "historical_phase7_not_merged": true,
+  "missing_links": {
+    "joint_generating_script": "NOT FOUND IN REPOSITORY",
+    "joint_selection_manifest": "NOT FOUND IN REPOSITORY",
+    "joint_runtime_event_log": "NOT FOUND IN REPOSITORY",
+    "phase7_frozen_commit": "NOT FOUND IN REPOSITORY"
+  }
+}

@@ -1,0 +1,6 @@
+model,selected_candidate,oof_gap_change_pp,oof_gap_ci_low_pp,oof_gap_ci_high_pp,oof_sensitivity_change_pp,oof_specificity_change_pp,oof_auroc_change,oof_brier_change,selection_gate
+logistic,original_frozen,0.0,33.113790970933835,71.44668737060039,0.0,0.0,0.0,0.0,full-cohort sensitivity/specificity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp; then smallest absolute BMI gap
+random_forest,original_frozen,0.0,17.74373146088246,61.1631593714927,0.0,0.0,0.0,0.0,full-cohort sensitivity/specificity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp; then smallest absolute BMI gap
+xgboost,original_frozen,0.0,17.279005095699727,60.88863579595126,0.0,0.0,0.0,0.0,full-cohort sensitivity/specificity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp; then smallest absolute BMI gap
+lightgbm,original_frozen,0.0,17.803934774902515,59.81836327345309,0.0,0.0,0.0,0.0,full-cohort sensitivity/specificity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp; then smallest absolute BMI gap
+mlp,bmi_platt_calibration,0.0,15.66240274577936,61.689038106429386,-0.8695652173913104,0.7039155301363786,0.0005088085081962346,-0.00027574408498518,full-cohort sensitivity/specificity >= baseline-5pp; Brier <= baseline+0.01; Age60-vs40 gap <= baseline+5pp; then smallest absolute BMI gap

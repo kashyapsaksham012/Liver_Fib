@@ -1,0 +1,14 @@
+{
+  "oof_files": {
+    "logistic": "f283f1b5ee390973e2d43a7b8bed4562f1f5a9fc0acbae8c41c6acc57ef3f691",
+    "random_forest": "ae446e55cd31f3d3f8f89205d1fcdd158d4e6680a1c98e383bebcc82fdaab723",
+    "xgboost": "4cfa72d64ef4f6f52c0466935646335f209c17eee3488dc1dfa2f73dc9b89abd",
+    "lightgbm": "99496e2270f669942dff18f5c95a49f4b67060fe669e240f7e4c6eb4351bfc5a",
+    "mlp": "b9fe782e60f2db84f1a1e4dadf38c23672d5903b392b01a0b206f2e9bee63f84"
+  },
+  "cohort_file": "1c1f16a44e3abf91c9d1d72d255e2dcf5be19a73f6bfe450dd52cb2812023938",
+  "n_oof": 5007,
+  "bmi_definition": "pd.cut bins [0,18.5,24.9,29.9,200], right-inclusive",
+  "age_definition": "pd.cut bins [18,39,59,120], labels 18-39/40-59/60+",
+  "threshold_grid": "0.00 through 1.00 inclusive, step 0.01; no threshold selected"
+}
