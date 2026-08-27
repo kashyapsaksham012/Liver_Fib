@@ -52,10 +52,11 @@ the 2021–2023 cycle only partially replicated the findings.
 **Conclusions.** In a large US survey population, routine-data models for significant liver
 fibrosis reach a comparable, modest-to-strong discrimination ceiling and can be made
 aggregate-calibrated, yet still under-detect normal-weight patients and provide systematically
-over-confident prediction sets for obese and older patients — failures that standard evaluation
-conceals and that we could not repair within the study's scope. Discrimination plus aggregate
-calibration are insufficient evidence of subgroup-safe reliability. External validation has not
-been performed and is the foremost outstanding requirement.
+over-confident prediction sets for obese and older patients. **Discrimination plus aggregate
+calibration are insufficient evidence of subgroup-safe reliability**; the failing subgroups here
+were identifiable, reproducible across cohorts and a later time period, mechanism-linked, and
+resistant to every mitigation strategy we tested. External validation has not been performed and
+is the foremost outstanding requirement.
 
 ---
 
@@ -360,46 +361,75 @@ result.
 
 Two framing points follow. First, the body-mass finding, not the age finding, is the robust
 subgroup result; the age-60+ *sensitivity* deficit is directionally suggestive but statistically
-fragile and should be read as hypothesis-generating. Second, the contribution is methodological:
-a model that passes discrimination and aggregate-calibration review is not thereby shown to be
-subgroup-safe, and conformal prediction's marginal guarantee does not close that gap.
+fragile and should be read as hypothesis-generating. Second, the contribution is methodological: a
+model that passes discrimination and aggregate-calibration review is not thereby shown to be
+subgroup-safe, and conformal prediction's marginal guarantee does not close that gap. The failing
+subgroups in this study are **identifiable** (obese and older patients, and normal-weight patients
+for detection), **reproducible** (across three cohort constructions and a later survey cycle),
+**mechanism-linked** (a score-distribution difference with a threshold component for the
+body-mass gap; two distinct mechanisms for the body-mass and age gaps), and **resistant to every
+mitigation strategy we tested**.
 
 ## 5. Limitations
 
-The following limitations are material and must be read with the results (full register in
-`FINAL_LIMITATIONS_REGISTER.md`):
+The following limitations are material and must be read with the results. The IDs in brackets
+index `documentation/final_research_audit/FINAL_LIMITATIONS_REGISTER.md`; every item in that
+register's mandated minimum set appears below.
 
-- **No external validation.** The models have never been evaluated on an independent, non-NHANES
-  population, and no compatible cohort was identified. This is the foremost limitation. The
-  2021–2023 analysis is a *partial temporal replication*, not external validation; the
-  Non-Hispanic Black holdout is internal to NHANES.
-- **No acceptable mitigation** was found for the body-mass reliability–fairness failure.
-- **Conformal** provides a marginal guarantee only; subgroup coverage was empirically deficient
-  and is not a conditional-validity guarantee. Group-wise mitigation was partial (5/9), breached
-  the XGBoost marginal tolerance (+5.3 pp), and handled the overlap sequentially, not jointly.
-  The frozen intersectional configuration did not replicate temporally (1/5 models).
-- **Age-60+ sensitivity** significance is specification-sensitive (4/5 primary; lost in 9/12
-  sensitivity instances; reverses temporally).
-- **Low prevalence** (9.31%; 666 positives) limits positive predictive value (~0.12–0.25 at a
-  Youden operating point) and subgroup precision. Normal-weight sensitivity rests on 22 test
-  positives; the underweight band (one positive) is uninterpretable and excluded.
-- **Calibration**: class-balanced models are unusable without out-of-fold recalibration; aggregate
-  recalibration did not extend to subgroups; temporal calibration remained poor and was not
-  refit.
-- **Missing data**: complete-case is primary; multiple imputation covered only the Non-Hispanic
-  Black selection question, and its conformal extension lacks a fully reconstructable pipeline.
-- **Design**: a single US survey program, a single pre-pandemic release for the primary analysis,
-  a VCTE (not biopsy) reference standard, and a single 70/30 split without nested resampling.
-  Adults only.
+- **No external validation [J1, J4, I1].** The models have never been evaluated on an independent,
+  non-NHANES population, and no compatible cohort was identified. This is the foremost limitation.
+  The 2021–2023 analysis is a **partial temporal replication [I1]**, not external validation, and
+  the Non-Hispanic Black holdout [J4] is a within-NHANES demographic holdout — neither is external
+  validation.
+- **No acceptable mitigation [D1].** No calibration-, threshold-, or conformal-based intervention
+  tested produced an acceptable multi-metric fix for the body-mass reliability–fairness failure;
+  mitigation candidates were compared against a pre-specified gate without candidate-vs-candidate
+  significance testing [A2].
+- **Conformal guarantees are marginal only [E1].** Split conformal provides a marginal coverage
+  guarantee; subgroup coverage was empirically deficient and is **not** a conditional-validity
+  guarantee. Group-wise mitigation was partial (5/9 targets) and breached the marginal-coverage
+  tolerance for one model (+5.3 pp) [E3]; in the overlap population single-attribute rules were
+  applied sequentially, not jointly [E4]; and the frozen intersectional configuration held for
+  only one of five models on the later cycle [E5].
+- **Small subgroup and intersectional cells [B2, B3].** Normal-weight sensitivity rests on 22
+  test positives; the underweight band (one positive) is uninterpretable and is excluded. The
+  obese-and-60+ intersection cell has 294 participants and ~35 events; intersectional coverage
+  and any joint calibration are descriptive.
+- **Low outcome prevalence [B1].** At 9.31% prevalence (666 positives) positive predictive value
+  is low (~0.12–0.25 at a Youden operating point) and subgroup estimates are imprecise.
+- **Age-60+ sensitivity is specification-sensitive [A1].** Directionally consistent but
+  BH-significant in only four of five models, lost under 9 of 12 alternative specifications, and
+  direction-reversed on the later cycle. It is reported as a secondary observation.
+- **Threshold sensitivity [G1, A5].** An 8.0-kPa cut-point preserved discrimination, the
+  calibration correction, and the body-mass disparity, but altered the age-60+ disparity's
+  significance and some conformal detail; 8.0 and 8.2 kPa were not tested for statistical
+  equivalence, and 8.2 kPa is the primary analysis.
+- **Calibration [C1, C2, C3].** The four class-balanced models are unusable without out-of-fold
+  recalibration — a mandatory step, not an option [C1] — and aggregate recalibration did not
+  extend to subgroup-level calibration [C2]; on the later cycle raw calibration remained poor and
+  was not refit [C3].
+- **Missing data [F1, F2, F3, D4].** Complete-case analysis is the pre-registered primary
+  strategy; complete-case exclusion disproportionately affected Non-Hispanic Black participants
+  (41.3% of exclusions vs 25.0% of the retained cohort) [D4], and a targeted multiple-imputation
+  analysis addressed that specific selection question only [F1]. The multiple-imputation conformal extension is
+  descriptive, lacks a fully reconstructable pipeline, and carries no pooled inferential estimate.
+- **Design [J2, J3, J5, A2].** A single US survey program, a single pre-pandemic release for the
+  primary analysis, a VCTE (`LUXSMED`, not liver biopsy) reference standard, adults only, and a
+  single 70/30 split without nested outer resampling of the locked test set. Operating thresholds
+  were derived from out-of-fold predictions and their adoption recorded as a protocol amendment.
+- **Pre-registered analyses not executed.** The all-ages (adolescent-inclusive) sensitivity
+  cohort and survey-weighted / weighted-loss model training were pre-registered exploratory items
+  and were formally deferred; no conclusion depends on them.
 
 ## 6. Conclusion
 
 Routine-data machine-learning models for significant liver fibrosis reach a comparable,
-modest-to-strong discrimination ceiling and can be made aggregate-calibrated, but still
-under-detect normal-weight patients and under-cover obese and older patients with their
-prediction sets — failures that discrimination and aggregate calibration conceal, that replicate
-across cohorts and a later time period, and that we could not repair. Discrimination plus
-aggregate calibration are insufficient evidence of subgroup-safe reliability. Independent external
+modest-to-strong discrimination ceiling and can be made aggregate-calibrated, yet still
+under-detect normal-weight patients and provide over-confident prediction sets for obese and older
+patients — failures that discrimination and aggregate calibration conceal. **Discrimination plus
+aggregate calibration are insufficient evidence of subgroup-safe reliability.** In this study the
+failing subgroups were identifiable, reproducible across cohorts and a later time period,
+mechanism-linked, and resistant to every mitigation strategy we tested. Independent external
 validation is the necessary next step before any consideration of use.
 
 ---
