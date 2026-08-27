@@ -1,0 +1,20 @@
+{
+  "touch_utc": "2026-08-27T15:09:13.601848+00:00",
+  "script": "ttm_03_test_classification.py",
+  "leakage_check": {
+    "test_x_train": 0,
+    "test_x_propertrain": 0,
+    "test_x_calibration": 0
+  },
+  "arms": [
+    "A",
+    "B"
+  ],
+  "models": [
+    "logistic",
+    "random_forest",
+    "xgboost",
+    "lightgbm"
+  ],
+  "mlp_fallback": true
+}
