@@ -14,7 +14,7 @@ sensitivity — verdict V3, with a matched-stiffness BMI-shortcut finding); §3.
 (Amendment #17) outcome; abstract updated (matched-stiffness shortcut; deferral added to the
 mitigation list; measurement-bias caveat).
 **v2 → v3 changes:** literature-grounded Introduction with `[n]` markers; new §4.1 (relation to
-prior work); 28-item reference list; **Tables 1–5 rendered from the frozen artifacts** (Table 1
+prior work); 27-item reference list (verified — `REFERENCE_VERIFICATION.md`); **Tables 1–5 rendered from the frozen artifacts** (Table 1
 via `src/manuscript_01_table1.py`, a read-only descriptive script); TRIPOD+AI crosswalk
 (Appendix B); every figure already exists as a committed PNG (§Figures); a full second-reader
 number check (`documentation/manuscript/RESULTS_VERIFICATION.md` — one Table 3 value corrected).
@@ -117,9 +117,9 @@ downstream decision disparity [21].
 
 Prior work has examined these dimensions **separately**. Sex-related bias has been reported in
 liver-disease classifiers on other datasets [12]; the class-imbalance calibration artifact has
-been shown, including on the same NHANES cohort and outcome we use [1,10,11]; and conformal
-prediction has been applied to liver-disease risk on non-NHANES cohorts, where no subgroup
-coverage failure was found [24]. We are not aware of a study that holds all of them —
+been shown generally [10,11] and on the same NHANES release with a near-identical VCTE outcome
+[1]; and conformal prediction has been applied to liver-disease risk on non-NHANES cohorts, where
+no subgroup coverage failure was reported [23]. We are not aware of a study that holds all of them —
 discrimination, aggregate calibration, a pre-specified multi-axis subgroup fairness audit,
 split-conformal *subgroup* coverage, and a structured mitigation battery — to the same standard,
 under one frozen protocol, on this task.
@@ -478,10 +478,12 @@ Our individual results are, taken one at a time, consistent with an existing lit
 contribution is holding them together under one protocol. The **discrimination ceiling** (AUROC
 ≈ 0.82–0.84) matches prior NHANES routine-data fibrosis models [1,2]. The **calibration finding**
 is a replication: class-imbalance correction is known to inflate minority-class probabilities and
-is remedied by post-hoc recalibration [10,11], and this has already been shown on the same NHANES
-cohort and outcome, corrected there by a Bayesian prevalence prior-shift rather than out-of-fold
-Platt scaling [1]; the numerical agreement between our out-of-fold intercept shift (−2.24 to
-−2.05) and the prior-mismatch term (log[0.093/0.907] ≈ −2.27) makes the mechanism explicit. The
+is remedied by post-hoc recalibration [10,11], and a closely comparable finding has already been
+reported on the same NHANES release with a near-identical VCTE outcome (Cao et al.'s > 8 kPa vs
+our ≥ 8.2 kPa), corrected there by a Bayesian prevalence prior-shift (raw Brier ≈ 0.15 → 0.07)
+rather than out-of-fold Platt scaling [1]; the numerical agreement between our out-of-fold
+intercept shift (−2.24 to −2.05) and the prior-mismatch term (log[0.093/0.907] ≈ −2.27) makes the
+mechanism explicit. The
 **body-mass detection gap** is directionally consistent with the long-known limitation of the
 NAFLD Fibrosis Score in lean patients [4,5]; our result shows the pattern survives in modern
 five-family ML where BMI is one of ten features and race/ethnicity is excluded from the model,
@@ -498,9 +500,10 @@ That **marginal coverage does not imply subgroup coverage** is a theoretical
 result [17], and enforcing equal coverage can worsen downstream fairness [21]; what we add is the
 empirical demonstration on this clinical task, triangulated across cohort constructions, that no
 tested group-wise method achieves acceptable and generalisable subgroup validity. This last point
-contrasts with a recent conformal NAFLD-risk model on a non-NHANES cohort that reported coverage
-at or above nominal in every subgroup examined [24] — a difference in task, cohort, and outcome
-that itself argues against assuming subgroup validity transfers. The closest fairness-audit
+contrasts with a recent conformal NAFLD-risk model on a non-NHANES cohort that reported
+distribution-free coverage without a subgroup coverage failure [23] — a difference in task,
+cohort, and outcome that itself argues against assuming subgroup validity transfers. *(Ref [23]'s
+subgroup claim is to be re-checked against its full text — see `REFERENCE_VERIFICATION.md`.)* The closest fairness-audit
 analog remains a sex-stratified analysis of liver-disease classifiers on a different dataset
 [12].
 
@@ -592,37 +595,37 @@ before any consideration of use.
 
 ## References
 
-*Working list — verify every DOI/PMID and complete a formal search before submission. Full
-positioning is in `documentation/manuscript/LITERATURE_REVIEW.md`.*
+*Verification status: `documentation/manuscript/REFERENCE_VERIFICATION.md` (each entry checked
+against its primary source, 2026-08-27; a co-author should repeat the pass). Items marked
+[author list to confirm] still need the full byline. Full positioning is in `LITERATURE_REVIEW.md`.*
 
-1. Zhou et al. Integrative and interpretable machine learning framework for early non-invasive detection of clinically significant liver fibrosis. *Front Med* 2026. doi:10.3389/fmed.2026.1736295
-2. Machine learning-based disease risk stratification and prediction of MASLD using vibration-controlled transient elastography: results from NHANES 2021–2023. *BMC Gastroenterol* 2025. doi:10.1186/s12876-025-03850-x
-3. Fibro-Predict: a machine learning risk score for advanced liver fibrosis in the general population using Israeli electronic health records. *Sci Rep* 2025. doi:10.1038/s41598-025-17534-9
-4. Accuracy of Fibrosis-4 index and NAFLD Fibrosis Score in MAFLD according to body mass index: failure in the prediction of advanced fibrosis in lean and morbidly obese individuals. *Eur J Gastroenterol Hepatol* 2020. PMID:32976186
-5. Diagnostic performance of the Fibrosis-4 index and NAFLD Fibrosis Score in lean adults with NAFLD. 2023. PMID:37589973
-6. Graupera et al. Low accuracy of FIB-4 and NAFLD Fibrosis Scores for screening for liver fibrosis in the population. *Clin Gastroenterol Hepatol* 2021.
-7. Diabetes and obesity reduce FIB-4 accuracy in MASLD referral pathways. *JHEP Rep* 2026.
-8. Prospective evaluation of a primary-care referral pathway for non-alcoholic fatty liver disease. *J Hepatol* 2019. doi:10.1016/j.jhep.2019.03.033
-9. Collins et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* 2024. PMID:38626948
-10. van den Goorbergh, van Smeden, Timmerman, Van Calster. The harm of class imbalance corrections for risk prediction models: illustration and simulation using logistic regression. *JAMIA* 2022;29(9):1525–1534. doi:10.1093/jamia/ocac093
-11. Carriero et al. The harms of class imbalance corrections for machine-learning-based prediction models: a simulation study. *Stat Med* 2025. doi:10.1002/sim.10320
+1. Cao D, Wang J, Hou C, et al. Integrative and interpretable machine learning framework for early non-invasive detection of clinically significant liver fibrosis. *Front Med (Lausanne)* 2026;13:1736295. doi:10.3389/fmed.2026.1736295
+2. Machine learning-based disease risk stratification and prediction of metabolic dysfunction-associated fatty liver disease using vibration-controlled transient elastography: result from NHANES 2021–2023. *BMC Gastroenterol* 2025;25:255. doi:10.1186/s12876-025-03850-x [author list to confirm]
+3. Fibro predict: a machine learning risk score for advanced liver fibrosis in the general population using Israeli electronic health records. *Sci Rep* 2025;15:32035. doi:10.1038/s41598-025-17534-9. PMID:40887472
+4. Accuracy of Fibrosis-4 index and non-alcoholic fatty liver disease fibrosis scores in metabolic (dysfunction) associated fatty liver disease according to body mass index: failure in the prediction of advanced fibrosis in lean and morbidly obese individuals. *Eur J Gastroenterol Hepatol* 2020. PMID:32976186. doi:10.1097/MEG.0000000000001946 [author list to confirm]
+5. Diagnostic performance of the Fibrosis-4 index and nonalcoholic fatty liver disease fibrosis score in lean adults with nonalcoholic fatty liver disease. *JAMA Netw Open* 2023;6(8):e2328692. PMID:37589973 [author list to confirm]
+6. Graupera I, et al. Low accuracy of FIB-4 and NAFLD Fibrosis Scores for screening for liver fibrosis in the population. *Clin Gastroenterol Hepatol* 2022;20(11):2567–2576. doi:10.1016/j.cgh.2021.12.034. PMID:34971806
+7. Diabetes and obesity reduce FIB-4 accuracy in MASLD referral pathways. *JHEP Rep* 2026. doi:10.1016/j.jhepr.2026.101735 [author list to confirm]
+8. Srivastava A, et al. Prospective evaluation of a primary-care referral pathway for patients with non-alcoholic fatty liver disease. *J Hepatol* 2019;71(2):371–378. doi:10.1016/j.jhep.2019.03.033. PMID:30965069
+9. Collins GS, Moons KGM, Dhiman P, Riley RD, Beam AL, Van Calster B, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* 2024;385:e078378. doi:10.1136/bmj-2023-078378. PMID:38626948
+10. van den Goorbergh R, van Smeden M, Timmerman D, Van Calster B. The harm of class imbalance corrections for risk prediction models: illustration and simulation using logistic regression. *JAMIA* 2022;29(9):1525–1534. doi:10.1093/jamia/ocac093
+11. Carriero A, Luijken K, de Hond A, Moons KGM, van Calster B, van Smeden M. The harms of class imbalance corrections for machine-learning-based prediction models: a simulation study. *Stat Med* 2025;44(3-4):e10320. doi:10.1002/sim.10320
 12. Straw I, Wu H. Investigating for bias in healthcare algorithms: a sex-stratified analysis of supervised machine learning models in liver disease prediction. *BMJ Health Care Inform* 2022;29(1):e100457. doi:10.1136/bmjhci-2021-100457
-13. Understanding algorithmic fairness for clinical prediction in terms of subgroup net benefit and health equity. arXiv:2412.07879, 2024.
-14. Critical appraisal of fairness metrics for artificial-intelligence-based clinical prediction models: a scoping review. *Lancet Digit Health* 2026.
-15. Vovk, Gammerman, Shafer. *Algorithmic Learning in a Random World*. Springer, 2005.
-16. Angelopoulos & Bates. A gentle introduction to conformal prediction and distribution-free uncertainty quantification. 2023.
-17. Barber, Candès, Ramdas, Tibshirani. The limits of distribution-free conditional predictive inference. *Inf Inference* 2021. arXiv:1903.04684
-18. Romano, Barber, Sabbatti, Candès. With malice toward none: assessing uncertainty via equalized coverage. *Harv Data Sci Rev* 2020.
-19. Angelopoulos, Bates, Fisch, Lei, Schuster. Conformal risk control. *ICLR* 2024.
-20. Conformal prediction in clinical artificial intelligence. *CHEST* 2025 (article S0012-3692(25)05184-0; authors to be confirmed from full text).
-21. Conformal prediction sets can cause disparate impact. *ICLR* 2025.
-22. Conformal classification with equalized coverage for adaptively selected groups. *NeurIPS* 2024.
-23. Zhou & Sesia. Adaptively fair conformal prediction. 2024.
-24. Conformal risk prediction for non-alcoholic fatty liver disease using gradient boosting with distribution-free coverages. arXiv:2606.09860, 2026.
-25. Jones et al. Selective classification can magnify disparities across groups. *ICLR* 2021.
-26. Schreuder & Chzhen. Classification with abstention but without disparities. *UAI* 2021.
-27. Madras, Pitassi, Zemel. Predict responsibly: improving fairness and accuracy by learning to defer. *NeurIPS* 2018.
-28. Conformal selective prediction with cost-aware deferral for safe clinical triage under distribution shift. *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w
+13. Understanding algorithmic fairness for clinical prediction in terms of subgroup net benefit and health equity. *Epidemiology* 2026;37(3) [May issue]. Preprint: arXiv:2412.07879. [author list to confirm]
+14. Critical appraisal of fairness metrics for artificial-intelligence-based clinical prediction models: a scoping review. *Lancet Digit Health* 2026. Preprint: arXiv:2506.17035. [author list to confirm]
+15. Vovk V, Gammerman A, Shafer G. *Algorithmic Learning in a Random World*. Springer, 2005 (2nd ed. 2022).
+16. Angelopoulos AN, Bates S. A gentle introduction to conformal prediction and distribution-free uncertainty quantification. arXiv:2107.07511, 2021. *Found Trends Mach Learn* 2023;16(4):494–591.
+17. Barber RF, Candès EJ, Ramdas A, Tibshirani RJ. The limits of distribution-free conditional predictive inference. *Inf Inference* 2021;10(2):455–482. doi:10.1093/imaiai/iaaa017. arXiv:1903.04684
+18. Romano Y, Barber RF, Sabatti C, Candès EJ. With malice toward none: assessing uncertainty via equalized coverage. *Harv Data Sci Rev* 2020;2(2). doi:10.1162/99608f92.03f00592
+19. Angelopoulos AN, Bates S, Fisch A, Lei L, Schuster T. Conformal risk control. *ICLR* 2024. arXiv:2208.02814
+20. Conformal prediction in clinical artificial intelligence. *CHEST* 2026 (article S0012-3692(25)05184-0). [author list to confirm from full text]
+21. Cresswell JC, Kumar B, Sui Y, Belbahri M. Conformal prediction sets can cause disparate impact. *ICLR* 2025 (Spotlight). arXiv:2410.01888
+22. Zhou Y, Sesia M. Conformal classification with equalized coverage for adaptively selected groups (adaptively fair conformal prediction, AFCP). *NeurIPS* 2024. arXiv:2405.15106
+23. Zhang X. Conformal risk prediction for non-alcoholic fatty liver disease using gradient boosting with distribution-free coverages. arXiv:2606.09860, 2026.
+24. Jones E, Sagawa S, Koh PW, Kumar A, Liang P. Selective classification can magnify disparities across groups. *ICLR* 2021. arXiv:2010.14134
+25. Schreuder N, Chzhen E. Classification with abstention but without disparities. *UAI* 2021 (PMLR v161). arXiv:2102.12258
+26. Madras D, Pitassi T, Zemel R. Predict responsibly: improving fairness and accuracy by learning to defer. *NeurIPS* 2018. arXiv:1711.06664
+27. Kwon H, Kim DJ. Conformal selective prediction with cost-aware deferral for safe clinical triage under distribution shift. *Sci Rep* 2026. doi:10.1038/s41598-026-40637-w
 
 ---
 

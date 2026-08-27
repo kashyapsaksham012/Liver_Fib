@@ -38,7 +38,7 @@ full texts were read from abstract + open-access mirrors where available; not du
 
 | Work | Data / outcome | Method | Key result | Overlap with this study |
 |---|---|---|---|---|
-| **Zhou et al., *Front Med* 2026** (`10.3389/fmed.2026.1736295`) | **NHANES 2017–2020, LUXSMED > 8 kPa**, ~6,164; external validation on a Chinese hospital cohort (n≈684) | 29 models benchmarked → Gamboost; 8 routine predictors | AUC 0.824 (train) / 0.872 (internal test) / 0.848 (external); **raw Brier 0.148–0.158 corrected to 0.073 by a Bayesian prevalence prior-correction**; outperforms FIB-4/APRI/NFS | **Nearest neighbour.** Same dataset, same outcome, overlapping predictors, and **it already publishes the class-imbalance/prevalence calibration finding.** No systematic fairness audit, no conformal prediction, no mitigation. |
+| **Cao et al., *Front Med* 2026** (`10.3389/fmed.2026.1736295`) | **NHANES 2017–2020, LUXSMED > 8 kPa**, ~6,164; external validation on a Chinese hospital cohort (n≈684) | 29 models benchmarked → Gamboost; 8 routine predictors | AUC 0.824 (train) / 0.872 (internal test) / 0.848 (external); **raw Brier 0.148–0.158 corrected to 0.073 by a Bayesian prevalence prior-correction**; outperforms FIB-4/APRI/NFS | **Nearest neighbour.** Same dataset, same outcome, overlapping predictors, and **it already publishes the class-imbalance/prevalence calibration finding.** No systematic fairness audit, no conformal prediction, no mitigation. |
 | ML risk stratification of MASLD using VCTE, **NHANES 2021–2023** (*BMC Gastroenterol* 2025, `10.1186/s12876-025-03850-x`) | NHANES 2021–2023, VCTE (CAP + LSM) | ML risk stratification; top-10 predictors include age, sex, race, BMI, waist circumference | Risk-stratification model; predictor list overlaps ours | Same later cycle our (now separately reported) temporal analysis used; not a fairness/uncertainty study. |
 | Insulin-resistance-index ML for liver stiffness, NHANES (`PMC9537573`) | NHANES, LSM | ML + IR indices | AUC ≈ 0.74–0.8 | Same data type; aggregate metrics only. |
 | Steatosis/fibrosis from clinical variables, large national survey (`PMC10232144`) | NHANES | ML | aggregate performance | Same data type; aggregate metrics only. |
@@ -150,8 +150,8 @@ that no tested mitigation is acceptable + generalisable.
 
 ### Already published (claim as replication or background, NOT novelty)
 
-1. NHANES routine-data ML for VCTE-defined significant fibrosis, AUROC ≈ 0.82–0.87, with FIB-4/APRI/NFS comparison (Zhou 2026; others).
-2. Class-imbalance correction → probability over-estimation, fixed by post-hoc recalibration (van den Goorbergh 2022; Carriero 2025) — **also already shown on this exact dataset/outcome** (Zhou 2026).
+1. NHANES routine-data ML for VCTE-defined significant fibrosis, AUROC ≈ 0.82–0.87, with FIB-4/APRI/NFS comparison (Cao 2026; others).
+2. Class-imbalance correction → probability over-estimation, fixed by post-hoc recalibration (van den Goorbergh 2022; Carriero 2025) — **also already shown on this exact dataset/outcome** (Cao 2026).
 3. Split conformal prediction applied to liver-disease risk (LiverRisk, 2026).
 4. "Marginal coverage ≠ conditional/subgroup coverage" as a theoretical fact (Barber et al. 2021) and the disparate-impact risk of equalizing it (ICLR 2025).
 5. BMI-dependent performance of non-invasive fibrosis assessment; lean under-detection by NFS-type models.
@@ -199,7 +199,7 @@ validation.
 
 Clinical / prediction-model:
 
-1. Zhou et al. Integrative and interpretable machine learning framework for early non-invasive detection of clinically significant liver fibrosis. *Front Med* 2026. doi:10.3389/fmed.2026.1736295
+1. Cao et al. Integrative and interpretable machine learning framework for early non-invasive detection of clinically significant liver fibrosis. *Front Med* 2026. doi:10.3389/fmed.2026.1736295
 2. Machine learning-based risk stratification of MASLD using VCTE: NHANES 2021–2023. *BMC Gastroenterol* 2025. doi:10.1186/s12876-025-03850-x
 3. Fibro-Predict: a machine learning risk score for advanced liver fibrosis in the general population using Israeli EHRs. *Sci Rep* 2025. doi:10.1038/s41598-025-17534-9
 4. Eyraud et al. Accuracy of FIB-4 and NFS in MAFLD according to BMI: failure in lean and morbidly obese individuals. *Eur J Gastroenterol Hepatol* 2020. PMID:32976186
