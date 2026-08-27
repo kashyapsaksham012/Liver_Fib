@@ -1,0 +1,66 @@
+Metric,Model,8.2-kPa result,8.0-kPa result,Difference,95% CI,Interpretation
+ROC-AUC,logistic,0.8334,0.8253216719326965,-0.008078328067303575,"8.2 [0.8021, 0.8610]; 8.0 [0.7942, 0.8541]",Descriptive threshold robustness comparison; no equivalence claim
+PR-AUC,logistic,0.3725,0.39119234192159036,0.01869234192159036,8.2 CI and 8.0 CI not jointly recomputed in this comparison,Descriptive
+Sensitivity,logistic,0.75,0.7385321100917431,-0.011467889908256867,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Specificity,logistic,0.7621,0.7723029045643154,0.010202904564315385,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Recalibrated calibration intercept,logistic,-0.153655,-0.04703227962468947,0.10662272037531054,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated calibration slope,logistic,0.939466,0.9799208874476402,0.04045488744764014,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated Brier score,logistic,0.070538,0.07556538349791614,0.005027383497916135,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated ECE,logistic,0.01718,0.019294510686214274,0.002114510686214273,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+BMI-Obese sensitivity disparity (pp),logistic,47.662337662337656,51.62962962962963,3.9672919672919775,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Age-60+ sensitivity disparity (pp),logistic,-8.550855085508557,-4.7934727180010235,3.7573823675075335,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Marginal conformal coverage,logistic,0.908201,0.9063373718546133,-0.0018636281453867642,"8.2 [0.8952, 0.9197]; 8.0 [0.8933, 0.9179]",Wilson interval comparison; no equivalence claim
+BMI-Obese conformal coverage,logistic,0.82333,0.8221970554926388,-0.0011329445073612332,"8.2 [0.7968, 0.8471]; 8.0 [0.7956, 0.8460]",Wilson interval comparison; no equivalence claim
+Age-60+ conformal coverage,logistic,0.848853,0.8502024291497976,0.0013494291497976318,"8.2 [0.8213, 0.8728]; 8.0 [0.8227, 0.8741]",Wilson interval comparison; no equivalence claim
+ROC-AUC,random_forest,0.8343,0.8284574974304313,-0.005842502569568753,"8.2 [0.8036, 0.8611]; 8.0 [0.7983, 0.8554]",Descriptive threshold robustness comparison; no equivalence claim
+PR-AUC,random_forest,0.3508,0.37833693536887175,0.02753693536887175,8.2 CI and 8.0 CI not jointly recomputed in this comparison,Descriptive
+Sensitivity,random_forest,0.79,0.8486238532110092,0.05862385321100916,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Specificity,random_forest,0.7359,0.6338174273858921,-0.10208257261410791,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Recalibrated calibration intercept,random_forest,0.023778,0.2124022580308356,0.1886242580308356,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated calibration slope,random_forest,1.069435,1.1489014721911426,0.07946647219114267,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated Brier score,random_forest,0.070856,0.0756655638865466,0.004809563886546603,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated ECE,random_forest,0.011272,0.017730068416096603,0.0064580684160966025,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+BMI-Obese sensitivity disparity (pp),random_forest,31.623376623376632,36.74074074074074,5.117364117364108,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Age-60+ sensitivity disparity (pp),random_forest,-13.156315631563153,-1.988781234064252,11.167534397498901,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Marginal conformal coverage,random_forest,0.896086,0.8993476234855545,0.003261623485554477,"8.2 [0.8825, 0.9083]; 8.0 [0.8859, 0.9114]",Wilson interval comparison; no equivalence claim
+BMI-Obese conformal coverage,random_forest,0.801812,0.8097395243488109,0.007927524348810944,"8.2 [0.7742, 0.8268]; 8.0 [0.7825, 0.8343]",Wilson interval comparison; no equivalence claim
+Age-60+ conformal coverage,random_forest,0.855601,0.8488529014844804,-0.006748098515519496,"8.2 [0.8285, 0.8791]; 8.0 [0.8213, 0.8728]",Wilson interval comparison; no equivalence claim
+ROC-AUC,xgboost,0.8429,0.8284979443450455,-0.014402055654954449,"8.2 [0.8123, 0.8693]; 8.0 [0.7996, 0.8558]",Descriptive threshold robustness comparison; no equivalence claim
+PR-AUC,xgboost,0.3717,0.361560776025063,-0.010139223974936995,8.2 CI and 8.0 CI not jointly recomputed in this comparison,Descriptive
+Sensitivity,xgboost,0.845,0.8119266055045872,-0.0330733944954128,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Specificity,xgboost,0.6773,0.7053941908713693,0.02809419087136933,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Recalibrated calibration intercept,xgboost,0.124137,0.11093514412641525,-0.013201855873584745,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated calibration slope,xgboost,1.118024,1.0901011228561401,-0.02792287714385977,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated Brier score,xgboost,0.069405,0.0759207084774971,0.006515708477497106,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated ECE,xgboost,0.015195,0.012869288756026921,-0.002325711243973079,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+BMI-Obese sensitivity disparity (pp),xgboost,31.36363636363636,42.148148148148145,10.784511784511785,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Age-60+ sensitivity disparity (pp),xgboost,-11.236123612361226,-2.6517083120856655,8.58441530027556,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Marginal conformal coverage,xgboost,0.881174,0.8951537744641193,0.013979774464119243,"8.2 [0.8668, 0.8942]; 8.0 [0.8815, 0.9074]",Wilson interval comparison; no equivalence claim
+BMI-Obese conformal coverage,xgboost,0.767837,0.79841449603624,0.03057749603624005,"8.2 [0.7389, 0.7945]; 8.0 [0.7707, 0.8236]",Wilson interval comparison; no equivalence claim
+Age-60+ conformal coverage,xgboost,0.811066,0.835357624831309,0.02429162483130909,"8.2 [0.7813, 0.8376]; 8.0 [0.8069, 0.8603]",Wilson interval comparison; no equivalence claim
+ROC-AUC,lightgbm,0.8394,0.8307736780996613,-0.00862632190033874,"8.2 [0.8088, 0.8670]; 8.0 [0.8019, 0.8581]",Descriptive threshold robustness comparison; no equivalence claim
+PR-AUC,lightgbm,0.3729,0.37685109754767954,0.003951097547679527,8.2 CI and 8.0 CI not jointly recomputed in this comparison,Descriptive
+Sensitivity,lightgbm,0.795,0.8073394495412844,0.012339449541284409,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Specificity,lightgbm,0.7492,0.7136929460580913,-0.03550705394190867,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Recalibrated calibration intercept,lightgbm,0.141848,0.22148341547324338,0.07963541547324338,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated calibration slope,lightgbm,1.13326,1.149614263638018,0.016354263638018063,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated Brier score,lightgbm,0.069587,0.07529267242377696,0.005705672423776967,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated ECE,lightgbm,0.014283,0.017678034186133305,0.003395034186133305,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+BMI-Obese sensitivity disparity (pp),lightgbm,27.07792207792209,40.14814814814815,13.070226070226063,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Age-60+ sensitivity disparity (pp),lightgbm,-14.146414641464144,-5.889852116267202,8.25656252519694,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Marginal conformal coverage,lightgbm,0.896086,0.8928238583410997,-0.003262141658900375,"8.2 [0.8825, 0.9083]; 8.0 [0.8790, 0.9052]",Wilson interval comparison; no equivalence claim
+BMI-Obese conformal coverage,lightgbm,0.791619,0.7904869762174406,-0.0011320237825593882,"8.2 [0.7636, 0.8171]; 8.0 [0.7624, 0.8160]",Wilson interval comparison; no equivalence claim
+Age-60+ conformal coverage,lightgbm,0.847503,0.844804318488529,-0.0026986815114710128,"8.2 [0.8198, 0.8716]; 8.0 [0.8170, 0.8691]",Wilson interval comparison; no equivalence claim
+ROC-AUC,mlp,0.8229,0.807505995660284,-0.015394004339715939,"8.2 [0.7903, 0.8532]; 8.0 [0.7741, 0.8383]",Descriptive threshold robustness comparison; no equivalence claim
+PR-AUC,mlp,0.3652,0.3651372142727396,-6.278572726042819e-05,8.2 CI and 8.0 CI not jointly recomputed in this comparison,Descriptive
+Sensitivity,mlp,0.815,0.7798165137614679,-0.03518348623853207,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Specificity,mlp,0.6644,0.7033195020746889,0.03891950207468886,Bootstrap CIs reported in source tables,Operating-point comparison; thresholds independently OOF-derived
+Recalibrated calibration intercept,mlp,-0.11893,0.2423359460018776,0.3612659460018776,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated calibration slope,mlp,1.121055,1.1745444921815886,0.053489492181588716,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated Brier score,mlp,0.071485,0.07733270445941932,0.005847704459419317,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+Recalibrated ECE,mlp,0.026373,0.030792157641995204,0.0044191576419952035,Not computed under the frozen calibration protocol,Descriptive calibration robustness comparison
+BMI-Obese sensitivity disparity (pp),mlp,39.02597402597402,54.96296296296297,15.936988936988946,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Age-60+ sensitivity disparity (pp),mlp,-14.67146714671468,-7.368689444161136,7.302777702553543,Bootstrap disparity CIs are not encoded in the authoritative 8.2 CSV,Direction and magnitude compared descriptively; no equivalence claim
+Marginal conformal coverage,mlp,0.891892,0.891425908667288,-0.0004660913327120264,"8.2 [0.8780, 0.9043]; 8.0 [0.8776, 0.9039]",Wilson interval comparison; no equivalence claim
+BMI-Obese conformal coverage,mlp,0.808607,0.8108720271800679,0.0022650271800679356,"8.2 [0.7813, 0.8332]; 8.0 [0.7837, 0.8353]",Wilson interval comparison; no equivalence claim
+Age-60+ conformal coverage,mlp,0.838057,0.844804318488529,0.006747318488528942,"8.2 [0.8098, 0.8628]; 8.0 [0.8170, 0.8691]",Wilson interval comparison; no equivalence claim

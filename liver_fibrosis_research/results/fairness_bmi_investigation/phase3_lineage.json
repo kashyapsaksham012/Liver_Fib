@@ -1,0 +1,25 @@
+{
+  "oof_hashes": {
+    "logistic": "f283f1b5ee390973e2d43a7b8bed4562f1f5a9fc0acbae8c41c6acc57ef3f691",
+    "random_forest": "ae446e55cd31f3d3f8f89205d1fcdd158d4e6680a1c98e383bebcc82fdaab723",
+    "xgboost": "4cfa72d64ef4f6f52c0466935646335f209c17eee3488dc1dfa2f73dc9b89abd",
+    "lightgbm": "99496e2270f669942dff18f5c95a49f4b67060fe669e240f7e4c6eb4351bfc5a",
+    "mlp": "b9fe782e60f2db84f1a1e4dadf38c23672d5903b392b01a0b206f2e9bee63f84"
+  },
+  "test_hashes": {
+    "logistic": "87fa5df55f55ae749e70205eaab0fb6a57b0650e25fa901a824b15ccd1a8cd45",
+    "random_forest": "25088452a18af7c6a88438049fff12b3346db7f9387051245059879bb76f373e",
+    "xgboost": "651ef1bcbbd2f36121a26f52508479349b25b526bc7563bef183efc7f5e57e4a",
+    "lightgbm": "eb9e7c78a6f3dc1c6854b7b7b6a66be64c0ae4910f7f7b69181d8a13c2d3e1ad",
+    "mlp": "a48b0a2d9d6c7c827adbc8e5682f512cf291042d75055c2ec6d33f8395d4bc51"
+  },
+  "selection_rule": "predefined multi-metric OOF gate; locked test evaluated once after selection",
+  "chosen": {
+    "logistic": "bmi_youden",
+    "random_forest": "bmi_platt_global_youden",
+    "xgboost": "bmi_platt_global_youden",
+    "lightgbm": "bmi_platt_global_youden",
+    "mlp": "bmi_youden"
+  },
+  "old_phase7_separate": true
+}

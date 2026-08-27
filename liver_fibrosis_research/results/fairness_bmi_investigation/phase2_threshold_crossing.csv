@@ -1,0 +1,11 @@
+model,model_key,bmi_group,positive_n,below_threshold_n,below_threshold_proportion,above_or_equal_threshold_n,above_or_equal_threshold_proportion,false_negative_rate,threshold
+Logistic Regression,logistic,Normal-BMI,50,33,0.66,17,0.34,0.66,0.5173
+Logistic Regression,logistic,Obese,328,53,0.16158536585365854,275,0.8384146341463414,0.16158536585365854,0.5173
+Random Forest,random_forest,Normal-BMI,50,27,0.54,23,0.46,0.54,0.4499
+Random Forest,random_forest,Obese,328,53,0.16158536585365854,275,0.8384146341463414,0.16158536585365854,0.4499
+XGBoost,xgboost,Normal-BMI,50,22,0.44,28,0.56,0.44,0.4108
+XGBoost,xgboost,Obese,328,34,0.10365853658536585,294,0.8963414634146342,0.10365853658536585,0.4108
+LightGBM,lightgbm,Normal-BMI,50,29,0.58,21,0.42,0.58,0.4988
+LightGBM,lightgbm,Obese,328,59,0.1798780487804878,269,0.8201219512195121,0.1798780487804878,0.4988
+MLP,mlp,Normal-BMI,50,32,0.64,18,0.36,0.64,0.1065
+MLP,mlp,Obese,328,58,0.17682926829268292,270,0.823170731707317,0.17682926829268292,0.1065

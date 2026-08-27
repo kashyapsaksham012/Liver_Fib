@@ -1,0 +1,13 @@
+{
+  "script_sha256": "38834cbf525fabc42d3055e52890e5f34f87ad51ce1c2393c677b127c933145a",
+  "oof_hashes": {
+    "logistic": "f283f1b5ee390973e2d43a7b8bed4562f1f5a9fc0acbae8c41c6acc57ef3f691",
+    "random_forest": "ae446e55cd31f3d3f8f89205d1fcdd158d4e6680a1c98e383bebcc82fdaab723",
+    "xgboost": "4cfa72d64ef4f6f52c0466935646335f209c17eee3488dc1dfa2f73dc9b89abd",
+    "lightgbm": "99496e2270f669942dff18f5c95a49f4b67060fe669e240f7e4c6eb4351bfc5a",
+    "mlp": "b9fe782e60f2db84f1a1e4dadf38c23672d5903b392b01a0b206f2e9bee63f84"
+  },
+  "selection_manifest": "written before test access",
+  "prior_exploratory_artifact": "results/diagnostics/stage0/subgroup_recalibration_metrics.csv",
+  "prior_result_unchanged": true
+}

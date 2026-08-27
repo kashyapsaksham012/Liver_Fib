@@ -1,0 +1,3 @@
+# Do Not Claim
+
+Do not claim fairness, universal calibration, conditional validity, equivalence, deployment readiness, universal BMI improvement, joint corrected Phase 4 calibration, Phase 7 resolution of BMI classification disparity, AFCP superiority, MI equivalence/pooled inference, or external validation. Do not call NHB holdout or NHANES 2021–2023 external validation. Do not report historical invalid Phase 3/4 conclusions. Do not claim Age-60+ significance in 5/5. Do not invent missing values, p-values, intervals, or lineage; use the exact tokens `NOT FOUND IN REPOSITORY`, `CONFLICT UNRESOLVED IN REPOSITORY`, and `LINEAGE NOT FOUND IN REPOSITORY`.

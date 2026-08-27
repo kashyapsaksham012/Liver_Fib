@@ -5,7 +5,7 @@
 ## Phase-numbering guardrail
 
 `info.md` and `documentation/phase_numbering_crosswalk.md` read live in full this pass.
-**Project Phase 8 = Mentor Phase 14 = "Generalization"** (temporal/subgroup validation).
+**Project Phase 8 = Mentor Phase 14 = "Generalization"** (subgroup-holdout validation).
 This task is explicitly framed as pre-Phase-8 work (a targeted sensitivity analysis), not Phase 8
 itself — no divergence to reconcile; Phase 8 work is not executed here.
 

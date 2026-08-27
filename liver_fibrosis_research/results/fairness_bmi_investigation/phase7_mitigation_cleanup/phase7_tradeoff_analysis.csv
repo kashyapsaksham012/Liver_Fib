@@ -1,0 +1,6 @@
+model,candidate,relative_to_original,oof_sensitivity_change_pp,oof_specificity_change_pp,oof_obese_minus_normal_gap_change_pp,oof_age60_minus_age40_gap_change_pp,oof_auroc_change,oof_brier_change,oof_conformal_marginal_drift_pp,framework_gate_pass,selection_eligible,status
+xgboost,original_frozen,original,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED
+xgboost,bmi_thresholding,retuned_candidate,-11.304347826086957,5.631324241091063,-35.90982286634461,-1.0714285714285676,0.0,0.0,0.0,False,False,NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED
+xgboost,bmi_platt_calibration,retuned_candidate,-5.217391304347818,-11.042674879014525,-6.11916264090177,0.7142857142857117,-0.07825513112339555,-0.06134855770218978,-5.788423153692623,False,False,NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED
+xgboost,bmi_age_thresholding,retuned_candidate,-21.739130434782606,12.05455345358557,-30.864197530864203,1.9642857142857184,0.0,0.0,0.0,False,False,NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED
+xgboost,combined_bmi_platt_thresholding,retuned_candidate,-11.304347826086957,5.631324241091063,-35.90982286634461,-1.0714285714285676,-0.07825513112339555,-0.06134855770218978,-5.788423153692623,False,False,NO ACCEPTABLE XGBOOST RETUNING IDENTIFIED
