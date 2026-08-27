@@ -1,6 +1,6 @@
 # documentation/manuscript/
 
-- `MANUSCRIPT_DRAFT.md` — working draft (**v3**, 2026-08-27) of the primary manuscript.
+- `MANUSCRIPT_DRAFT.md` — working draft (**v4**, 2026-08-27) of the primary manuscript.
 - `LITERATURE_REVIEW.md` — search record, findings by theme, novelty positioning
   (Already done / Related but different / Distinctive), DOI-verification status, and the
   target-venue recommendation (§5).
@@ -24,16 +24,24 @@ framing, prohibited claims, and mandatory limitations follow:
 - `documentation/final_research_audit/CONFLICT_ADJUDICATIONS.md` — C1–C4, all resolved.
 - `documentation/final_research_audit/AUTHORITATIVE_RESULTS.md` — the verified numbers and their
   recommended wording.
+- `documentation/prepublication_fixes/` — Amendment #18: `AMENDMENT_18_CLOSURE.md`,
+  `FIX1_MODEL_FIT_ALIGNMENT.md`, `FIX2_VCTE_BIAS_SENSITIVITY.md`; the two model fits, the
+  reference-standard measurement-bias sensitivity analysis, and the mitigation-narrative
+  consolidation folded into v4.
 
-**Status.** Draft v3 for the authors.
+**Status.** Draft v4 for the authors.
 
 *Done:* literature-grounded Introduction (`[n]` markers) and §4.1 relation-to-prior-work; working
 28-item reference list; Tables 1–5 rendered from the frozen artifacts (Table 1 via
 `src/manuscript_01_table1.py`, a read-only descriptive script); every figure already exists as a
 committed PNG (§Figures); TRIPOD+AI crosswalk (Appendix B); a full second-reader number check
-(`RESULTS_VERIFICATION.md` — one error found and fixed); DOI verification for 10/28 references;
-target-venue recommendation (`LITERATURE_REVIEW.md` §5 — JAMIA / JBI / npj Digital Medicine /
-PLOS Digital Health; **not** hepatology).
+(`RESULTS_VERIFICATION.md` — one error found and fixed, plus the Amendment #18 addendum);
+DOI verification for 10/28 references; target-venue recommendation (`LITERATURE_REVIEW.md` §5 —
+JAMIA / JBI / npj Digital Medicine / PLOS Digital Health; **not** hepatology).
+**v3 → v4 (Amendment #18):** §2.7b (two model fits), §3.4b (fit alignment — STRENGTHENING),
+§3.4c (reference-standard measurement bias — verdict V3 + matched-stiffness BMI shortcut),
+Table 4 + §3.7 consolidated (selective deferral = NO IMPROVEMENT), abstract / §4 / §4.1 / §5
+updated.
 
 *Before submission:* a formal PRISMA-style systematic search (documented query, two screeners,
 flow diagram) and DOI/PMID + author verification of the remaining references; panel assembly /

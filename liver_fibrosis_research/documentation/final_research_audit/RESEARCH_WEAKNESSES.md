@@ -20,11 +20,16 @@ temporal evaluation was completed and split into a separate manuscript — prese
 ### W2. No acceptable mitigation for the reliability–fairness failure
 
 Every intervention tested (Mondrian, corrected BMI mitigation, corrected subgroup calibration,
-group thresholds, Equal Opportunity, XGBoost retuning, joint conformal) either fails the
-pre-specified multi-metric gate, does not generalize across model families, or breaches the
-marginal-coverage tolerance. The study identifies a problem it cannot
-solve within its scope (`FINAL_SCIENTIFIC_FINDINGS.md` §14). This is scientifically honest but
-limits the translational contribution.
+group thresholds, Equal Opportunity, XGBoost retuning, joint conformal, and — Amendment #17 —
+conformal selective deferral) either fails the pre-specified multi-metric gate, does not
+generalize across model families, breaches the marginal-coverage tolerance, or (Mondrian re-run)
+restores subgroup coverage only by over-covering the well-served subgroups. Selective deferral
+adds a mechanistic result: the under-coverage is carried by confidently-scored wrong singleton
+predictions, not flagged-uncertain cases, so no defer-to-elastography layer can repair it — the
+residual failure is a within-subgroup score-ordering problem that needs a training-time
+intervention (outside the frozen scope). The study identifies a problem it cannot solve with
+post-hoc methods within its scope (`FINAL_SCIENTIFIC_FINDINGS.md` §14). This is scientifically
+honest but limits the translational contribution.
 
 ### W3. The subgroup conformal-coverage failure — measured on one cohort → **RESOLVED 2026-08-27**
 

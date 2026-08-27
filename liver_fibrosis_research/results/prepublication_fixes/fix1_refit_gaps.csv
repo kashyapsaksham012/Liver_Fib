@@ -1,0 +1,21 @@
+model,contrast,measure,gap_pp,ci_lo_pp,ci_hi_pp
+logistic,bmi Normal-minus-Obese,conformal_sensitivity,-40.19,-59.09,-18.18
+logistic,bmi Normal-minus-Obese,classification_sensitivity,-41.95,-62.99,-20.19
+logistic,age 60+_minus_40-59,conformal_sensitivity,-2.39,-9.38,4.61
+logistic,age 60+_minus_40-59,classification_sensitivity,-9.95,-23.75,4.5
+random_forest,bmi Normal-minus-Obese,conformal_sensitivity,-30.65,-51.97,-10.06
+random_forest,bmi Normal-minus-Obese,classification_sensitivity,-27.53,-47.86,-8.64
+random_forest,age 60+_minus_40-59,conformal_sensitivity,-7.74,-17.77,1.82
+random_forest,age 60+_minus_40-59,classification_sensitivity,-3.78,-13.34,6.18
+xgboost,bmi Normal-minus-Obese,conformal_sensitivity,-32.79,-52.4,-13.18
+xgboost,bmi Normal-minus-Obese,classification_sensitivity,-32.08,-53.38,-12.47
+xgboost,age 60+_minus_40-59,conformal_sensitivity,-6.29,-15.72,2.75
+xgboost,age 60+_minus_40-59,classification_sensitivity,-7.74,-18.69,1.88
+lightgbm,bmi Normal-minus-Obese,conformal_sensitivity,-23.7,-45.0,-6.23
+lightgbm,bmi Normal-minus-Obese,classification_sensitivity,-32.79,-52.41,-13.18
+lightgbm,age 60+_minus_40-59,conformal_sensitivity,-4.83,-12.81,3.68
+lightgbm,age 60+_minus_40-59,classification_sensitivity,-8.27,-17.31,1.76
+mlp,bmi Normal-minus-Obese,conformal_sensitivity,6.49,-6.43,22.27
+mlp,bmi Normal-minus-Obese,classification_sensitivity,-35.26,-57.73,-14.22
+mlp,age 60+_minus_40-59,conformal_sensitivity,-8.22,-17.84,1.8
+mlp,age 60+_minus_40-59,classification_sensitivity,-11.46,-24.45,1.47
