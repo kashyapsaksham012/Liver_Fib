@@ -7,6 +7,13 @@ not cite these as current; use the successors named below.
 
 ## Contents
 
+### `process_trail/` (~77 files, 2026-08-27 cleanup)
+The dated **process trail** — pre-execution/pre-audit snapshots, decision logs, correction /
+closure / reconciliation / verification records, and superseded per-phase reports from the
+BMI-fairness investigation. Preserved because they are timestamped, not because they are reading
+material. See `process_trail/README.md`. Links elsewhere that still point to the old paths resolve
+under `documentation/archive/process_trail/<original-path>` (repo-root files under `root/`).
+
 ### `final_research_state/` (14 files, 2026-08-27, earlier pass)
 The register set — `AUTHORITATIVE_RESULTS_REGISTER.md`, `VERIFIED_WITH_LIMITATIONS_REGISTER.md`,
 `EXPLORATORY_RESULTS_REGISTER.md`, `SUPERSEDED_INVALID_REGISTER.md`, `DO_NOT_CLAIM.md`,

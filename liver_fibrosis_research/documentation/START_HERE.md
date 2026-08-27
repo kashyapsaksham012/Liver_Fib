@@ -6,6 +6,13 @@ successive review passes. This file is the single entry point: it fixes the read
 authority hierarchy, the disposition of superseded material, and the four documented unresolved
 conflicts. Read this before citing any number from any other document.
 
+**Documentation cleanup (2026-08-27):** ~77 process-trail files (pre-execution snapshots, decision
+logs, correction/closure/reconciliation records, superseded per-phase reports) were moved to
+`documentation/archive/process_trail/` — nothing deleted. The active tree below is now ~115
+markdown files; anything self-labelled a *snapshot*, *decision log*, *correction record*, or
+*closure/verification report* is process history, not a source. Links to old paths resolve under
+`documentation/archive/process_trail/<original-path>` (see `documentation/archive/README.md`).
+
 ---
 
 ## 1. Authority hierarchy (highest wins on any disagreement)
@@ -29,8 +36,11 @@ conflicts. Read this before citing any number from any other document.
    `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md`, `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`,
    `REPRODUCIBILITY.md`, `CHANGELOG_RESEARCH.md`. Earlier consolidation layer; still cited by (2).
    Superseded only where (2) explicitly reconciles a point.
-5. **`documentation/archive/`** — superseded synthesis layers, moved 2026-08-27 to keep the active
-   tree legible; nothing deleted (see `documentation/archive/README.md`):
+5. **`documentation/archive/`** — superseded synthesis layers and the process trail, moved
+   2026-08-27 to keep the active tree legible; nothing deleted (see `documentation/archive/README.md`):
+   - `archive/process_trail/` (~77 files) — pre-execution snapshots, decision logs, correction /
+     closure / reconciliation / verification records, and superseded per-phase reports. Links to
+     old paths resolve here under the original relative path (repo-root files under `root/`).
    - `archive/final_research_state/` (14 files) — the register set that (2) consolidates and
      supersedes. Where `final_research_audit/` documents cite `documentation/final_research_state/…`,
      read it as `documentation/archive/final_research_state/…`.
@@ -39,22 +49,28 @@ conflicts. Read this before citing any number from any other document.
      `FINAL_SCIENTIFIC_INTERPRETATION.md`, `FINAL_SCIENTIFIC_STATUS_RECONCILIATION.md`,
      `REMAINING_ANALYSES_AND_RESEARCH_STATUS.md`, `ITEMS_1_5_REFINEMENT_ADDENDUM.md`,
      `P0_P1_REMEDIATION_ADDENDUM.md`, both `COMPLETE_END_TO_END_*` reports).
-6. **Phase-by-phase reports** at the project root (`PHASE1_DATA_ASSEMBLY_REPORT.md` …
-   `PHASE8_SUBGROUP_HOLDOUT_GENERALIZATION_RESULTS_REPORT.md`, plus the `*_CLOSURE_*`,
+6. **Phase-by-phase results reports** at the project root — `PHASE1_DATA_ASSEMBLY_REPORT.md` …
+   `PHASE8_SUBGROUP_HOLDOUT_GENERALIZATION_RESULTS_REPORT.md`, plus
    `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md`, `MULTIPLE_IMPUTATION_SENSITIVITY_RESULTS_REPORT.md`,
-   `MI_CLOSURE_RECONCILIATION_REPORT.md`, `RELIABILITY_EXTENSION_RESULTS_REPORT.md`,
-   `CAND4_CLASSIFICATION_RESOLUTION_REPORT.md`, `END_TO_END_PHASE1_TO_PHASE3_VERIFICATION_REPORT.md`,
-   `FINAL_PRE_CALIBRATION_*`). The primary detailed record of each phase. Frozen; append-only.
-7. **Follow-up investigation phase reports** — `documentation/fairness_bmi_investigation/`
-   (BMI follow-up Phases 0–7). Authoritative for their own scope; each carries its own decision log.
-8. **Protocol freezes / pre-registration** — `documentation/phase2/` (`PHASE2_PROTOCOL_FREEZE.md`,
-   `primary_outcome_definition.md`, `statistical_analysis_plan.md`, `sensitivity_analysis_plan.md`,
-   `fairness_subgroup_protocol.md`, `missing_data_protocol.md`, `uncertainty_protocol.md`),
-   `documentation/end_to_end/protocol_amendment_registry.md` (15 amendments). These define what
+   `RELIABILITY_EXTENSION_RESULTS_REPORT.md`, and the two
+   `documentation/sensitivity/*_RESULTS_REPORT.md`. The primary detailed record of each phase.
+   (The `*_CLOSURE_*`, `*_RECONCILIATION_*`, `*_VERIFICATION_*` and `FINAL_PRE_CALIBRATION_*`
+   housekeeping reports were moved to `documentation/archive/process_trail/root/`.)
+7. **Follow-up investigation reports** — `documentation/fairness_bmi_investigation/` (~8 current
+   reports: `PHASE0_LINEAGE_AUDIT`, `PHASE1_REPRODUCTION`, `PHASE2_DIAGNOSTIC_REPORT`,
+   `phase3_corrected/PHASE3_CORRECTED_MITIGATION_REPORT`, `PHASE4_CORRECTED_FINAL_AUDIT_REPORT`,
+   `PHASE5_MI_CONFORMAL_REPORT`, `PHASE6_8KPA_ROBUSTNESS_REPORT`,
+   `PHASE7_MITIGATION_CLEANUP_REPORT`). Authoritative for their own scope. The decision logs and
+   superseded/audit-of-audit reports are in `documentation/archive/process_trail/fairness_bmi_investigation/`.
+8. **Protocol freezes / pre-registration** — `documentation/phase2/` (16 protocol files:
+   `PHASE2_PROTOCOL_FREEZE.md`, `primary_outcome_definition.md`, `statistical_analysis_plan.md`,
+   `sensitivity_analysis_plan.md`, `fairness_subgroup_protocol.md`, `missing_data_protocol.md`,
+   `uncertainty_protocol.md`, …), the `documentation/phase3/` design/protocol files, and
+   `documentation/end_to_end/protocol_amendment_registry.md` (16 amendments). These define what
    was pre-specified; they are not result documents.
-9. **Historical / superseded / exploratory** — `exploratory_posthoc*/`, `exploratory_602020/`,
-   `documentation/**/archive/`, and anything self-labelled SUPERSEDED / INVALID / EXPLORATORY.
-   Preserved for transparency; never a manuscript source.
+9. **Historical / superseded / exploratory / process** — `documentation/archive/` (including
+   `process_trail/`), `documentation/**/archive/`, and anything self-labelled SUPERSEDED / INVALID
+   / EXPLORATORY / snapshot / decision log. Preserved for transparency; never a manuscript source.
 
 Recency alone never confers authority. A later artifact supersedes an earlier one only where a
 document in tier 2–4 explicitly records the reconciliation.
