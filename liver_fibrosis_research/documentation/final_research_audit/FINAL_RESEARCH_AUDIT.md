@@ -41,6 +41,14 @@ Recency alone was never used to assign authority.
 | C3 | **Faithful AFCP narrative status.** An older status marks AFCP work blocked; a newer status marks it conditional-frozen exploratory. | `results/diagnostics/stage1_decision_report.md`, `FINAL_CLAIM_AND_STATUS_REGISTRY.csv` row `AFCP` | Repository records **CONFLICT UNRESOLVED IN REPOSITORY** for the final narrative label. Disposition: the old KNN-AFCP is INVALID/SUPERSEDED; faithful AFCP is EXPLORATORY; **no unconditional AFCP-superiority claim is permitted** either way. Audit preserves this. |
 | C4 | **CAND_4 frozen tracking status.** `sensitivity_analysis_plan.md` folds CAND_4 under item 2; `statistical_analysis_plan.md` tracks CAND_4 as a distinct EXPLORATORY item. | `documentation/validation/cand4_resolution_evidence.csv` | Documentation tension confirmed in the repo's own evidence file; immaterial to results because **CAND_4 was never executed** (no model/prediction/result artifact exists). Disposition: CAND_4 `NOT_EXECUTED`. |
 
+> **ADJUDICATED 2026-08-27 → C1–C4 RESOLVED.** Formal one-sentence decisions and their bases are
+> recorded in `documentation/final_research_audit/CONFLICT_ADJUDICATIONS.md`. The tables and lists
+> in this document retain their original `CONFLICT UNRESOLVED` wording (append-only) but are
+> superseded on these four points by that file: C1 the raw artifact governs (BMI-Obese
+> under-covers); C2 executed, EXPLORATORY only; C3 KNN-AFCP INVALID / faithful AFCP EXPLORATORY,
+> no superiority claim; C4 CAND_4 DISTINCT–EXPLORATORY–UNEXECUTED (Amendment #14). No scientific
+> number changes.
+
 No other numeric claim checked in this audit (Phase 1 cohort flow, Phase 3 AUROC/thresholds,
 Phase 4 raw & recalibrated calibration, Phase 5 BMI/Age fairness, Phase 6 intersectional coverage,
 Phase 7 Mondrian 5/9 + XGBoost breach, Phase 8 holdout, MI, 8.0 kPa, temporal) showed a
@@ -223,9 +231,11 @@ mitigation with an acceptable multi-metric profile was identified.**
 5. Phase 5 MI conformal `LINEAGE NOT FOUND IN REPOSITORY` (descriptive-only handling accepted).
 6. Frozen 8.2-kPa protocol commit / model-artifact manifest `NOT FOUND IN REPOSITORY`
    (BMI-inv Phase 6 lineage limitation).
-7. AFCP final narrative status `CONFLICT UNRESOLVED IN REPOSITORY`.
-8. Joint-mitigation execution status vs stale status CSV `CONFLICT UNRESOLVED IN REPOSITORY`
-   (dated attestation is the superseding record).
+7. AFCP final narrative status — **ADJUDICATED 2026-08-27 (C3, RESOLVED):** KNN-AFCP INVALID,
+   faithful AFCP EXPLORATORY, no superiority claim permitted. See `CONFLICT_ADJUDICATIONS.md`.
+8. Joint-mitigation execution status vs stale status CSV — **ADJUDICATED 2026-08-27 (C2,
+   RESOLVED):** executed 2026-08-24, EXPLORATORY only; stale CSV row superseded. See
+   `CONFLICT_ADJUDICATIONS.md`.
 9. Conformal subgroup-coverage generalization to CAND_2/CAND_3/8.0 kPa not directly measured.
 10. `documentation/MASTER_RESEARCH_RESULTS.md` conformal-coverage section (items 26–27, §3.5)
     is inconsistent with the raw CSVs — **flagged for correction by the register owner; not
@@ -320,6 +330,13 @@ Normal-BMI vs Obese sensitivity deficit 27.1–47.7 pp in 5/5; marginal-vs-subgr
 coverage split (BMI-Obese and Age-60+ fail); interpretability (ALT/AST/BMI/Age top features).
 Everything else is `MANUSCRIPT_READY_WITH_QUALIFICATION`, `EXPLORATORY_ONLY`, `NOT_USABLE`, or
 `SEPARATE_WORK`.
+
+**Framing decision (2026-08-27, `MANUSCRIPT_FRAMING_GUIDANCE.md`):** the headline is the
+Normal-BMI under-detection finding and the marginal-vs-subgroup conformal-coverage contrast. The
+**Age-60+ *sensitivity* disparity is a secondary observation** — Results body and Limitations
+only, never the abstract, always stated with its fragility; it is not a co-headline with BMI. The
+**Age-60+ *conformal* under-coverage stays at full strength** in the conformal results (a
+different, firmer finding). Keep the two Age-60+ findings explicitly distinct.
 
 ## 18. Required manuscript limitations
 

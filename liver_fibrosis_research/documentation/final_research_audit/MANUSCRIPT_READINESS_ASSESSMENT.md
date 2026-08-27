@@ -87,9 +87,17 @@ uninterpretable; class-balancing artifact) is complete.
    and Age-60+ (81–86%) in every model.
 6. ALT, AST, BMI, Age are the top four predictors across all families.
 
+**Headline discipline (`MANUSCRIPT_FRAMING_GUIDANCE.md`, 2026-08-27):** items 4 and 5 carry the
+abstract — the Normal-BMI under-detection finding and the marginal-vs-subgroup conformal contrast.
+Item 5's Age-60+ component is the *conformal coverage* finding and stays as written; it is **not**
+the same as the Age-60+ *sensitivity* disparity below, which is a secondary observation and does
+not belong in the abstract.
+
 ## Findings that REQUIRE qualification
 
-- Age-60+ deficit (direction robust; significant 4/5; specification-sensitive; non-monotonic).
+- Age-60+ **sensitivity** deficit (direction robust; significant 4/5; specification-sensitive;
+  non-monotonic; reverses temporally) — **secondary observation, Results body + Limitations only,
+  never the abstract or a co-headline with BMI** (`MANUSCRIPT_FRAMING_GUIDANCE.md`).
 - Project Phase 7 Mondrian mitigation (partial: 5/9; XGBoost marginal breach; sequential overlap).
 - Corrected BMI mitigation / subgroup calibration (no acceptable improvement; MLP-only modest
   gap reduction; no formal inference).
