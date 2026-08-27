@@ -50,8 +50,8 @@ under-coverage* (finding 6, §12) is a separate, firmer result and is retained a
 
 ## 5. BMI × Age reliability (intersectional) — **SUPPORTED WITH LIMITATIONS** (descriptive)
 
-In the BMI-Obese ∩ Age-60+ cell (test N=294, 35 positives) baseline split-conformal coverage
-collapses to 64.97–75.17% (Clopper–Pearson CIs exclude 90%). Descriptive, pre-specified,
+In the BMI-Obese ∩ Age-60+ cell (test N=294, 61 positives) baseline split-conformal coverage
+collapses to 64.97–75.17% (Wilson CIs exclude 90%). Descriptive, pre-specified,
 small-cell. `results/uncertainty/intersectional_coverage_ci.csv`. **NOT SUPPORTED:** any
 conditional-validity or causal-interaction claim; the
 "294 = ~62%" characterisation (that is the union — see `SUPERSEDED_INVALID_RESULTS.md` S3).

@@ -25,10 +25,13 @@ prior work); 28-item reference list (verified — `REFERENCE_VERIFICATION.md`; +
 via `src/manuscript_01_table1.py`, a read-only descriptive script); TRIPOD+AI crosswalk
 (Appendix B); every figure already exists as a committed PNG (§Figures); a full second-reader
 number check (`documentation/manuscript/RESULTS_VERIFICATION.md` — one Table 3 value corrected).
-**Still outstanding:** a formal PRISMA-style systematic search + DOI/PMID/author verification
-(10/28 verified; `LITERATURE_REVIEW.md` §4); figure panel assembly to the chosen journal's style;
-target-journal choice (`LITERATURE_REVIEW.md` §5); a human co-author repeating the verification
-pass and a final read against `DO_NOT_CLAIM.md`.
+**Still outstanding for submission** (`SUBMISSION_CHECKLIST.md`): full author bylines for the
+references marked *[author list to confirm]* + the *CHEST* 2026 byline; a two-screener
+database search with recorded hit counts (`LITERATURE_SEARCH_RECORD.md`); a participant flow
+diagram + figure panel assembly to the chosen journal's style
+(target: **JAMIA** — `TARGET_VENUE_DECISION.md`); a full-text re-check of the ref [1] and ref [23]
+claims; a human co-author repeating `RESULTS_VERIFICATION.md` and a final read against
+`DO_NOT_CLAIM.md`; a public code release + archival DOI; medRxiv posting.
 
 ---
 
@@ -87,10 +90,12 @@ aggregate-calibrated, yet still under-detect normal-weight patients and provide 
 over-confident prediction sets for obese and older patients. **Discrimination plus aggregate
 calibration are insufficient evidence of subgroup-safe reliability**; the failing subgroups here
 were identifiable, reproducible across independently constructed cohorts, mechanism-linked, and
-resistant to every mitigation strategy we tested. A training-time reweighting intervention
+not repairable to an acceptable standard by any mitigation we tested — no candidate, post-hoc or
+training-time, met its pre-specified acceptance gate. A training-time reweighting intervention
 addressed the underlying score-ordering mechanism and halved the body-mass gap but could not
-eliminate it within routine features and this sample without an unacceptable discrimination cost.
-External validation has not been performed and is the foremost outstanding requirement.
+eliminate it within routine features and this sample without a discrimination and specificity
+cost that failed the gate. External validation has not been performed and is the foremost
+outstanding requirement.
 
 ---
 
@@ -129,8 +134,9 @@ downstream decision disparity [21].
 Prior work has examined these dimensions **separately**. Sex-related bias has been reported in
 liver-disease classifiers on other datasets [12]; the class-imbalance calibration artifact has
 been shown generally [10,11] and on the same NHANES release with a near-identical VCTE outcome
-[1]; and conformal prediction has been applied to liver-disease risk on non-NHANES cohorts, where
-no subgroup coverage failure was reported [23]. We are not aware of a study that holds all of them —
+[1]; and conformal prediction has been applied to liver-disease risk on a non-NHANES cohort, but
+only for marginal distribution-free coverage — subgroup coverage was not examined [23]. We are not
+aware of a study that holds all of them —
 discrimination, aggregate calibration, a pre-specified multi-axis subgroup fairness audit,
 split-conformal *subgroup* coverage, and a structured mitigation battery — to the same standard,
 under one frozen protocol, on this task.
@@ -264,10 +270,11 @@ participants withheld (train N = 5,366) and evaluated on that withheld subgroup 
 
 ### 2.11 Statistical analysis and multiplicity
 
-Confidence intervals used bootstrap resampling (discrimination, fairness disparities), Wilson
-score intervals (coverage proportions), or Clopper–Pearson intervals (small intersectional
-cells). Multiple testing was controlled with BH false-discovery control within pre-specified
-families and, additionally, in a project-wide 182-test pooled correction. No exploratory finding
+Confidence intervals used bootstrap resampling (discrimination, fairness disparities) or Wilson
+score intervals (all coverage proportions, including the intersectional cell). Multiple testing
+was controlled with BH false-discovery control within pre-specified families and, additionally, in
+a project-wide 182-test pooled correction; the post-freeze protocol-amendment analyses
+(§3.4b–c, §3.6, §3.7b) were BH-corrected within their own families and are not part of that pool. No exploratory finding
 was promoted to a primary or secondary conclusion.
 
 ### 2.12 Reproducibility
@@ -434,19 +441,20 @@ multilayer perceptron was excluded (its resampling approximation was unstable ac
 four families were evaluated and the gate thresholds relaxed to ≥ 3/4 accordingly.
 
 The intervention **moved the mechanism**: on out-of-fold data the matched-stiffness BMI
-coefficient (§3.4) collapsed from 0.18–0.25 to 0.008–0.036 in all four families, and
-within-normal-weight discrimination rose for three of four — the models stopped using body mass as
-a risk cue and their within-subgroup score ordering improved. On the locked test the
-normal-weight-vs-obese sensitivity gap **halved**, from +27 to +48 pp (BH-significant in all
-models) to +14 to +17 pp (BH-significant in none), and BMI-obese conformal coverage rose from
-0.77–0.82 to **0.86–0.87** (still short of the 0.88 target). Age-60+ conformal coverage was
-essentially unchanged; a second, joint body-mass × age reweighting (secondary arm) reduced the
-body-mass gap similarly but **worsened** the age gap (BH-significant in three of four models),
-confirming that one objective cannot repair both mechanisms. The intervention also carried a
-cost: test AUROC fell 0.02–0.03, overall specificity fell up to 12 percentage points, and
-logistic regression acquired a newly BH-significant sex disparity. **By the pre-registered rule
-the verdict is NEGATIVE** — neither efficacy gate (gap closed; coverage ≥ 0.88) was met and the
-cost gates failed. The failure is therefore addressable at training time *in mechanism*, but not
+coefficient (§3.4) collapsed from 0.18–0.25 to 0.008–0.036 in all four evaluated families, and
+within-normal-weight discrimination rose for three of four — the models stopped assigning obese
+participants higher risk at equal liver stiffness and their within-subgroup score ordering
+improved. On the locked test the normal-weight-vs-obese sensitivity gap **halved**: for the four
+evaluated families it fell from a baseline of +27 to +48 pp (all four BH-significant) to +14 to
++17 pp (none BH-significant), and BMI-obese conformal coverage rose from 0.77–0.82 to **0.86–0.87**
+(still short of the 0.88 target). Age-60+ conformal coverage was essentially unchanged; a second,
+joint body-mass × age reweighting (secondary arm) reduced the body-mass gap similarly but
+**worsened** the age gap (BH-significant in three of four models), confirming that one objective
+cannot repair both mechanisms. The intervention also carried a cost: test AUROC fell 0.02–0.03 in
+all four families, overall specificity fell by 0.7 to 12 percentage points, and logistic
+regression acquired a newly BH-significant female sensitivity disparity. **By the pre-registered
+rule the verdict is NEGATIVE** — neither efficacy gate (gap closed; coverage ≥ 0.88) was met and
+the cost gates failed. The failure is therefore addressable at training time *in mechanism*, but not
 eliminable to an acceptable standard within these ten routine predictors and this sample without a
 discrimination–specificity trade the gate rejects.
 
@@ -532,8 +540,9 @@ subgroup-safe, and conformal prediction's marginal guarantee does not close that
 subgroups in this study are **identifiable** (obese and older patients, and normal-weight patients
 for detection), **reproducible** (across three independently constructed cohorts and an alternative
 outcome threshold), **mechanism-linked** (a score-distribution difference with a threshold component for the
-body-mass gap; two distinct mechanisms for the body-mass and age gaps), and **resistant to every
-mitigation strategy we tested**.
+body-mass gap; two distinct mechanisms for the body-mass and age gaps), and **not repairable to an
+acceptable standard by any mitigation we tested** — a pre-registered training-time reweighting
+reduced but did not close the body-mass gap, and only at a cost the gate rejects.
 
 ### 4.1 Relation to prior work
 
@@ -555,10 +564,12 @@ co-occurs with a conformal coverage failure in the same subgroup. A pre-register
 analysis (§3.4c) bounds the competing explanation of reference-standard measurement bias: VCTE
 over-reads liver stiffness at high BMI, but obese sensitivity and obese conformal coverage were
 stable when the outcome was restricted to unambiguous fibrosis, and at matched liver stiffness the
-models still assigned obese participants materially higher risk scores (§3.4) — so the disparity
-is, at least in part, the models using body mass as a risk shortcut rather than an artefact of the
-labels. The normal-weight side of the measurement-bias question is underpowered and a residual
-contribution cannot be formally excluded (§5).
+models still assigned obese participants a 0.19–0.33 higher predicted probability (§3.4). Body
+mass is a genuine fibrosis risk factor, so this differential is not in itself an error; but it is
+the proximate cause of the lean-patient miss — lean fibrosis-positive cases sit below the
+operating threshold precisely because the models down-weight them for being lean — and it is not
+explained by inflated obese labels. The normal-weight side of the measurement-bias question is
+underpowered and a residual contribution cannot be formally excluded (§5).
 That **marginal coverage does not imply subgroup coverage** is a theoretical
 result [17], and enforcing equal coverage can worsen downstream fairness [21]; the same
 marginal-vs-subgroup coverage gap has independently been reported in survey-based social-attitude
@@ -566,13 +577,11 @@ prediction (~13 percentage-point weighted subgroup gaps under standard split con
 indicating the phenomenon is not specific to this clinical task. What we add is the
 empirical demonstration on routine-data fibrosis triage, triangulated across cohort constructions,
 that no tested method — post-hoc *or* a pre-registered training-time reweighting — achieves
-acceptable subgroup validity without an offsetting cost. This last point
-contrasts with a recent conformal NAFLD-risk model on a non-NHANES cohort that reported
-distribution-free coverage without a subgroup coverage failure [23] — a difference in task,
-cohort, and outcome that itself argues against assuming subgroup validity transfers. *(Ref [23]'s
-subgroup claim is to be re-checked against its full text — see `REFERENCE_VERIFICATION.md`.)* The closest fairness-audit
-analog remains a sex-stratified analysis of liver-disease classifiers on a different dataset
-[12].
+acceptable subgroup validity without an offsetting cost. A recent conformal NAFLD-risk model on a
+non-NHANES cohort reported only marginal distribution-free coverage and did not test subgroup
+coverage [23]; whether the failure we observe generalises to that task and cohort is open. The
+closest fairness-audit analog remains a sex-stratified analysis of liver-disease classifiers on a
+different dataset [12].
 
 ## 5. Limitations
 
@@ -606,8 +615,9 @@ register's mandated minimum set appears below.
   overlap population single-attribute rules were applied sequentially, not jointly [E4].
 - **Small subgroup and intersectional cells [B2, B3].** Normal-weight sensitivity rests on 22
   test positives; the underweight band (one positive) is uninterpretable and is excluded. The
-  obese-and-60+ intersection cell has 294 participants and ~35 events; intersectional coverage
-  and any joint calibration are descriptive.
+  obese-and-60+ intersection test cell has 294 participants (61 fibrosis-positive), and the joint
+  conformal-calibration cell has 138 (30 positive); intersectional coverage and any joint
+  calibration are reported descriptively.
 - **Low outcome prevalence [B1].** At 9.31% prevalence (666 positives) positive predictive value
   is low (~0.12–0.25 at a Youden operating point) and subgroup estimates are imprecise.
 - **Age-60+ sensitivity is specification-sensitive [A1].** Directionally consistent but
@@ -641,8 +651,9 @@ register's mandated minimum set appears below.
   BMI-obese conformal under-coverage persisted — evidence against an artefact concentrated near
   the 8.2-kPa cut-point. A matched-stiffness analysis showed the models assign obese participants a
   0.19–0.33 higher predicted probability than normal-weight participants at identical measured
-  stiffness (p < 0.001, all five models), locating part of the disparity in a BMI risk shortcut
-  that is independent of the measurement artefact. However, normal-weight participants have only 7
+  stiffness (p < 0.001, all five models) — a reliance on body mass beyond the measured stiffness
+  that is the proximate cause of the lean-patient miss and is independent of any label artefact.
+  However, normal-weight participants have only 7
   fibrosis-positive test cases at ≥ 12 kPa, so the normal-weight side cannot be adjudicated and a
   residual measurement contribution cannot be formally excluded (pre-registered verdict: V3,
   underpowered). A biopsy- or magnetic-resonance-elastography-referenced cohort would be required
@@ -659,13 +670,13 @@ under-detect normal-weight patients and provide over-confident prediction sets f
 patients — failures that discrimination and aggregate calibration conceal. **Discrimination plus
 aggregate calibration are insufficient evidence of subgroup-safe reliability.** In this study the
 failing subgroups were identifiable, reproducible across independently constructed cohorts,
-mechanism-linked, and resistant to every mitigation strategy we tested. A pre-registered
-training-time reweighting intervention removed the underlying score-ordering mechanism and halved
-the body-mass gap but could not eliminate it within routine features and this sample without a
-discrimination and specificity cost that failed the pre-specified gate — locating the remaining
-options in richer data or features, or an explicitly accepted performance–equity trade, rather
-than in a better post-hoc layer. Independent external validation is the necessary next step
-before any consideration of use.
+mechanism-linked, and not repairable to an acceptable standard by any mitigation we tested. A
+pre-registered training-time reweighting intervention removed the underlying score-ordering
+mechanism and halved the body-mass gap but could not eliminate it within routine features and this
+sample without a discrimination and specificity cost that failed the pre-specified gate — locating
+the remaining options in richer data or features, or an explicitly accepted performance–equity
+trade, rather than in a better post-hoc layer. Independent external validation is the necessary
+next step before any consideration of use.
 
 ---
 
@@ -849,7 +860,7 @@ Sources: `results/mitigation/*`,
 | XGBoost retuning within the frozen hyperparameter family | remove the XGBoost coverage-tolerance breach | every gap-closing candidate cost 11–22 pp overall sensitivity or flipped the breach | **NO ACCEPTABLE RETUNING** |
 | Joint (intersectional) conformal calibration (exploratory) | restore Obese ∩ 60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on the primary cohort, but XGBoost/LightGBM breach the ±5 pp marginal tolerance; joint calibration cell N = 138 | **EXPLORATORY ONLY** |
 | Conformal selective deferral (Amendment #17) | restore subgroup coverage by referring flagged-uncertain cases to elastography | **no candidate rule met the pre-specified gate** on the calibration partition (locked test not touched); deferring two-class {pos,neg} sets *lowers* retained coverage because the misses are confidently-scored singletons, not uncertain sets | **NO IMPROVEMENT** — mechanistic dead end for post-hoc deferral |
-| **Training-time subgroup reweighing — body-mass (Amendment #19, primary)** | remove the body-mass score-ordering failure at training time | matched-stiffness BMI coefficient collapsed 0.18–0.25 → 0.008–0.036 (OOF, 4/4); normal-weight-vs-obese sensitivity gap **halved** (+27–48 → +14–17 pp; BH-sig 4/4 → 0/4); BMI-obese conformal coverage 0.77–0.82 → **0.86–0.87** (< 0.88 target); age-60+ coverage unchanged. **Cost:** AUROC −0.02–0.03; specificity up to −12 pp; new logistic sex disparity. Efficacy gates (gap closed; coverage ≥ 0.88) not met; cost gates failed. | **NEGATIVE** — mechanism addressed, not eliminated to standard without a discrimination/specificity cost |
+| **Training-time subgroup reweighing — body-mass (Amendment #19, primary)** | remove the body-mass score-ordering failure at training time | four families evaluated (MLP excluded, unstable; gate ≥ 3/4). Matched-stiffness BMI coefficient collapsed 0.18–0.25 → 0.008–0.036 (OOF, 4/4); normal-weight-vs-obese sensitivity gap **halved** (baseline +27–48 pp, 4/4 BH-sig → +14–17 pp, 0/4 BH-sig); BMI-obese conformal coverage 0.77–0.82 → **0.86–0.87** (< 0.88 target); age-60+ coverage unchanged. **Cost:** AUROC −0.02 to −0.03 (4/4); specificity −0.7 to −12 pp; new logistic female sensitivity disparity. Efficacy gates (gap closed; coverage ≥ 0.88) not met; cost gates failed. | **NEGATIVE** — mechanism addressed, not eliminated to standard without a discrimination/specificity cost |
 | Training-time subgroup reweighing — body-mass × age (Amendment #19, secondary) | as above, jointly across body-mass and age | body-mass gap halved similarly, but **age-60+ sensitivity gap worsened (BH-sig 3/4)**; larger specificity cost; within-normal-weight OOF discrimination *fell* (sparse cells) | **NEGATIVE** — one objective cannot repair both mechanisms |
 
 *Successful: none. No intervention — post-hoc or training-time — resolved the body-mass
@@ -945,7 +956,7 @@ item group is addressed.
 | Model development — algorithms, hyperparameter tuning, class imbalance | §2.4 (five families; 5-fold CV within training partition; class weights / `scale_pos_weight`; MLP unweighted) |
 | Internal validation — resampling, data partitioning, leakage control | §2.4 (single locked 70/30 split; 80/20 proper-train/calibration sub-split); §2.12 (contamination audit 8/8; 44/44 internal tests); Limitation J2 (no nested outer resampling) |
 | Calibration methods and assessment | §2.5, §3.3, Table 2 (calibration-in-the-large, ECE, Brier; out-of-fold Platt) |
-| Model performance — discrimination, with CIs, **including subgroups** | §2.11, §3.2, §3.4, §3.5–3.6, Tables 2–3 (bootstrap / Wilson / Clopper–Pearson CIs; BH-FDR) |
+| Model performance — discrimination, with CIs, **including subgroups** | §2.11, §3.2, §3.4, §3.5–3.6, Tables 2–3 (bootstrap CIs for discrimination/disparities; Wilson score intervals for all coverage proportions; BH-FDR) |
 | Fairness — approaches, rationale, subgroup results | §2.6, §3.4, §3.8 (pre-specified dimensions, disparity metric, within-family FDR); §4.1 |
 | Uncertainty quantification | §2.7, §3.5–3.6 (split conformal; marginal + subgroup + intersectional coverage) |
 | Model updating / transportability | §2.10, §3.9 (within-NHANES demographic holdout); §5 (no external or later-cycle validation — foremost limitation) |

@@ -66,7 +66,7 @@ markdown files; anything self-labelled a *snapshot*, *decision log*, *correction
    `PHASE2_PROTOCOL_FREEZE.md`, `primary_outcome_definition.md`, `statistical_analysis_plan.md`,
    `sensitivity_analysis_plan.md`, `fairness_subgroup_protocol.md`, `missing_data_protocol.md`,
    `uncertainty_protocol.md`, …), the `documentation/phase3/` design/protocol files, and
-   `documentation/end_to_end/protocol_amendment_registry.md` (16 amendments). These define what
+   `documentation/end_to_end/protocol_amendment_registry.md` (19 amendments). These define what
    was pre-specified; they are not result documents.
 9. **Historical / superseded / exploratory / process** — `documentation/archive/` (including
    `process_trail/`), `documentation/**/archive/`, and anything self-labelled SUPERSEDED / INVALID
