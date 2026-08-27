@@ -24,16 +24,21 @@ conflicts. Read this before citing any number from any other document.
 3. **`documentation/final_audit/MASTER_END_TO_END_RESEARCH_REPORT.md`** — narrative history from
    data assembly through temporal validation. Consistent with (2); use for context and phase
    detail.
-4. **`documentation/final_research_state/`** (2026-08-27, earlier same day) — the register set
-   that (2) consolidates and supersedes. Kept for the append-only record. Where it and (2) differ
-   in framing, (2) governs; they do not differ on any number.
-5. **`documentation/final_audit/` remaining files** (2026-08-24/25) — `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md`,
-   `FINAL_CLAIM_AUDIT.md`, `FINAL_RESEARCH_ARCHITECTURE.md`, `FINAL_RESEARCH_STATUS.md`,
-   `FINAL_SCIENTIFIC_INTERPRETATION.md`, `FINAL_SCIENTIFIC_STATUS_RECONCILIATION.md`,
-   `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`, `REMAINING_ANALYSES_AND_RESEARCH_STATUS.md`,
-   `REPRODUCIBILITY.md`, `CHANGELOG_RESEARCH.md`, `ITEMS_1_5_REFINEMENT_ADDENDUM.md`,
-   `P0_P1_REMEDIATION_ADDENDUM.md`, the two `COMPLETE_END_TO_END_*` reports. Earlier consolidation
-   layer; still cited by (3). Superseded only where (2) or (3) explicitly reconcile a point.
+4. **`documentation/final_audit/` — 5 active files** (2026-08-24/25) —
+   `MASTER_END_TO_END_RESEARCH_REPORT.md` (narrative history),
+   `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md`, `INDEPENDENT_VERIFICATION_ATTESTATION_2026-08-25.md`,
+   `REPRODUCIBILITY.md`, `CHANGELOG_RESEARCH.md`. Earlier consolidation layer; still cited by (2).
+   Superseded only where (2) explicitly reconciles a point.
+5. **`documentation/archive/`** — superseded synthesis layers, moved 2026-08-27 to keep the active
+   tree legible; nothing deleted (see `documentation/archive/README.md`):
+   - `archive/final_research_state/` (14 files) — the register set that (2) consolidates and
+     supersedes. Where `final_research_audit/` documents cite `documentation/final_research_state/…`,
+     read it as `documentation/archive/final_research_state/…`.
+   - `archive/final_audit/` (10 files) — superseded synthesis fragments (`FINAL_CLAIM_AUDIT.md`,
+     `FINAL_RESEARCH_ARCHITECTURE.md`, `FINAL_RESEARCH_STATUS.md`,
+     `FINAL_SCIENTIFIC_INTERPRETATION.md`, `FINAL_SCIENTIFIC_STATUS_RECONCILIATION.md`,
+     `REMAINING_ANALYSES_AND_RESEARCH_STATUS.md`, `ITEMS_1_5_REFINEMENT_ADDENDUM.md`,
+     `P0_P1_REMEDIATION_ADDENDUM.md`, both `COMPLETE_END_TO_END_*` reports).
 6. **Phase-by-phase reports** at the project root (`PHASE1_DATA_ASSEMBLY_REPORT.md` …
    `PHASE8_SUBGROUP_HOLDOUT_GENERALIZATION_RESULTS_REPORT.md`, plus the `*_CLOSURE_*`,
    `DEFERRED_SENSITIVITY_ANALYSIS_RESULTS_REPORT.md`, `MULTIPLE_IMPUTATION_SENSITIVITY_RESULTS_REPORT.md`,
@@ -53,7 +58,7 @@ conflicts. Read this before citing any number from any other document.
    Preserved for transparency; never a manuscript source.
 
 Recency alone never confers authority. A later artifact supersedes an earlier one only where a
-document in tier 2–5 explicitly records the reconciliation.
+document in tier 2–4 explicitly records the reconciliation.
 
 ## 2. Recommended reading order
 
@@ -66,6 +71,10 @@ document in tier 2–5 explicitly records the reconciliation.
 
 ## 3. Superseded and removed
 
+- **`documentation/archive/` — superseded synthesis layers moved there 2026-08-27** (not deleted):
+  the whole `final_research_state/` register set and 10 superseded `final_audit/` fragments. See
+  `documentation/archive/README.md`. Citations elsewhere to `documentation/final_research_state/…`
+  now resolve at `documentation/archive/final_research_state/…`.
 - **`documentation/MASTER_RESEARCH_RESULTS.md` — DELETED in this consolidation (recoverable from
   git history at `4ad991a`).** It contained verified factual errors against the raw artifacts:
   it named *Normal-BMI* as the under-covered conformal subgroup (raw data: Normal-BMI **over**-covers
