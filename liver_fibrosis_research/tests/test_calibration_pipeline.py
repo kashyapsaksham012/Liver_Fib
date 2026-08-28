@@ -32,6 +32,20 @@ def sha256(path):
             h.update(chunk)
     return h.hexdigest()
 
+def _doc(p):
+    """Resolve a documentation path, falling back to documentation/archive/process_trail/
+    where the 2026-08-27 consolidation moved process-trail files (see START_HERE.md §1)."""
+    p = Path(p)
+    if p.exists():
+        return p
+    try:
+        arch = ROOT / "documentation" / "archive" / "process_trail" / p.relative_to(ROOT / "documentation")
+        if arch.exists():
+            return arch
+    except ValueError:
+        pass
+    return p
+
 # TEST 1: Calibration protocol checksum matches frozen protocol
 protocol_path = CALIB_DOC_DIR / "CALIBRATION_PROTOCOL_FREEZE.md"
 live_checksum = sha256(protocol_path)
@@ -70,7 +84,7 @@ for fname, expected in EXPECTED_PRED_HASHES.items():
     check(f"TEST3_prediction_hash_{fname}", live == expected, f"live={live} expected={expected}")
 
 # TEST 4: calibration data source matches protocol (OOF = cross_val_predict output; test = frozen best_estimator_ scoring)
-flow_doc = (CALIB_DOC_DIR / "phase4_calibration_data_flow.md").read_text()
+flow_doc = _doc(CALIB_DOC_DIR / "phase4_calibration_data_flow.md").read_text()
 check("TEST4_data_flow_doc_references_OOF", "out-of-fold" in flow_doc.lower())
 check("TEST4_data_flow_doc_excludes_conformal_set", "conformal_calibration_ids.csv" in flow_doc and "not used" in flow_doc.lower())
 conformal_refs = []
@@ -163,14 +177,23 @@ check("TEST18_primary_outcome_col_unchanged", PRIMARY_OUTCOME_COL == "outcome_pr
 check("TEST18_primary_predictors_unchanged", PRIMARY_PREDICTORS == ["RIDAGEYR", "RIAGENDR", "BMXBMI", "LBXSATSI",
       "LBXSASSI", "LBXSAL", "LBXSAPSI", "LBXSTB", "LBXPLTSI", "LBDHDD"])
 
-# TEST 19: no Phase 5/6 analysis accidentally executed
-forbidden_dirs = [ROOT / "results" / "fairness", ROOT / "results" / "uncertainty", ROOT / "results" / "conformal"]
-existing_forbidden = [str(d) for d in forbidden_dirs if d.exists()]
-check("TEST19_no_fairness_or_uncertainty_output_dirs", existing_forbidden == [], f"found: {existing_forbidden}")
+# TEST 19: Phase 4 scripts do not write into any downstream-phase output tree (forward-leakage guard).
+# (The original "results/fairness|uncertainty must not exist" form is obsolete now that Phases 5-8 +
+#  Amendments #13-19 have run; the structural guarantee it proxied — Phase 4 code never produces a
+#  fairness/uncertainty/conformal-refit artifact — is checked directly and is stable regardless of
+#  downstream execution.)
+downstream = ("results/fairness", "results/uncertainty", "results/conformal",
+              "results\\fairness", "results\\uncertainty", "results\\conformal")
+phase4_writes_downstream = [
+    f.name for f in sorted((ROOT / "src").glob("phase4_*.py"))
+    if any(d in f.read_text() for d in downstream)
+]
+check("TEST19_phase4_scripts_do_not_write_downstream_trees",
+      phase4_writes_downstream == [], f"found: {phase4_writes_downstream}")
 subgroup_calib_files = list(CALIB_RESULTS_DIR.glob("*subgroup*")) + list(CALIB_RESULTS_DIR.glob("*fairness*"))
-check("TEST19_no_subgroup_calibration_output", subgroup_calib_files == [], f"found: {subgroup_calib_files}")
+check("TEST19_no_subgroup_calibration_output_in_calib_dir", subgroup_calib_files == [], f"found: {subgroup_calib_files}")
 conformal_refit_files = list((ROOT / "models" / "phase3").glob("*proper_train*")) + list((ROOT / "results" / "predictions").glob("*conformal*"))
-check("TEST19_no_conformal_refit_artifacts", conformal_refit_files == [], f"found: {conformal_refit_files}")
+check("TEST19_no_conformal_refit_artifacts_in_phase3_dir", conformal_refit_files == [], f"found: {conformal_refit_files}")
 
 # TEST 20: final report values are code-derived -- spot-check headline claims against the saved CSVs directly
 # (report is generated after this test suite runs, per the execution order; this test validates that the

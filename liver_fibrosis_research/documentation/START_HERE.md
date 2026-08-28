@@ -66,7 +66,7 @@ markdown files; anything self-labelled a *snapshot*, *decision log*, *correction
    `PHASE2_PROTOCOL_FREEZE.md`, `primary_outcome_definition.md`, `statistical_analysis_plan.md`,
    `sensitivity_analysis_plan.md`, `fairness_subgroup_protocol.md`, `missing_data_protocol.md`,
    `uncertainty_protocol.md`, …), the `documentation/phase3/` design/protocol files, and
-   `documentation/end_to_end/protocol_amendment_registry.md` (19 amendments). These define what
+   `documentation/end_to_end/protocol_amendment_registry.md` (20 amendments). These define what
    was pre-specified; they are not result documents.
 9. **Historical / superseded / exploratory / process** — `documentation/archive/` (including
    `process_trail/`), `documentation/**/archive/`, and anything self-labelled SUPERSEDED / INVALID
@@ -204,6 +204,23 @@ Full guidance: `documentation/final_research_audit/MANUSCRIPT_FRAMING_GUIDANCE.m
   Manuscript → **v5**. Folder: `documentation/training_time_mitigation/` (closure
   `AMENDMENT_19_CLOSURE.md`); tests `tests/test_training_time_mitigation.py` (52/52). Executed on
   branch `experiment/training-time-mitigation`; merges back here.
+
+- **Amendment #20 — provenance closure (2026-08-28). No scientific result changed.** Added
+  committed producers for two artifacts that had entered via bulk commits without a generating
+  script: `src/prov_01_derive_intersectional_coverage_ci.py` regenerates
+  `results/uncertainty/intersectional_coverage_ci.csv` **byte-identically** from the frozen
+  four-way overlap file, and `src/prov_02_model_artifact_manifest.py` writes
+  `results/tables/model_artifact_manifest.csv` (SHA-256 + size for all 32 committed `.joblib`
+  artifacts). Two exploratory items with unreconstructable pipelines — the MI **conformal**
+  extension (`LINEAGE NOT FOUND`) and the joint-cell / M4b intersectional conformal mitigation
+  (generating pipeline `NOT FOUND`) — were **removed from the manuscript** (abstract, §2.8, §3.7,
+  §5, Table 4, Appendix A MIT-05, Figures list: former Supplementary S1 removed, former S2 → S1).
+  The MI **selection-question** analysis and the Phase-7 Mondrian mitigation are unchanged and
+  stay. Addendum (same closure): `tabulate` added to the lock file; 11 test scripts de-staled
+  (moved-doc reads, 3 forward-leakage guards → structural checks, ~7 "not executed yet" checks
+  updated) — full suite **18 scripts / 667 checks / 0 failed** from a clean venv. Folder:
+  `documentation/provenance/` (closure `AMENDMENT_20_CLOSURE.md`); tests
+  `tests/test_prov_closure.py` (7/7).
 
 ## 8. Freeze
 

@@ -103,19 +103,32 @@ check("TEST15_bh_fdr_column_present", "bh_fdr_adjusted_p" in comparison.columns 
 # TEST 16: no result is spuriously "significant" under FDR (spot-check against the actually-observed run)
 check("TEST16_no_model_significant_after_fdr", not comparison["significant_after_fdr"].any())
 
-# TEST 17: uncertainty/conformal-coverage comparison under MI was explicitly NOT performed (not authorized)
-uncertainty_mi_files = list(RESULTS_DIR.glob("*coverage*")) + list(RESULTS_DIR.glob("*conformal*"))
-check("TEST17_no_uncertainty_conformal_artifact_under_mi", len(uncertainty_mi_files) == 0, detail=str(uncertainty_mi_files))
+# TEST 17: the MI task produced no uncertainty/conformal-coverage artifact of its own.
+# (The bare "*coverage*/*conformal*" glob is now too broad — it catches the CAND_2/CAND_3
+#  conformal replication that Amendment #16 later wrote to results/sensitivity/, which is
+#  unrelated to MI. Restrict to MI-attributable file names.)
+mi_uncertainty_files = [
+    p for p in RESULTS_DIR.iterdir()
+    if p.is_file() and ("mi" in p.name.lower() or "imputation" in p.name.lower())
+    and ("coverage" in p.name.lower() or "conformal" in p.name.lower())
+]
+check("TEST17_no_mi_attributable_uncertainty_conformal_artifact",
+      mi_uncertainty_files == [], detail=str([p.name for p in mi_uncertainty_files]))
 
 # TEST 18: no Phase 7+ / mitigation artifact was touched or created by this analysis
 forbidden_dirs = [ROOT / "results" / "mitigation_mi", ROOT / "results" / "phase7_mi"]
 check("TEST18_no_phase7_mitigation_output_created_by_mi_task", all(not d.exists() for d in forbidden_dirs))
 
-# TEST 19: deferred-analyses roadmap correctly reflects execution status (item 4 executed, items 1-3 still deferred)
+# TEST 19: deferred-analyses roadmap correctly reflects execution status. (When this test was
+# written, item 4 [MI] was executed and items 1-3 still deferred. Items 1-3 were subsequently
+# executed under Amendments #12/#13/#16; the roadmap now records all four numbered items as done,
+# with only CAND_4 still UNEXECUTED. The check follows the roadmap's current state.)
 deferred_text = (ROOT / "documentation" / "project_roadmap" / "deferred_sensitivity_analyses.md").read_text()
 check("TEST19_item4_marked_executed", "EXECUTED 2026-08-19" in deferred_text)
-check("TEST19_items_1_to_3_still_not_executed",
-      deferred_text.count("**NOT EXECUTED**") >= 3)
+check("TEST19_all_four_numbered_items_now_executed",
+      "All four originally-numbered items are now executed" in deferred_text)
+check("TEST19_cand4_remains_the_sole_unexecuted_item",
+      deferred_text.count("**NOT EXECUTED**") == 1)
 check("TEST19_scope_deferral_phrasing_present",
       "Deferred due to scope/time considerations; not used to alter the primary analysis or conclusions." in deferred_text)
 

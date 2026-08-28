@@ -127,14 +127,42 @@ check("TEST12_nontarget_no_new_under90_deviation",
 # confirms the artifact exists and is well-formed as a precondition)
 check("TEST13_final_output_well_formed", len(final) == 9 and final["coverage_after"].between(0, 2).all())
 
-# TEST 14: test set is touched exactly once (structural: only phase7_04 reads test-derived data)
-touch_scripts = []
-for f in sorted((ROOT / "src").glob("phase7_*.py")):
-    src = f.read_text()
-    if "test_set_prediction_sets.csv" in src or ("test_ids.csv" in src and "conformal_calibration" not in src.split("test_ids.csv")[0][-200:]):
-        touch_scripts.append(f.name)
-check("TEST14_only_final_touch_script_reads_test_derived_data",
-      set(touch_scripts) == {"phase7_04_final_test_touch.py"}, f"found: {touch_scripts}")
+# TEST 14: the locked test set is never RE-SCORED in Phase 7, and the scripts that read the frozen
+# Phase-6 test-set-touch artifact (results/uncertainty/test_set_prediction_sets.csv) are the known,
+# documented set. A "raw re-score" = loading a model AND subsetting the primary analysis dataset by
+# the test IDs; re-reading the frozen per-participant prediction-sets CSV for a descriptive
+# re-partition or figure is not a test-set touch (probabilities are the frozen Phase-6 values).
+def _rescores_raw_test(src):
+    if "predict_proba" not in src and "joblib.load" not in src:
+        return False
+    if "analysis_dataset_primary" not in src and "load_primary_dataset" not in src:
+        return False
+    # test_ids used only for a disjointness guard (if/assert/fail ... .isin(test_ids).any()) is fine;
+    # a real re-score subsets a dataframe by test_ids for prediction.
+    subset_uses = [ln for ln in src.splitlines() if "isin(test_ids)" in ln
+                   and not any(g in ln for g in ("if ", "assert ", "fail(", ".any()"))]
+    return len(subset_uses) > 0
+
+raw_rescore = [
+    f.name for f in sorted((ROOT / "src").glob("phase7_*.py"))
+    if _rescores_raw_test(f.read_text())
+]
+check("TEST14_no_phase7_script_rescores_the_raw_locked_test", raw_rescore == [], f"found: {raw_rescore}")
+
+ALLOWED_FROZEN_ARTIFACT_READERS = {
+    "phase7_04_final_test_touch.py",              # THE official Phase-7 mitigation touch (Commit D)
+    "phase7_05_bmi_age_overlap_analysis.py",      # re-partitions the frozen artifact into 4 BMI x Age cells
+    "phase7_06_threshold_precedence_audit.py",    # precedence audit — re-reads only
+    "phase7_07_intersectional_coverage_figure.py",  # visualization only (Amendment #20)
+    "phase7_mitigation_cleanup.py",               # authorized XGBoost-cleanup single locked-test confirmation
+}
+frozen_readers = {
+    f.name for f in sorted((ROOT / "src").glob("phase7_*.py"))
+    if "test_set_prediction_sets.csv" in f.read_text()
+}
+check("TEST14_frozen_test_artifact_readers_are_the_documented_set",
+      frozen_readers == ALLOWED_FROZEN_ARTIFACT_READERS,
+      f"unexpected: {frozen_readers ^ ALLOWED_FROZEN_ARTIFACT_READERS}")
 
 # TEST 15: no post-test iteration occurred (single commit for the touch, single execution -- checked via git log for the touch script)
 touch_commits = git("log", "--follow", "--oneline", "--", "src/phase7_04_final_test_touch.py").split("\n")
