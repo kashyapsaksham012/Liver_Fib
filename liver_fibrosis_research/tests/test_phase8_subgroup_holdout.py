@@ -28,12 +28,26 @@ def sha256(p):
 def git(*args):
     return subprocess.run(["git", "-C", str(ROOT)] + list(args), capture_output=True, text=True, check=True).stdout.strip()
 
+def _doc(p):
+    """Resolve a documentation path, falling back to documentation/archive/process_trail/
+    where the 2026-08-27 consolidation moved process-trail files (see START_HERE.md §1)."""
+    p = Path(p)
+    if p.exists():
+        return p
+    try:
+        arch = ROOT / "documentation" / "archive" / "process_trail" / p.relative_to(ROOT / "documentation")
+        if arch.exists():
+            return arch
+    except ValueError:
+        pass
+    return p
+
 VAL_DIR = ROOT / "results" / "validation"
 DOC_DIR = ROOT / "documentation" / "validation"
 
 info_text = (ROOT.parent / "info.md").read_text()
 crosswalk_text = (ROOT / "documentation" / "phase_numbering_crosswalk.md").read_text()
-snapshot_text = (DOC_DIR / "phase8_pre_execution_snapshot.md").read_text()
+snapshot_text = _doc(DOC_DIR / "phase8_pre_execution_snapshot.md").read_text()
 decision_text = (DOC_DIR / "phase8_holdout_candidate_decision.md").read_text()
 protocol_text = (DOC_DIR / "PHASE8_SUBGROUP_HOLDOUT_PROTOCOL_FREEZE.md").read_text()
 mi02_src = (ROOT / "src" / "phase8_02_train_and_holdout_evaluate.py").read_text()

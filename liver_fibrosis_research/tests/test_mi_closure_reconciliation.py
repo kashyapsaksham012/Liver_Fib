@@ -29,6 +29,20 @@ def sha256(p):
 def git(*args):
     return subprocess.run(["git", "-C", str(ROOT)] + list(args), capture_output=True, text=True, check=True).stdout.strip()
 
+def _doc(p):
+    """Resolve a documentation path, falling back to documentation/archive/process_trail/
+    where the 2026-08-27 consolidation moved process-trail files (see START_HERE.md §1)."""
+    p = Path(p)
+    if p.exists():
+        return p
+    try:
+        arch = ROOT / "documentation" / "archive" / "process_trail" / p.relative_to(ROOT / "documentation")
+        if arch.exists():
+            return arch
+    except ValueError:
+        pass
+    return p
+
 roadmap_path = ROOT / "documentation" / "project_roadmap" / "deferred_sensitivity_analyses.md"
 phase2_plan_path = ROOT / "documentation" / "phase2" / "sensitivity_analysis_plan.md"
 cohort_decision_path = ROOT / "documentation" / "phase2" / "primary_cohort_decision.md"
@@ -53,10 +67,14 @@ check("TEST3_cand4_documented_in_cohort_decision",
 check("TEST3_reconciliation_note_present_in_roadmap",
       "Reconciliation note" in roadmap_text and "CAND_4" in roadmap_text)
 
-# TEST 4: roadmap is internally consistent -- exactly 4 formally tracked items, count matches
-# the frozen protocol's own "complete, fixed set" governing rule
-item_headers = [l for l in roadmap_text.splitlines() if l.startswith("## ") and l[3].isdigit()]
-check("TEST4_exactly_4_tracked_items", len(item_headers) == 4, detail=str(item_headers))
+# TEST 4: roadmap is internally consistent -- the 4 originally-numbered items match the frozen
+# protocol's "complete, fixed set" governing rule, plus the one distinct item (CAND_4, "## 2b.")
+# that Amendment #14 added and classified DISTINCT-EXPLORATORY-UNEXECUTED.
+import re
+numbered_headers = [l for l in roadmap_text.splitlines() if re.match(r"^## \d+\. ", l)]
+check("TEST4_exactly_4_originally_numbered_items", len(numbered_headers) == 4, detail=str(numbered_headers))
+check("TEST4_cand4_tracked_as_the_amendment_14_distinct_item",
+      any(l.startswith("## 2b.") for l in roadmap_text.splitlines()) and "Amendment #14" in roadmap_text)
 check("TEST4_governing_rule_states_4", "complete, fixed set" in roadmap_text)
 
 # TEST 5-7: MI Commit B/C/D file contents classified as in-scope (no out-of-scope path substrings)
@@ -111,7 +129,7 @@ for label, sha in [("B", "4802602"), ("C", "f73ef91"), ("D", "adc9328")]:
 # TEST 11: final report reflects actual evidence (not fabricated) -- spot-check the report cites
 # commit hashes and file paths that actually exist and match
 check("TEST11_report_cites_real_commit_B", "4802602" in report_text or "4802602" in roadmap_text)
-snapshot_text = (ROOT / "documentation" / "sensitivity" / "mi_closure_reconciliation_snapshot.md").read_text()
+snapshot_text = _doc(ROOT / "documentation" / "sensitivity" / "mi_closure_reconciliation_snapshot.md").read_text()
 check("TEST11_snapshot_records_all_three_mi_commits",
       all(sha in snapshot_text for sha in ["4802602", "f73ef91", "adc9328"]))
 

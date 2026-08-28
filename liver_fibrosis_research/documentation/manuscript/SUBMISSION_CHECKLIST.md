@@ -53,7 +53,7 @@ the boilerplate the author must finalise. Target venue and ladder: `TARGET_VENUE
 > The analysis protocol — cohort definition, primary outcome (`LUXSMED ≥ 8.2 kPa`), the ten
 > predictors, the fairness dimensions, the conformal target, and the multiplicity strategy — was
 > frozen before any model was trained (hash-verified). All subsequent deviations are recorded as
-> dated protocol amendments (19 in total). The protocol, amendment registry, and a machine-readable
+> dated protocol amendments (20 in total). The protocol, amendment registry, and a machine-readable
 > claim registry are provided with the code (below). The study was not registered on a public
 > trial/registry platform, as it is a methodological analysis of existing public data rather than a
 > prospective clinical study.

@@ -69,7 +69,7 @@ external validation — declared). Section numbers refer to `MANUSCRIPT_DRAFT.md
 | 24 | Supplementary information / where the protocol, code, data are | §2.12; Appendix A/B; needs a consolidated "Data and code availability" paragraph | ⚠️ add the paragraph (see `SUBMISSION_CHECKLIST.md`) |
 | 25 | Funding | Appendix B placeholder → **author to complete** (state: no funding / independent researcher) | ❌ GAP |
 | 26 | Conflicts of interest | Appendix B placeholder → **author to complete** (state: none) | ❌ GAP |
-| 27a | Protocol / pre-registration and where to access | §2.11–2.12; `documentation/phase2/PHASE2_PROTOCOL_FREEZE.md`, `documentation/end_to_end/protocol_amendment_registry.md` (19 amendments) — add a sentence pointing to these | ⚠️ add a "the analysis protocol was frozen before modelling; amendments are logged in <ref>" sentence |
+| 27a | Protocol / pre-registration and where to access | §2.11–2.12; `documentation/phase2/PHASE2_PROTOCOL_FREEZE.md`, `documentation/end_to_end/protocol_amendment_registry.md` (20 amendments) — add a sentence pointing to these | ⚠️ add a "the analysis protocol was frozen before modelling; amendments are logged in <ref>" sentence |
 | 27b | Ethical approval / participant consent | NHANES is public de-identified data; NCHS Research Ethics Review Board approval + participant consent are documented by NCHS — **author to add one sentence** | ❌ GAP |
 
 ---

@@ -53,6 +53,8 @@ src/sens_03_alternative_threshold.py                         # 8.0kPa threshold 
 src/mi_01_construct_and_diagnostics.py                       # MI construction
 src/mi_02_black_subgroup_comparison.py                       # MI two-arm comparison
 src/mi_03_black_subgroup_inference.py                        # MI statistical inference
+src/prov_01_derive_intersectional_coverage_ci.py            # Amendment #20: verify intersectional_coverage_ci.csv (byte-identical)
+src/prov_02_model_artifact_manifest.py                       # Amendment #20: write model_artifact_manifest.csv (32 .joblib hashes)
 ```
 Each script reads its inputs from the paths listed in Part D of
 `RESEARCH_AUDIT_AND_FINAL_METHODOLOGY.md` and writes to the corresponding `results/` subdirectory.
