@@ -10,14 +10,13 @@ Everything at this top level is orientation only.
 
 ## Where to start
 
-1. [`liver_fibrosis_research/README.md`](liver_fibrosis_research/README.md) — research
-   question, cohort, models, and headline findings.
-2. [`liver_fibrosis_research/documentation/START_HERE.md`](liver_fibrosis_research/documentation/START_HERE.md)
-   — **read before citing any number.** Fixes the documentation authority order, records what
-   is superseded, and adjudicates the four known internal conflicts (C1–C4).
-3. [`liver_fibrosis_research/documentation/final_audit/REPRODUCIBILITY.md`](liver_fibrosis_research/documentation/final_audit/REPRODUCIBILITY.md)
+1. [`liver_fibrosis_research/documentation/START_HERE.md`](liver_fibrosis_research/documentation/START_HERE.md)
+   — **read first, before citing any number.** The research question, cohort, and models, plus
+   the documentation authority order, what is superseded, and the four adjudicated internal
+   conflicts (C1–C4).
+2. [`liver_fibrosis_research/documentation/final_audit/REPRODUCIBILITY.md`](liver_fibrosis_research/documentation/final_audit/REPRODUCIBILITY.md)
    — environment, seeds, input data, and the exact script run order.
-4. [`liver_fibrosis_research/documentation/manuscript/MANUSCRIPT_DRAFT.md`](liver_fibrosis_research/documentation/manuscript/MANUSCRIPT_DRAFT.md)
+3. [`liver_fibrosis_research/documentation/manuscript/MANUSCRIPT_DRAFT.md`](liver_fibrosis_research/documentation/manuscript/MANUSCRIPT_DRAFT.md)
    — working draft (v5), every numeric claim traced to a frozen result artifact.
 
 `info.md` (this directory) is the original research brief the project was scoped from —
