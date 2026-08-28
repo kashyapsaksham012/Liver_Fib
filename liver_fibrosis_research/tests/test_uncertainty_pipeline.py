@@ -26,6 +26,20 @@ def sha256(p):
             h.update(chunk)
     return h.hexdigest()
 
+def _doc(p):
+    """Resolve a documentation path, falling back to documentation/archive/process_trail/
+    where the 2026-08-27 consolidation moved process-trail files (see START_HERE.md §1)."""
+    p = Path(p)
+    if p.exists():
+        return p
+    try:
+        arch = ROOT / "documentation" / "archive" / "process_trail" / p.relative_to(ROOT / "documentation")
+        if arch.exists():
+            return arch
+    except ValueError:
+        pass
+    return p
+
 RESULTS_DIR = ROOT / "results" / "uncertainty"
 REFIT_DIR = ROOT / "models" / "phase6_conformal_refit"
 
@@ -139,12 +153,20 @@ for other in ["phase3_model_comparison", "calibration_inference.csv", "fairness_
 check("TEST19_phase6_fdr_family_grouped_by_model_dimension", 'groupby(["model", "dimension"])' in touch_src_full)
 
 # TEST 20: deferred sensitivity analyses remain tracked (status recorded, not silently dropped)
-snapshot_text = (ROOT / "documentation" / "uncertainty" / "phase6_pre_execution_snapshot.md").read_text()
+snapshot_text = _doc(ROOT / "documentation" / "uncertainty" / "phase6_pre_execution_snapshot.md").read_text()
 check("TEST20_deferred_analyses_referenced", "sensitivity" in snapshot_text.lower())
 
-# TEST 21: no Phase 7+ analysis executed
-forbidden_dirs = [ROOT / "results" / "mitigation", ROOT / "results" / "phase7"]
-check("TEST21_no_phase7_output_dirs", all(not d.exists() for d in forbidden_dirs))
+# TEST 21: Phase 6 scripts do not write into any downstream-phase output tree (forward-leakage guard).
+# (The original directory-must-not-exist form is obsolete now that Phases 7-8 + Amendments #13-19
+#  have run; the structural guarantee it proxied — Phase 6 code never produces mitigation/phase7
+#  artifacts — is checked directly and is stable regardless of downstream execution.)
+downstream = ("results/mitigation", "results/phase7", "results\\mitigation", "results\\phase7")
+phase6_writes_downstream = [
+    f.name for f in sorted((ROOT / "src").glob("phase6_*.py"))
+    if any(d in f.read_text() for d in downstream)
+]
+check("TEST21_phase6_scripts_do_not_write_downstream_trees",
+      phase6_writes_downstream == [], f"found: {phase6_writes_downstream}")
 
 # TEST 22: all primary results are code-derived (spot-check against artifact)
 check("TEST22_spotcheck_logistic_marginal_coverage",

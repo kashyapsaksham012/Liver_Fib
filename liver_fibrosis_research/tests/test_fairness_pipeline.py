@@ -178,10 +178,18 @@ for fname, expected in EXPECTED_MODEL_HASHES.items():
 check("TEST22_test_ids_hash_unchanged",
       sha256(ROOT / "data" / "processed" / "splits" / "test_ids.csv") == "a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779")
 
-# TEST 23: no Phase 6 analysis executed
-forbidden_dirs = [ROOT / "results" / "uncertainty", ROOT / "results" / "conformal"]
-check("TEST23_no_phase6_output_dirs", all(not d.exists() for d in forbidden_dirs))
-for f in (ROOT / "src").glob("phase5_*.py"):
+# TEST 23: Phase 5 scripts do not write into any downstream-phase output tree, and contain no
+# conformal reference (forward-leakage guard). The original "results/uncertainty must not exist"
+# form is obsolete now that Phase 6+ and Amendments #13-19 have run; the structural guarantee it
+# proxied is checked directly here and is stable regardless of downstream execution.
+downstream = ("results/uncertainty", "results/conformal", "results\\uncertainty", "results\\conformal")
+phase5_writes_downstream = [
+    f.name for f in sorted((ROOT / "src").glob("phase5_*.py"))
+    if any(d in f.read_text() for d in downstream)
+]
+check("TEST23_phase5_scripts_do_not_write_downstream_trees",
+      phase5_writes_downstream == [], f"found: {phase5_writes_downstream}")
+for f in sorted((ROOT / "src").glob("phase5_*.py")):
     check(f"TEST23_no_conformal_reference_in_{f.name}", "conformal" not in f.read_text().lower())
 
 print(f"\n{'='*70}\nFAIRNESS PIPELINE TEST RESULTS: {len(PASS)} passed, {len(FAIL)} failed\n{'='*70}")

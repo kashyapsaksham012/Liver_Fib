@@ -14,6 +14,20 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from phase4_common import CALIB_RESULTS_DIR, PRIMARY_MODELS, SENSITIVITY_MODEL
 
+def _doc(p):
+    """Resolve a documentation path, falling back to documentation/archive/process_trail/
+    where the 2026-08-27 consolidation moved process-trail files (see START_HERE.md §1)."""
+    p = Path(p)
+    if p.exists():
+        return p
+    try:
+        arch = ROOT / "documentation" / "archive" / "process_trail" / p.relative_to(ROOT / "documentation")
+        if arch.exists():
+            return arch
+    except ValueError:
+        pass
+    return p
+
 PASS, FAIL = [], []
 
 def check(name, cond, detail=""):
@@ -61,7 +75,7 @@ check("TEST4_phase3_comparison_never_reads_phase4_inference_table",
 check("TEST4_phase4_has_per_metric_family_reset",
       re.search(r'for metric in \[.*intercept.*slope.*brier.*\]:', inference_src) is not None or
       "pair_pvals = []" in inference_src)
-verification_doc = (ROOT / "documentation" / "calibration" / "calibration_fdr_family_verification.md")
+verification_doc = _doc(ROOT / "documentation" / "calibration" / "calibration_fdr_family_verification.md")
 check("TEST4_fdr_verification_doc_exists", verification_doc.exists())
 check("TEST4_report_states_explicit_separation_sentence",
       "independent hypothesis-testing family from the Phase 3 baseline-model comparisons" in report_text_normalized)
@@ -76,15 +90,25 @@ check("TEST5_verification_doc_states_paired",
 check("TEST5_verification_doc_states_reuse_vs_distinct",
       "methodology-level reuse" in verification_doc.read_text() if verification_doc.exists() else False)
 
-# TEST 6: Amendment registry contains exactly 8 reconciled entries
+# TEST 6: Amendment registry is a single, gap-free, sequentially-numbered list that includes
+# Amendment #8. (When this Phase-4-closure test was written there were exactly 8 entries; later
+# phases and amendments extended it — the invariant that matters is one authoritative registry
+# with contiguous numbering, not a fixed count.)
 registry_text = (ROOT / "documentation" / "end_to_end" / "protocol_amendment_registry.md").read_text()
 numbered_rows = re.findall(r'^\| (\d+) \|', registry_text, re.MULTILINE)
-check("TEST6_registry_has_exactly_8_numbered_rows", numbered_rows == [str(i) for i in range(1, 9)],
+check("TEST6_registry_numbering_is_contiguous_from_1",
+      numbered_rows == [str(i) for i in range(1, len(numbered_rows) + 1)],
       f"found row numbers: {numbered_rows}")
+check("TEST6_registry_includes_amendment_8", "8" in numbered_rows)
+check("TEST6_registry_has_at_least_8_entries", len(numbered_rows) >= 8)
 
 # TEST 7: Amendment #8 exists in the authoritative registry (not a competing one)
 check("TEST7_amendment_8_row_exists_in_authoritative_registry", "| 8 |" in registry_text)
-recon_csv = pd.read_csv(ROOT / "results" / "end_to_end" / "protocol_amendment_reconciliation.csv")
+# NOTE: results/end_to_end/protocol_amendment_reconciliation.csv row num=10 has an unquoted comma
+# in its free-text description (12 fields vs the 11-column header). It is a frozen artifact and is
+# not modified here; that one malformed row is skipped. This test only needs the well-formed num=8 row.
+recon_csv = pd.read_csv(ROOT / "results" / "end_to_end" / "protocol_amendment_reconciliation.csv",
+                        on_bad_lines="skip")
 check("TEST7_amendment_8_present_in_secondary_reconciliation_csv", 8 in recon_csv["num"].tolist())
 check("TEST7_no_second_competing_registry_with_own_numbering",
       True, "documentation/phase3/inference_methodology_amendment.md verified this pass to be a single-amendment detail doc, not an independent registry")
@@ -101,13 +125,17 @@ check("TEST9_registry_row_8_explicitly_states_test_data_not_seen",
 check("TEST9_reconciliation_csv_records_test_data_seen_false",
       bool((recon_csv[recon_csv["num"] == 8]["test_data_seen"] == False).all()))
 
-# TEST 10: Human spot-check status remains NOT YET PERFORMED unless a genuine human record exists
-template_text = (ROOT / "documentation" / "end_to_end" / "human_spot_check_record_template.md").read_text()
-still_blank = "_____" in template_text
-check("TEST10_human_spot_check_record_still_blank_no_fabrication", still_blank,
-      "template contains unfilled '_____' placeholders -- confirms no AI fabrication occurred")
-check("TEST10_status_line_present_and_not_yet_performed",
-      "NOT YET PERFORMED" in template_text)
+# TEST 10: Human spot-check record. When this test was written the record was still a blank
+# template ("NOT YET PERFORMED"); the researcher subsequently ran the check independently
+# (commit 187ba3a, 2026-08-19) and the result was transcribed into the record. What is checked now
+# is that the record shows a completed check AND that the no-fabrication discipline held (Date /
+# researcher-name were left blank rather than invented).
+template_text = _doc(ROOT / "documentation" / "end_to_end" / "human_spot_check_record_template.md").read_text()
+check("TEST10_human_spot_check_completed_independently",
+      "HUMAN SPOT-CHECK COMPLETED INDEPENDENTLY" in template_text
+      or "personally run the check" in template_text)
+check("TEST10_no_fabrication_of_unsupplied_fields",
+      "not been fabricated" in template_text or "left unfabricated" in template_text)
 
 print(f"\n{'='*70}\nPHASE 4 CLOSURE TEST RESULTS: {len(PASS)} passed, {len(FAIL)} failed\n{'='*70}")
 for name, detail in FAIL:

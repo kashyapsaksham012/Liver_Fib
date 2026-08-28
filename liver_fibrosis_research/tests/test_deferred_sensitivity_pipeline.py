@@ -105,12 +105,16 @@ check("TEST13_no_reversed_findings", not (comparison["classification"] == "REVER
 check("TEST13_no_not_assessable_findings", not (comparison["classification"] == "NOT ASSESSABLE").any())
 check("TEST13_comparison_row_count_matches_expected", len(comparison) == 60)
 
-# TEST 14: uncertainty replication explicitly not performed (deferred, not silently dropped)
-uncertainty_sens_files = list(RESULTS_DIR.glob("*coverage*")) + list(RESULTS_DIR.glob("*conformal*"))
-check("TEST14_no_uncertainty_artifact_in_sensitivity_dir", len(uncertainty_sens_files) == 0)
+# TEST 14: the conformal-coverage replication was deferred by THIS task (Amendment #13, "explicitly
+# NOT performed in this task") and was subsequently EXECUTED under Amendment #16. The original
+# "no conformal artifact in results/sensitivity/" guard is superseded by that later amendment; the
+# deferral disclosure and the Amendment-16 execution are what is checked now.
 amendment_text = (ROOT / "documentation" / "end_to_end" / "protocol_amendment_registry.md").read_text()
 check("TEST14_amendment_13_present", "| 13 |" in amendment_text)
 check("TEST14_uncertainty_deferral_disclosed", "explicitly NOT performed in this task" in amendment_text)
+check("TEST14_conformal_replication_executed_under_amendment_16", "| 16 |" in amendment_text)
+repl = list(RESULTS_DIR.glob("conformal_replication_*"))
+check("TEST14_conformal_replication_artifacts_present", len(repl) >= 1, f"found: {[p.name for p in repl]}")
 
 print(f"\n{'='*70}\nDEFERRED SENSITIVITY PIPELINE TEST RESULTS: {len(PASS)} passed, {len(FAIL)} failed\n{'='*70}")
 for name, detail in FAIL:
