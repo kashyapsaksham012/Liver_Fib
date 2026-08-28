@@ -7,6 +7,19 @@
 `documentation/manuscript/LITERATURE_REVIEW.md`. Every numeric claim traces to a frozen result
 artifact (see Appendix A). This is a working draft for the authors, not a submission.
 
+**2026-08-28 revision (Amendment #20 — provenance closure):** two exploratory items removed from
+the manuscript — (i) the multiple-imputation **conformal** extension (no reconstructable pipeline;
+`LINEAGE NOT FOUND`), and (ii) the exploratory **joint-cell / M4b intersectional conformal
+mitigation** (generating pipeline `NOT FOUND`; its "≥ 90%" already carried an XGBoost/LightGBM
+marginal-tolerance breach). Edits: structured abstract (mitigation list), §2.8, §3.7, §5, Table 4,
+Appendix A (MIT-05), and the Figures list (former Supplementary S1 — the M1–M4b coverage vs
+set-size trade-off, `figure3_coverage_vs_set_size_tradeoff.png`, recalibrated-probability space,
+superseded N₀ = 100 — removed; former S2 renumbered to S1). The MI **selection-question** analysis
+and the Phase-7 Mondrian mitigation are unchanged. `results/uncertainty/intersectional_coverage_ci.csv` (Table 3's Obese ∩ 60+ row, 65–75%)
+now has a committed derivation script (`src/prov_01_*`, byte-identical); a model-artifact hash
+manifest was added (`src/prov_02_*` → `results/tables/model_artifact_manifest.csv`). No numeric
+result changed. Closure: `documentation/provenance/AMENDMENT_20_CLOSURE.md`.
+
 **v4 → v5 changes (Amendment #19 + Track 2):** new §3.7b (one pre-registered **training-time**
 subgroup-reweighting mitigation — VERDICT NEGATIVE: it removed the body-mass score-ordering
 mechanism and halved the gap but failed the discrimination/specificity cost gates and did not
@@ -75,7 +88,7 @@ older (81–86%) participants — and their intersection (65–75%) — in every
 normal-weight and younger participants over-covered. This coverage failure replicated on both
 sensitivity cohorts and the alternative threshold. No mitigation strategy tested — group-wise
 conformal recalibration, subgroup-specific thresholds, subgroup calibration, equalized-odds
-post-processing, model retuning, joint intersectional calibration, conformal selective deferral,
+post-processing, model retuning, conformal selective deferral,
 or a pre-registered training-time subgroup-reweighting intervention — produced an acceptable
 multi-metric fix. Group-wise conformal recalibration restored subgroup coverage only by
 over-covering the well-served subgroups; selective deferral did not help because the
@@ -244,8 +257,8 @@ that were BH-significant in **both** the fairness and the conformal analysis (BM
 age-60+). Separately, we evaluated a structured set of interventions against a pre-specified
 multi-metric acceptance gate: BMI-specific decision thresholds, BMI-specific Platt scaling,
 joint BMI × age thresholds, subgroup-specific calibration, equalized-odds (equal-opportunity)
-post-processing, model retuning within the frozen hyperparameter family, joint
-(intersectional) conformal calibration, and — under later pre-registered amendments — conformal
+post-processing, model retuning within the frozen hyperparameter family, and — under later
+pre-registered amendments — conformal
 selective deferral (Amendment #17; abstaining on flagged-uncertain cases and referring them to
 elastography) and one **training-time** intervention (Amendment #19; retraining each family with
 Kamiran–Calders instance reweighting so that body-mass band is independent of the outcome in the
@@ -416,9 +429,7 @@ mechanisms (a threshold-driven BMI gap, a non-threshold-driven age gap), not a f
 Equal-opportunity post-processing achieved large target-group sensitivity gains at ~40 points of
 specificity and roughly 400 excess false positives per 1,000 normal-weight participants screened
 — clinically unacceptable. Model retuning within the frozen family removed no coverage breach
-without an 11–22-point sensitivity cost. Joint intersectional conformal calibration restored the
-overlap coverage on the primary cohort for most models but breached the marginal tolerance for
-two.
+without an 11–22-point sensitivity cost.
 
 A subsequent pre-registered evaluation of **conformal selective deferral** (Amendment #17) —
 abstaining on flagged-uncertain cases and referring them to elastography, in the spirit of
@@ -622,9 +633,8 @@ register's mandated minimum set appears below.
   overlap population single-attribute rules were applied sequentially, not jointly [E4].
 - **Small subgroup and intersectional cells [B2, B3].** Normal-weight sensitivity rests on 22
   test positives; the underweight band (one positive) is uninterpretable and is excluded. The
-  obese-and-60+ intersection test cell has 294 participants (61 fibrosis-positive), and the joint
-  conformal-calibration cell has 138 (30 positive); intersectional coverage and any joint
-  calibration are reported descriptively.
+  obese-and-60+ intersection test cell has 294 participants (61 fibrosis-positive); intersectional
+  coverage is reported descriptively.
 - **Low outcome prevalence [B1].** At 9.31% prevalence (666 positives) positive predictive value
   is low (~0.12–0.25 at a Youden operating point) and subgroup estimates are imprecise.
 - **Age-60+ sensitivity is specification-sensitive [A1].** Directionally consistent but
@@ -637,11 +647,11 @@ register's mandated minimum set appears below.
 - **Calibration [C1, C2].** The four class-balanced models are unusable without out-of-fold
   recalibration — a mandatory step, not an option [C1] — and aggregate recalibration did not
   extend to subgroup-level calibration [C2].
-- **Missing data [F1, F2, F3, D4].** Complete-case analysis is the pre-registered primary
+- **Missing data [F1, F3, D4].** Complete-case analysis is the pre-registered primary
   strategy; complete-case exclusion disproportionately affected Non-Hispanic Black participants
   (41.3% of exclusions vs 25.0% of the retained cohort) [D4], and a targeted multiple-imputation
-  analysis addressed that specific selection question only [F1]. The multiple-imputation conformal extension is
-  descriptive, lacks a fully reconstructable pipeline, and carries no pooled inferential estimate.
+  analysis addressed that specific selection question only, with no pooled (Rubin) inferential
+  estimate reported for it [F1, F3].
 - **Design [J2, J3, J5, A2].** A single US survey program, a single pre-pandemic release for the
   primary analysis, a VCTE (`LUXSMED`, not liver biopsy) reference standard, adults only, and a
   single 70/30 split without nested outer resampling of the locked test set. Operating thresholds
@@ -703,7 +713,7 @@ additional ethical approval was required for this analysis of public data.
 **Protocol and pre-registration.** The analysis protocol — cohort definition, primary outcome
 (`LUXSMED ≥ 8.2 kPa`), the ten predictors, the fairness dimensions, the conformal target, and the
 multiplicity strategy — was frozen and hash-verified before any model was trained. All subsequent
-deviations are recorded as dated protocol amendments (19 in total; supplied with the code). The
+deviations are recorded as dated protocol amendments (20 in total; supplied with the code). The
 study was not registered on a trial/registry platform, being a methodological analysis of
 existing public data.
 
@@ -865,7 +875,6 @@ Sources: `results/mitigation/*`,
 | Group-specific Youden thresholds (exploratory) | equalize subgroup sensitivity | BMI gap roughly halved but **age gap widened 26–133%**; ~38–40 pp specificity cost in normal-weight | **EXPLORATORY** — two-mechanism diagnostic, not a fix |
 | Equalized-odds (equal-opportunity) post-processing (exploratory) | equalize true-positive rate | ~50–80 pp target-group sensitivity gain at ~40 pp specificity cost; ≈ 399 excess false positives per 1,000 normal-weight screened | **EXPLORATORY** — clinically unacceptable |
 | XGBoost retuning within the frozen hyperparameter family | remove the XGBoost coverage-tolerance breach | every gap-closing candidate cost 11–22 pp overall sensitivity or flipped the breach | **NO ACCEPTABLE RETUNING** |
-| Joint (intersectional) conformal calibration (exploratory) | restore Obese ∩ 60+ coverage | intersectional coverage ≥ 90% for 4–5/5 models on the primary cohort, but XGBoost/LightGBM breach the ±5 pp marginal tolerance; joint calibration cell N = 138 | **EXPLORATORY ONLY** |
 | Conformal selective deferral (Amendment #17) | restore subgroup coverage by referring flagged-uncertain cases to elastography | **no candidate rule met the pre-specified gate** on the calibration partition (locked test not touched); deferring two-class {pos,neg} sets *lowers* retained coverage because the misses are confidently-scored singletons, not uncertain sets | **NO IMPROVEMENT** — mechanistic dead end for post-hoc deferral |
 | **Training-time subgroup reweighing — body-mass (Amendment #19, primary)** | remove the body-mass score-ordering failure at training time | four families evaluated (MLP excluded, unstable; gate ≥ 3/4). Matched-stiffness BMI coefficient collapsed 0.18–0.25 → 0.008–0.036 (OOF, 4/4); normal-weight-vs-obese sensitivity gap **halved** (baseline +27–48 pp, 4/4 BH-sig → +14–17 pp, 0/4 BH-sig); BMI-obese conformal coverage 0.77–0.82 → **0.86–0.87** (< 0.88 target); age-60+ coverage unchanged. **Cost:** AUROC −0.02 to −0.03 (4/4); specificity −0.7 to −12 pp; new logistic female sensitivity disparity. Efficacy gates (gap closed; coverage ≥ 0.88) not met; cost gates failed. | **NEGATIVE** — mechanism addressed, not eliminated to standard without a discrimination/specificity cost |
 | Training-time subgroup reweighing — body-mass × age (Amendment #19, secondary) | as above, jointly across body-mass and age | body-mass gap halved similarly, but **age-60+ sensitivity gap worsened (BH-sig 3/4)**; larger specificity cost; within-normal-weight OOF discrimination *fell* (sparse cells) | **NEGATIVE** — one objective cannot repair both mechanisms |
@@ -908,8 +917,7 @@ style — no re-computation.
 | **3** | Sensitivity by BMI band with disparity vs the normal-weight reference, by model | `results/fairness/figures/sensitivity_disparity_*.png` |
 | **4** | Conformal coverage by subgroup with the 90% target line, by model (CAND_1) | `results/uncertainty/figures/subgroup_coverage_*.png` |
 | **5** | Fairness–specificity trade-off (Pareto) for BMI and age interventions | `results/figures/figure1_bmi_fairness_vs_specificity_pareto.png`, `figure2_age_fairness_vs_specificity_pareto.png` |
-| **S1** | Coverage vs prediction-set-size trade-off across conformal variants | `results/figures/figure3_coverage_vs_set_size_tradeoff.png` |
-| **S2** | Liver stiffness distribution by BMI band, age, sex, race/ethnicity | `results/figures/liver_stiffness_by_*.png` |
+| **S1** | Liver stiffness distribution by BMI band, age, sex, race/ethnicity | `results/figures/liver_stiffness_by_*.png` |
 
 ## Appendix A — Claim traceability
 
@@ -925,7 +933,7 @@ Every numbered claim in the Results maps to a row of
 | §3.4c reference-standard measurement bias | FAIR-BMI-04 | MANUSCRIPT_READY_WITH_QUALIFICATION |
 | §3.5 conformal (marginal + subgroup) | CONF-01, CONF-02, CONF-03 | MANUSCRIPT_READY / _WITH_QUALIFICATION |
 | §3.6 conformal replication | CONF-02 (updated, Amendment #16) | MANUSCRIPT_READY_WITH_QUALIFICATION |
-| §3.7 mitigation | MIT-01…MIT-06 | _WITH_QUALIFICATION / EXPLORATORY_ONLY / NO_IMPROVEMENT |
+| §3.7 mitigation | MIT-01–MIT-04, MIT-06 (MIT-05 joint/M4b removed from the manuscript, Amendment #20) | _WITH_QUALIFICATION / NO_IMPROVEMENT |
 | §3.7b training-time mitigation | MIT-07 | MANUSCRIPT_READY_WITH_QUALIFICATION (NEGATIVE — mechanism addressed, gate not met) |
 | §3.8 age (secondary) | FAIR-AGE-01 | MANUSCRIPT_READY_WITH_QUALIFICATION (secondary observation) |
 | §3.9 demographic holdout | GEN-01 | MANUSCRIPT_READY_WITH_QUALIFICATION |
@@ -971,4 +979,4 @@ item group is addressed.
 | Fairness / equity impact on underserved populations | §2.6, §3.4, §4.1, §5 (D1, D4); DCA subgroup net benefit (§3.11, exploratory) |
 | Limitations | §5 (mandated minimum set, indexed to `FINAL_LIMITATIONS_REGISTER.md`) |
 | Data / code availability, reproducibility | §2.12; Declarations; `documentation/final_audit/REPRODUCIBILITY.md` |
-| Funding / conflicts / ethics / protocol | Declarations section (funding: none/self-funded; competing interests: none; ethics: NCHS ERB + participant consent; protocol frozen pre-modelling, 19 amendments) |
+| Funding / conflicts / ethics / protocol | Declarations section (funding: none/self-funded; competing interests: none; ethics: NCHS ERB + participant consent; protocol frozen pre-modelling, 20 amendments) |
