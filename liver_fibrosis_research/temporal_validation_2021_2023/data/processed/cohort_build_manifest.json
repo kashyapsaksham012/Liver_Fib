@@ -1,0 +1,102 @@
+{
+  "cohort": "NHANES 2021-2023 (_L), frozen CAND_1 eligibility",
+  "cohort_flow": {
+    "0_demo_total": 11933,
+    "1_nonmissing_LUXSMED": 6700,
+    "2_LUAXSTAT_eq_1": 6280,
+    "3_adult": 5526,
+    "4_complete_predictors_CAND1": 4910
+  },
+  "N": 4910,
+  "n_positive": 563,
+  "n_negative": 4347,
+  "prevalence_pct": 11.4664,
+  "prevalence_2017_2020_pct": 9.3108,
+  "outcome_definition": "LUXSMED >= 8.2 kPa AND LUAXSTAT == 1",
+  "outcome_used_for_decisions": false,
+  "missing_data_strategy": "complete-case (matches frozen primary)",
+  "survey_weights_used": false,
+  "predictors": [
+    "RIDAGEYR",
+    "RIAGENDR",
+    "BMXBMI",
+    "LBXSATSI",
+    "LBXSASSI",
+    "LBXSAL",
+    "LBXSAPSI",
+    "LBXSTB",
+    "LBXPLTSI",
+    "LBDHDD"
+  ],
+  "parquet_sha256": "59daca140e683d6698b81d0728ab35a5823743f2207655e8e93fa318fb9aa12f",
+  "subgroup_cells": {
+    "bmi_band": {
+      "Normal": {
+        "count": 1336,
+        "sum": 65
+      },
+      "Obese": {
+        "count": 1896,
+        "sum": 382
+      },
+      "Overweight": {
+        "count": 1607,
+        "sum": 113
+      },
+      "Underweight": {
+        "count": 71,
+        "sum": 3
+      }
+    },
+    "age_band": {
+      "18-39": {
+        "count": 1407,
+        "sum": 97
+      },
+      "40-59": {
+        "count": 1401,
+        "sum": 184
+      },
+      "60+": {
+        "count": 2102,
+        "sum": 282
+      }
+    },
+    "sex": {
+      "1.0": {
+        "count": 2257,
+        "sum": 298
+      },
+      "2.0": {
+        "count": 2653,
+        "sum": 265
+      }
+    },
+    "race": {
+      "Mexican American": {
+        "count": 352,
+        "sum": 43
+      },
+      "Non-Hispanic Asian": {
+        "count": 282,
+        "sum": 20
+      },
+      "Non-Hispanic Black": {
+        "count": 543,
+        "sum": 56
+      },
+      "Non-Hispanic White": {
+        "count": 2905,
+        "sum": 362
+      },
+      "Other Hispanic": {
+        "count": 514,
+        "sum": 46
+      },
+      "Other Race / Multi-Racial": {
+        "count": 314,
+        "sum": 36
+      }
+    }
+  }
+}

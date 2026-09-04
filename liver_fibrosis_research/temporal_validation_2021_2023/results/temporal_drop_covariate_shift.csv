@@ -1,0 +1,6 @@
+model,auroc_2017_2020,auroc_2021_2023,auroc_2021_2023_reweighted,drop,drop_closed_by_reweighting,fraction_of_drop_recovered
+logistic,0.8334,0.7819,0.7927,-0.0515,0.0108,0.21
+random_forest,0.8343,0.7758,0.7854,-0.0585,0.0095,0.163
+xgboost,0.8429,0.7812,0.7901,-0.0617,0.0089,0.144
+lightgbm,0.8394,0.7773,0.7858,-0.0621,0.0085,0.136
+mlp,0.8229,0.7813,0.7885,-0.0416,0.0072,0.174

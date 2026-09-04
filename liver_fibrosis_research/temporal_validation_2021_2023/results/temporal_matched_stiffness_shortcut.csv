@@ -1,0 +1,6 @@
+model,n_band,n_obese,n_normal,beta_is_obese,p_value,beta_is_obese_2017_2020
+logistic,277,227,50,0.3869,0.0,0.3319
+random_forest,277,227,50,0.3579,0.0,0.2536
+xgboost,277,227,50,0.4031,0.0,0.2674
+lightgbm,277,227,50,0.3897,0.0,0.2777
+mlp,277,227,50,0.2138,0.0,0.1906

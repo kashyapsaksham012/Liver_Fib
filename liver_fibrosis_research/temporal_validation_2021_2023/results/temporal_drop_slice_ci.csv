@@ -1,0 +1,5 @@
+slice,delta_auroc_median,ci_low,ci_high
+bmi=Normal,-0.206,-0.319,-0.077
+bmi=Obese,-0.046,-0.088,-0.001
+age=40-59,-0.096,-0.154,-0.04
+age=60+,0.006,-0.056,0.064
