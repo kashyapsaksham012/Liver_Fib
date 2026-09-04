@@ -1,0 +1,42 @@
+{
+  "logistic": {
+    "youden_threshold": 0.490001,
+    "platt_intercept": -2.140303,
+    "platt_slope": 1.016046,
+    "conformal_n_cal": 1689,
+    "conformal_k": 1521,
+    "conformal_threshold": 0.653796
+  },
+  "random_forest": {
+    "youden_threshold": 0.435519,
+    "platt_intercept": -1.90111,
+    "platt_slope": 1.233431,
+    "conformal_n_cal": 1689,
+    "conformal_k": 1521,
+    "conformal_threshold": 0.620663
+  },
+  "xgboost": {
+    "youden_threshold": 0.463457,
+    "platt_intercept": -2.04179,
+    "platt_slope": 1.073197,
+    "conformal_n_cal": 1689,
+    "conformal_k": 1521,
+    "conformal_threshold": 0.656874
+  },
+  "lightgbm": {
+    "youden_threshold": 0.491229,
+    "platt_intercept": -2.040051,
+    "platt_slope": 1.115076,
+    "conformal_n_cal": 1689,
+    "conformal_k": 1521,
+    "conformal_threshold": 0.656357
+  },
+  "mlp": {
+    "youden_threshold": 0.117549,
+    "platt_intercept": -0.166251,
+    "platt_slope": 0.884621,
+    "conformal_n_cal": 1689,
+    "conformal_k": 1521,
+    "conformal_threshold": 0.444172
+  }
+}

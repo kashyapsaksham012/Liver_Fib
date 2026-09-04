@@ -1,0 +1,11 @@
+predictor,mean_2017_2020,mean_2021_2023,sd_2017_2020,sd_2021_2023,standardized_mean_diff,ks_distance,lab_method_note
+RIDAGEYR,49.008,52.153,18.081,17.959,0.175,0.1,demographic/anthropometric — no lab-method concern
+RIAGENDR,1.506,1.54,0.5,0.498,0.068,0.034,demographic/anthropometric — no lab-method concern
+BMXBMI,29.615,29.255,7.168,6.85,-0.051,0.035,demographic/anthropometric — no lab-method concern
+LBXSATSI,22.426,22.005,19.327,16.898,-0.023,0.019,ALT — NHANES moved the biochemistry profile to the Roche Cobas c501/6000 platform for the 2021-2023 cycle; the standalone branch built an ALT crosswalk. PRIMARY analysis uses raw values; crosswalk = sensitivity only. VERIFY analytic note.
+LBXSASSI,21.928,22.653,14.46,15.168,0.049,0.072,AST — same platform change as ALT. VERIFY analytic note for a method/units shift.
+LBXSAL,4.078,4.096,0.334,0.342,0.052,0.038,Albumin — VERIFY (BCG vs BCP method history in NHANES).
+LBXSAPSI,77.632,84.24,25.686,28.058,0.246,0.114,Alkaline phosphatase — VERIFY analytic note.
+LBXSTB,0.46,0.503,0.278,0.409,0.122,0.057,Total bilirubin — VERIFY analytic note.
+LBXPLTSI,246.743,255.878,64.817,66.057,0.14,0.07,Platelets (CBC) — Sysmex analyzer; generally stable across cycles. VERIFY.
+LBDHDD,53.407,54.552,15.766,14.728,0.075,0.055,HDL cholesterol — VERIFY analytic note.

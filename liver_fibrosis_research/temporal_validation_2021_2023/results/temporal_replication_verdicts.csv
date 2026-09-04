@@ -1,0 +1,8 @@
+finding,result,classification
+Discrimination (AUROC),AUROC 0.776–0.782 (Δ -0.062 to -0.042); 1/5 models within the pre-specified ±0.05 tolerance,ATTENUATED
+Calibration correction (frozen Platt),recalibrated intercepts -0.11 to +0.22 (5/5 within ±0.5); slopes 0.86–1.01; ECE 0.016–0.021; Brier 0.085–0.087 (up from ~0.07),REPLICATED (mild over-correction)
+BMI-Obese vs Normal sensitivity gap,gap 63–72 pp (2017–2020: 27–48); BH-significant 5/5; larger than 2017–2020 in 5/5,STRENGTHENED
+Marginal-vs-subgroup conformal split,"marginal 0.878–0.902 (5/5 within ±0.03 of 0.90); BMI-Obese 0.761–0.813, CI excludes 0.90 and BH-significant 5/5",REPLICATED
+Age-60+ sensitivity deficit (anticipated fragile),disparity +2.6 to +10.3 pp (2017–2020 direction was negative); negative direction in 0/5; BH-significant 1/5,NOT REPLICATED (reversed; anticipated in protocol §5)
+Matched-stiffness body-mass shortcut (mechanism),"is_obese OLS coefficient 0.21–0.40 (2017–2020: 0.19–0.33); p<0.05 in 5/5, positive in 5/5",REPLICATED (slightly stronger)
+Fairness–reliability dissociation (BMI-Obese),obese are fairness-favorable on detection AND reliability-unfavorable on conformal coverage in 5/5 models,REPLICATED

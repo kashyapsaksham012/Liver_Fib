@@ -1,0 +1,16 @@
+dimension,category,pct_2017_2020,pct_2021_2023
+age_band,18-39,33.87,28.66
+age_band,40-59,32.41,28.53
+age_band,60+,33.72,42.81
+bmi_band,Normal,25.19,27.21
+bmi_band,Obese,40.91,38.62
+bmi_band,Overweight,32.38,32.73
+bmi_band,Underweight,1.52,1.45
+sex,1.0,49.36,45.97
+sex,2.0,50.64,54.03
+race,1.0,12.61,7.17
+race,2.0,10.54,10.47
+race,3.0,34.73,59.16
+race,4.0,24.98,11.06
+race,6.0,12.11,5.74
+race,7.0,5.03,6.4

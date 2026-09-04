@@ -1,0 +1,6 @@
+question,result,verdict
+Body-mass detection gap,"pooled test: 32-57 pp, BH-significant 5/5 (2021-2023 slice: 38-69 pp, 5/5)",NOT RESOLVED
+BMI-Obese conformal under-coverage,"pooled test: coverage 0.776-0.822, Wilson CI excludes 0.90 in 5/5",NOT RESOLVED
+Matched-stiffness body-mass shortcut,"pooled test: is_obese coefficient 0.11-0.35, p<0.05 in 5/5",NOT RESOLVED
+Aggregate discrimination (pooled test),AUROC 0.806-0.813 (frozen 2017-2020: 0.823-0.843; temporal 2021-2023: 0.776-0.782); 3/5 >= 0.81,PARTIALLY RECOVERED
+Discrimination on the 2021-2023 slice,AUROC 0.773-0.787; 0/5 >= 0.80 (un-updated frozen model on 2021-2023 was 0.776-0.782),NOT RECOVERED
