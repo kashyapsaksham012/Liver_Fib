@@ -1,0 +1,46 @@
+{
+  "pooled_cohort": "NHANES 2017-March 2020 CAND_1 + NHANES 2021-2023 CAND_1",
+  "N_total": 12063,
+  "n_positive": 1229,
+  "prevalence_pct": 10.188,
+  "by_cycle": {
+    "2017-2020": {
+      "N": 7153,
+      "pos": 666,
+      "prev_pct": 9.311
+    },
+    "2021-2023": {
+      "N": 4910,
+      "pos": 563,
+      "prev_pct": 11.466
+    }
+  },
+  "split": {
+    "train": {
+      "N": 8444,
+      "pos": 860,
+      "prev_pct": 10.185
+    },
+    "test": {
+      "N": 3619,
+      "pos": 369,
+      "prev_pct": 10.196
+    }
+  },
+  "test_by_cycle": {
+    "2017-2020": {
+      "N": 2146,
+      "pos": 200,
+      "prev_pct": 9.32
+    },
+    "2021-2023": {
+      "N": 1473,
+      "pos": 169,
+      "prev_pct": 11.473
+    }
+  },
+  "stratified_on": "cycle x outcome",
+  "seed": 42,
+  "outcome_used_for_decisions": false,
+  "parquet_sha256": "a090ca4121a7d0765fbe1ac9c7ee09e72e7e551ac60fcd40e9c69ada97dfdc4d"
+}
