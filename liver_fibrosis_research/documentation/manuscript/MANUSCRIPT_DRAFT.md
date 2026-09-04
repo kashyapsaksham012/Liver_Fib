@@ -1,5 +1,17 @@
 # Discrimination and aggregate calibration are insufficient evidence of subgroup-safe reliability: a calibration–fairness–uncertainty audit of routine-data models for significant liver fibrosis
 
+**Draft v5.1 — 2026-09 (internal-consistency pass).** Changes since v5, no result altered:
+§3.11 predictor-importance sentence corrected to match the frozen artifacts exactly (BMI is
+first in every family and by logistic coefficient; the "ALT, AST, BMI, age top four across all
+five families" wording overstated — it holds for logistic/XGBoost/LightGBM, HDL displaces AST for
+random forest, ALT ranks lower for the perceptron; caught by
+`manuscript_verification/verify.py` check `INT-01-TOP4`). Reference bylines filled for refs 4, 5,
+13, 14 and partially 2 (`manuscript_verification/reference_bylines.md`); ref 4 year corrected
+2020 → 2022;34(1):98–103. The in-body outstanding-tasks list and the Appendix B reporting-guideline
+phrasing now point to `SUBMISSION_CHECKLIST.md` rather than restating open items. A number-
+verification harness (`manuscript_verification/`) pins every headline number to its CSV — 43/43
+pass. PDF-vs-repo differences catalogued in `manuscript_verification/PDF_REPO_RECONCILIATION.md`.
+
 **Draft v5 — 2026-08-27.** Grounded strictly in
 `documentation/final_research_audit/FINAL_MANUSCRIPT_CLAIM_REGISTRY.csv`,
 `AUTHORITATIVE_RESULTS.md`, `MANUSCRIPT_FRAMING_GUIDANCE.md`, `FINAL_LIMITATIONS_REGISTER.md`,
@@ -38,13 +50,9 @@ prior work); 28-item reference list (verified — `REFERENCE_VERIFICATION.md`; +
 via `src/manuscript_01_table1.py`, a read-only descriptive script); TRIPOD+AI crosswalk
 (Appendix B); every figure already exists as a committed PNG (§Figures); a full second-reader
 number check (`documentation/manuscript/RESULTS_VERIFICATION.md` — one Table 3 value corrected).
-**Still outstanding for submission** (`SUBMISSION_CHECKLIST.md`): full author bylines for the
-references marked *[author list to confirm]* + the *CHEST* 2026 byline; a two-screener
-database search with recorded hit counts (`LITERATURE_SEARCH_RECORD.md`); a participant flow
-diagram + figure panel assembly to the chosen journal's style
-(target: **JAMIA** — `TARGET_VENUE_DECISION.md`); a full-text re-check of the ref [1] and ref [23]
-claims; a human co-author repeating `RESULTS_VERIFICATION.md` and a final read against
-`DO_NOT_CLAIM.md`; a public code release + archival DOI; medRxiv posting.
+**Outstanding pre-submission tasks are tracked in `SUBMISSION_CHECKLIST.md`** (and, for the
+manuscript-vs-PDF differences, `manuscript_verification/PDF_REPO_RECONCILIATION.md`); they are not
+listed here.
 
 ---
 
@@ -508,9 +516,14 @@ change ≤ ±4.2 pp; all intervals include zero).
 
 ### 3.11 Interpretability
 
-ALT, AST, BMI, and age were the top four predictors across all five families (permutation
-importance and standardised logistic coefficients) — established markers of hepatic injury and
-metabolic risk. Decision-curve analysis showed net benefit over treat-all/treat-none strategies
+BMI and age were the two strongest predictors in every model family — BMI ranked first in all
+five by permutation importance and by standardised logistic-regression coefficient, and age
+ranked second in four of five (third in the perceptron, which placed AST second). ALT and AST
+were the next most influential laboratory markers for the boosting models and in the logistic
+coefficients, giving a top four of BMI, age, ALT and AST for logistic regression, XGBoost and
+LightGBM; for random forest, HDL cholesterol displaced AST from the top four, and for the
+perceptron ALT ranked lower. All are established markers of hepatic injury and metabolic risk.
+Decision-curve analysis showed net benefit over treat-all/treat-none strategies
 across a plausible threshold range, including within the obese and 60+ subgroups (reported as an
 exploratory clinical-utility extension, not a deployment endpoint).
 
@@ -736,29 +749,31 @@ checklist is provided as a supplement.
 ## References
 
 *Verification status: `documentation/manuscript/REFERENCE_VERIFICATION.md` (each entry checked
-against its primary source, 2026-08-27; a co-author should repeat the pass). Items marked
-[author list to confirm] still need the full byline. Full positioning is in `LITERATURE_REVIEW.md`.*
+against its primary source, 2026-08-27) and `manuscript_verification/reference_bylines.md`
+(byline pass, web lookup, September 2026). A co-author should repeat both passes. Refs 7 and 20
+still need their full author bylines (publisher pages did not resolve); refs 13 (page range) and
+2 (byline beyond first three) need a final detail. Full positioning is in `LITERATURE_REVIEW.md`.*
 
 1. Cao D, Wang J, Hou C, et al. Integrative and interpretable machine learning framework for early non-invasive detection of clinically significant liver fibrosis. *Front Med (Lausanne)* 2026;13:1736295. doi:10.3389/fmed.2026.1736295
-2. Machine learning-based disease risk stratification and prediction of metabolic dysfunction-associated fatty liver disease using vibration-controlled transient elastography: result from NHANES 2021–2023. *BMC Gastroenterol* 2025;25:255. doi:10.1186/s12876-025-03850-x [author list to confirm]
+2. Huang L, Luo Y, Zhang L, et al. Machine learning-based disease risk stratification and prediction of metabolic dysfunction-associated fatty liver disease using vibration-controlled transient elastography: result from NHANES 2021–2023. *BMC Gastroenterol* 2025;25:255. doi:10.1186/s12876-025-03850-x [full byline to confirm from OA HTML]
 3. Fibro predict: a machine learning risk score for advanced liver fibrosis in the general population using Israeli electronic health records. *Sci Rep* 2025;15:32035. doi:10.1038/s41598-025-17534-9. PMID:40887472
-4. Accuracy of Fibrosis-4 index and non-alcoholic fatty liver disease fibrosis scores in metabolic (dysfunction) associated fatty liver disease according to body mass index: failure in the prediction of advanced fibrosis in lean and morbidly obese individuals. *Eur J Gastroenterol Hepatol* 2020. PMID:32976186. doi:10.1097/MEG.0000000000001946 [author list to confirm]
-5. Diagnostic performance of the Fibrosis-4 index and nonalcoholic fatty liver disease fibrosis score in lean adults with nonalcoholic fatty liver disease. *JAMA Netw Open* 2023;6(8):e2328692. PMID:37589973 [author list to confirm]
+4. Eren F, Kaya E, Yilmaz Y. Accuracy of Fibrosis-4 index and non-alcoholic fatty liver disease fibrosis scores in metabolic (dysfunction) associated fatty liver disease according to body mass index: failure in the prediction of advanced fibrosis in lean and morbidly obese individuals. *Eur J Gastroenterol Hepatol* 2022;34(1):98–103. PMID:32976186. doi:10.1097/MEG.0000000000001946
+5. Park H, Yoon EL, Ito T, Jo AJ, Kim M, Lee J, Kim HL, Arai T, Atsukawa M, Kawanaka M, Toyoda H, Ishigami M, Yu ML, Jun DW, Nguyen MH. Diagnostic performance of the Fibrosis-4 index and nonalcoholic fatty liver disease fibrosis score in lean adults with nonalcoholic fatty liver disease. *JAMA Netw Open* 2023;6(8):e2328692. PMID:37589973
 6. Graupera I, et al. Low accuracy of FIB-4 and NAFLD Fibrosis Scores for screening for liver fibrosis in the population. *Clin Gastroenterol Hepatol* 2022;20(11):2567–2576. doi:10.1016/j.cgh.2021.12.034. PMID:34971806
-7. Diabetes and obesity reduce FIB-4 accuracy in MASLD referral pathways. *JHEP Rep* 2026. doi:10.1016/j.jhepr.2026.101735 [author list to confirm]
+7. Diabetes and obesity reduce FIB-4 accuracy in MASLD referral pathways. *JHEP Rep* 2026;article 101735. doi:10.1016/j.jhepr.2026.101735 [author byline to confirm — see `manuscript_verification/reference_bylines.md`]
 8. Srivastava A, et al. Prospective evaluation of a primary-care referral pathway for patients with non-alcoholic fatty liver disease. *J Hepatol* 2019;71(2):371–378. doi:10.1016/j.jhep.2019.03.033. PMID:30965069
 9. Collins GS, Moons KGM, Dhiman P, Riley RD, Beam AL, Van Calster B, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* 2024;385:e078378. doi:10.1136/bmj-2023-078378. PMID:38626948
 10. van den Goorbergh R, van Smeden M, Timmerman D, Van Calster B. The harm of class imbalance corrections for risk prediction models: illustration and simulation using logistic regression. *JAMIA* 2022;29(9):1525–1534. doi:10.1093/jamia/ocac093
 11. Carriero A, Luijken K, de Hond A, Moons KGM, van Calster B, van Smeden M. The harms of class imbalance corrections for machine-learning-based prediction models: a simulation study. *Stat Med* 2025;44(3-4):e10320. doi:10.1002/sim.10320
 12. Straw I, Wu H. Investigating for bias in healthcare algorithms: a sex-stratified analysis of supervised machine learning models in liver disease prediction. *BMJ Health Care Inform* 2022;29(1):e100457. doi:10.1136/bmjhci-2021-100457
-13. Understanding algorithmic fairness for clinical prediction in terms of subgroup net benefit and health equity. *Epidemiology* 2026;37(3) [May issue]. Preprint: arXiv:2412.07879. [author list to confirm]
-14. Critical appraisal of fairness metrics for artificial-intelligence-based clinical prediction models: a scoping review. *Lancet Digit Health* 2026. Preprint: arXiv:2506.17035. [author list to confirm]
+13. Benitez-Aurioles J, Joules A, Brusini I, Peek N, Sperrin M. Understanding algorithmic fairness for clinical prediction in terms of subgroup net benefit and health equity. *Epidemiology* 2026;37(3) [May issue; page range to confirm]. Preprint: arXiv:2412.07879.
+14. Matos J, Van Calster B, Celi LA, Dhiman P, Gichoya JW, Riley RD, Russell C, Khalid S, Collins GS. Critical appraisal of fairness metrics for artificial-intelligence-based clinical prediction models: a scoping review. *Lancet Digit Health* 2026. Preprint: arXiv:2506.17035.
 15. Vovk V, Gammerman A, Shafer G. *Algorithmic Learning in a Random World*. Springer, 2005 (2nd ed. 2022).
 16. Angelopoulos AN, Bates S. A gentle introduction to conformal prediction and distribution-free uncertainty quantification. arXiv:2107.07511, 2021. *Found Trends Mach Learn* 2023;16(4):494–591.
 17. Barber RF, Candès EJ, Ramdas A, Tibshirani RJ. The limits of distribution-free conditional predictive inference. *Inf Inference* 2021;10(2):455–482. doi:10.1093/imaiai/iaaa017. arXiv:1903.04684
 18. Romano Y, Barber RF, Sabatti C, Candès EJ. With malice toward none: assessing uncertainty via equalized coverage. *Harv Data Sci Rev* 2020;2(2). doi:10.1162/99608f92.03f00592
 19. Angelopoulos AN, Bates S, Fisch A, Lei L, Schuster T. Conformal risk control. *ICLR* 2024. arXiv:2208.02814
-20. Conformal prediction in clinical artificial intelligence. *CHEST* 2026 (article S0012-3692(25)05184-0). [author list to confirm from full text]
+20. Conformal prediction in clinical artificial intelligence. *CHEST* 2026 (article S0012-3692(25)05184-0; published 1 Feb 2026). [author byline to confirm from full text — see `manuscript_verification/reference_bylines.md`]
 21. Cresswell JC, Kumar B, Sui Y, Belbahri M. Conformal prediction sets can cause disparate impact. *ICLR* 2025 (Spotlight). arXiv:2410.01888
 22. Zhou Y, Sesia M. Conformal classification with equalized coverage for adaptively selected groups (adaptively fair conformal prediction, AFCP). *NeurIPS* 2024. arXiv:2405.15106
 23. Zhang X. Conformal risk prediction for non-alcoholic fatty liver disease using gradient boosting with distribution-free coverages. arXiv:2606.09860, 2026.
@@ -955,8 +970,8 @@ test set), not 62%.
 
 ## Appendix B — Reporting-guideline mapping (TRIPOD+AI [9])
 
-A full TRIPOD+AI checklist is to be completed and submitted; the crosswalk below shows where each
-item group is addressed.
+The completed TRIPOD+AI checklist is provided as a supplement; the crosswalk below shows where
+each item group is addressed in the main text.
 
 | TRIPOD+AI item group | Where addressed |
 |---|---|
