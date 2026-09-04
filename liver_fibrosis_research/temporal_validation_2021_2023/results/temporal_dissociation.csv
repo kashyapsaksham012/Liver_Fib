@@ -1,0 +1,6 @@
+model,obese_minus_normal_sensitivity_pp,obese_conformal_coverage,fairness_favorable_to_obese,reliability_unfavorable_to_obese,dissociation_replicated
+logistic,68.88,0.8128,True,True,True
+random_forest,63.05,0.7832,True,True,True
+xgboost,70.05,0.7611,True,True,True
+lightgbm,67.89,0.7843,True,True,True
+mlp,71.92,0.7827,True,True,True

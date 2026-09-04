@@ -1,0 +1,6 @@
+metric,old,new
+mean_LUXSMED_kPa,5.793,6.135
+median_LUXSMED_kPa,5.0,5.0
+pct_LUXSMED_ge_8.2,9.311,11.466
+pct_LUXSMED_8.0_to_8.4_borderline,1.775,1.955
+median_IQR_over_median_ratio_2021_2023_only,,0.136
