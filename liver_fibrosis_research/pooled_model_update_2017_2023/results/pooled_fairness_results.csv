@@ -1,0 +1,101 @@
+tag,model,dimension,category,n_positive,subgroup_sensitivity,reference_sensitivity,absolute_disparity_pp,ci_lower_pp,ci_upper_pp,raw_p,bh_fdr_adjusted_p,significant_after_fdr_0.05,disparity_frozen_2017_2020
+pooled_test_all,logistic,bmi,Obese,254,0.9055,0.3333,57.2178,42.0239,71.8453,0.0,0.0,True,47.6623
+pooled_test_all,logistic,bmi,Overweight,72,0.5417,0.3333,20.8333,1.8439,39.1649,0.028,0.028,True,5.0369
+pooled_test_all,logistic,age,18-39,64,0.6719,0.7913,-11.9429,-26.3618,1.4903,0.094,0.188,False,-15.1515
+pooled_test_all,logistic,age,60+,190,0.7842,0.7913,-0.7094,-9.5612,8.9638,0.878,0.878,False,-8.5509
+pooled_test_all,logistic,sex,2.0,156,0.75,0.7793,-2.9343,-11.4908,5.7427,0.542,0.542,False,
+pooled_test_all,logistic,race_ethnicity,Mexican American,42,0.7857,0.8011,-1.5391,-15.3538,12.2334,0.837,0.837,False,1.2334
+pooled_test_all,logistic,race_ethnicity,Other Hispanic,40,0.85,0.8011,4.8895,-7.5923,17.4281,0.42,0.525,False,1.3575
+pooled_test_all,logistic,race_ethnicity,Non-Hispanic Black,66,0.7121,0.8011,-8.8984,-21.5709,3.4785,0.169,0.325,False,-9.4118
+pooled_test_all,logistic,race_ethnicity,Non-Hispanic Asian,19,0.5263,0.8011,-27.4789,-52.2802,-3.6307,0.021,0.105,False,-22.2689
+pooled_test_all,logistic,race_ethnicity,Other Race / Multi-Racial,21,0.6667,0.8011,-13.4438,-35.4176,5.9287,0.195,0.325,False,-15.7754
+pooled_test_all,random_forest,bmi,Obese,254,0.9252,0.4286,49.6625,34.0766,64.9518,0.0,0.0,True,31.6234
+pooled_test_all,random_forest,bmi,Overweight,72,0.5,0.4286,7.1429,-11.7353,26.1269,0.47,0.47,False,-10.4423
+pooled_test_all,random_forest,age,18-39,64,0.7031,0.8522,-14.9049,-27.9442,-2.1367,0.02,0.04,True,-22.7273
+pooled_test_all,random_forest,age,60+,190,0.7684,0.8522,-8.3753,-16.6969,0.0852,0.055,0.055,False,-13.1563
+pooled_test_all,random_forest,sex,2.0,156,0.7692,0.7934,-2.4196,-11.0456,5.8933,0.624,0.624,False,
+pooled_test_all,random_forest,race_ethnicity,Mexican American,42,0.8095,0.7956,1.3944,-11.9099,14.353,0.859,0.918,False,0.0474
+pooled_test_all,random_forest,race_ethnicity,Other Hispanic,40,0.875,0.7956,7.942,-4.1763,19.4663,0.185,0.3567,False,-6.9005
+pooled_test_all,random_forest,race_ethnicity,Non-Hispanic Black,66,0.7879,0.7956,-0.7701,-12.9863,10.5359,0.918,0.918,False,-3.8235
+pooled_test_all,random_forest,race_ethnicity,Non-Hispanic Asian,19,0.5263,0.7956,-26.9264,-51.3105,-3.3683,0.023,0.115,False,-33.8235
+pooled_test_all,random_forest,race_ethnicity,Other Race / Multi-Racial,21,0.6667,0.7956,-12.8913,-35.0081,7.4684,0.214,0.3567,False,-11.0963
+pooled_test_all,xgboost,bmi,Obese,254,0.9252,0.4524,47.2816,31.5069,62.6078,0.0,0.0,True,31.3636
+pooled_test_all,xgboost,bmi,Overweight,72,0.5139,0.4524,6.1508,-13.6603,25.0902,0.522,0.522,False,-4.1769
+pooled_test_all,xgboost,age,18-39,64,0.7188,0.8435,-12.4728,-25.9805,-0.206,0.048,0.096,False,-13.6364
+pooled_test_all,xgboost,age,60+,190,0.7789,0.8435,-6.4531,-15.1968,2.4595,0.145,0.145,False,-11.2361
+pooled_test_all,xgboost,sex,2.0,156,0.7756,0.7981,-2.2481,-11.0549,6.1701,0.61,0.61,False,
+pooled_test_all,xgboost,race_ethnicity,Mexican American,42,0.7857,0.8011,-1.5391,-15.1365,12.024,0.815,0.97,False,-5.8349
+pooled_test_all,xgboost,race_ethnicity,Other Hispanic,40,0.85,0.8011,4.8895,-8.0532,16.8866,0.427,0.97,False,-5.0905
+pooled_test_all,xgboost,race_ethnicity,Non-Hispanic Black,66,0.803,0.8011,0.1925,-11.5925,11.3387,0.97,0.97,False,-5.7059
+pooled_test_all,xgboost,race_ethnicity,Non-Hispanic Asian,19,0.5263,0.8011,-27.4789,-51.9852,-4.4281,0.017,0.085,False,-32.563
+pooled_test_all,xgboost,race_ethnicity,Other Race / Multi-Racial,21,0.7619,0.8011,-3.92,-23.3277,13.7795,0.696,0.97,False,1.2032
+pooled_test_all,lightgbm,bmi,Obese,254,0.8937,0.4762,41.751,25.675,57.4364,0.0,0.0,True,27.0779
+pooled_test_all,lightgbm,bmi,Overweight,72,0.4306,0.4762,-4.5635,-23.2963,14.7071,0.628,0.628,False,-14.9877
+pooled_test_all,lightgbm,age,18-39,64,0.6562,0.8261,-16.9837,-31.1825,-3.5536,0.015,0.03,True,-16.6667
+pooled_test_all,lightgbm,age,60+,190,0.7421,0.8261,-8.3982,-17.6925,1.1833,0.08,0.08,False,-14.1464
+pooled_test_all,lightgbm,sex,2.0,156,0.7436,0.7606,-1.6974,-10.7696,7.4357,0.711,0.711,False,
+pooled_test_all,lightgbm,race_ethnicity,Mexican American,42,0.7619,0.7845,-2.2626,-16.7564,12.3224,0.742,0.783,False,-1.7078
+pooled_test_all,lightgbm,race_ethnicity,Other Hispanic,40,0.8,0.7845,1.547,-12.8914,14.8624,0.783,0.783,False,-1.5837
+pooled_test_all,lightgbm,race_ethnicity,Non-Hispanic Black,66,0.7576,0.7845,-2.6955,-15.2127,9.3576,0.672,0.783,False,-0.3529
+pooled_test_all,lightgbm,race_ethnicity,Non-Hispanic Asian,19,0.4737,0.7845,-31.0846,-55.6011,-7.4561,0.008,0.04,True,-25.2101
+pooled_test_all,lightgbm,race_ethnicity,Other Race / Multi-Racial,21,0.619,0.7845,-16.5483,-38.7145,4.7011,0.117,0.2925,False,-9.6257
+pooled_test_all,mlp,bmi,Obese,254,0.6811,0.3571,32.396,16.7188,47.7294,0.0,0.0,True,39.026
+pooled_test_all,mlp,bmi,Overweight,72,0.375,0.3571,1.7857,-17.3637,20.2705,0.854,0.854,False,-0.4914
+pooled_test_all,mlp,age,18-39,64,0.4844,0.6261,-14.1712,-29.3092,0.9342,0.066,0.132,False,-12.1212
+pooled_test_all,mlp,age,60+,190,0.5895,0.6261,-3.6613,-15.4264,7.6867,0.53,0.53,False,-14.6715
+pooled_test_all,mlp,sex,2.0,156,0.5064,0.6385,-13.2087,-22.7898,-2.669,0.009,0.009,True,
+pooled_test_all,mlp,race_ethnicity,Mexican American,42,0.5,0.6133,-11.326,-28.7548,5.6141,0.189,0.315,False,1.8027
+pooled_test_all,mlp,race_ethnicity,Other Hispanic,40,0.65,0.6133,3.674,-12.7626,19.8573,0.628,0.718,False,-0.6787
+pooled_test_all,mlp,race_ethnicity,Non-Hispanic Black,66,0.6364,0.6133,2.3104,-11.0156,16.187,0.718,0.718,False,-11.2941
+pooled_test_all,mlp,race_ethnicity,Non-Hispanic Asian,19,0.4211,0.6133,-19.2207,-42.9656,4.8742,0.118,0.295,False,-13.8655
+pooled_test_all,mlp,race_ethnicity,Other Race / Multi-Racial,21,0.3333,0.6133,-27.9926,-49.8442,-6.1056,0.018,0.09,False,-3.4759
+pooled_test_2021_2023,logistic,bmi,Obese,114,0.8947,0.2,69.4737,48.6074,87.7223,0.0,0.0,True,47.6623
+pooled_test_2021_2023,logistic,bmi,Overweight,35,0.5429,0.2,34.2857,9.0387,58.8248,0.014,0.014,True,5.0369
+pooled_test_2021_2023,logistic,age,18-39,31,0.6452,0.6939,-4.8716,-25.9927,15.5556,0.671,0.671,False,-15.1515
+pooled_test_2021_2023,logistic,age,60+,89,0.7978,0.6939,10.3875,-4.8441,25.7222,0.181,0.362,False,-8.5509
+pooled_test_2021_2023,logistic,sex,2.0,78,0.7051,0.7692,-6.4103,-20.3979,7.136,0.351,0.351,False,
+pooled_test_2021_2023,logistic,race_ethnicity,Mexican American,11,0.6364,0.7788,-14.2397,-47.4581,16.6693,0.372,0.465,False,1.2334
+pooled_test_2021_2023,logistic,race_ethnicity,Other Hispanic,14,0.9286,0.7788,14.981,-2.8067,27.779,0.091,0.2275,False,1.3575
+pooled_test_2021_2023,logistic,race_ethnicity,Non-Hispanic Black,16,0.625,0.7788,-15.3761,-40.301,9.8852,0.233,0.3883,False,-9.4118
+pooled_test_2021_2023,logistic,race_ethnicity,Non-Hispanic Asian,5,0.0,0.7788,-77.8761,-85.3474,-70.2897,0.0,0.0,True,-22.2689
+pooled_test_2021_2023,logistic,race_ethnicity,Other Race / Multi-Racial,10,0.7,0.7788,-7.8761,-42.18,22.691,0.67,0.67,False,-15.7754
+pooled_test_2021_2023,random_forest,bmi,Obese,114,0.9123,0.3,61.2281,37.5303,82.2241,0.0,0.0,True,31.6234
+pooled_test_2021_2023,random_forest,bmi,Overweight,35,0.4286,0.3,12.8571,-13.9794,39.2879,0.346,0.346,False,-10.4423
+pooled_test_2021_2023,random_forest,age,18-39,31,0.6774,0.7347,-5.7275,-26.621,14.4911,0.619,0.709,False,-22.7273
+pooled_test_2021_2023,random_forest,age,60+,89,0.764,0.7347,2.9351,-12.1221,18.6466,0.709,0.709,False,-13.1563
+pooled_test_2021_2023,random_forest,sex,2.0,78,0.7179,0.7582,-4.0293,-17.4902,9.5922,0.542,0.542,False,
+pooled_test_2021_2023,random_forest,race_ethnicity,Mexican American,11,0.6364,0.7522,-11.5849,-44.3518,19.9056,0.454,0.5675,False,0.0474
+pooled_test_2021_2023,random_forest,race_ethnicity,Other Hispanic,14,0.9286,0.7522,17.6359,-0.1821,30.9102,0.054,0.27,False,-6.9005
+pooled_test_2021_2023,random_forest,race_ethnicity,Non-Hispanic Black,16,0.75,0.7522,-0.2212,-23.2338,21.2998,0.959,0.959,False,-3.8235
+pooled_test_2021_2023,random_forest,race_ethnicity,Non-Hispanic Asian,5,0.4,0.7522,-35.2212,-78.0482,23.1663,0.1467,0.3668,False,-33.8235
+pooled_test_2021_2023,random_forest,race_ethnicity,Other Race / Multi-Racial,10,0.6,0.7522,-15.2212,-48.6988,18.7743,0.378,0.5675,False,-11.0963
+pooled_test_2021_2023,xgboost,bmi,Obese,114,0.9035,0.3,60.3509,38.6882,81.0719,0.0,0.0,True,31.3636
+pooled_test_2021_2023,xgboost,bmi,Overweight,35,0.4857,0.3,18.5714,-7.845,44.8566,0.181,0.181,False,-4.1769
+pooled_test_2021_2023,xgboost,age,18-39,31,0.6452,0.7551,-10.9941,-31.5358,9.0745,0.299,0.598,False,-13.6364
+pooled_test_2021_2023,xgboost,age,60+,89,0.7753,0.7551,2.0179,-11.9076,17.1519,0.811,0.811,False,-11.2361
+pooled_test_2021_2023,xgboost,sex,2.0,78,0.7179,0.7692,-5.1282,-18.336,8.0427,0.451,0.451,False,
+pooled_test_2021_2023,xgboost,race_ethnicity,Mexican American,11,0.7273,0.7522,-2.494,-33.4935,24.6084,0.924,0.962,False,-5.8349
+pooled_test_2021_2023,xgboost,race_ethnicity,Other Hispanic,14,0.9286,0.7522,17.6359,-0.4339,31.0369,0.056,0.14,False,-5.0905
+pooled_test_2021_2023,xgboost,race_ethnicity,Non-Hispanic Black,16,0.75,0.7522,-0.2212,-23.3933,21.2963,0.962,0.962,False,-5.7059
+pooled_test_2021_2023,xgboost,race_ethnicity,Non-Hispanic Asian,5,0.2,0.7522,-55.2212,-80.9632,-7.5254,0.0302,0.14,False,-32.563
+pooled_test_2021_2023,xgboost,race_ethnicity,Other Race / Multi-Racial,10,0.7,0.7522,-5.2212,-39.2973,25.6429,0.783,0.962,False,1.2032
+pooled_test_2021_2023,lightgbm,bmi,Obese,114,0.8772,0.35,52.7193,29.5213,74.2112,0.0,0.0,True,27.0779
+pooled_test_2021_2023,lightgbm,bmi,Overweight,35,0.3714,0.35,2.1429,-25.1505,28.7549,0.857,0.857,False,-14.9877
+pooled_test_2021_2023,lightgbm,age,18-39,31,0.5806,0.7347,-15.4049,-36.2208,5.7596,0.176,0.352,False,-16.6667
+pooled_test_2021_2023,lightgbm,age,60+,89,0.7416,0.7347,0.6879,-13.7778,16.0931,0.951,0.951,False,-14.1464
+pooled_test_2021_2023,lightgbm,sex,2.0,78,0.6795,0.7363,-5.6777,-19.5437,8.0346,0.423,0.423,False,
+pooled_test_2021_2023,lightgbm,race_ethnicity,Mexican American,11,0.6364,0.7345,-9.815,-43.1738,21.7533,0.542,0.6775,False,-1.7078
+pooled_test_2021_2023,lightgbm,race_ethnicity,Other Hispanic,14,0.8571,0.7345,12.263,-10.1378,30.8428,0.256,0.4267,False,-1.5837
+pooled_test_2021_2023,lightgbm,race_ethnicity,Non-Hispanic Black,16,0.75,0.7345,1.5487,-21.5406,22.7419,0.837,0.837,False,-0.3529
+pooled_test_2021_2023,lightgbm,race_ethnicity,Non-Hispanic Asian,5,0.2,0.7345,-53.4513,-79.4643,-6.52,0.0312,0.1558,False,-25.2101
+pooled_test_2021_2023,lightgbm,race_ethnicity,Other Race / Multi-Racial,10,0.5,0.7345,-23.4513,-57.0045,10.6648,0.185,0.4267,False,-9.6257
+pooled_test_2021_2023,mlp,bmi,Obese,114,0.6316,0.25,38.1579,15.1615,58.7701,0.003,0.006,True,39.026
+pooled_test_2021_2023,mlp,bmi,Overweight,35,0.3714,0.25,12.1429,-14.1707,36.5984,0.332,0.332,False,-0.4914
+pooled_test_2021_2023,mlp,age,18-39,31,0.4194,0.551,-13.1666,-36.0992,9.6221,0.262,0.524,False,-12.1212
+pooled_test_2021_2023,mlp,age,60+,89,0.5618,0.551,1.0777,-16.9909,18.9325,0.875,0.875,False,-14.6715
+pooled_test_2021_2023,mlp,sex,2.0,78,0.4744,0.5824,-10.8059,-25.7581,5.0956,0.166,0.166,False,
+pooled_test_2021_2023,mlp,race_ethnicity,Mexican American,11,0.4545,0.5664,-11.1826,-41.6683,21.9659,0.508,0.635,False,1.8027
+pooled_test_2021_2023,mlp,race_ethnicity,Other Hispanic,14,0.7143,0.5664,14.7914,-13.4843,40.0,0.258,0.43,False,-0.6787
+pooled_test_2021_2023,mlp,race_ethnicity,Non-Hispanic Black,16,0.5625,0.5664,-0.3872,-25.1753,25.4466,0.993,0.993,False,-11.2941
+pooled_test_2021_2023,mlp,race_ethnicity,Non-Hispanic Asian,5,0.0,0.5664,-56.6372,-65.5462,-47.4456,0.0,0.0,True,-13.8655
+pooled_test_2021_2023,mlp,race_ethnicity,Other Race / Multi-Racial,10,0.2,0.5664,-36.6372,-60.8363,-6.3564,0.017,0.0425,True,-3.4759
