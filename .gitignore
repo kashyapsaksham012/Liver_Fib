@@ -17,3 +17,10 @@ venv/
 
 # Out-of-scope data (separate temporal-validation manuscript)
 NHANES 2021–2023 temporal validation dataset/
+
+# Compiled manuscript PDFs — LaTeX build output, not a source of record.
+# The canonical manuscript is the Markdown in
+# liver_fibrosis_research/documentation/manuscript/MANUSCRIPT_DRAFT.md; PDF↔repo
+# divergences are tracked in manuscript_verification/PDF_REPO_RECONCILIATION.md.
+# Add a specific PDF with `git add -f` if it must be archived (e.g. an as-submitted copy).
+*.pdf
