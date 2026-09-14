@@ -1,0 +1,3 @@
+score_name,variant,n,calibration_intercept,calibration_slope,brier_score,ece,n_bins_achieved,binning_degenerate,note
+FIB-4,raw,2146,-0.845358,0.630474,0.083163,0.013848,10,False,"auxiliary univariate logistic (FIB-4 -> P), fit on proper_train N=4005 only"
+FIB-4,recalibrated,2146,6.431322,3.831089,0.083706,0.02954,10,False,raw + second-stage calibration-in-the-large correction fit on conformal_calibration N=1002 (held out from the auxiliary fit)

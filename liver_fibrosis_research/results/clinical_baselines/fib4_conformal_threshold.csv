@@ -1,0 +1,2 @@
+score_name,calibration_n,calibration_positives,calibration_negatives,target_coverage,score_definition,quantile_level_finite_sample_corrected,threshold,mean_score,median_score
+FIB-4 (+ auxiliary univariate logistic),1002,93,909,0.9,"1 - P(y=true_class | FIB4), P from auxiliary logistic fit on proper_train only",0.901198,0.322431,0.161825,0.077972
