@@ -1,0 +1,2 @@
+cohort_n,design,unweighted_prevalence_pct,weighted_prevalence_pct,weighted_se_pct,weighted_95ci_low_pct,weighted_95ci_high_pct,unweighted_estimate_inside_weighted_ci
+7153,"WTMECPRP (MEC exam weight) x SDMVSTRA x SDMVPSU, Taylor linearization",9.3108,8.2954,0.68,6.9981,9.8078,True

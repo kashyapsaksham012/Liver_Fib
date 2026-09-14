@@ -1,0 +1,41 @@
+=== svy_01_prevalence.py ===
+Mon Sep 14 16:18:18 IST 2026
+/Users/sakshamkashyap/Desktop/Research /liver_fibrosis_research/src/svy_01_prevalence.py:19: FutureWarning: samplics is archived and no longer maintained. Migrate to 'svy' (pip install svy) for the same functionality and more. Documentation: https://svylab.com/docs
+  from samplics.estimation import TaylorEstimator
+       _param  _level  _estimate  _stderror     _lci     _uci      _cv
+PopParam.prop       0   0.917046     0.0068 0.901922 0.930019 0.007416
+PopParam.prop       1   0.082954     0.0068 0.069981 0.098078 0.081979
+
+Unweighted prevalence: 9.3108%
+Full Taylor-linearization output (all levels/CI) saved to svy_prevalence_full_output.csv
+Saved results/sensitivity/survey_weighted/svy_prevalence_summary.csv
+
+=== svy_02_bmi_sensitivity.py ===
+Mon Sep 14 16:18:21 IST 2026
+/Users/sakshamkashyap/Desktop/Research /liver_fibrosis_research/src/svy_02_bmi_sensitivity.py:29: FutureWarning: samplics is archived and no longer maintained. Migrate to 'svy' (pip install svy) for the same functionality and more. Documentation: https://svylab.com/docs
+  from samplics.estimation import TaylorEstimator
+        model bmi_group  n_test_domain  n_test_domain_positive  unweighted_sensitivity  weighted_sensitivity  weighted_se  weighted_95ci_low  weighted_95ci_high
+     logistic    Normal            562                      22                0.409091              0.663180     0.117632           0.420912            0.905448
+     logistic     Obese            883                     140                0.885714              0.872247     0.043055           0.783572            0.960921
+random_forest    Normal            562                      22                0.590909              0.757583     0.123184           0.503881            1.011285
+random_forest     Obese            883                     140                0.907143              0.871848     0.044568           0.780059            0.963638
+      xgboost    Normal            562                      22                0.636364              0.783450     0.116768           0.542962            1.023938
+      xgboost     Obese            883                     140                0.950000              0.925353     0.039674           0.843642            1.007064
+     lightgbm    Normal            562                      22                0.636364              0.783450     0.116768           0.542962            1.023938
+     lightgbm     Obese            883                     140                0.907143              0.878493     0.042236           0.791506            0.965480
+          mlp    Normal            562                      22                0.545455              0.706499     0.125932           0.447138            0.965860
+          mlp     Obese            883                     140                0.935714              0.927838     0.039096           0.847319            1.008358
+
+        model  unweighted_gap_obese_minus_normal_pp  weighted_gap_obese_minus_normal_pp  weighted_cis_overlap
+     logistic                               47.6623                             20.9067                  True
+random_forest                               31.6234                             11.4265                  True
+      xgboost                               31.3636                             14.1903                  True
+     lightgbm                               27.0779                              9.5043                  True
+          mlp                               39.0259                             22.1339                  True
+
+Saved results/sensitivity/survey_weighted/svy_bmi_sensitivity.csv
+Saved results/sensitivity/survey_weighted/svy_bmi_sensitivity_gap_summary.csv
+
+=== environment ===
+Name: samplics
+Version: 0.6.0

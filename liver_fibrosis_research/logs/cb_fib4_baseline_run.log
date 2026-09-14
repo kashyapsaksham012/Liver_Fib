@@ -1,0 +1,79 @@
+=== cb_01_compute_fib4.py ===
+Mon Sep 14 15:39:02 IST 2026
+FIB-4 computed for N=7153 (matches frozen primary cohort).
+split
+conformal_calibration    1002
+proper_train             4005
+test                     2146
+FIB-4 summary: min=0.124, median=0.892, max=37.947
+Saved results/clinical_baselines/fib4_scores.csv
+
+=== cb_02_discrimination.py ===
+Mon Sep 14 15:39:03 IST 2026
+FIB-4 Youden threshold (from training partition, N=5007): 1.0246
+FIB-4: TEST ROC-AUC=0.6379 [0.5971,0.6795], PR-AUC=0.1772 [0.1422,0.2315], sens=0.600, spec=0.610, ppv=0.137, npv=0.937
+Saved results/clinical_baselines/fib4_discrimination.csv
+Saved results/clinical_baselines/fib4_test_predictions.csv
+
+=== cb_03_fairness.py ===
+Mon Sep 14 15:39:08 IST 2026
+          generated score_name      dimension                  category    reference_group    n  n_positive  n_negative                precision_tier  subgroup_sensitivity  reference_sensitivity  absolute_disparity_pp  ci_lower_pp  ci_upper_pp  raw_p_bootstrap  bh_fdr_adjusted_p  significant_after_fdr_0.05  meaningful_disparity_ge_10pp_and_ci_excludes_zero
+2026-09-14 15:39:08      FIB-4            sex                    Female               Male None          78        1021         exploratory candidate              0.576923               0.614754                -3.7831     -18.0609       9.6200            0.610              0.610                       False                                              False
+2026-09-14 15:39:08      FIB-4 race_ethnicity          Mexican American Non-Hispanic White None          31         218         exploratory candidate              0.580645               0.558824                 2.1822     -18.8671      22.6708            0.836              0.836                       False                                              False
+2026-09-14 15:39:08      FIB-4 race_ethnicity        Non-Hispanic Asian Non-Hispanic White None          14         227             limited precision              0.714286               0.558824                15.5462     -12.7122      40.0016            0.312              0.685                       False                                              False
+2026-09-14 15:39:08      FIB-4 race_ethnicity        Non-Hispanic Black Non-Hispanic White None          50         500         exploratory candidate              0.640000               0.558824                 8.1176     -10.2626      26.0519            0.419              0.685                       False                                              False
+2026-09-14 15:39:08      FIB-4 race_ethnicity            Other Hispanic Non-Hispanic White None          26         216             limited precision              0.653846               0.558824                 9.5023     -12.4822      30.7980            0.416              0.685                       False                                              False
+2026-09-14 15:39:08      FIB-4 race_ethnicity Other Race / Multi-Racial Non-Hispanic White None          11         102             limited precision              0.454545               0.558824               -10.4278     -45.2422      24.1984            0.548              0.685                       False                                              False
+2026-09-14 15:39:08      FIB-4            age                     18-39              40-59 None          33         707         exploratory candidate              0.090909               0.500000               -40.9091     -55.8831     -24.5900            0.000              0.000                        True                                               True
+2026-09-14 15:39:08      FIB-4            age                       60+              40-59 None         101         640 primary-feasibility candidate              0.831683               0.500000                33.1683      20.0994      47.2016            0.000              0.000                        True                                               True
+2026-09-14 15:39:08      FIB-4            bmi                     Obese             Normal None         140         743 primary-feasibility candidate              0.521429               0.772727               -25.1299     -44.0814      -4.7178            0.018              0.027                        True                                               True
+2026-09-14 15:39:08      FIB-4            bmi                Overweight             Normal None          37         636         exploratory candidate              0.810811               0.772727                 3.8084     -18.0001      26.5578            0.766              0.766                       False                                              False
+2026-09-14 15:39:08      FIB-4            bmi               Underweight             Normal None           1          27         insufficient evidence              0.000000               0.772727               -77.2727     -94.1176     -57.4176            0.000              0.000                        True                                               True
+
+Saved results/clinical_baselines/fib4_fairness_inference.csv (11 rows)
+
+=== cb_04_conformal.py ===
+Mon Sep 14 15:39:08 IST 2026
+Auxiliary logistic (FIB-4 -> probability), fit on proper_train N=4005: intercept=-3.1523, coef=0.7261
+Conformal threshold (from calibration partition, N=1002): 0.322431 (quantile level 0.9012)
+Marginal coverage (locked test, N=2146): 0.8961 [0.8825,0.9083], mean set size=0.985
+     dimension                  category    n  empirical_coverage  ci_lower  ci_upper  significant_after_fdr_0.05
+           bmi                Overweight  673            0.933135  0.911699  0.949655                        True
+           bmi                    Normal  562            0.937722  0.914619  0.954883                        True
+           bmi                     Obese  883            0.841450  0.815886  0.864055                        True
+           bmi               Underweight   28            0.892857  0.728041  0.962882                       False
+           age                     40-59  665            0.894737  0.869101  0.915838                       False
+           age                     18-39  740            0.955405  0.938035  0.968072                        True
+           age                       60+  741            0.838057  0.809799  0.862827                        True
+           sex                      Male 1047            0.869150  0.847366  0.888235                        True
+           sex                    Female 1099            0.921747  0.904359  0.936197                        True
+race_ethnicity        Non-Hispanic White  751            0.896138  0.872266  0.915979                       False
+race_ethnicity Other Race / Multi-Racial  113            0.902655  0.834062  0.944772                       False
+race_ethnicity          Mexican American  249            0.875502  0.828705  0.910889                       False
+race_ethnicity        Non-Hispanic Asian  241            0.937759  0.899860  0.961922                       False
+race_ethnicity        Non-Hispanic Black  550            0.894545  0.866084  0.917534                       False
+race_ethnicity            Other Hispanic  242            0.876033  0.828546  0.911768                       False
+
+Saved fib4_conformal_threshold.csv, fib4_marginal_coverage.csv, fib4_subgroup_coverage.csv, fib4_test_prediction_sets.csv
+
+=== cb_05_matched_stiffness.py ===
+Mon Sep 14 15:39:10 IST 2026
+Matched-stiffness band (8.2-12 kPa, Normal+Obese, locked test set): N=102 (Normal=15, Obese=87)
+[fib4_raw_score] beta_is_obese=-0.7755 (SE=0.1965, t=-3.95, p=1.48e-04), binned mean diff=-0.8009
+[auxiliary_probability] beta_is_obese=-0.0734 (SE=0.0170, t=-4.32, p=3.67e-05), binned mean diff=-0.0735
+
+Saved results/clinical_baselines/fib4_matched_stiffness.csv
+
+=== environment ===
+Python 3.14.7
+sklearn 1.9.0 scipy 1.18.0 pandas 3.0.5 numpy 2.5.2
+
+=== cb_06_calibration.py (added after C4 gap check) ===
+Mon Sep 14 15:48:44 IST 2026
+Second-stage recalibration (fit on conformal_calibration, N=1002, held-out from the auxiliary logistic's own training): intercept=-1.8970, slope=0.1656
+score_name      variant    n  calibration_intercept  calibration_slope  brier_score      ece  n_bins_achieved  binning_degenerate                                                                                                                         note
+     FIB-4          raw 2146              -0.845358           0.630474     0.083163 0.013848               10               False                                                  auxiliary univariate logistic (FIB-4 -> P), fit on proper_train N=4005 only
+     FIB-4 recalibrated 2146               6.431322           3.831089     0.083706 0.029540               10               False raw + second-stage calibration-in-the-large correction fit on conformal_calibration N=1002 (held out from the auxiliary fit)
+
+Saved results/clinical_baselines/fib4_calibration.csv
+Saved results/clinical_baselines/fib4_calibration_curve_data.csv
