@@ -1,0 +1,2 @@
+score_name,n,target_coverage,empirical_coverage,ci_lower,ci_upper,ci_method,coverage_minus_target,mean_set_size,median_set_size,singleton_rate,ambiguous_rate_both_classes,empty_set_rate,threshold_used
+FIB-4 (+ auxiliary univariate logistic),2146,0.9,0.896086,0.88246,0.908296,"Wilson score interval, 95%",-0.003914,0.985089,1.0,0.985089,0.0,0.014911,0.32243109247437984

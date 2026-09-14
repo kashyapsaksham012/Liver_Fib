@@ -1,0 +1,6 @@
+model,unweighted_gap_obese_minus_normal_pp,weighted_gap_obese_minus_normal_pp,weighted_cis_overlap
+logistic,47.6623,20.9067,True
+random_forest,31.6234,11.4265,True
+xgboost,31.3636,14.1903,True
+lightgbm,27.0779,9.5043,True
+mlp,39.0259,22.1339,True

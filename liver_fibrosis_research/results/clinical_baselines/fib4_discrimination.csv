@@ -1,0 +1,2 @@
+score_name,test_n,threshold,roc_auc,roc_auc_95ci_low,roc_auc_95ci_high,pr_auc,pr_auc_95ci_low,pr_auc_95ci_high,sensitivity,specificity,ppv,npv,f1,tp,fp,tn,fn,ci_method,threshold_method
+FIB-4,2146,1.0246,0.6379,0.5971,0.6795,0.1772,0.1422,0.2315,0.6,0.61,0.1365,0.9369,0.2224,120,759,1187,80,"percentile bootstrap, n=2000 resamples, seed=42","Youden's J on raw FIB-4 score, training partition (N=5007) only, test set not accessed"
