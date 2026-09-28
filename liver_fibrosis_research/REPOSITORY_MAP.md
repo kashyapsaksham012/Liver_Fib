@@ -45,13 +45,14 @@ liver_fibrosis_research/
 ├── README.md                     one-paragraph orientation (top-level)
 ├── REPOSITORY_MAP.md             ← you are here
 ├── SUBMISSION_PACKAGE.md         what actually goes to the preprint / journal / DOI
+├── MODEL_CARD.md  DATASHEET.md   intended use / limitations; cohort composition (added 2026-09-28)
 ├── requirements-phase3-lock.txt  authoritative pinned environment
 │
 ├── PHASE1..8_*_REPORT.md         tier 1 — per-phase primary records (root, frozen)
 ├── DEFERRED_* / MULTIPLE_IMPUTATION_* / RELIABILITY_EXTENSION_* _REPORT.md
 │                                 tier 2 — follow-up records (root, frozen)
 │
-├── src/          (136 files)     tier 1+2 analysis scripts. Naming:
+├── src/          (139 files)     tier 1+2 analysis scripts. Naming:
 │     ├── NN_*.py                    Phase 1 data assembly / audit (01–21)
 │     ├── phase2_*  phase3_*         protocol freeze / baseline modelling
 │     ├── phase4_*  phase5_*         calibration / fairness
@@ -61,7 +62,7 @@ liver_fibrosis_research/
 │     ├── rel_*  tradeoff_*          reliability extension / exploratory tracks
 │     └── _common.py  phase{3,4,5,6}_common.py   shared helpers
 │
-├── results/      (454 files)     tier 1+2 frozen artifacts (the authority — a
+├── results/      (470 files)     tier 1+2 frozen artifacts (the authority — a
 │                                 prose number that disagrees with these is wrong)
 │     ├── tables/  predictions/  calibration/  fairness/  uncertainty/
 │     ├── mitigation/  validation/  sensitivity/  reliability_extension/
@@ -80,7 +81,7 @@ liver_fibrosis_research/
 │     ├── interim/  processed/      merged + analysis datasets, split IDs
 │     └── (../../NHANES 2021–2023 temporal validation dataset/  — tier 4 input, gitignored)
 │
-├── documentation/  (258 files)   tier 1+2 prose. Key sub-trees:
+├── documentation/  (261 files)   tier 1+2 prose. Key sub-trees:
 │     ├── START_HERE.md             authority map for the frozen study — READ FIRST
 │     ├── phase2/  phase3/          protocol freezes / design docs
 │     ├── final_research_audit/     master synthesis + typed claim registers
@@ -94,14 +95,14 @@ liver_fibrosis_research/
 │
 ├── tests/        (18 scripts)     internal validation suite for tiers 1+2
 │
-├── manuscript_verification/       TIER 3 — number-verification harness (43 checks),
+├── manuscript_verification/       TIER 3 — number-verification harness (59 checks),
 │     │                            PDF↔repo reconciliation, reference bylines
 │     ├── verify.py  checks.py
 │     ├── FINDINGS.md  PDF_REPO_RECONCILIATION.md  reference_bylines.md  figure_manifest.csv
 │     └── report/
 │
 ├── manuscript_figures/            TIER 3 — the curated figure set for the paper
-│     ├── main/            (8)        Fig 1a/1b, 2, 3a/3b, 4a/4b, 5a/5b
+│     ├── main/            (9)        Fig 1a/1b, 2, 3a/3b, 4a/4b, 5a/5b
 │     ├── supplement/      (28)       per-model sets, DCA, stiffness, missingness, cooccurrence
 │     ├── _superseded_reference/      the 2 old misleading figures (do not use)
 │     ├── FIGURE_AUDIT.md  regenerate_figures.py  figure_manifest.csv
@@ -109,7 +110,7 @@ liver_fibrosis_research/
 ├── temporal_validation_2021_2023/ TIER 4 — full module (own protocol, src, results, figures)
 │     ├── PROTOCOL_FREEZE.md  FROZEN_ARTIFACT_MANIFEST.csv  MANUSCRIPT_SECTION_temporal.md
 │     ├── src/ (t00..t05, verify_temporal.py)   data/processed/   results/
-│     ├── figures/ (figT1..T6)
+│     ├── figures/ (figT1..T6, .png + .pdf both tracked)
 │     └── documentation/ (protocol, drift audit, drop decomposition, synthesis, limitations, touch log)
 │
 └── pooled_model_update_2017_2023/ TIER 5 — full module (own protocol, src, results, models)
@@ -118,7 +119,9 @@ liver_fibrosis_research/
       ├── results/   documentation/ (report, touch log)
 ```
 
-Empty stubs kept for compatibility: `notebooks/`, `logs/`, `exploratory_602020/`.
+Empty stubs kept for compatibility: `notebooks/`, `exploratory_602020/`. `logs/` is no longer
+empty — it holds `cb_fib4_baseline_run.log` and `svy_weighted_run.log`, run logs from the
+post-freeze FIB-4 and survey-weighted addenda.
 
 ---
 
