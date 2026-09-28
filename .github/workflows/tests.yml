@@ -18,6 +18,8 @@ jobs:
         working-directory: liver_fibrosis_research
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history: test_reliability_extension.py TEST9 does `git show` on a historical commit to verify the protocol-freeze commit predates the analysis code; a shallow clone doesn't have that commit object.
 
       - uses: actions/setup-python@v5
         with:
