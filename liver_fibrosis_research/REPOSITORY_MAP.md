@@ -143,6 +143,7 @@ Empty stubs kept for compatibility: `notebooks/`, `logs/`, `exploratory_602020/`
 | Model card (intended use, performance, limitations) | `MODEL_CARD.md` |
 | Dataset datasheet (cohort composition, caveats) | `DATASHEET.md` |
 | How to cite this work | root [`CITATION.cff`](../CITATION.cff) |
+| Which file backs a specific sentence/table/figure in main.pdf | root [`README.md`](../README.md) § "Paper → repository map" |
 
 ---
 
