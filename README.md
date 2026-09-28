@@ -28,11 +28,11 @@ kept as historical context, not a current source.
 
 ## Paper → repository map
 
-**For a reviewer with `main.pdf` open.** This traces the camera-ready 4-page conference
-manuscript (`main.tex`/`main.pdf`, root of this repo) section-by-section to the exact script,
-results file, or documentation that produced each claim, table, and figure. Table/figure
-references use the manuscript's own `\label{}` names so they match regardless of final print
-numbering.
+**For a reviewer with the camera-ready `main.pdf` open** (the manuscript itself is not
+tracked in this repo — see "Not tracked here" below — but every claim in it is). This
+traces that manuscript section-by-section to the exact script, results file, or
+documentation that produced each claim, table, and figure. Table/figure references use
+the manuscript's own `\label{}` names so they match regardless of final print numbering.
 
 **Verify before citing anything below** — two commands, both read-only:
 ```bash
@@ -127,6 +127,10 @@ Tags: `evidence-freeze` (pre-manuscript freeze), `pre-handover-cleanup-2026-08-2
 - `liver_fibrosis_research/.venv/` — local virtual environment, rebuild from the lock file.
 - `NHANES 2021–2023 temporal validation dataset/` — raw inputs for the separate
   temporal-validation manuscript; gitignored, not part of this study.
+- `main.tex` / `main.pdf` — the camera-ready conference manuscript source and its compiled PDF.
+  Removed from GitHub 2026-09-28 (kept locally only); the analysis code, frozen results, and
+  every numeric claim they contain remain fully traceable via the "Paper → repository map"
+  section below, which does not require the PDF to be physically present in this repo.
 
 ## Known follow-ups for a new maintainer
 

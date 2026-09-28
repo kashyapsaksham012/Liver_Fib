@@ -34,6 +34,7 @@ NHANES 2021–2023 temporal validation dataset/
 
 # LaTeX build byproducts (repo-root conference manuscript only; does not affect
 # liver_fibrosis_research/logs/*.log, which are tracked pipeline run logs).
+/main.tex  # camera-ready manuscript source, removed from GitHub 2026-09-28 -- kept local only
 /main.aux
 /main.fls
 /main.fdb_latexmk
