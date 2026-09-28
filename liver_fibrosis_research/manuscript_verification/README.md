@@ -35,7 +35,7 @@ hedge scan finds anything). Reports are written to `report/`.
 
 ## What it covers now
 
-43 checks over the manuscript's `MANUSCRIPT_READY` claims and the cohort numbers:
+59 checks over the manuscript's `MANUSCRIPT_READY` claims and the cohort numbers:
 cohort N / positives / prevalence; discrimination band + per-model AUROC + PR-AUC
 + the 0/10 FDR result; OOF and locked-test calibration (raw and recalibrated);
 the BMI-Obese sensitivity gap (band, q-values, 5/5 significance) and the
@@ -44,8 +44,21 @@ matched-stiffness shortcut; the Age-60+ secondary observation (band, direction,
 coverage and the over-covering subgroups; the NHB holdout (AUROC, **raw**
 calibration intercepts and slopes); the severity-graded secondary outcomes
 (AUROC bands **and** the relabel-only flags that resolve the "was it executed?"
-question); the training-time-mitigation verdict and its costs; and predictor
-importance.
+question); the training-time-mitigation verdict and its costs; predictor
+importance; the FIB-4 clinical-baseline comparison (AUROC, BMI/age fairness
+reversal, subgroup coverage, and **both** the native-score and same-units
+auxiliary-probability matched-stiffness coefficients — the latter is what makes
+the "reversal in direction, not magnitude" wording in §3.9b checkable rather
+than asserted); and the survey-weighted sensitivity check (weighted prevalence +
+CI, and the unweighted/weighted BMI-gap pair the manuscript's "attenuated
+43-65%" line is computed from).
+
+The FIB-4 and survey-weighted checks (`FIB4-*`, `SVY-*`) were added on
+2026-09-27, after the twentieth protocol amendment and the `tests/` suite
+(667 checks / 18 scripts) had already been frozen on 2026-08-28 — closing the
+gap where those two post-freeze addenda carried correct numbers (independently
+hand-verified against `results/clinical_baselines/` and
+`results/sensitivity/survey_weighted/`) but weren't yet pinned by this harness.
 
 Two checks are deliberately pinned to values the **desktop PDF got wrong**, so a
 rebuilt manuscript can't reintroduce them:
