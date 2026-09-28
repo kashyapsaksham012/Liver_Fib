@@ -34,10 +34,9 @@ for model in MODEL_NAMES:
     ax.axvline(marg, color="blue", linestyle=":", linewidth=1, label=f"marginal ({marg:.3f})")
     ax.set_yticks(list(y_pos)); ax.set_yticklabels(sub["label"], fontsize=8)
     ax.set_xlabel("Empirical conformal coverage (95% Wilson CI)")
-    ax.set_title(f"Subgroup coverage vs. 90% target -- {model} (locked test set)\nred = CI excludes 90% target; gray = CI includes target")
-    ax.legend(loc="lower left", fontsize=7)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.14), ncol=2, fontsize=7, frameon=False)
     fig.tight_layout()
-    fig.savefig(FIG_DIR / f"subgroup_coverage_{model}.png", dpi=150)
+    fig.savefig(FIG_DIR / f"subgroup_coverage_{model}.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 print(f"Saved {len(MODEL_NAMES)} subgroup coverage figures to results/uncertainty/figures/")
