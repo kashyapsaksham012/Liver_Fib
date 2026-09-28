@@ -24,3 +24,34 @@ NHANES 2021–2023 temporal validation dataset/
 # divergences are tracked in manuscript_verification/PDF_REPO_RECONCILIATION.md.
 # Add a specific PDF with `git add -f` if it must be archived (e.g. an as-submitted copy).
 *.pdf
+
+# Exceptions: these are not build output — they are frozen tier-4 deliverable
+# figures (vector siblings of the already-tracked PNGs) and the as-submitted
+# conference manuscript snapshot. The blanket *.pdf rule above was silently
+# excluding them; recovered 2026-09-28.
+!liver_fibrosis_research/temporal_validation_2021_2023/figures/figT*.pdf
+!liver_fibrosis_research/documentation/manuscript/conference_submission_2026-09-04.pdf
+
+# LaTeX build byproducts (repo-root conference manuscript only; does not affect
+# liver_fibrosis_research/logs/*.log, which are tracked pipeline run logs).
+/main.aux
+/main.fls
+/main.fdb_latexmk
+/main.log
+/main_backup_pre_temporal.aux
+/main_backup_pre_temporal.fls
+/main_backup_pre_temporal.fdb_latexmk
+/main_backup_pre_temporal.log
+/main_backup_pre_temporal.synctex.gz
+
+# Manual pre-edit backup copies of the manuscript — kept locally as safety
+# copies while editing, not tracked in git (git history is the real backup
+# for main.tex itself, which stays tracked).
+/main_backup_pre_temporal.tex
+/main_before_edit.tex.bak
+/main_before_review_fixes.tex.bak
+/main_before_specfix.tex.bak
+
+# Editor config (local preference, not project config)
+.vscode/
+_unsorted_images/
