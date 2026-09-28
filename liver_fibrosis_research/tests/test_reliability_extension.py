@@ -86,7 +86,12 @@ check("TEST8_dca_results_file_exists", (REL_DIR / "dca_results.csv").exists())
 import subprocess
 def git(*args):
     return subprocess.run(["git", "-C", str(ROOT)] + list(args), capture_output=True, text=True, check=True).stdout.strip()
-commit_a_files = git("show", "--name-only", "--format=", "1876858").splitlines()
+# NOTE 2026-09-28: the pre-existing SHA here (1876858) predates a history
+# rewrite (co-author-strip, see git tag backup-before-coauthor-strip, local-
+# only, never pushed) and is unreachable from main on any fresh clone -- it
+# only "worked" locally via that orphaned tag. 9ab5e30 is the same commit
+# (identical message/timestamp/file list) under its current, main-reachable hash.
+commit_a_files = git("show", "--name-only", "--format=", "9ab5e30").splitlines()
 check("TEST9_commit_A_contains_no_analysis_code",
       not any("rel_01" in f or "rel_02" in f for f in commit_a_files))
 check("TEST9_commit_A_contains_protocol_freeze",
