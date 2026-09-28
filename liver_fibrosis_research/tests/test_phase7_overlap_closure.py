@@ -81,7 +81,9 @@ four_way_logi_obese_n = four_way[(four_way["model"] == "logistic") & (four_way["
 check("TEST10_four_way_reconciles_with_official_aggregate", int(four_way_logi_obese_n) == int(logi_obese_official_n) == 883)
 
 # TEST 11: de7ff5b file contents match the protocol-only criterion
-de7ff5b_files = git("show", "--name-only", "--pretty=", "de7ff5b").split("\n")
+# NOTE 2026-09-28: de7ff5b predates a history rewrite and is unreachable from main on a
+# fresh clone; 32b01e5 is the same commit (identical message/content) at its current hash.
+de7ff5b_files = git("show", "--name-only", "--pretty=", "32b01e5").split("\n")
 de7ff5b_files = [f for f in de7ff5b_files if f.strip()]
 forbidden_patterns = ["phase7_02_mitigation_implementation", "phase7_03_pretest", "phase7_04_final_test_touch",
                        "MITIGATION_PROTOCOL_FREEZE", "group_specific_thresholds", "test_set_mitigation_final",

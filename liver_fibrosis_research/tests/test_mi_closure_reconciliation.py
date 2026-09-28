@@ -87,7 +87,14 @@ IN_SCOPE_PREFIXES = ("liver_fibrosis_research/src/mi_0", "liver_fibrosis_researc
                      "liver_fibrosis_research/documentation/end_to_end/protocol_amendment_registry.md")
 
 commit_files = {}
-for label, sha in [("B", "4802602"), ("C", "f73ef91"), ("D", "adc9328")]:
+
+# NOTE 2026-09-28: the sha values above were repointed to their post-history-rewrite
+# equivalents (same commit message/content, unreachable-from-main originals orphaned by
+# the co-author-strip rewrite) so `git show` works on a fresh clone. The TEST11 checks
+# below intentionally still look for the ORIGINAL short hashes ("4802602" etc) -- those
+# are frozen prose in documentation/project_roadmap/deferred_sensitivity_analyses.md
+# quoting the hashes as they were at write time, not a git lookup, and are correctly left as-is.
+for label, sha in [("B", "567a7c8"), ("C", "4ec937d"), ("D", "d5835fe")]:
     files = git("show", "--name-only", "--format=", sha).splitlines()
     files = [f for f in files if f.strip()]
     commit_files[label] = files
@@ -122,7 +129,7 @@ check("TEST10_test_ids_hash_matches_phase6_frozen_record",
       sha256(test_ids_path) == "a9e54315fb928342ed54f9b5bf940aa21106326c7e783c9089f44672a6624779")
 touch_commits = git("log", "--oneline", "--", "data/processed/splits/test_ids.csv").splitlines()
 check("TEST10_test_ids_touched_exactly_once_ever", len(touch_commits) == 1, detail=str(touch_commits))
-for label, sha in [("B", "4802602"), ("C", "f73ef91"), ("D", "adc9328")]:
+for label, sha in [("B", "567a7c8"), ("C", "4ec937d"), ("D", "d5835fe")]:
     check(f"TEST10_commit_{label}_does_not_touch_test_ids",
           "data/processed/splits/test_ids.csv" not in commit_files[label])
 

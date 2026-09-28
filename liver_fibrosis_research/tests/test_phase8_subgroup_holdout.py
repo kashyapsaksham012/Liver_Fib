@@ -75,11 +75,16 @@ check("TEST3_matrix_covers_minimum_candidates",
       set(matrix["candidate"]) >= {"Non-Hispanic Black", "BMI-Obese", "Age-60+"})
 
 # TEST 4: selected subgroup frozen before training (protocol commit predates training commits)
+
+# NOTE 2026-09-28: 77e2b1c/6fb7e93/279b672 (Phase 8 Commits A/B/C) predate a history
+# rewrite and are unreachable from main on a fresh clone; repointed to their current,
+# main-reachable equivalents (a75cd16/fddf7e9/3c504d6 -- identical commit messages,
+# verified same ordering and file contents).
 commit_a = git("log", "--format=%H", "-1", "--grep=Phase 8.*Commit A", "--all").strip()
 check("TEST4_protocol_commit_a_exists", len(commit_a) == 40, detail=commit_a)
-commit_order = git("log", "--oneline", "--reverse", "77e2b1c..279b672")
+commit_order = git("log", "--oneline", "--reverse", "a75cd16..3c504d6")  # post-rewrite equivalents of 77e2b1c..279b672 (see NOTE below)
 check("TEST4_commit_A_precedes_B_and_C",
-      "6fb7e93" in commit_order and "279b672" in commit_order)
+      "fddf7e9" in commit_order and "3c504d6" in commit_order)
 
 # TEST 5: prior terminal subgroup statement transparently documented (PATH B, not presented as discovery)
 check("TEST5_prior_statement_quoted_verbatim",
@@ -90,10 +95,10 @@ check("TEST5_not_presented_as_independent_discovery",
       "not presented" in decision_text and "independent discovery" in decision_text)
 
 # TEST 6: protocol commit predates training (Commit A committed before any src/phase8_02 file existed)
-files_in_a = git("show", "--name-only", "--format=", "77e2b1c").splitlines()
+files_in_a = git("show", "--name-only", "--format=", "a75cd16").splitlines()
 check("TEST6_commit_A_contains_no_training_code",
       not any("phase8_02" in f or "phase8_holdout" in f and "models/" in f for f in files_in_a))
-files_in_c = git("show", "--name-only", "--format=", "279b672").splitlines()
+files_in_c = git("show", "--name-only", "--format=", "3c504d6").splitlines()
 check("TEST6_commit_C_contains_training_code_and_models",
       any("phase8_02" in f for f in files_in_c) and any("models/phase8_holdout" in f for f in files_in_c))
 
