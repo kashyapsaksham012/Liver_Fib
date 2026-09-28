@@ -140,6 +140,9 @@ Empty stubs kept for compatibility: `notebooks/`, `logs/`, `exploratory_602020/`
 | The temporal evidence figures | `temporal_validation_2021_2023/figures/README.md` |
 | Differences between the PDF and this repo | `manuscript_verification/PDF_REPO_RECONCILIATION.md` |
 | What to send to the journal | `SUBMISSION_PACKAGE.md` |
+| Model card (intended use, performance, limitations) | `MODEL_CARD.md` |
+| Dataset datasheet (cohort composition, caveats) | `DATASHEET.md` |
+| How to cite this work | root [`CITATION.cff`](../CITATION.cff) |
 
 ---
 

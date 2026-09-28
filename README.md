@@ -1,5 +1,9 @@
 # Liver Fibrosis ML Reliability Study — repository root
 
+[![tests](https://github.com/kashyapsaksham012/Liver_Fib/actions/workflows/tests.yml/badge.svg)](https://github.com/kashyapsaksham012/Liver_Fib/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Evidence freeze](https://img.shields.io/badge/evidence--freeze-2026--08--27-blue)](https://github.com/kashyapsaksham012/Liver_Fib/releases/tag/evidence-freeze)
+
 This repository contains a single research project: a calibration / fairness / uncertainty
 audit of routine-data machine-learning models for **significant liver fibrosis**, built on
 NHANES 2017–March 2020. The study is complete and frozen at its pre-manuscript evidence
@@ -21,6 +25,16 @@ Everything at this top level is orientation only.
 
 `info.md` (this directory) is the original research brief the project was scoped from —
 kept as historical context, not a current source.
+
+## Model card / datasheet / citation
+
+- [`liver_fibrosis_research/MODEL_CARD.md`](liver_fibrosis_research/MODEL_CARD.md) — intended
+  use, performance, and the fairness/reliability limitations, grounded in the frozen results.
+- [`liver_fibrosis_research/DATASHEET.md`](liver_fibrosis_research/DATASHEET.md) — the NHANES
+  analysis cohort: composition, collection, preprocessing, known caveats.
+- [`CITATION.cff`](CITATION.cff) — machine-readable citation (GitHub's "Cite this repository").
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — read before opening a PR; the core study is a frozen,
+  append-only evidentiary ledger, not a conventional codebase.
 
 ## Environment setup
 
@@ -56,12 +70,18 @@ Tags: `evidence-freeze` (pre-manuscript freeze), `pre-handover-cleanup-2026-08-2
 
 ## Known follow-ups for a new maintainer
 
-- Four of the 17 scripts in `liver_fibrosis_research/tests/` reference documentation paths
-  that the 2026-08-27 consolidation moved into `documentation/archive/process_trail/`, so
-  they now error on those paths (`test_calibration_pipeline`, `test_uncertainty_pipeline`,
-  `test_phase8_subgroup_holdout`) or assert against it (`test_fairness_pipeline` TEST23,
-  `test_mitigation_pipeline` TEST14). The pipeline logic they cover is unchanged; only the
-  path references need updating. The amendment-specific suites
-  (`test_source_of_truth`, `test_prepub_fixes`, `test_training_time_mitigation`) pass.
+- ~~Four of the 17 scripts in `liver_fibrosis_research/tests/` reference documentation paths
+  that the 2026-08-27 consolidation moved...~~ **Resolved.** The `_doc()` fallback-path helper
+  (documented in `liver_fibrosis_research/tests/README.md`, "2026-08-28 maintenance") already
+  fixes this. Verified 2026-09-28: all 18 scripts in `liver_fibrosis_research/tests/` pass with
+  0 failures (`for t in liver_fibrosis_research/tests/test_*.py; do .venv/bin/python "$t"; done`).
+  This bullet was stale — left here so the "it used to be broken" history isn't lost.
 - No external (non-NHANES) validation has been performed — the study's foremost stated
   limitation.
+- `requirements.txt` and `requirements-phase3.txt` look like avoidable duplicates but are
+  **not safe to collapse**: both are named explicitly, by filename, in the frozen
+  `liver_fibrosis_research/documentation/final_audit/REPRODUCIBILITY.md` ("`requirements.txt`
+  and `requirements-phase3.txt` are the unpinned/earlier variants") as historical artifacts of
+  what was actually installed at each stage. Deleting or rewriting either breaks that
+  documented, frozen claim's verifiability. `requirements-phase3-lock.txt` remains the
+  authoritative file to install from; leave the other two as read-only history.

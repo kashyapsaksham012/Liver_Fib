@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use this code, methodology, or its findings, please cite the paper below."
+title: >-
+  Reliability Beyond Accuracy: Calibration, Demographic Fairness, and Conformal
+  Uncertainty in Machine Learning for Non-Invasive Liver Fibrosis Risk Prediction
+type: software
+authors:
+  - family-names: Kashyap
+    given-names: Saksham
+    email: kashyapsaksham012@gmail.com
+    affiliation: >-
+      Dept. of Computer Science, Guru Gobind Singh Indraprastha University,
+      Delhi, India
+  - family-names: Mehata
+    given-names: Pratik
+    email: pratikmehta061@gmail.com
+    affiliation: >-
+      Dept. of Computer Science, Guru Gobind Singh Indraprastha University,
+      Delhi, India
+  - family-names: Thapa
+    given-names: Bhuwanesh Jung
+    email: mailme.bhuwanthapa@gmail.com
+    affiliation: >-
+      Dept. of Computer Science, Guru Gobind Singh Indraprastha University,
+      Delhi, India
+repository-code: "https://github.com/kashyapsaksham012/Liver_Fib"
+license: MIT
+version: evidence-freeze
+date-released: "2026-08-27"
+keywords:
+  - liver fibrosis
+  - NHANES
+  - machine learning
+  - fairness
+  - calibration
+  - conformal prediction
+  - clinical machine learning
+  - uncertainty quantification
+abstract: >-
+  A calibration / fairness / uncertainty audit of five routine-data machine
+  learning model families (logistic regression, random forest, XGBoost,
+  LightGBM, MLP) predicting significant liver fibrosis (VCTE LUXSMED >= 8.2
+  kPa) from ten routine demographic, anthropometric, and laboratory predictors
+  in NHANES 2017-March 2020 (N=7,153). Finds comparable discrimination and
+  adequate aggregate calibration across model families, but a large,
+  reproduced BMI-sensitivity disparity and subgroup conformal under-coverage
+  (BMI-Obese, Age 60+) that no tested mitigation resolves. See
+  liver_fibrosis_research/REPOSITORY_MAP.md for the full repository structure
+  and liver_fibrosis_research/documentation/final_research_audit/DO_NOT_CLAIM.md
+  for claims this evidence base does not support.
